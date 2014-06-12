@@ -2,10 +2,10 @@
 
 ## Phase 1
 ### Deliverables
-- [ ] Project Management Plan
-- [ ] Concept of Operations
-- [ ] Software Requirements and Specification
-- [ ] Test Plan
+- [X] Project Management Plan
+- [X] Concept of Operations
+- [X] Software Requirements and Specification
+- [X] Test Plan
 
 --------------------
 
