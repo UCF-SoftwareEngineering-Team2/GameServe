@@ -11,10 +11,10 @@
 
 ## Phase 2
 ### Deliverables
-- [ ] High-Level Design Documentation
-- [ ] Detailed Design (aka Low-Level Design) Documentation
-- [ ] Practice Powerpoint Presentation Slides
-- [ ] Project Management Report
+- [X] High-Level Design Documentation
+- [X] Detailed Design (aka Low-Level Design) Documentation
+- [X] Practice Powerpoint Presentation Slides
+- [X] Project Management Report
 
 --------------------
 
