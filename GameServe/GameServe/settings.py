@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
+SETTINGS_DIR = os.path.abspath(os.path.dirname(__file__)) 
+PROJECT_PATH = os.path.join(SETTINGS_DIR, os.pardir)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -36,6 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
+    'main',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -79,4 +82,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
-STATIC_URL = '/static/'
+TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')     # Sets TEMPLATE_PATH = GameServe/templates
+TEMPLATE_DIRS = (TEMPLATE_PATH,)
+
+STATICFILES_STORAGE='django.contrib.staticfiles.storage.StaticFilesStorage'
+STATIC_PATH = os.path.join(PROJECT_PATH,'static')           # Sets STATIC_PATH = GameServe/static
+STATIC_URL = '/static/'                                     # URL to static files
+STATICFILES_DIRS = (
+    STATIC_PATH,
+)

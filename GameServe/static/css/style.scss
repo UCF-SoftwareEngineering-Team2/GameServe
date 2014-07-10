@@ -1,0 +1,96 @@
+$green: #6CAB43;
+$dark: #2E2D2C;
+$med: #CECECE;
+$light: #F7F7F7;
+
+body {
+	margin: 0px;
+	background: $med;
+}
+header {
+	position: fixed;
+	height: 70px;
+	width: 100%;
+	background: $light;
+	z-index: 100;
+	box-shadow: 0px 0px 2px 2px rgba(0,0,0,.1);
+	.headerLink {
+		position: relative;
+		height: 70px;
+		padding: 10px 20px;
+		float: right;
+		margin-right: 10px;
+		// background: $med;
+		&:before {
+			content: "";
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: -90px;
+			background: $green;
+			transition: 200ms;
+		}
+		&:hover {
+			color: $light;
+			&:before {
+				opacity: 1;
+				top: -20px;
+			}
+		}
+		&.login {
+			width: 80px;
+		}
+		&.create {
+			width: 120px;
+		}
+		&.browse {
+			width: 80px;
+		}
+		&.home {
+			width: 80px;
+		}
+		.headerLinkText {
+			position: absolute;
+			margin: auto;
+			top: 20px;
+			font-size: 20px;
+			color: $green;
+			transition: 200ms;
+			&:hover > .headerLink {
+				color: $light;
+			}
+		}
+	}
+}
+#logo {
+	position: absolute;
+	width: 215px;
+	left: 60px;
+
+}
+.window {
+	background: $light;
+	position: relative;
+	float: left;
+	margin: 20px;
+	margin-top: 100px;
+	border-radius: 10px;
+	min-height: 200px;
+	width: 600px;
+	overflow: hidden;
+	box-shadow: 0px 0px 2px 2px rgba(0,0,0,.1);
+	&.side {
+		width: 300px;
+	}
+	.windowHeader {
+		position: absolute;
+		top: 0px;
+		padding: 5px 10px;
+		color: $light;
+		background: $dark;
+		width: 100%;
+		height: 30px;
+
+	}
+}
+

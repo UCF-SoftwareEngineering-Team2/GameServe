@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html>
+
+<head>
+<link href="{{ STATIC_URL }}css/style.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+	<header>
+		<img src="{{ STATIC_URL }}assets/gsLogo.gif" id="logo">
+
+		<div class="headerLink login"><div class="headerLinkText">login</div></div>
+		<div class="headerLink create"><div class="headerLinkText">create new event</div></div>
+		<div class="headerLink browse"><div class="headerLinkText">browse</div></div>
+		<div class="headerLink home"><div class="headerLinkText">home</div></div>
+		
+		
+		</header>
+	<aside class="window side">
+		<div class="windowHeader">Recent Activity</div>
+			<!-- Fill in with recent events from the database -->
+	</aside>
+	<section class="window">
+			<div class="windowHeader">Upcoming Games</div>
+	</section>
+</body>
+</html>
