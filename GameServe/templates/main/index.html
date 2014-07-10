@@ -5,6 +5,26 @@
 
 <head>
 <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet" type="text/css"/>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+<link rel="shortcut icon" href="{{ STATIC_URL }}assets/titleIcon.gif" type="image/gif"/>
+
+<script>
+  function initialize() {
+
+	var myLatlng = new google.maps.LatLng(28.601648, -81.200306);  
+	var mapOptions = {
+		zoom: 15,
+		center: myLatlng,
+		mapTypeId: google.maps.MapTypeId.MAP
+	}
+	var map = new google.maps.Map(document.getElementById('mapCanvas'), mapOptions);
+	
+  }
+
+  google.maps.event.addDomListener(window, 'load', initialize);
+
+</script>
+
 </head>
 
 <body>
@@ -19,11 +39,44 @@
 		
 		</header>
 	<aside class="window side">
-		<div class="windowHeader">Recent Activity</div>
+		<div class="windowHeader">Recent Activity</div>	
+		<div class="recentEvent">
+			<img class="userPhoto" src="{{ STATIC_URL }}/assets/gsGeneralPerson.jpg">
+			<div class="recentInfo">
+				<div class="recentAction">committed to play</div>
+				<div class="recentGameType">Soccer</div>
+				<div class="recentTime">30 mins ago</div>
+			</div>
+		</div>
+		<div class="recentEvent">
+			<img class="userPhoto" src="{{ STATIC_URL }}/assets/gsGeneralPerson.jpg">
+			<div class="recentInfo">
+				<div class="recentAction">created an event</div>
+				<div class="recentGameType">Running</div>
+				<div class="recentTime">45 mins ago</div>
+			</div>
+		</div>
+		<div class="recentEvent">
+			<img class="userPhoto" src="{{ STATIC_URL }}/assets/gsGeneralPerson.jpg">
+			<div class="recentInfo">
+				<div class="recentAction">checked-in</div>
+				<div class="recentGameType">Tennis</div>
+				<div class="recentTime">1 hour ago</div>
+			</div>
+		</div>
+		<div class="recentEvent">
+			<img class="userPhoto" src="{{ STATIC_URL }}/assets/gsGeneralPerson.jpg">
+			<div class="recentInfo">
+				<div class="recentAction">created an event</div>
+				<div class="recentGameType">Basketball</div>
+				<div class="recentTime">1 hour ago ago</div>
+			</div>
+		</div>
 			<!-- Fill in with recent events from the database -->
 	</aside>
 	<section class="window">
 			<div class="windowHeader">Upcoming Games</div>
 	</section>
+ 	<aside class="window side" id="mapCanvas"></aside>
 </body>
 </html>

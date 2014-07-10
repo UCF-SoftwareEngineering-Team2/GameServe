@@ -1,6 +1,31 @@
+@font-face {
+  font-family: 'sinkin_sans300_light_italic';
+  src: url("../assets/fonts/sinkinsans-300lightitalic-webfont.eot");
+  src: url("../assets/fonts/sinkinsans-300lightitalic-webfont.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/sinkinsans-300lightitalic-webfont.woff") format("woff"), url("../assets/fonts/sinkinsans-300lightitalic-webfont.ttf") format("truetype"), url("../assets/fonts/sinkinsans-300lightitalic-webfont.svg#sinkin_sans300_light_italic") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'sinkin_sans300_light';
+  src: url("../assets/fonts/sinkinsans-300light-webfont.eot");
+  src: url("../assets/fonts/sinkinsans-300light-webfont.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/sinkinsans-300light-webfont.woff") format("woff"), url("../assets/fonts/sinkinsans-300light-webfont.ttf") format("truetype"), url("../assets/fonts/sinkinsans-300light-webfont.svg#sinkin_sans300_light") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'kenyan_coffeeregular';
+  src: url("../assets/fonts/kenyan_coffee_rg.eot");
+  src: url("../assets/fonts/kenyan_coffee_rg.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/kenyan_coffee_rg.woff") format("woff"), url("../assets/fonts/kenyan_coffee_rg.ttf") format("truetype"), url("../assets/fonts/kenyan_coffee_rg.svg#kenyan_coffeeregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'kenyan_coffeeitalic';
+  src: url("../assets/fonts/kenyan_coffee_rg_it.eot");
+  src: url("../assets/fonts/kenyan_coffee_rg_it.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/kenyan_coffee_rg_it.woff") format("woff"), url("../assets/fonts/kenyan_coffee_rg_it.ttf") format("truetype"), url("../assets/fonts/kenyan_coffee_rg_it.svg#kenyan_coffeeitalic") format("svg");
+  font-weight: normal;
+  font-style: normal; }
 body {
   margin: 0px;
-  background: #cecece; }
+  background: #cecece;
+  font-family: 'sinkin_sans300_light'; }
 
 header {
   position: fixed;
@@ -57,18 +82,51 @@ header {
   float: left;
   margin: 20px;
   margin-top: 100px;
-  border-radius: 10px;
+  border-radius: 5px;
   min-height: 200px;
   width: 600px;
   overflow: hidden;
   box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1); }
   .window.side {
-    width: 300px; }
+    width: 250px; }
   .window .windowHeader {
-    position: absolute;
+    position: relative;
     top: 0px;
     padding: 5px 10px;
-    color: #f7f7f7;
-    background: #2e2d2c;
+    color: #2e2d2c;
+    background: #cecece;
     width: 100%;
     height: 30px; }
+
+#mapCanvas {
+  clear: both;
+  height: 400px;
+  margin-top: 20px; }
+
+.recentEvent {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  padding: 5px 10px;
+  border-top: 1px solid #cecece;
+  overflow: hidden;
+  transition: 300ms; }
+  .recentEvent:hover {
+    background: #6cab43; }
+  .recentEvent:hover > .recentInfo {
+    color: #f7f7f7; }
+  .recentEvent .recentInfo {
+    position: relative;
+    width: 190px;
+    height: 100%;
+    float: right;
+    color: #cecece;
+    font-size: 11px;
+    transition: 200ms; }
+
+.userPhoto {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  float: left;
+  border-radius: 50%; }
