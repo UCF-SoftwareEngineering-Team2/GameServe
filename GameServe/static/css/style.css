@@ -71,6 +71,14 @@ header {
       header .headerLink .headerLinkText:hover > .headerLink {
         color: #f7f7f7; }
 
+.verticalPane {
+  position: relative;
+  float: left;
+  width: 600px;
+  height: 100%; }
+  .verticalPane.small {
+    width: 300px; }
+
 #logo {
   position: absolute;
   width: 215px;
@@ -99,7 +107,6 @@ header {
     height: 30px; }
 
 #mapCanvas {
-  clear: both;
   height: 400px;
   margin-top: 20px; }
 
@@ -110,10 +117,13 @@ header {
   padding: 5px 10px;
   border-top: 1px solid #cecece;
   overflow: hidden;
+  cursor: pointer;
   transition: 300ms; }
   .recentEvent:hover {
     background: #6cab43; }
   .recentEvent:hover > .recentInfo {
+    color: #f7f7f7; }
+  .recentEvent:hover > .browseGameInfo {
     color: #f7f7f7; }
   .recentEvent .recentInfo {
     position: relative;
@@ -129,4 +139,38 @@ header {
   width: 50px;
   height: 50px;
   float: left;
+  border-radius: 50%;
+  pointer-events: none; }
+
+.gameTypeImg {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  float: left;
   border-radius: 50%; }
+
+.heatImg {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  float: right;
+  margin-right: 20px;
+  background-image: url("../assets/sportIcons/heat_med.gif");
+  background-size: 50px 50px; }
+  .heatImg.hot {
+    background-image: url("../assets/sportIcons/heat_green.gif"); }
+
+.browseGameInfo {
+  position: relative;
+  width: 535px;
+  height: 100%;
+  float: right;
+  color: #cecece;
+  font-size: 11px;
+  transition: 200ms;
+  cursor: pointer; }
+  .browseGameInfo .infoText {
+    position: relative;
+    margin-right: 5px;
+    margin-top: 5px;
+    float: left; }
