@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from accounts.forms import UserForm, UserProfileForm
-
+from accounts.models import UserProfile
 
 
 
@@ -96,6 +96,13 @@ def register(request):
 
             # Update our variable to tell the template registration was successful.
             registered = True
+            profile = UserProfile()
+            profile.user = user 
+            print 'user.userprofile.save()'
+            user.save()
+            user.userprofile = profile
+            profile.save()
+
 
         # Invalid form or forms - mistakes or something else?
         # Print problems to the terminal.
