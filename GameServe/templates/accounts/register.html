@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+    <head>
+        {% include "head.html" %}
+        <title>Register</title>
+    </head>
+
+    <body>
+        {% include "top_navi.html" %}
+        <h1>Register</h1>
+
+        {% if registered %}
+        <strong>thank you for registering!</strong>
+        <a href="/">Return to the homepage.</a><br />
+        {% else %}
+        <strong>Register here!</strong><br />
+
+
+
+
+        <form role="form" id="user_form" method="post" action="/accounts/register/"
+                enctype="multipart/form-data" >
+
+            {% csrf_token %}
+
+            <!-- Display each form. The as_p method wraps each element in a paragraph
+                 (<p>) element. This ensures each element appears on a new line,
+                 making everything look neater. -->
+            <div class="form-group">
+                {{ user_form.username.errors }}    
+                <label for="username" class="col-sm-2 control-label">Username:</label>
+                {{ user_form.username }}    
+            </div>
+            <div class="form-group">
+                {{ user_form.password.errors }} 
+                <label for="password" class="col-sm-2 control-label">Password:</label>   
+                {{ user_form.password}} 
+            </div>
+            <div class="form-group">
+                {{ user_form.email.errors }}    
+                <label for="email" class="col-sm-2 control-label">Email:</label>   
+                {{ user_form.email}}    
+            </div>
+
+            <div class="form-group">
+                <button type="submit" name="submit" value="Register" class="btn btn-primary">Submit</button>
+            </div>
+            <!-- Provide a button to click to submit the form. -->
+
+        </form>
+        {% endif %}
+    </body>
+</html>
