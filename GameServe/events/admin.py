@@ -1,6 +1,5 @@
 from django.contrib import admin
 from events.models import Event, Court, Sport
-from django.contrib.auth.models import User
 
 # Register your models here.
 class EventAdmin(admin.ModelAdmin):

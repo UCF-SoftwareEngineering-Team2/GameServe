@@ -84,12 +84,37 @@ def clearAllDB():
     Court.objects.all().delete()
     Sport.objects.all().delete()
     User.objects.all().delete()
+    Events.objects.all().delete()
 
-def populate():
-    #addSports()
-    #addUsers()
-    addCourts()
-    addEvents()
+def printMenu():
+    print '---------------'
+    print 'Menu'
+    print '---------------'
+    print '1. addSports()'
+    print '2. addUsers()'
+    print '3. addCourts()'
+    print '4. addEvents()'
+    print '5. All'
+    print '*. Exit'
+    print
 
 def run():
-    populate()
+    printMenu()
+    choice = int(raw_input('Enter Choice: '))
+    if choice == 1:
+        addSports()
+    elif choice == 2:
+        addUsers()
+    elif choice == 3:
+        addCourts()
+    elif choice == 4:
+        addEvents()
+    elif choice == 5:
+        addSports()
+        addUsers()
+        addCourts()
+        addEvents()
+    else:
+        return
+
+
