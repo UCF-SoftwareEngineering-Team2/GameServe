@@ -100,7 +100,7 @@ def register(request):
             profile.user = user 
             print 'user.userprofile.save()'
             user.save()
-            user.userprofile = profile
+            user.profile = profile
             profile.save()
 
 

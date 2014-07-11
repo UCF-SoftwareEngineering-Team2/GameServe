@@ -1,6 +1,7 @@
 import os
 from events.models import Sport, Court, Event
 from django.contrib.auth.models import User
+from accounts.models import UserProfile
 from django.db.utils import IntegrityError
 from random import randint
 import datetime
@@ -13,7 +14,9 @@ def addCourts():
         (28.596148, -81.197116),(28.595687, -81.197641),(28.595688, -81.197422),(28.595742, -81.197258),(28.595754, -81.197081),(28.607421, -81.196185),(28.594833, -81.200847),
         (28.594857, -81.200703),(28.594814, -81.200532),(28.596039, -81.197903)]
     s = len(Sport.objects.all())
-
+    if s < 2:
+        addSports()
+        s = len(Sport.objects.all())
     for i in c:
         court = Court()
         court.sport = Sport.objects.get(id=randint(1,s))
@@ -39,7 +42,7 @@ def addEvents():
     today = datetime.date.today()
     for i in range(5000):
         e = Event()
-        e.date = datetime.date(2014,randint(today.month,12),randint(today.day,30))
+        e.date = datetime.date(2014,randint(1,12),randint(today.day,28))
         e.time = datetime.time(randint(0,23),randint(0,59))
         e.court = Court.objects.get(id=randint(1,c))
         e.creator = User.objects.get(id=randint(1,u))
@@ -58,20 +61,30 @@ def addUsers():
     for line in lines:
         userr = User()
 
-        line = line.rstrip('\n').replace('\xef\xbb\xbf','')  # remove newline+escapes
+        line = line.rstrip('\n')                            # remove newline+escapes
         line = filter(None, re.split('\s+',line))            # remove empty elements in list
 
         try:
             userr.first_name = line[0]
             print userr.first_name
+
             userr.email = line[1]
             print userr.email
+
             userr.username = line[2]
             print userr.username
+
             tmp = line[2]
             userr.password = tmp[::-1]
             print userr.password
+
+            profile = UserProfile( phone_number = line[3].replace('-','') )
+            profile.user = userr
             userr.save()
+            userr.profile = profile
+            profile.save()
+
+
         # If not unique
         except (IntegrityError, ProgrammingError):
             pass
@@ -94,7 +107,8 @@ def printMenu():
     print '2. addUsers()'
     print '3. addCourts()'
     print '4. addEvents()'
-    print '5. All'
+    print '5. Add All'
+    print '6. ClearAllDB()'
     print '*. Exit'
     print
 
@@ -114,6 +128,8 @@ def run():
         addUsers()
         addCourts()
         addEvents()
+    elif choice == 6:
+        clearAllDB()
     else:
         return
 

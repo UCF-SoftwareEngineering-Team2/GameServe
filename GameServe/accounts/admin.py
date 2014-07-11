@@ -27,7 +27,7 @@ class UserProfileAdmin(UserAdmin):
       return ''
       
   list_display = ('email','username','phone_number','reputation','date_joined')
-  search_fields = UserAdmin.search_fields + ('userprofile__phone_number','userprofile__reputation',)
+  search_fields = UserAdmin.search_fields + ('profile__phone_number','profile__reputation',)
 
 class UserAdmin(UserAdmin):
   inlines = (UserProfileAdmin,)
