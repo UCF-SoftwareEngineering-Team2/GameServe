@@ -7,54 +7,68 @@ https://docs.djangoproject.com/en/1.6/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
-# Quick-start development settings - unsuitable for production
+#########################################################################################
+#                               Project Paths
+#########################################################################################
+SETTINGS_DIR = os.path.abspath(os.path.dirname(__file__))
+PROJECT_PATH = os.path.abspath(os.path.join(SETTINGS_DIR, os.pardir))
+BASE_DIR = PROJECT_PATH
+
+
+#########################################################################################
+#              Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
+#########################################################################################
+TEMPLATE_DEBUG = True
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 's73sc$--_@@zr5cd0@n%jz$la_kszmz4(=skw5hzbwe-+9%2c_'
+SECRET_KEY = 't$-eqj2!z(dn8mhimh9j+%f$9x1(y#8jzli)65g_$mh&5w-9=7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
-
 ALLOWED_HOSTS = []
 
 
-# Application definition
-
+#########################################################################################
+#                             Application definition
+#########################################################################################
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
-    'django.contrib.contenttypes',
+    'django.contrib.contenttypes', # Allows permissions association with models
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
+    'accounts',
+    'events',
 )
 
 MIDDLEWARE_CLASSES = (
-    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware', # Manage sessions b/t req
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware', # assoc users w/ req
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
-
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.request',
+    'django.contrib.auth.context_processors.auth',
+)
 ROOT_URLCONF = 'GameServe.urls'
-
 WSGI_APPLICATION = 'GameServe.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
+#########################################################################################
+#                              Database Configuration
+#               https://docs.djangoproject.com/en/1.6/ref/settings/#databases
+#########################################################################################
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -62,21 +76,52 @@ DATABASES = {
     }
 }
 
-# Internationalization
-# https://docs.djangoproject.com/en/1.6/topics/i18n/
 
+
+
+
+
+
+
+#########################################################################################
+#                               Internationalization
+#                   https://docs.djangoproject.com/en/1.6/topics/i18n/
+#########################################################################################
 LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
+TIME_ZONE = 'America/New_York'
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
 
+
+
+
+
+
+#########################################################################################
+#                       Static files (CSS/js) [http://bit.ly/djangoStatic]
+#
+# Info: For each application, by default django searches static files in myApp/static/
+#########################################################################################
 STATIC_URL = '/static/'
+
+# File Storage engine to use for ./manage.py collectstatic
+STATICFILES_STORAGE='django.contrib.staticfiles.storage.StaticFilesStorage'
+
+# Add'l Paths to search for static files when invoking ./manage.py collectstatic
+STATICFILES_DIRS = (os.path.join(PROJECT_PATH,'static'),)
+
+
+
+
+
+
+
+
+#########################################################################################
+#                               Template Files
+#########################################################################################
+AUTH_PROFILE_MODULE = 'accounts.UserProfile'
+TEMPLATE_DIRS = (os.path.join(PROJECT_PATH, 'templates'),)
