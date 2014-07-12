@@ -24,6 +24,10 @@ def index(request):
     # latest_poll_list = Poll.objects.all().order_by('-pub_date')[:5]
     return render(request, 'main/index.html')
 
+def browse(request):
+    # latest_poll_list = Poll.objects.all().order_by('-pub_date')[:5]
+    return render(request, 'main/browse.html')
+
 # from django.shortcuts import render_to_response   # <- Does django.http.HttpResponse + django.shortcuts.render in one command
 # from django.template import RequestContext
 # # from mainApp.models import Sport, Court

@@ -1,5 +1,3 @@
-	margin-top: 100px;
-	margin-top: 100px;
 <!DOCTYPE html>
 
 {% load static %}
@@ -42,7 +40,7 @@
 		</header>
 	<aside class="verticalPane small">
 		<section class="window side">
-			<div class="windowHeader">Filter Events</div>	
+			<div class="windowHeader">Filter Results</div>	
 			<!-- Fill in with recent events from the database -->
 			<div class="recentEvent">
 				<img class="userPhoto" src="{{ STATIC_URL }}/assets/gsGeneralPerson.jpg">
@@ -82,10 +80,12 @@
 	</aside>
 	<section class="verticalPane">
 		<section class="window">
-			<div class="windowHeader">Upcoming Games</div>
+			<div class="windowHeader">Games</div>
 			<!-- Fill in with upcoming games from the database -->
 			<div class="recentEvent">
-				<img class="gameTypeImg" src="{{ STATIC_URL }}/assets/sportIcons/baseball_med.gif">
+				<div class="gameTypeImg">
+					<div class="icon-volleyball"></div>
+				</div>
 				<div class="browseGameInfo">
 					<div class="infoBlock">
 						<div class="infoText">Today</div>
@@ -99,7 +99,9 @@
 				</div>
 			</div>
 			<div class="recentEvent">
-				<img class="gameTypeImg" src="{{ STATIC_URL }}/assets/sportIcons/baseball_med.gif">
+				<div class="gameTypeImg">
+					<div class="icon-running"></div>
+				</div>
 				<div class="browseGameInfo">
 					<div class="infoBlock">	
 						<div class="infoText">Today</div>
@@ -113,7 +115,9 @@
 				</div>
 			</div>
 			<div class="recentEvent">
-				<img class="gameTypeImg" src="{{ STATIC_URL }}/assets/sportIcons/baseball_med.gif">
+				<div class="gameTypeImg">
+					<div class="icon-tennis"></div>
+				</div>
 				<div class="browseGameInfo">
 					<div class="infoBlock">
 						<div class="infoText">Today</div>
@@ -127,7 +131,9 @@
 				</div>
 			</div>
 			<div class="recentEvent">
-				<img class="gameTypeImg" src="{{ STATIC_URL }}/assets/sportIcons/baseball_med.gif">
+				<div class="gameTypeImg">
+					<div class="icon-soccer"></div>
+				</div>
 				<div class="browseGameInfo">
 					<div class="infoBlock">
 						<div class="infoText">Tomorrow</div>
@@ -142,7 +148,9 @@
 				</div>
 			</div>
 			<div class="recentEvent">
-				<img class="gameTypeImg" src="{{ STATIC_URL }}/assets/sportIcons/baseball_med.gif">
+				<div class="gameTypeImg">
+					<div class="icon-baseball"></div>
+				</div>
 				<div class="browseGameInfo">
 					<div class="infoBlock">
 						<div class="infoText">Tomorrow</div>
@@ -152,11 +160,15 @@
 						<div class="infoText"></div>
 						<div class="infoText">6 people committed</div>
 					</div>
-					<div class="heatImg"></div>
+					<div class="heatImg">
+						<div class="icon-heatRep"></div>
+					</div>
 				</div>
 			</div>
 			<div class="recentEvent">
-				<img class="gameTypeImg" src="{{ STATIC_URL }}/assets/sportIcons/baseball_med.gif">
+				<div class="gameTypeImg">
+					<div class="icon-biking"></div>
+				</div>
 				<div class="browseGameInfo">
 					<div class="infoBlock">
 						<div class="infoText">June 2 (3 days)</div>
@@ -171,9 +183,6 @@
 			</div>
 			<!-- Fill in with upcoming games from the database -->
 
-		</section>
-		<section class="window">
-			<div class="windowHeader">Find an Event</div>
 		</section>
 	</section>
 </body>
