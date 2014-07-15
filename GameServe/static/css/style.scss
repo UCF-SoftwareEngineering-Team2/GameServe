@@ -252,14 +252,14 @@ header {
 	border-top: 1px solid $med;
 	overflow: hidden;
 	cursor: pointer;
-	transition: 200ms;
+	transition: 200ms ease-in-out;
 	&:hover {
 		background: $green;
 	}
 	&:hover > .recentInfo {
 		color: $light;
 	}
-	&:hover > .listImg {
+	&:hover > .infoText {
 		color: $light;
 	}
 	&:hover > .listImg {
@@ -356,7 +356,7 @@ header {
 	position: relative;
 	height: 100%;
 	float: left;
-	color: $med;
+	color: $meddark;
 	font-size: 12px;
 	transition: 100ms;
 	cursor: pointer;

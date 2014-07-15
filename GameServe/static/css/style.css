@@ -201,12 +201,12 @@ header {
   border-top: 1px solid #cecece;
   overflow: hidden;
   cursor: pointer;
-  transition: 200ms; }
+  transition: 200ms ease-in-out; }
   .listItem:hover {
     background: #6cab43; }
   .listItem:hover > .recentInfo {
     color: #f7f7f7; }
-  .listItem:hover > .listImg {
+  .listItem:hover > .infoText {
     color: #f7f7f7; }
   .listItem:hover > .listImg {
     color: #f7f7f7; }
@@ -289,7 +289,7 @@ header {
   position: relative;
   height: 100%;
   float: left;
-  color: #cecece;
+  color: #bababa;
   font-size: 12px;
   transition: 100ms;
   cursor: pointer; }

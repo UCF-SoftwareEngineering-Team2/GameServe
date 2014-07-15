@@ -1,18 +1,20 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
 	<title>{% block title%}gameServe{% endblock%}</title>
-	<link href="{{ STATIC_URL }}css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css"/>
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script src="{{ STATIC_URL }}js/index.js"></script>
-	<script src="{{ STATIC_URL }}js/header.js"></script>
-	<link rel="shortcut icon" href="{{ STATIC_URL }}assets/titleIconGS.gif" type="image/gif"/>
+	<script src="{% static 'js/index.js' %}"></script>
+	<script src="{% static 'js/header.js' %}"></script>
+	<link rel="shortcut icon" href="{% static 'assets/titleIconGS.gif' %}" type="image/gif"/>
 </head>
 
 <body>
 	<header>
-		<img src="{{ STATIC_URL }}assets/gsLogo.svg" id="logo">
+		<img src="{% static 'assets/gsLogo.svg' %}" id="logo">
+
 		<div id="login" class="headerLink">
 			login
 			<div class="linkSlider"></div>
@@ -43,7 +45,7 @@
 		
 		{% block mainPane %}{% endblock %}
 		
-		{% block filterSection %}{% endblock %}
+		{% block secondarySection %}{% endblock %}
 		
 	</section>
 	{% block loginPopup %}
