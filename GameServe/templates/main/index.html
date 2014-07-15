@@ -1,93 +1,84 @@
-	margin-top: 100px;
-	margin-top: 100px;
-<!DOCTYPE html>
+{% extends "main/base.html" %}
 
-{% load static %}
-<html>
+	{% block home %}{% endblock %}
 
-<head>
-<link href="{{ STATIC_URL }}css/style.css" rel="stylesheet" type="text/css"/>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-<link rel="shortcut icon" href="{{ STATIC_URL }}assets/titleIconGS.gif" type="image/gif"/>
+	{% block topLeftPaneTitle %}Recent Activity{% endblock %}
 
-<script>
-  function initialize() {
+	{% block topLeftPaneContent %}
+		<div class="listItem">
+			<img class="userPhoto" src="{{ STATIC_URL }}/assets/gsGeneralPerson.jpg">
+			<div class="recentInfo">
+				<div class="recentAction">committed to play</div>
+				<div class="recentGameType">Soccer</div>
+				<div class="recentTime">30 mins ago</div>
+			</div>
+		</div>
+		<!-- Fill in with recent events from the database -->
+		<div class="listItem">
+			<img class="userPhoto" src="{{ STATIC_URL }}/assets/gsGeneralPerson.jpg">
+			<div class="recentInfo">
+				<div class="recentAction">committed to play</div>
+				<div class="recentGameType">Soccer</div>
+				<div class="recentTime">30 mins ago</div>
+			</div>
+		</div>
+		<div class="listItem">
+			<img class="userPhoto" src="{{ STATIC_URL }}/assets/gsGeneralPerson.jpg">
+			<div class="recentInfo">
+				<div class="recentAction">created an event</div>
+				<div class="recentGameType">Running</div>
+				<div class="recentTime">45 mins ago</div>
+			</div>
+		</div>
+		<div class="listItem">
+			<img class="userPhoto" src="{{ STATIC_URL }}/assets/gsGeneralPerson.jpg">
+			<div class="recentInfo">
+				<div class="recentAction">checked-in</div>
+				<div class="recentGameType">Tennis</div>
+				<div class="recentTime">1 hour ago</div>
+			</div>
+		</div>
+		<div class="listItem">
+			<img class="userPhoto" src="{{ STATIC_URL }}/assets/gsGeneralPerson.jpg">
+			<div class="recentInfo">
+				<div class="recentAction">created an event</div>
+				<div class="recentGameType">Basketball</div>
+				<div class="recentTime">1 hour ago</div>
+			</div>
+		</div>
+	{% endblock %}
 
-	var myLatlng = new google.maps.LatLng(28.601648, -81.200306);  
-	var mapOptions = {
-		zoom: 15,
-		center: myLatlng,
-		mapTypeId: google.maps.MapTypeId.MAP
-	}
-	var map = new google.maps.Map(document.getElementById('mapCanvas'), mapOptions);
 	
-  }
-
-  google.maps.event.addDomListener(window, 'load', initialize);
-
-</script>
-
-</head>
-
-<body>
-	<header>
-		<img src="{{ STATIC_URL }}assets/gsLogo.gif" id="logo">
-
-		<div class="headerLink login"><div class="headerLinkText">login</div></div>
-		<div class="headerLink create"><div class="headerLinkText">create new event</div></div>
-		<div class="headerLink browse"><div class="headerLinkText">browse</div></div>
-		<div class="headerLink home"><div class="headerLinkText">home</div></div>
-		
-		
-		</header>
-	<aside class="verticalPane small">
-		<section class="window side">
-			<div class="windowHeader">Filter Events</div>	
-			<!-- Fill in with recent events from the database -->
-			<div class="recentEvent">
-				<img class="userPhoto" src="{{ STATIC_URL }}/assets/gsGeneralPerson.jpg">
-				<div class="recentInfo">
-					<div class="recentAction">committed to play</div>
-					<div class="recentGameType">Soccer</div>
-					<div class="recentTime">30 mins ago</div>
-				</div>
-			</div>
-			<div class="recentEvent">
-				<img class="userPhoto" src="{{ STATIC_URL }}/assets/gsGeneralPerson.jpg">
-				<div class="recentInfo">
-					<div class="recentAction">created an event</div>
-					<div class="recentGameType">Running</div>
-					<div class="recentTime">45 mins ago</div>
-				</div>
-			</div>
-			<div class="recentEvent">
-				<img class="userPhoto" src="{{ STATIC_URL }}/assets/gsGeneralPerson.jpg">
-				<div class="recentInfo">
-					<div class="recentAction">checked-in</div>
-					<div class="recentGameType">Tennis</div>
-					<div class="recentTime">1 hour ago</div>
-				</div>
-			</div>
-			<div class="recentEvent">
-				<img class="userPhoto" src="{{ STATIC_URL }}/assets/gsGeneralPerson.jpg">
-				<div class="recentInfo">
-					<div class="recentAction">created an event</div>
-					<div class="recentGameType">Basketball</div>
-					<div class="recentTime">1 hour ago</div>
-				</div>
-			</div>
-				<!-- Fill in with recent events from the database -->
-		</section>
- 		<aside class="window side" id="mapCanvas"></aside>
-	</aside>
-	<section class="verticalPane">
+	{% block mainPane %}
 		<section class="window">
-			<div class="windowHeader">Upcoming Games</div>
-			<!-- Fill in with upcoming games from the database -->
-			<div class="recentEvent">
-				<img class="gameTypeImg" src="{{ STATIC_URL }}/assets/sportIcons/baseball_med.gif">
+			<div class="windowHeader">Upcoming Events</div>
+			{% for upcomingResult in "dbResults" %}
+			<!-- 
+			<div class="listItem">
+				<div class="listImg">
+					<div class="icon-{{upcomingResult.gameType}}"></div>
+				</div>
 				<div class="browseGameInfo">
+					<div class="infoBlock">	
+						<div class="infoText">{{upcomingResult.date}}</div>
+						<div class="infoText">{{upcomingResult.time}} ({{upcomingResult.deltaTime}})</div>
+					</div>
 					<div class="infoBlock">
+						<div class="infoText"></div>
+						<div class="infoText">{{upcommingResult.numCommitted}} people committed</div>
+					</div>
+					<div class="heatImg {% if upcommingResult.hot %} hot {% endif %}">
+						<div class="icon-heatRep"></div>
+					</div>
+				</div>
+			</div>
+			 -->
+			<div class="listItem">
+				<div class="listImg">
+					<div class="icon-tennis"></div>
+				</div>
+				<div class="browseGameInfo">
+					<div class="infoBlock">	
 						<div class="infoText">Today</div>
 						<div class="infoText">1:45 p.m. (45 mins)</div>
 					</div>
@@ -95,86 +86,38 @@
 						<div class="infoText"></div>
 						<div class="infoText">11 people committed</div>
 					</div>
-					<div class="heatImg"></div>
+					<div class="heatImg hot">
+						<div class="icon-heatRep"></div>
+					</div>
 				</div>
 			</div>
-			<div class="recentEvent">
-				<img class="gameTypeImg" src="{{ STATIC_URL }}/assets/sportIcons/baseball_med.gif">
-				<div class="browseGameInfo">
-					<div class="infoBlock">	
-						<div class="infoText">Today</div>
-						<div class="infoText">2:30 p.m. (1.5 hours)</div>
-					</div>
-					<div class="infoBlock">
-						<div class="infoText"></div>
-						<div class="infoText">14 people committed</div>
-					</div>
-					<div class="heatImg hot"></div>
-				</div>
-			</div>
-			<div class="recentEvent">
-				<img class="gameTypeImg" src="{{ STATIC_URL }}/assets/sportIcons/baseball_med.gif">
-				<div class="browseGameInfo">
-					<div class="infoBlock">
-						<div class="infoText">Today</div>
-						<div class="infoText">5:00 p.m. (4 hours)</div>
-					</div>
-					<div class="infoBlock">
-						<div class="infoText"></div>
-						<div class="infoText">8 people committed</div>
-						</div>
-					<div class="heatImg"></div>
-				</div>
-			</div>
-			<div class="recentEvent">
-				<img class="gameTypeImg" src="{{ STATIC_URL }}/assets/sportIcons/baseball_med.gif">
-				<div class="browseGameInfo">
-					<div class="infoBlock">
-						<div class="infoText">Tomorrow</div>
-						<div class="infoText">12:30 p.m.</div>
-					</div>
-					<div class="infoBlock">
-						<div class="infoText"></div>
-						<div class="infoText">10 people committed</div>
-					</div>
-					<div class="heatImg hot"></div>
-
-				</div>
-			</div>
-			<div class="recentEvent">
-				<img class="gameTypeImg" src="{{ STATIC_URL }}/assets/sportIcons/baseball_med.gif">
-				<div class="browseGameInfo">
-					<div class="infoBlock">
-						<div class="infoText">Tomorrow</div>
-						<div class="infoText">6:30 p.m.</div>
-					</div>
-					<div class="infoBlock">
-						<div class="infoText"></div>
-						<div class="infoText">6 people committed</div>
-					</div>
-					<div class="heatImg"></div>
-				</div>
-			</div>
-			<div class="recentEvent">
-				<img class="gameTypeImg" src="{{ STATIC_URL }}/assets/sportIcons/baseball_med.gif">
-				<div class="browseGameInfo">
-					<div class="infoBlock">
-						<div class="infoText">June 2 (3 days)</div>
-						<div class="infoText">5:00 p.m.</div>
-					</div>
-					<div class="infoBlock">
-						<div class="infoText"></div>
-						<div class="infoText">5 people committed</div>
-						</div>
-					<div class="heatImg"></div>
-				</div>
-			</div>
-			<!-- Fill in with upcoming games from the database -->
-
+			{% endfor %}
 		</section>
+	{% endblock %}
+
+	{% block filterSection %}
 		<section class="window">
-			<div class="windowHeader">Find an Event</div>
-		</section>
-	</section>
-</body>
-</html>
+			<div class="windowHeader">Search for Events</div>
+			<div class="filterSection">
+				<!-- 
+				{% for gameType in gameTable %}
+					<div class="gameSelection">{{gameType.name}}</div> 
+				{% endfor %}
+				-->
+				<div class="gameButton gameType">Baseball</div>
+				<div class="gameButton gameType">Basketball</div>
+				<div class="gameButton gameType">Biking</div>
+				<div class="gameButton gameType">Football</div>
+				<div class="gameButton gameType">Ping-Pong</div>
+				<div class="gameButton gameType">Racquetball</div>
+				<div class="gameButton gameType">Running</div>
+				<div class="gameButton gameType">Soccer</div>
+				<div class="gameButton gameType">Volleyball</div>
+			</div>
+			<div class="filterSection side">
+				<div id="selectAll" class="gameButton">Select All</div>
+				<div id="clearAll" class="gameButton">Clear All</div>
+			</div>
+			<div class="filterButton">Go</div>
+		</section>	
+	{% endblock %}

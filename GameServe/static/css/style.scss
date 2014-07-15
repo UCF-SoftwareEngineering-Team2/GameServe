@@ -72,8 +72,9 @@ $light: #F7F7F7;
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-tennis:before {
-	content: "\e60e";
+
+.icon-heatRep:before {
+	content: "\e60d";
 }
 .icon-baseball:before {
 	content: "\e600";
@@ -90,87 +91,71 @@ $light: #F7F7F7;
 .icon-comments:before {
 	content: "\e604";
 }
-.icon-commited:before {
+.icon-committed:before {
 	content: "\e605";
 }
 .icon-football:before {
 	content: "\e606";
 }
-.icon-heatRep:before {
+.icon-pingPong:before {
 	content: "\e607";
 }
-.icon-pingPong:before {
+.icon-racquetball:before {
 	content: "\e608";
 }
-.icon-raquetball:before {
+.icon-running:before {
 	content: "\e609";
 }
-.icon-running:before {
+.icon-soccer:before {
 	content: "\e60a";
 }
-.icon-soccer:before {
+.icon-tennis:before {
 	content: "\e60b";
 }
 .icon-volleyball:before {
-	content: "\e60d";
+	content: "\e60c";
 }
 
 body {
-	margin: 0px;
+	margin: auto;
 	background: $med;
 	font-family: 'sinkin_sans300_light';
+
 }
 header {
 	position: fixed;
-	height: 70px;
+	height: 57px;
 	width: 100%;
 	background: $light;
 	z-index: 100;
 	box-shadow: 0px 0px 2px 2px rgba(0,0,0,.1);
 	.headerLink {
 		position: relative;
-		height: 70px;
-		padding: 10px 20px;
+		height: 57px;
+		padding: 15px 20px;
 		float: right;
 		margin-right: 10px;
-		// background: $med;
-		&:before {
-			content: "";
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			top: -90px;
-			background: $green;
-			transition: 200ms;
-		}
+		transition: 200ms;
+		text-align: center;
 		&:hover {
 			color: $light;
-			&:before {
-				opacity: 1;
-				top: -20px;
-			}
 		}
-		&.login {
-			width: 80px;
+		&:hover > .linkSlider {
+			opacity: 1;
+			top: 0px;
 		}
-		&.create {
-			width: 120px;
-		}
-		&.browse {
-			width: 80px;
-		}
-		&.home {
-			width: 80px;
-		}
-		.headerLinkText {
+		.linkSlider {
 			position: absolute;
-			margin: auto;
-			top: 20px;
-			font-size: 20px;
-			color: $green;
+			width: 100%;
+			height: 57px;
+			top: -90px;
+			margin-left: -20px;
+			background: $green;
+			z-index: -1;
 			transition: 200ms;
-			&:hover > .headerLink {
-				color: $light;
+			&.active {
+				opacity: 1;
+				top: 0px;
 			}
 		}
 	}
@@ -186,7 +171,7 @@ header {
 }
 #logo {
 	position: absolute;
-	width: 215px;
+	width: 170px;
 	left: 60px;
 
 }
@@ -205,7 +190,7 @@ header {
 		width: 250px;
 	}
 	&:first-child {
-		margin-top: 100px;
+		margin-top: 85px;
 	}
 	.windowHeader {
 		position: relative;
@@ -215,7 +200,43 @@ header {
 		background: $med;
 		width: 100%;
 		height: 30px;
-
+	}
+	.largeWindowHeader {
+		position: relative;
+		top: 0px;
+		padding: 5px 10px;
+		color: $dark;
+		background: $light;
+		width: 100%;
+		height: 180px;
+	
+		.editPhoto {
+			opacity: 0;
+			pointer-events: none;
+			position: absolute;
+			top: 45px;
+			left: 50px;
+			width: 100px;
+			height: 100px;
+			cursor: pointer;
+			background: $green;
+			border-radius: 50%;
+			color: $light;
+		}
+	}
+	.windowBlock {
+		position: relative;
+		float: left;
+		width: 33%;
+		height: 200px;
+		text-align: center;
+		background: $dark;
+		color: $light;
+		font-size: 14px;
+		&:nth-child(2n+1) {
+			width: 34%;
+			background: $green;
+		}
 	}
 }
 #mapCanvas {
@@ -223,7 +244,7 @@ header {
 	margin-top: 20px;
 }
 
-.recentEvent {
+.listItem {
 	position: relative;
 	height: 50px;
 	width: 100%;
@@ -231,23 +252,58 @@ header {
 	border-top: 1px solid $med;
 	overflow: hidden;
 	cursor: pointer;
-	transition: 300ms;
+	transition: 200ms;
 	&:hover {
 		background: $green;
 	}
 	&:hover > .recentInfo {
 		color: $light;
 	}
-	&:hover > .browseGameInfo {
+	&:hover > .listImg {
 		color: $light;
+	}
+	&:hover > .listImg {
+		color: $light;
+	}
+	&:hover > .infoBlock {
+		color: $light;
+	}
+	&:hover > .statType {
+		color: $light;
+	}
+	&.hover > .statNum {
+		color: $light;
+	}
+	&:hover > .heatImg {
+		color: $dark;
+		&.hot {
+			color: $light;
+		}
 	}
 	.recentInfo {
 		position: relative;
-		width: 190px;
+		width: 170px;
 		height: 100%;
 		float: right;
 		color: $med;
-		font-size: 11px;
+		font-size: 12px;
+		transition: 200ms;
+	}
+	.statNum {
+		color: $green;
+		float: left;
+		font-size: 26px;
+		margin-left: 10px;
+	}
+	.statType {
+		position: relative;
+		width: 170px;
+		height: 100%;
+		float: left;
+		color: $med;
+		margin-top:-8px;
+		margin-left: 10px;
+		font-size: 12px;
 		transition: 200ms;
 	}
 }
@@ -256,22 +312,39 @@ header {
 	width: 50px;
 	height: 50px;
 	float: left;
+	margin: 0px 10px;
 	border-radius: 50%;
 	pointer-events: none;
+	&.large {
+		margin: 10px;
+		border: 5px solid $light;
+		height: 150px;
+		width: 150px;
+		box-shadow: 0px 0px 2px 2px rgba(0,0,0,.1);
+		&:hover > .editPhoto {
+			opacity: 1;
+			pointer-events: all;
+		}
+	}
 }
-.gameTypeImg {
+.listImg {
 	position: relative;
 	width: 50px;
 	height: 50px;
 	font-size: 50px;
+	float: left;
+	margin: 0px 10px;
 	color: $med;
-	clear: both;
+	transition: 200ms;
+	&.green {
+		color: $green;
+	}
 }
 .heatImg {
 	position: relative;
 	width: 50px;
 	height: 50px;
-	float: right;
+	float: left;
 	margin-right: 20px;
 	font-size: 50px;
 	color: $med;
@@ -281,17 +354,16 @@ header {
 }
 .browseGameInfo {
 	position: relative;
-	width: 535px;
 	height: 100%;
-	float: right;
+	float: left;
 	color: $med;
-	font-size: 11px;
-	transition: 200ms;
+	font-size: 12px;
+	transition: 100ms;
 	cursor: pointer;
 	.infoBlock {
 		position: relative;
 		float: left;
-		margin-right: 20px;
+		margin: 0px 20px;
 		width: 180px;
 	}
 	.infoText {
@@ -301,5 +373,92 @@ header {
 		float: left;
 		clear: both;
 	}
-
+}
+.filterSection {
+	position: relative;
+	float: left;
+	width: 360px;
+	height: auto;
+	padding: 10px;
+	&.side {
+		width: 120px;
+		height: auto;
+	}
+}
+.filterButton {
+	position: absolute;
+	right: 0px;
+	height: 100%;
+	width: 60px;
+	background: $dark;
+	text-align: center;
+	color: $light;
+	padding-top: 65px;
+	cursor: pointer;
+	transition: 200ms;
+	&:hover {
+		background: $green;
+	}
+}
+.gameButton {
+	position: relative;
+	width: 100px;
+	height: 20px;
+	float: left;
+	font-size: 12px;
+	padding: 3px 5px;
+	color: $meddark;
+	margin: 5px;
+	border-radius: 5px;
+	text-align: center;
+	transition: 200ms;
+	cursor: pointer;
+	&:hover, &.selected {
+		background: $green;
+		color: $light;
+	}
+}
+#popupWindow {
+	opacity: 1;
+	position: fixed;
+	padding: 10px;
+	top: 200px;
+	right: 0px;
+	height: 300px;
+	width: 200px;
+	background: $med;
+	border-radius: 5px;
+	overflow: hidden;
+	box-shadow: 0px 0px 2px 2px rgba(0,0,0,.1);
+	&.hidden {
+		opacity: 0;
+		pointer-events: none;
+	}
+	.loginField {
+		position: relative;
+		width: calc(100% - 20px);
+		height: 20px;
+		border: none;
+		border-radius: 5px;
+		padding: 3px 5px;
+		margin-top: 20px;
+	}
+	#loginButton {
+		position: absolute;
+		width: 100%;
+		height: 30px;
+		bottom: 0px;
+		margin-left: -10px;
+		margin-top: 20px;
+		text-align: center;
+		background: $dark;
+		padding: 5px 10px;
+		color: $light;
+		cursor: pointer;
+		transition: 200ms;
+		&:hover {
+			background: $green;
+			color: $light;
+		}
+	}
 }

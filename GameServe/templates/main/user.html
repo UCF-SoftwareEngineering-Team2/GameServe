@@ -1,0 +1,61 @@
+{% extends "main/base.html" %}
+	{% block topLeftPaneTitle %}Player Stats{% endblock %}
+	{% block topLeftPaneContent %}
+		<div class="listItem static">
+			<div class="listImg green">
+				<div class="icon-heatRep"></div>
+			</div>
+			<div class="statNum">620</div>
+			<div class="statType">rep points</div>
+		</div>
+		<!-- Fill in with recent events from the database -->
+		<div class="listItem static">
+			<div class="listImg green">
+				<div class="icon-committed"></div>
+			</div>
+			<div class="statNum">8</div>
+			<div class="statType">times committed</div>
+		</div>
+		<div class="listItem static">
+			<div class="listImg green">
+				<div class="icon-comments"></div>
+			</div>
+			<div class="statNum">31</div>
+			<div class="statType">comments</div>
+		</div>
+		<div class="listItem static">
+			<div class="listImg green">
+				<div class="icon-checkedIn"></div>
+			</div>
+			<div class="statNum">7</div>
+			<div class="statType">Check-ins</div>
+		</div>
+	{% endblock %}
+
+	{% block mainPane %}
+		<section class="window">
+			<div class="largeWindowHeader">
+				<img class="userPhoto large" src="{{ STATIC_URL }}/assets/memberPhotos/UserId.jpg"></img>
+				<div class="editPhoto">Edit</div>
+				<h2>Alex Horan</h2>
+				<h3>Email: a_horan3@hotmail.com</h3>
+				<h3>Phone: 407-601-8032</h3>
+
+				<h3>Member since: Summer 2012</h3>
+
+			</div>
+			<!-- Fill in with filtered games from the database -->
+			<div class="windowBlock">
+				<h3>Baseball</h3>
+				most frequently played
+			</div>
+			<div class="windowBlock">
+				<h3>Baseball</h3>
+				most frequently played
+			</div>
+			<div class="windowBlock">
+				<h3>July 16, 2014</h3>
+				next game
+			</div>
+		</section>
+	{% endblock %}

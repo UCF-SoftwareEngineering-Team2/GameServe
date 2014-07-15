@@ -40,8 +40,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon-tennis:before {
-  content: "\e60e"; }
+.icon-heatRep:before {
+  content: "\e60d"; }
 
 .icon-baseball:before {
   content: "\e600"; }
@@ -58,78 +58,67 @@
 .icon-comments:before {
   content: "\e604"; }
 
-.icon-commited:before {
+.icon-committed:before {
   content: "\e605"; }
 
 .icon-football:before {
   content: "\e606"; }
 
-.icon-heatRep:before {
+.icon-pingPong:before {
   content: "\e607"; }
 
-.icon-pingPong:before {
+.icon-racquetball:before {
   content: "\e608"; }
 
-.icon-raquetball:before {
+.icon-running:before {
   content: "\e609"; }
 
-.icon-running:before {
+.icon-soccer:before {
   content: "\e60a"; }
 
-.icon-soccer:before {
+.icon-tennis:before {
   content: "\e60b"; }
 
 .icon-volleyball:before {
-  content: "\e60d"; }
+  content: "\e60c"; }
 
 body {
-  margin: 0px;
+  margin: auto;
   background: #cecece;
   font-family: 'sinkin_sans300_light'; }
 
 header {
   position: fixed;
-  height: 70px;
+  height: 57px;
   width: 100%;
   background: #f7f7f7;
   z-index: 100;
   box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1); }
   header .headerLink {
     position: relative;
-    height: 70px;
-    padding: 10px 20px;
+    height: 57px;
+    padding: 15px 20px;
     float: right;
-    margin-right: 10px; }
-    header .headerLink:before {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: -90px;
-      background: #6cab43;
-      transition: 200ms; }
+    margin-right: 10px;
+    transition: 200ms;
+    text-align: center; }
     header .headerLink:hover {
       color: #f7f7f7; }
-      header .headerLink:hover:before {
-        opacity: 1;
-        top: -20px; }
-    header .headerLink.login {
-      width: 80px; }
-    header .headerLink.create {
-      width: 120px; }
-    header .headerLink.browse {
-      width: 80px; }
-    header .headerLink.home {
-      width: 80px; }
-    header .headerLink .headerLinkText {
+    header .headerLink:hover > .linkSlider {
+      opacity: 1;
+      top: 0px; }
+    header .headerLink .linkSlider {
       position: absolute;
-      margin: auto;
-      top: 20px;
-      font-size: 20px;
-      color: #6cab43;
+      width: 100%;
+      height: 57px;
+      top: -90px;
+      margin-left: -20px;
+      background: #6cab43;
+      z-index: -1;
       transition: 200ms; }
-      header .headerLink .headerLinkText:hover > .headerLink {
-        color: #f7f7f7; }
+      header .headerLink .linkSlider.active {
+        opacity: 1;
+        top: 0px; }
 
 .verticalPane {
   position: relative;
@@ -141,7 +130,7 @@ header {
 
 #logo {
   position: absolute;
-  width: 215px;
+  width: 170px;
   left: 60px; }
 
 .window {
@@ -158,7 +147,7 @@ header {
   .window.side {
     width: 250px; }
   .window:first-child {
-    margin-top: 100px; }
+    margin-top: 85px; }
   .window .windowHeader {
     position: relative;
     top: 0px;
@@ -167,12 +156,44 @@ header {
     background: #cecece;
     width: 100%;
     height: 30px; }
+  .window .largeWindowHeader {
+    position: relative;
+    top: 0px;
+    padding: 5px 10px;
+    color: #2e2d2c;
+    background: #f7f7f7;
+    width: 100%;
+    height: 180px; }
+    .window .largeWindowHeader .editPhoto {
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      top: 45px;
+      left: 50px;
+      width: 100px;
+      height: 100px;
+      cursor: pointer;
+      background: #6cab43;
+      border-radius: 50%;
+      color: #f7f7f7; }
+  .window .windowBlock {
+    position: relative;
+    float: left;
+    width: 33%;
+    height: 200px;
+    text-align: center;
+    background: #2e2d2c;
+    color: #f7f7f7;
+    font-size: 14px; }
+    .window .windowBlock:nth-child(2n+1) {
+      width: 34%;
+      background: #6cab43; }
 
 #mapCanvas {
   height: 400px;
   margin-top: 20px; }
 
-.recentEvent {
+.listItem {
   position: relative;
   height: 50px;
   width: 100%;
@@ -180,20 +201,47 @@ header {
   border-top: 1px solid #cecece;
   overflow: hidden;
   cursor: pointer;
-  transition: 300ms; }
-  .recentEvent:hover {
+  transition: 200ms; }
+  .listItem:hover {
     background: #6cab43; }
-  .recentEvent:hover > .recentInfo {
+  .listItem:hover > .recentInfo {
     color: #f7f7f7; }
-  .recentEvent:hover > .browseGameInfo {
+  .listItem:hover > .listImg {
     color: #f7f7f7; }
-  .recentEvent .recentInfo {
+  .listItem:hover > .listImg {
+    color: #f7f7f7; }
+  .listItem:hover > .infoBlock {
+    color: #f7f7f7; }
+  .listItem:hover > .statType {
+    color: #f7f7f7; }
+  .listItem.hover > .statNum {
+    color: #f7f7f7; }
+  .listItem:hover > .heatImg {
+    color: #2e2d2c; }
+    .listItem:hover > .heatImg.hot {
+      color: #f7f7f7; }
+  .listItem .recentInfo {
     position: relative;
-    width: 190px;
+    width: 170px;
     height: 100%;
     float: right;
     color: #cecece;
-    font-size: 11px;
+    font-size: 12px;
+    transition: 200ms; }
+  .listItem .statNum {
+    color: #6cab43;
+    float: left;
+    font-size: 26px;
+    margin-left: 10px; }
+  .listItem .statType {
+    position: relative;
+    width: 170px;
+    height: 100%;
+    float: left;
+    color: #cecece;
+    margin-top: -8px;
+    margin-left: 10px;
+    font-size: 12px;
     transition: 200ms; }
 
 .userPhoto {
@@ -201,22 +249,36 @@ header {
   width: 50px;
   height: 50px;
   float: left;
+  margin: 0px 10px;
   border-radius: 50%;
   pointer-events: none; }
+  .userPhoto.large {
+    margin: 10px;
+    border: 5px solid #f7f7f7;
+    height: 150px;
+    width: 150px;
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1); }
+    .userPhoto.large:hover > .editPhoto {
+      opacity: 1;
+      pointer-events: all; }
 
-.gameTypeImg {
+.listImg {
   position: relative;
   width: 50px;
   height: 50px;
   font-size: 50px;
+  float: left;
+  margin: 0px 10px;
   color: #cecece;
-  clear: both; }
+  transition: 200ms; }
+  .listImg.green {
+    color: #6cab43; }
 
 .heatImg {
   position: relative;
   width: 50px;
   height: 50px;
-  float: right;
+  float: left;
   margin-right: 20px;
   font-size: 50px;
   color: #cecece; }
@@ -225,17 +287,16 @@ header {
 
 .browseGameInfo {
   position: relative;
-  width: 535px;
   height: 100%;
-  float: right;
+  float: left;
   color: #cecece;
-  font-size: 11px;
-  transition: 200ms;
+  font-size: 12px;
+  transition: 100ms;
   cursor: pointer; }
   .browseGameInfo .infoBlock {
     position: relative;
     float: left;
-    margin-right: 20px;
+    margin: 0px 20px;
     width: 180px; }
   .browseGameInfo .infoText {
     position: relative;
@@ -243,3 +304,84 @@ header {
     margin-top: 5px;
     float: left;
     clear: both; }
+
+.filterSection {
+  position: relative;
+  float: left;
+  width: 360px;
+  height: auto;
+  padding: 10px; }
+  .filterSection.side {
+    width: 120px;
+    height: auto; }
+
+.filterButton {
+  position: absolute;
+  right: 0px;
+  height: 100%;
+  width: 60px;
+  background: #2e2d2c;
+  text-align: center;
+  color: #f7f7f7;
+  padding-top: 65px;
+  cursor: pointer;
+  transition: 200ms; }
+  .filterButton:hover {
+    background: #6cab43; }
+
+.gameButton {
+  position: relative;
+  width: 100px;
+  height: 20px;
+  float: left;
+  font-size: 12px;
+  padding: 3px 5px;
+  color: #bababa;
+  margin: 5px;
+  border-radius: 5px;
+  text-align: center;
+  transition: 200ms;
+  cursor: pointer; }
+  .gameButton:hover, .gameButton.selected {
+    background: #6cab43;
+    color: #f7f7f7; }
+
+#popupWindow {
+  opacity: 1;
+  position: fixed;
+  padding: 10px;
+  top: 200px;
+  right: 0px;
+  height: 300px;
+  width: 200px;
+  background: #cecece;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1); }
+  #popupWindow.hidden {
+    opacity: 0;
+    pointer-events: none; }
+  #popupWindow .loginField {
+    position: relative;
+    width: calc(100% - 20px);
+    height: 20px;
+    border: none;
+    border-radius: 5px;
+    padding: 3px 5px;
+    margin-top: 20px; }
+  #popupWindow #loginButton {
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    bottom: 0px;
+    margin-left: -10px;
+    margin-top: 20px;
+    text-align: center;
+    background: #2e2d2c;
+    padding: 5px 10px;
+    color: #f7f7f7;
+    cursor: pointer;
+    transition: 200ms; }
+    #popupWindow #loginButton:hover {
+      background: #6cab43;
+      color: #f7f7f7; }
