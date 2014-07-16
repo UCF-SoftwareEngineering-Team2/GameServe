@@ -212,20 +212,6 @@ header {
 		background: $light;
 		width: 100%;
 		height: 180px;
-	
-		.editPhoto {
-			opacity: 0;
-			pointer-events: none;
-			position: absolute;
-			top: 45px;
-			left: 50px;
-			width: 100px;
-			height: 100px;
-			cursor: pointer;
-			background: $green;
-			border-radius: 50%;
-			color: $light;
-		}
 	}
 	.windowBlock {
 		position: relative;
@@ -261,11 +247,31 @@ header {
 		height: 150px;
 		width: 150px;
 		box-shadow: 0px 0px 2px 2px rgba(0,0,0,.1);
-		&:hover > .editPhoto {
-			opacity: 1;
-			pointer-events: all;
+		pointer-events: all;
+		&:hover + .editPhoto {
+			opacity: .6;
+			cursor: pointer;
 		}
 	}
+}
+.editPhoto {
+	opacity: 0;
+	position: absolute;
+	text-align: center;
+	vertical-align: middle;
+	top: 45px;
+	left: 50px;
+	width: 100px;
+	height: 100px;
+	cursor: pointer;
+	background: $green;
+	border-radius: 50%;
+	color: $light;
+	&:hover {
+		opacity: .6;
+		cursor: pointer;
+	}
+
 }
 .listImg {
 	position: relative;
@@ -487,6 +493,10 @@ header {
 			}	
 		}
 	}
+}
+.profInfo {
+	position: relative;
+	float: left;
 }
 h3, h2 {
 	margin: 5px 0px;
