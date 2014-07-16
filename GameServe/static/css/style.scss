@@ -1,6 +1,6 @@
 $green: #6CAB43;
 $dark: #2E2D2C;
-$meddark: #888;
+$meddark: #AAA;
 $med: #CECECE;
 $light: #F7F7F7;
 
@@ -164,10 +164,6 @@ body {
 		-o-filter: blur(3px);
 		-ms-filter: blur(3px);
 		filter: blur(3px);
-
-	}
-	&.blurry > #fader {
-		opacity: 1;
 	}
 	#fader {
 		position: absolute;
@@ -176,6 +172,7 @@ body {
 		background: rgba(0,0,0,.4);
 		z-index: 100;
 		opacity: 0;
+		pointer-events: none;
 	}
 }
 header {
@@ -339,7 +336,7 @@ header {
 	float: left;
 	margin: 0px 10px;
 	color: $meddark;
-	transition: 200ms;
+	// transition: 200ms;
 	&.green {
 		color: $green;
 	}
@@ -362,7 +359,7 @@ header {
 	float: left;
 	color: $meddark;
 	font-size: 12px;
-	transition: 100ms;
+	// transition: 100ms;
 	cursor: pointer;
 	.infoBlock {
 		position: relative;
@@ -386,7 +383,7 @@ header {
 	border-top: 1px solid $med;
 	overflow: hidden;
 	cursor: pointer;
-	transition: 200ms ease-in-out;
+	// transition: 200ms ease-in-out;
 	&:hover {
 		background: $green;
 		color: $light;
@@ -396,6 +393,12 @@ header {
 	}
 	&:hover > .browseGameInfo {
 		color: $light;
+		.heatImg {
+			color: rgba(247,247,247,.7);
+			&.hot {
+				color: $light;
+			}
+		}
 	}
 	&:hover > .listImg {
 		color: $light;
@@ -406,12 +409,6 @@ header {
 	&:hover > .statNum {
 		color: $light;
 	}
-	&:hover > .heatImg {
-		color: $light;
-		&.hot {
-			color: $dark;
-		}
-	}
 	.recentInfo {
 		position: relative;
 		width: 170px;
@@ -419,7 +416,7 @@ header {
 		float: right;
 		color: $meddark;
 		font-size: 12px;
-		transition: 200ms;
+		// transition: 200ms;
 	}
 	.statNum {
 		color: $green;
@@ -455,9 +452,6 @@ header {
 	&.vert {
 		width: 100%;
 		height: auto;
-
-		// margin-left: 58px;
-		// margin-bottom: 30px;
 		&:nth-child(2n+1) {
 			padding-top: 0px;
 			margin-bottom: 45px;
@@ -518,8 +512,8 @@ header {
 	background: $light;
 	border-radius: 5px;
 	overflow: hidden;
-	box-shadow: 0px 0px 3px 2px rgba(0,0,0,.2);
-	transition: 200ms ease-in-out;
+	box-shadow: 0px 0px 5px 2px rgba(0,0,0,.2);
+	transition: 500ms ease-in-out;
 	z-index: 20;
 	&.hidden {
 		display: none;
@@ -549,11 +543,10 @@ header {
 		position: relative;
 		width: 250px;
 		height: 30px;
-		margin: 10px auto;
 		border: none;
 		border-radius: 5px;
 		padding: 3px 5px;
-		margin-top: 20px;
+		margin-bottom: 20px;
 		font-size: 15px;
 		color: $green;
 		font-family: 'sinkin_sans300_light';
@@ -567,14 +560,15 @@ header {
 		position: relative;
 		top: 0px;
 		padding: 5px 10px;
-		color: $meddark;
 		background: $light;
+		color: $meddark;
 		width: calc(100% - 20px);
 		height: 30px;
 		.icon-close {
 			position: absolute;
-			right: 10px;
-			top: 8px;
+			right: 0px;
+			top: 0px;
+			padding: 10px;
 			font-size: 15px;
 			color: $med;
 			transition: 200ms;
