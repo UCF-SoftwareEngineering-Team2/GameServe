@@ -6,6 +6,38 @@ $(document).ready(function() {
 	  	$('#popupWindow').toggleClass('hidden');
 	});
 	$('#loginButton').click(function () {
-	  	alert("email input: " + $('#emailInput').val() + "\npass input: " +$('#passwordInput').val());
+		$('#fader').toggleClass('show');
+		if ($('#popupWindow').hasClass('expand')) {
+			var name = $('#nameInput').val();
+			var email =	$('#newEmailInput').val();
+			var verEmail = $('#verEmailInput').val();
+			var pass = $('#newPasswordInput').val();
+			var verPass = $('#verPasswordInput').val();
+			var phone = $('#pNumInput').val();
+
+	  		alert("data: \nname\t" + name + " \nemail:\t" + email + " \nverEmail:\t" + verEmail + " \npass:\t" + pass + " \nverPass:\t" + verPass + " \nphone:\t" + phone );
+		}
+		else {
+	  		alert("email input: " + $('#emailInput').val() + "\npass input: " +$('#passwordInput').val());
+	  	}
+	});
+
+
+	$('#newUser').click(function() {
+		if ($(this).text() == "New Member") {
+			$(this).text("ExistingMember");
+			$('#popupWindow').addClass('expand');
+			$('#loginHeader').text("Sign up for gameServe");
+			$('#existingMember').addClass('hidden');
+			$('#newMember').removeClass('hidden');
+		}
+		else {
+			$(this).text('New Member');
+			$('#popupWindow').removeClass('expand');
+			$('#loginHeader').text("Login to gameServe");
+			
+			$('#existingMember').removeClass('hidden');
+			$('#newMember').addClass('hidden');
+		} 
 	});
 });

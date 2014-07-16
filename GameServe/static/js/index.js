@@ -29,6 +29,7 @@ $(document).ready(function() {
 		});
 	});
 
+
 	// $.ajax({
  //          type: "POST",
  //          url: "http://localhost/DatabaseProject/ElderlyAssistanceProject/addCareRequest.php",

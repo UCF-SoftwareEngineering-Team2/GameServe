@@ -132,7 +132,19 @@ body {
 	&.head {
 		width: 870px;
 	}
-
+}
+#fader {
+	opacity: 0;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,.4);
+	z-index: 10;
+	pointer-events: none;
+	transition: 200ms ease;
+	&.show {
+		opacity: 1;
+	}
 }
 header {
 	position: fixed;
@@ -400,17 +412,23 @@ header {
 	float: left;
 	width: 360px;
 	height: auto;
-	padding: 10px;
+	padding: 10px 0px 0px 5px;
 	display: block;
 	margin: auto;
+	padding-bottom: 0px;
 	&.side {
 		width: 140px;
 	}
 	&.vert {
-		width: 106px;
+		width: 100%;
 		height: auto;
-		margin-left: 67px;
-		margin-bottom: 30px;
+
+		// margin-left: 58px;
+		// margin-bottom: 30px;
+		&:nth-child(2n+1) {
+			padding-top: 0px;
+			margin-bottom: 45px;
+		}
 	}
 }
 .filterButton {
@@ -460,40 +478,78 @@ header {
 #popupWindow {
 	opacity: 1;
 	position: fixed;
-	top: 200px;
-	right: 0px;
-	height: 300px;
+	top: 100px;
+	right: 200px;
 	width: 400px;
-	background: $med;
+	height: 300px;
+	background: $light;
 	border-radius: 5px;
-	overflow: auto;
+	overflow: hidden;
 	box-shadow: 0px 0px 2px 2px rgba(0,0,0,.1);
+	transition: 200ms ease-in-out;
+	z-index: 20;
 	&.hidden {
-		opacity: 0;
-		pointer-events: none;
+		display: none;
 	}
+	&.expand {
+		height: 610px;
+	}
+	#existingMember {
+		padding: 10px;
+		&.hidden {
+			display: none;
+		}
+		h5 {
+			margin: 0px;
+		}
+	}
+	#newMember {
+		padding: 10px;
+		&.hidden {
+			display: none;
+		}
+		h5 {
+			margin: 0px;
+		}
+	}	
 	.loginField {
 		position: relative;
 		width: 250px;
-		height: 20px;
-		margin: 0px auto;
+		height: 30px;
+		margin: 10px auto;
 		border: none;
 		border-radius: 5px;
 		padding: 3px 5px;
 		margin-top: 20px;
+		font-size: 15px;
+		color: $green;
+		font-family: 'sinkin_sans300_light';
 		clear:both;
+		box-shadow: inset 0 0 2px 2px $med;
+		&:last-child {
+			margin-bottom: 45px;
+		}
+	}
+	.windowHeader {
+		position: relative;
+		top: 0px;
+		padding: 5px 10px;
+		color: $meddark;
+		background: $light;
+		width: 100%;
+		height: 30px;
 	}
 	.authButtonSection {
 		position: absolute;
 		width: 100%;
-		height: 30px;
+		height: 40px;
 		bottom: 0px;
-		margin-left: -10px;
 		margin-top: 20px;
 		.authButton {
 			position: relative;
 			width: 50%;
 			height: 100%;
+			padding-top: 6px;
 			float: left;
 			text-align: center;
 			background: $dark;
