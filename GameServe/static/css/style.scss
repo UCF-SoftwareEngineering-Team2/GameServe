@@ -76,6 +76,7 @@ $light: #F7F7F7;
 	font-size: 75px;
 	margin: 10px 0px;
 }
+
 .icon-heatRep:before {
 	content: "\e60d";
 }
@@ -118,7 +119,24 @@ $light: #F7F7F7;
 .icon-volleyball:before {
 	content: "\e60c";
 }
-
+.icon-expand:before {
+	content: "\e60e";
+}
+.icon-contract:before {
+	content: "\e60f";
+}
+.icon-close:before {
+	content: "\e610";
+}
+.icon-checkmark:before {
+	content: "\e611";
+}
+.icon-minus:before {
+	content: "\e612";
+}
+.icon-plus:before {
+	content: "\e613";
+}
 body {
 	background: $med;
 	font-family: 'sinkin_sans300_light';
@@ -551,8 +569,20 @@ header {
 		padding: 5px 10px;
 		color: $meddark;
 		background: $light;
-		width: 100%;
+		width: calc(100% - 20px);
 		height: 30px;
+		.icon-close {
+			position: absolute;
+			right: 10px;
+			top: 8px;
+			font-size: 15px;
+			color: $med;
+			transition: 200ms;
+			&:hover{
+				color: $green;
+			}
+
+		}
 	}
 	.authButtonSection {
 		position: absolute;

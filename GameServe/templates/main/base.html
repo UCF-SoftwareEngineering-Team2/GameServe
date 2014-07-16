@@ -24,15 +24,15 @@
 			</div>
 			<div id="create" class="headerLink">
 				create a game
-				<div class="linkSlider"></div>
+				<div class="linkSlider {% block createLink %}{% endblock %}"></div>
 			</div>
 			<div id="browse" class="headerLink">
 				browse
-				<div class="linkSlider"></div>
+				<div class="linkSlider {% block browseLink %}{% endblock %}"></div>
 			</div>
 			<div id="home" class="headerLink">
 				home
-				<div class="linkSlider"></div>
+				<div class="linkSlider {% block homeLink %}{% endblock %}"></div>
 			</div>
 			<div id="headerFade"></div>
 		</section>
@@ -56,7 +56,10 @@
 </div>
 {% block loginPopup %}
 	<form id="popupWindow" class="hidden">
-	<div class="windowHeader" id="loginHeader">Login to gameServe</div>
+	<div class="windowHeader" id="loginHeader">
+		Login to gameServe
+		<div class="icon-close"></div>
+	</div>
 		<div id="existingMember">
 			<h5>email:</h5>
 			<input type="text" class="loginField" id="emailInput" placeholder="email">

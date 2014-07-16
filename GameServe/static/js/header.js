@@ -6,6 +6,10 @@ $(document).ready(function() {
 	  	$('#popupWindow').toggleClass('hidden');
 	  	$('#content').toggleClass('blurry');
 	});
+	$('.icon-close').click(function () {
+	  	$('#popupWindow').toggleClass('hidden');
+	  	$('#content').toggleClass('blurry');
+	});
 	$('#loginButton').click(function () {
 		if ($('#popupWindow').hasClass('expand')) {
 			var name = $('#nameInput').val();

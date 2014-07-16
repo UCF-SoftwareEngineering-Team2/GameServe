@@ -86,6 +86,24 @@
 .icon-volleyball:before {
   content: "\e60c"; }
 
+.icon-expand:before {
+  content: "\e60e"; }
+
+.icon-contract:before {
+  content: "\e60f"; }
+
+.icon-close:before {
+  content: "\e610"; }
+
+.icon-checkmark:before {
+  content: "\e611"; }
+
+.icon-minus:before {
+  content: "\e612"; }
+
+.icon-plus:before {
+  content: "\e613"; }
+
 body {
   background: #cecece;
   font-family: 'sinkin_sans300_light';
@@ -458,8 +476,17 @@ header {
     padding: 5px 10px;
     color: #888888;
     background: #f7f7f7;
-    width: 100%;
+    width: calc(100% - 20px);
     height: 30px; }
+    #popupWindow .windowHeader .icon-close {
+      position: absolute;
+      right: 10px;
+      top: 8px;
+      font-size: 15px;
+      color: #cecece;
+      transition: 200ms; }
+      #popupWindow .windowHeader .icon-close:hover {
+        color: #6cab43; }
   #popupWindow .authButtonSection {
     position: absolute;
     width: 100%;
