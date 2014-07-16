@@ -40,6 +40,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
+.largeIcon {
+  font-size: 75px;
+  margin: 10px 0px; }
+
 .icon-heatRep:before {
   content: "\e60d"; }
 
@@ -100,7 +104,7 @@ header {
     padding: 15px 20px;
     float: right;
     margin-right: 10px;
-    transition: 200ms;
+    transition: 200ms ease-in-out;
     text-align: center; }
     header .headerLink:hover {
       color: #f7f7f7; }
@@ -115,7 +119,7 @@ header {
       margin-left: -20px;
       background: #6cab43;
       z-index: -1;
-      transition: 200ms; }
+      transition: 200ms ease-in-out; }
       header .headerLink .linkSlider.active {
         opacity: 1;
         top: 0px; }
@@ -180,10 +184,11 @@ header {
     position: relative;
     float: left;
     width: 33%;
-    height: 200px;
+    height: 180px;
     text-align: center;
     background: #2e2d2c;
     color: #f7f7f7;
+    padding-top: 20px;
     font-size: 14px; }
     .window .windowBlock:nth-child(2n+1) {
       width: 34%;
@@ -218,7 +223,7 @@ header {
   font-size: 50px;
   float: left;
   margin: 0px 10px;
-  color: #cecece;
+  color: #888888;
   transition: 200ms; }
   .listImg.green {
     color: #6cab43; }
@@ -230,7 +235,7 @@ header {
   float: left;
   margin-right: 20px;
   font-size: 50px;
-  color: #cecece; }
+  color: #888888; }
   .heatImg.hot {
     color: #6cab43; }
 
@@ -238,7 +243,7 @@ header {
   position: relative;
   height: 100%;
   float: left;
-  color: #bababa;
+  color: #888888;
   font-size: 12px;
   transition: 100ms;
   cursor: pointer; }
@@ -285,7 +290,7 @@ header {
     width: 170px;
     height: 100%;
     float: right;
-    color: #cecece;
+    color: #888888;
     font-size: 12px;
     transition: 200ms; }
   .listItem .statNum {
@@ -298,7 +303,7 @@ header {
     width: 170px;
     height: 100%;
     float: left;
-    color: #cecece;
+    color: #888888;
     margin-top: -8px;
     margin-left: 10px;
     font-size: 12px;
@@ -313,6 +318,8 @@ header {
   display: block;
   margin: auto; }
   .filterSection.side {
+    width: 140px; }
+  .filterSection.vert {
     width: 106px;
     height: auto;
     margin-left: 67px;
@@ -345,7 +352,7 @@ header {
   float: left;
   font-size: 12px;
   padding: 3px 5px;
-  color: #bababa;
+  color: #888888;
   margin: 5px;
   border-radius: 5px;
   text-align: center;
@@ -402,3 +409,6 @@ header {
       #popupWindow .authButtonSection .authButton:hover {
         background: #6cab43;
         color: #f7f7f7; }
+
+h3, h2 {
+  margin: 5px 0px; }

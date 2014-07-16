@@ -1,6 +1,6 @@
 $green: #6CAB43;
 $dark: #2E2D2C;
-$meddark: #BABABA;
+$meddark: #888;
 $med: #CECECE;
 $light: #F7F7F7;
 
@@ -72,7 +72,10 @@ $light: #F7F7F7;
 	-moz-osx-font-smoothing: grayscale;
 }
 
-
+.largeIcon {
+	font-size: 75px;
+	margin: 10px 0px;
+}
 .icon-heatRep:before {
 	content: "\e60d";
 }
@@ -135,7 +138,7 @@ header {
 		padding: 15px 20px;
 		float: right;
 		margin-right: 10px;
-		transition: 200ms;
+		transition: 200ms ease-in-out;
 		text-align: center;
 		&:hover {
 			color: $light;
@@ -152,7 +155,7 @@ header {
 			margin-left: -20px;
 			background: $green;
 			z-index: -1;
-			transition: 200ms;
+			transition: 200ms ease-in-out;
 			&.active {
 				opacity: 1;
 				top: 0px;
@@ -228,10 +231,11 @@ header {
 		position: relative;
 		float: left;
 		width: 33%;
-		height: 200px;
+		height: 180px;
 		text-align: center;
 		background: $dark;
 		color: $light;
+		padding-top: 20px;
 		font-size: 14px;
 		&:nth-child(2n+1) {
 			width: 34%;
@@ -270,7 +274,7 @@ header {
 	font-size: 50px;
 	float: left;
 	margin: 0px 10px;
-	color: $med;
+	color: $meddark;
 	transition: 200ms;
 	&.green {
 		color: $green;
@@ -283,7 +287,7 @@ header {
 	float: left;
 	margin-right: 20px;
 	font-size: 50px;
-	color: $med;
+	color: $meddark;
 	&.hot {
 		color: $green;
 	}
@@ -349,7 +353,7 @@ header {
 		width: 170px;
 		height: 100%;
 		float: right;
-		color: $med;
+		color: $meddark;
 		font-size: 12px;
 		transition: 200ms;
 	}
@@ -364,7 +368,7 @@ header {
 		width: 170px;
 		height: 100%;
 		float: left;
-		color: $med;
+		color: $meddark;
 		margin-top:-8px;
 		margin-left: 10px;
 		font-size: 12px;
@@ -381,6 +385,9 @@ header {
 	display: block;
 	margin: auto;
 	&.side {
+		width: 140px;
+	}
+	&.vert {
 		width: 106px;
 		height: auto;
 		margin-left: 67px;
@@ -479,6 +486,8 @@ header {
 				color: $light;
 			}	
 		}
-		
 	}
+}
+h3, h2 {
+	margin: 5px 0px;
 }
