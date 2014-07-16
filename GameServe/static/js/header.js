@@ -4,7 +4,7 @@ $(document).ready(function() {
 	//login functionality
 	$('#login').click(function () {
 	  	$('#popupWindow').toggleClass('hidden');
-	  	$('#fader').toggleClass('show');
+	  	$('#content').toggleClass('blurry');
 	});
 	$('#loginButton').click(function () {
 		if ($('#popupWindow').hasClass('expand')) {
@@ -25,7 +25,7 @@ $(document).ready(function() {
 
 	$('#newUser').click(function() {
 		if ($(this).text() == "New Member") {
-			$(this).text("ExistingMember");
+			$(this).text("Existing Member");
 			$('#popupWindow').addClass('expand');
 			$('#loginHeader').text("Sign up for gameServe");
 			$('#existingMember').addClass('hidden');

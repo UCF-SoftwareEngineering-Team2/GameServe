@@ -99,17 +99,27 @@ body {
   .center.head {
     width: 870px; }
 
-#fader {
-  opacity: 0;
+#content {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4);
   z-index: 10;
-  pointer-events: none;
   transition: 200ms ease; }
-  #fader.show {
+  #content.blurry {
+    -webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -o-filter: blur(3px);
+    -ms-filter: blur(3px);
+    filter: blur(3px); }
+  #content.blurry > #fader {
     opacity: 1; }
+  #content #fader {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 100;
+    opacity: 0; }
 
 header {
   position: fixed;
@@ -125,7 +135,8 @@ header {
     float: right;
     margin-right: 10px;
     transition: 200ms ease-in-out;
-    text-align: center; }
+    text-align: center;
+    cursor: pointer; }
     header .headerLink:hover {
       color: #f7f7f7; }
     header .headerLink:hover > .linkSlider {
@@ -406,7 +417,7 @@ header {
   background: #f7f7f7;
   border-radius: 5px;
   overflow: hidden;
-  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.2);
   transition: 200ms ease-in-out;
   z-index: 20; }
   #popupWindow.hidden {
