@@ -1,12 +1,12 @@
 {% extends "main/base.html" %}
-
+{% load static %}
 	{% block home %}{% endblock %}
 
 	{% block topLeftPaneTitle %}Recent Activity{% endblock %}
 
 	{% block topLeftPaneContent %}
 		<div class="listItem">
-			<img class="userPhoto" src="{{ STATIC_URL }}/assets/gsGeneralPerson.jpg">
+			<img class="userPhoto" src="{% static 'assets/gsGeneralPerson.jpg' %}">
 			<div class="recentInfo">
 				<div class="recentAction">committed to play</div>
 				<div class="recentGameType">Soccer</div>
@@ -15,7 +15,7 @@
 		</div>
 		<!-- Fill in with recent events from the database -->
 		<div class="listItem">
-			<img class="userPhoto" src="{{ STATIC_URL }}/assets/gsGeneralPerson.jpg">
+			<img class="userPhoto" src="{% static 'assets/gsGeneralPerson.jpg' %}">
 			<div class="recentInfo">
 				<div class="recentAction">committed to play</div>
 				<div class="recentGameType">Soccer</div>
@@ -23,7 +23,7 @@
 			</div>
 		</div>
 		<div class="listItem">
-			<img class="userPhoto" src="{{ STATIC_URL }}/assets/gsGeneralPerson.jpg">
+			<img class="userPhoto" src="{% static 'assets/gsGeneralPerson.jpg' %}">
 			<div class="recentInfo">
 				<div class="recentAction">created an event</div>
 				<div class="recentGameType">Running</div>
@@ -31,7 +31,7 @@
 			</div>
 		</div>
 		<div class="listItem">
-			<img class="userPhoto" src="{{ STATIC_URL }}/assets/gsGeneralPerson.jpg">
+			<img class="userPhoto" src="{% static 'assets/gsGeneralPerson.jpg' %}">
 			<div class="recentInfo">
 				<div class="recentAction">checked-in</div>
 				<div class="recentGameType">Tennis</div>
@@ -39,7 +39,7 @@
 			</div>
 		</div>
 		<div class="listItem">
-			<img class="userPhoto" src="{{ STATIC_URL }}/assets/gsGeneralPerson.jpg">
+			<img class="userPhoto" src="{% static 'assets/gsGeneralPerson.jpg' %}">
 			<div class="recentInfo">
 				<div class="recentAction">created an event</div>
 				<div class="recentGameType">Basketball</div>

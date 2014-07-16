@@ -1,4 +1,5 @@
 {% extends "main/base.html" %}
+{% load static %}
 	{% block topLeftPaneTitle %}Player Stats{% endblock %}
 	{% block topLeftPaneContent %}
 		<div class="listItem static">
@@ -35,7 +36,7 @@
 	{% block mainPane %}
 		<section class="window">
 			<div class="largeWindowHeader">
-				<img class="userPhoto large" src="{{ STATIC_URL }}/assets/memberPhotos/UserId.jpg"></img>
+				<img class="userPhoto large" src="{% static 'assets/memberPhotos/UserId.jpg' %}"></img>
 				<div class="editPhoto">Edit</div>
 				<h2>Alex Horan</h2>
 				<h3>Email: a_horan3@hotmail.com</h3>

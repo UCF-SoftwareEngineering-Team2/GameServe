@@ -44,15 +44,17 @@
 	<section class="verticalPane">
 		
 		{% block mainPane %}{% endblock %}
-		
 		{% block secondarySection %}{% endblock %}
 		
 	</section>
 	{% block loginPopup %}
 		<form id="popupWindow" class="hidden">
-			<input type="text" class="loginField" id="emailInput" placeholder="email">
-			<input type="text" class="loginField" id="passwordInput" placeholder="password">
-			<div id="loginButton" class="button">Login</div>
+			email:<input type="text" class="loginField" id="emailInput" placeholder="email">
+			password:<input type="text" class="loginField" id="passwordInput" placeholder="password">
+			<div class="authButtonSection">
+				<div id="loginButton" class="authButton">Login</div>
+				<div id="newUser" class="authButton">New Member</div>
+			</div>
 		</form>
 	{% endblock %}
 </body>

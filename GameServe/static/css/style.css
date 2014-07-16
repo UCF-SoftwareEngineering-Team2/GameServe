@@ -193,57 +193,6 @@ header {
   height: 400px;
   margin-top: 20px; }
 
-.listItem {
-  position: relative;
-  height: 50px;
-  width: 100%;
-  padding: 5px 10px;
-  border-top: 1px solid #cecece;
-  overflow: hidden;
-  cursor: pointer;
-  transition: 200ms ease-in-out; }
-  .listItem:hover {
-    background: #6cab43; }
-  .listItem:hover > .recentInfo {
-    color: #f7f7f7; }
-  .listItem:hover > .infoText {
-    color: #f7f7f7; }
-  .listItem:hover > .listImg {
-    color: #f7f7f7; }
-  .listItem:hover > .infoBlock {
-    color: #f7f7f7; }
-  .listItem:hover > .statType {
-    color: #f7f7f7; }
-  .listItem.hover > .statNum {
-    color: #f7f7f7; }
-  .listItem:hover > .heatImg {
-    color: #2e2d2c; }
-    .listItem:hover > .heatImg.hot {
-      color: #f7f7f7; }
-  .listItem .recentInfo {
-    position: relative;
-    width: 170px;
-    height: 100%;
-    float: right;
-    color: #cecece;
-    font-size: 12px;
-    transition: 200ms; }
-  .listItem .statNum {
-    color: #6cab43;
-    float: left;
-    font-size: 26px;
-    margin-left: 10px; }
-  .listItem .statType {
-    position: relative;
-    width: 170px;
-    height: 100%;
-    float: left;
-    color: #cecece;
-    margin-top: -8px;
-    margin-left: 10px;
-    font-size: 12px;
-    transition: 200ms; }
-
 .userPhoto {
   position: relative;
   width: 50px;
@@ -305,15 +254,69 @@ header {
     float: left;
     clear: both; }
 
+.listItem {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  padding: 5px 10px;
+  border-top: 1px solid #cecece;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 200ms ease-in-out; }
+  .listItem:hover {
+    background: #6cab43;
+    color: #f7f7f7; }
+  .listItem:hover > .recentInfo {
+    color: #f7f7f7; }
+  .listItem:hover > .browseGameInfo {
+    color: #f7f7f7; }
+  .listItem:hover > .listImg {
+    color: #f7f7f7; }
+  .listItem:hover > .statType {
+    color: #f7f7f7; }
+  .listItem:hover > .statNum {
+    color: #f7f7f7; }
+  .listItem:hover > .heatImg {
+    color: #f7f7f7; }
+    .listItem:hover > .heatImg.hot {
+      color: #2e2d2c; }
+  .listItem .recentInfo {
+    position: relative;
+    width: 170px;
+    height: 100%;
+    float: right;
+    color: #cecece;
+    font-size: 12px;
+    transition: 200ms; }
+  .listItem .statNum {
+    color: #6cab43;
+    float: left;
+    font-size: 26px;
+    margin-left: 10px; }
+  .listItem .statType {
+    position: relative;
+    width: 170px;
+    height: 100%;
+    float: left;
+    color: #cecece;
+    margin-top: -8px;
+    margin-left: 10px;
+    font-size: 12px;
+    transition: 200ms; }
+
 .filterSection {
   position: relative;
   float: left;
   width: 360px;
   height: auto;
-  padding: 10px; }
+  padding: 10px;
+  display: block;
+  margin: auto; }
   .filterSection.side {
-    width: 120px;
-    height: auto; }
+    width: 106px;
+    height: auto;
+    margin-left: 67px;
+    margin-bottom: 30px; }
 
 .filterButton {
   position: absolute;
@@ -328,6 +331,12 @@ header {
   transition: 200ms; }
   .filterButton:hover {
     background: #6cab43; }
+  .filterButton.bottom {
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 30px;
+    padding-top: 10px; }
 
 .gameButton {
   position: relative;
@@ -342,46 +351,54 @@ header {
   text-align: center;
   transition: 200ms;
   cursor: pointer; }
-  .gameButton:hover, .gameButton.selected {
+  .gameButton:hover {
+    background: rgba(108, 171, 67, 0.6);
+    color: #f7f7f7; }
+  .gameButton.selected {
     background: #6cab43;
     color: #f7f7f7; }
 
 #popupWindow {
   opacity: 1;
   position: fixed;
-  padding: 10px;
   top: 200px;
   right: 0px;
   height: 300px;
-  width: 200px;
+  width: 400px;
   background: #cecece;
   border-radius: 5px;
-  overflow: hidden;
+  overflow: auto;
   box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1); }
   #popupWindow.hidden {
     opacity: 0;
     pointer-events: none; }
   #popupWindow .loginField {
     position: relative;
-    width: calc(100% - 20px);
+    width: 250px;
     height: 20px;
+    margin: 0px auto;
     border: none;
     border-radius: 5px;
     padding: 3px 5px;
-    margin-top: 20px; }
-  #popupWindow #loginButton {
+    margin-top: 20px;
+    clear: both; }
+  #popupWindow .authButtonSection {
     position: absolute;
     width: 100%;
     height: 30px;
     bottom: 0px;
     margin-left: -10px;
-    margin-top: 20px;
-    text-align: center;
-    background: #2e2d2c;
-    padding: 5px 10px;
-    color: #f7f7f7;
-    cursor: pointer;
-    transition: 200ms; }
-    #popupWindow #loginButton:hover {
-      background: #6cab43;
-      color: #f7f7f7; }
+    margin-top: 20px; }
+    #popupWindow .authButtonSection .authButton {
+      position: relative;
+      width: 50%;
+      height: 100%;
+      float: left;
+      text-align: center;
+      background: #2e2d2c;
+      color: #f7f7f7;
+      cursor: pointer;
+      transition: 200ms; }
+      #popupWindow .authButtonSection .authButton:hover {
+        background: #6cab43;
+        color: #f7f7f7; }

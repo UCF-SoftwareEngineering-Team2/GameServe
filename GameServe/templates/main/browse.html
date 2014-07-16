@@ -1,47 +1,27 @@
 {% extends "main/base.html" %}
-	{% block topLeftPaneTitle %}Recent Activity{% endblock %}
+{% load static %}
+
+	{% block topLeftPaneTitle %}Filter Results{% endblock %}
 	{% block topLeftPaneContent %}
-		<div class="listItem">
-			<img class="userPhoto" src="{{ STATIC_URL }}/assets/gsGeneralPerson.jpg">
-			<div class="recentInfo">
-				<div class="recentAction">committed to play</div>
-				<div class="recentGameType">Soccer</div>
-				<div class="recentTime">30 mins ago</div>
-			</div>
-		</div>
-		<!-- Fill in with recent events from the database -->
-		<div class="listItem">
-			<img class="userPhoto" src="{{ STATIC_URL }}/assets/gsGeneralPerson.jpg">
-			<div class="recentInfo">
-				<div class="recentAction">committed to play</div>
-				<div class="recentGameType">Soccer</div>
-				<div class="recentTime">30 mins ago</div>
-			</div>
-		</div>
-		<div class="listItem">
-			<img class="userPhoto" src="{{ STATIC_URL }}/assets/gsGeneralPerson.jpg">
-			<div class="recentInfo">
-				<div class="recentAction">created an event</div>
-				<div class="recentGameType">Running</div>
-				<div class="recentTime">45 mins ago</div>
-			</div>
-		</div>
-		<div class="listItem">
-			<img class="userPhoto" src="{{ STATIC_URL }}/assets/gsGeneralPerson.jpg">
-			<div class="recentInfo">
-				<div class="recentAction">checked-in</div>
-				<div class="recentGameType">Tennis</div>
-				<div class="recentTime">1 hour ago</div>
-			</div>
-		</div>
-		<div class="listItem">
-			<img class="userPhoto" src="{{ STATIC_URL }}/assets/gsGeneralPerson.jpg">
-			<div class="recentInfo">
-				<div class="recentAction">created an event</div>
-				<div class="recentGameType">Basketball</div>
-				<div class="recentTime">1 hour ago</div>
-			</div>
-		</div>
+		<!-- 
+		{% for gameType in gameTable %}
+			<div class="gameSelection">{{gameType.name}}</div> 
+		{% endfor %}
+		-->
+		<div class="filterSection side">
+			<div class="gameButton gameType">Baseball</div>
+			<div class="gameButton gameType">Basketball</div>
+			<div class="gameButton gameType">Biking</div>
+			<div class="gameButton gameType">Football</div>
+			<div class="gameButton gameType">Ping-Pong</div>
+			<div class="gameButton gameType">Racquetball</div>
+			<div class="gameButton gameType">Running</div>
+			<div class="gameButton gameType">Soccer</div>
+			<div class="gameButton gameType">Volleyball</div>
+			<div id="selectAll" class="gameButton">Select All</div>
+			<div id="clearAll" class="gameButton">Clear All</div>
+		</div>		
+		<div class="filterButton bottom">Go</div>
 	{% endblock %}
 
 	{% block mainPane %}
