@@ -4,9 +4,9 @@ $(document).ready(function() {
 	//login functionality
 	$('#login').click(function () {
 	  	$('#popupWindow').toggleClass('hidden');
+	  	$('#fader').toggleClass('show');
 	});
 	$('#loginButton').click(function () {
-		$('#fader').toggleClass('show');
 		if ($('#popupWindow').hasClass('expand')) {
 			var name = $('#nameInput').val();
 			var email =	$('#newEmailInput').val();
