@@ -120,9 +120,18 @@ $light: #F7F7F7;
 }
 
 body {
-	margin: auto;
 	background: $med;
 	font-family: 'sinkin_sans300_light';
+	margin: 0px;
+	padding: 0px;
+}
+.center {
+	margin: auto;
+	width: 1000px;
+	height: 100%;
+	&.head {
+		width: 870px;
+	}
 
 }
 header {
@@ -173,9 +182,8 @@ header {
 	}
 }
 #logo {
-	position: absolute;
+	position: relative;
 	width: 170px;
-	left: 60px;
 
 }
 .window {
@@ -226,6 +234,11 @@ header {
 		&:nth-child(2n+1) {
 			width: 34%;
 			background: $green;
+		}
+		h5 {
+			position: absolute;
+			bottom: 20px;
+			width: 100%;		
 		}
 	}
 }
@@ -498,6 +511,7 @@ header {
 	position: relative;
 	float: left;
 }
-h3, h2 {
+h3, h2, h5 {
 	margin: 5px 0px;
+	font-family: 'sinkin_sans300_light';
 }

@@ -13,49 +13,53 @@
 
 <body>
 	<header>
-		<img src="{% static 'assets/gsLogo.svg' %}" id="logo">
+		<section class="center head">
+			<img src="{% static 'assets/gsLogo.svg' %}" id="logo">
 
-		<div id="login" class="headerLink">
-			login
-			<div class="linkSlider"></div>
-		</div>
-		<div id="create" class="headerLink">
-			create a game
-			<div class="linkSlider"></div>
-		</div>
-		<div id="browse" class="headerLink">
-			browse
-			<div class="linkSlider"></div>
-		</div>
-		<div id="home" class="headerLink">
-			home
-			<div class="linkSlider"></div>
-		</div>
-		<div id="headerFade"></div>
-	</header>
-	<aside class="verticalPane small">
-		<section class="window side">
-			<div class="windowHeader">{% block topLeftPaneTitle %}Recent Activity{% endblock %}</div>	
-			{% block topLeftPaneContent %}
-			{% endblock %}
-		</section>
- 		<aside class="window side" id="mapCanvas"></aside>
-	</aside>
-	<section class="verticalPane">
-		
-		{% block mainPane %}{% endblock %}
-		{% block secondarySection %}{% endblock %}
-		
-	</section>
-	{% block loginPopup %}
-		<form id="popupWindow" class="hidden">
-			email:<input type="text" class="loginField" id="emailInput" placeholder="email">
-			password:<input type="text" class="loginField" id="passwordInput" placeholder="password">
-			<div class="authButtonSection">
-				<div id="loginButton" class="authButton">Login</div>
-				<div id="newUser" class="authButton">New Member</div>
+			<div id="login" class="headerLink">
+				login
+				<div class="linkSlider"></div>
 			</div>
-		</form>
-	{% endblock %}
+			<div id="create" class="headerLink">
+				create a game
+				<div class="linkSlider"></div>
+			</div>
+			<div id="browse" class="headerLink">
+				browse
+				<div class="linkSlider"></div>
+			</div>
+			<div id="home" class="headerLink">
+				home
+				<div class="linkSlider"></div>
+			</div>
+			<div id="headerFade"></div>
+		</section>
+	</header>
+	<section class="center">
+		<aside class="verticalPane small">
+			<section class="window side">
+				<div class="windowHeader">{% block topLeftPaneTitle %}Recent Activity{% endblock %}</div>	
+				{% block topLeftPaneContent %}
+				{% endblock %}
+			</section>
+	 		<aside class="window side" id="mapCanvas"></aside>
+		</aside>
+		<section class="verticalPane">
+			
+			{% block mainPane %}{% endblock %}
+			{% block secondarySection %}{% endblock %}
+			
+		</section>
+		{% block loginPopup %}
+			<form id="popupWindow" class="hidden">
+				email:<input type="text" class="loginField" id="emailInput" placeholder="email">
+				password:<input type="text" class="loginField" id="passwordInput" placeholder="password">
+				<div class="authButtonSection">
+					<div id="loginButton" class="authButton">Login</div>
+					<div id="newUser" class="authButton">New Member</div>
+				</div>
+			</form>
+		{% endblock %}
+	</section>
 </body>
 </html>

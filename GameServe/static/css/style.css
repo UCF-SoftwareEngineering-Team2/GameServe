@@ -87,9 +87,17 @@
   content: "\e60c"; }
 
 body {
-  margin: auto;
   background: #cecece;
-  font-family: 'sinkin_sans300_light'; }
+  font-family: 'sinkin_sans300_light';
+  margin: 0px;
+  padding: 0px; }
+
+.center {
+  margin: auto;
+  width: 1000px;
+  height: 100%; }
+  .center.head {
+    width: 870px; }
 
 header {
   position: fixed;
@@ -133,9 +141,8 @@ header {
     width: 300px; }
 
 #logo {
-  position: absolute;
-  width: 170px;
-  left: 60px; }
+  position: relative;
+  width: 170px; }
 
 .window {
   background: #f7f7f7;
@@ -181,6 +188,10 @@ header {
     .window .windowBlock:nth-child(2n+1) {
       width: 34%;
       background: #6cab43; }
+    .window .windowBlock h5 {
+      position: absolute;
+      bottom: 20px;
+      width: 100%; }
 
 #mapCanvas {
   height: 400px;
@@ -420,5 +431,6 @@ header {
   position: relative;
   float: left; }
 
-h3, h2 {
-  margin: 5px 0px; }
+h3, h2, h5 {
+  margin: 5px 0px;
+  font-family: 'sinkin_sans300_light'; }
