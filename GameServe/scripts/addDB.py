@@ -1,12 +1,13 @@
 import os
 from events.models import Sport, Court, Event
-from django.contrib.auth.models import User
-from accounts.models import UserProfile
-from django.db.utils import IntegrityError
+# from django.contrib.auth.models import User
+from accounts.models import User
+from django.db.utils import IntegrityError, ProgrammingError
 from random import randint
 import datetime
 import re
-from django.db.utils import ProgrammingError
+from __builtin__ import KeyboardInterrupt
+from django.utils import timezone
 
 def addCourts():
     print 'Adding Courts'
@@ -36,23 +37,42 @@ def addSports():
 
 
 def addEvents():
+    from accounts.models import User
     print 'Adding Events ...'
     c = len(Court.objects.all())
     u = len(User.objects.all())
     today = datetime.date.today()
     for i in range(5000):
         e = Event()
-        e.date = datetime.date(2014,randint(1,12),randint(today.day,28))
-        e.time = datetime.time(randint(0,23),randint(0,59))
+        e.dateTime = timezone.datetime(year=2014, month=randint(1,12), day=randint(1,28),
+                                       hour=randint(0,23), minute=randint(0,59))
+
+
         e.court = Court.objects.get(id=randint(1,c))
-        e.creator = User.objects.get(id=randint(1,u))
-        e.save()
-        for i in range(50):
-            e.users.add(User.objects.get(id=randint(1,u)))
+
+
+        try:
+            e.creator = User.objects.get(id=randint(1,u))
+            e.save()
+        except(User.DoesNotExist):
+            continue
+        try:
+            for i in range(50):
+                e.participants.add(User.objects.get(id=randint(1,u)))
+        except(User.DoesNotExist):
+            pass
+
         e.save()
 
 
 def addUsers():
+    from accounts.models import User
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
     print 'Adding users...'
     # Open file for read
     infile = open('.fakenames.txt','r')
@@ -66,24 +86,25 @@ def addUsers():
 
         try:
             userr.first_name = line[0]
-            print userr.first_name
+            print HEADER+userr.first_name+ENDC
 
             userr.email = line[1]
-            print userr.email
+            print FAIL+userr.email+ENDC
 
             userr.username = line[2]
-            print userr.username
+            print FAIL+userr.username+ENDC
 
             tmp = line[2]
             userr.password = tmp[::-1]
-            print userr.password
-
-            profile = UserProfile( phone_number = line[3].replace('-','') )
-            profile.user = userr
+            print FAIL+userr.password+ENDC
+            print
+            # profile = UserProfile( phone_number = line[3].replace('-','') )
+            # profile.user = userr
+            # userr.save()
+            # userr.profile = profile
+            # profile.save()
+            userr.phone_number = line[3].replace('-','')
             userr.save()
-            userr.profile = profile
-            profile.save()
-
 
         # If not unique
         except (IntegrityError, ProgrammingError):
@@ -100,37 +121,45 @@ def clearAllDB():
     Events.objects.all().delete()
 
 def printMenu():
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
     print '---------------'
-    print 'Menu'
+    print HEADER+'Menu'+ENDC
     print '---------------'
-    print '1. addSports()'
-    print '2. addUsers()'
-    print '3. addCourts()'
-    print '4. addEvents()'
-    print '5. Add All'
-    print '6. ClearAllDB()'
-    print '*. Exit'
+    print FAIL+'1. addSports()'+ENDC
+    print FAIL+'2. addUsers()'+ENDC
+    print FAIL+'3. addCourts()'+ENDC
+    print FAIL+'4. addEvents()'+ENDC
+    print FAIL+'5. Add All'+ENDC
+    print FAIL+'6. ClearAllDB()'+ENDC
+    print WARNING+'*. Exit'+ENDC
     print
 
 def run():
-    printMenu()
-    choice = int(raw_input('Enter Choice: '))
-    if choice == 1:
-        addSports()
-    elif choice == 2:
-        addUsers()
-    elif choice == 3:
-        addCourts()
-    elif choice == 4:
-        addEvents()
-    elif choice == 5:
-        addSports()
-        addUsers()
-        addCourts()
-        addEvents()
-    elif choice == 6:
-        clearAllDB()
-    else:
-        return
-
+    try:
+        printMenu()
+        choice = int(raw_input('Enter Choice: '))
+        if choice == 1:
+            addSports()
+        elif choice == 2:
+            addUsers()
+        elif choice == 3:
+            addCourts()
+        elif choice == 4:
+            addEvents()
+        elif choice == 5:
+            addSports()
+            addUsers()
+            addCourts()
+            addEvents()
+        elif choice == 6:
+            clearAllDB()
+        else:
+            return
+    except ( KeyboardInterrupt ):
+        run()
 
