@@ -19,10 +19,13 @@ $(document).ready(function() {
 			var verPass = $('#verPasswordInput').val();
 			var phone = $('#pNumInput').val();
 
-	  		alert("data: \nname\t" + name + " \nemail:\t" + email + " \nverEmail:\t" + verEmail + " \npass:\t" + pass + " \nverPass:\t" + verPass + " \nphone:\t" + phone );
+	  		alert("data: \nname:\t" + name + " \nemail:\t" + email + " \nverEmail:\t" + verEmail + " \npass:\t" + pass + " \nverPass:\t" + verPass + " \nphone:\t" + phone );
 		}
 		else {
-	  		alert("email input: " + $('#emailInput').val() + "\npass input: " +$('#passwordInput').val());
+			var email =	$('#emailInput').val();
+			var pass = $('#passwordInput').val();
+
+	  		alert("data: \email\t" + email + "\npass:\t" + pass);
 	  	}
 	});
 

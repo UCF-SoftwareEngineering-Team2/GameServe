@@ -238,6 +238,20 @@ header {
       position: absolute;
       bottom: 20px;
       width: 100%; }
+    .window .windowBlock .blockText {
+      position: relative;
+      font-size: 26px;
+      color: #f7f7f7; }
+    .window .windowBlock .blockDeet {
+      position: relative;
+      font-size: 12px;
+      width: 100%;
+      color: #f7f7f7;
+      margin-bottom: 40px; }
+      .window .windowBlock .blockDeet:last-child {
+        position: absolute;
+        bottom: 20px;
+        margin: 0px; }
   .window .bigMap {
     position: relative;
     clear: both;
@@ -397,7 +411,7 @@ header {
   .commentSection .comment {
     position: absolute;
     width: 400px;
-    font-size: 14px;
+    font-size: 12px;
     color: #aaaaaa; }
   .commentSection .deltaTime {
     position: absolute;
