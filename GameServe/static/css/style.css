@@ -42,7 +42,10 @@
 
 .largeIcon {
   font-size: 75px;
-  margin: 10px 0px; }
+  width: 75px;
+  margin: 10px auto; }
+  .largeIcon.left {
+    float: left; }
 
 .icon-heatRep:before {
   content: "\e60d"; }
@@ -103,6 +106,9 @@
 
 .icon-plus:before {
   content: "\e613"; }
+
+.icon-arrow-up:before {
+  content: "\e614"; }
 
 body {
   background: #cecece;
@@ -207,14 +213,14 @@ header {
     background: #cecece;
     width: 100%;
     height: 30px; }
-  .window .largeWindowHeader {
-    position: relative;
-    top: 0px;
-    padding: 5px 10px;
-    color: #2e2d2c;
-    background: #f7f7f7;
-    width: 100%;
-    height: 180px; }
+    .window .windowHeader.large {
+      color: #2e2d2c;
+      background: #f7f7f7;
+      height: 180px; }
+    .window .windowHeader.medium {
+      color: #2e2d2c;
+      background: #f7f7f7;
+      height: 100px; }
   .window .windowBlock {
     position: relative;
     float: left;
@@ -232,10 +238,15 @@ header {
       position: absolute;
       bottom: 20px;
       width: 100%; }
+  .window .bigMap {
+    position: relative;
+    clear: both;
+    height: 400px; }
 
 #mapCanvas {
   height: 400px;
-  margin-top: 20px; }
+  margin-top: 20px;
+  overflow: hidden; }
 
 .userPhoto {
   position: relative;
@@ -314,10 +325,17 @@ header {
     float: left;
     clear: both; }
 
+.staticListItem {
+  position: relative;
+  width: calc(100% - 20px);
+  padding: 5px 10px;
+  border-top: 1px solid #cecece;
+  overflow: hidden;
+  cursor: pointer; }
+
 .listItem {
   position: relative;
-  height: 50px;
-  width: 100%;
+  width: calc(100% - 20px);
   padding: 5px 10px;
   border-top: 1px solid #cecece;
   overflow: hidden;
@@ -339,28 +357,81 @@ header {
     color: #f7f7f7; }
   .listItem:hover > .statNum {
     color: #f7f7f7; }
-  .listItem .recentInfo {
-    position: relative;
-    width: 170px;
-    height: 100%;
-    float: right;
-    color: #aaaaaa;
-    font-size: 12px; }
-  .listItem .statNum {
-    color: #6cab43;
-    float: left;
-    font-size: 26px;
-    margin-left: 10px; }
-  .listItem .statType {
-    position: relative;
-    width: 170px;
-    height: 100%;
-    float: left;
-    color: #aaaaaa;
-    margin-top: -8px;
-    margin-left: 10px;
+
+.recentInfo {
+  position: relative;
+  width: 150px;
+  height: 100%;
+  float: right;
+  color: #aaaaaa;
+  font-size: 12px; }
+
+.statNum {
+  color: #6cab43;
+  float: left;
+  font-size: 26px;
+  margin-left: 10px; }
+
+.statType {
+  position: relative;
+  width: 150px;
+  height: 100%;
+  float: left;
+  color: #aaaaaa;
+  margin-top: -8px;
+  margin-left: 10px;
+  font-size: 12px;
+  transition: 200ms; }
+
+.commentSection {
+  position: relative;
+  width: calc(100% - 70px);
+  height: 100%;
+  float: left;
+  color: #aaaaaa;
+  font-size: 12px;
+  min-height: 60px; }
+  .commentSection.create {
+    height: 90px;
+    width: 420px; }
+  .commentSection .comment {
+    position: absolute;
+    width: 400px;
+    font-size: 14px;
+    color: #aaaaaa; }
+  .commentSection .deltaTime {
+    position: absolute;
+    right: 10px;
+    bottom: 0px;
+    height: 20px;
     font-size: 12px;
-    transition: 200ms; }
+    color: #cecece; }
+  .commentSection #commentInput {
+    position: absolute;
+    height: 80px;
+    width: 400px;
+    border: none;
+    box-shadow: inset 0 0 2px 2px #cecece;
+    font-family: 'sinkin_sans300_light';
+    border-radius: 5px;
+    padding: 3px 5px; }
+
+#submitComment {
+  position: absolute;
+  right: 0px;
+  height: 100%;
+  margin-top: -5px;
+  width: 100px;
+  background: #2e2d2c;
+  transition: 200ms; }
+  #submitComment:hover {
+    background: #6cab43; }
+  #submitComment .icon-arrow-up {
+    font-size: 30px;
+    color: #f7f7f7;
+    margin-top: 30px;
+    width: 100%;
+    text-align: center; }
 
 .filterSection {
   position: relative;
@@ -503,7 +574,7 @@ header {
         background: #6cab43;
         color: #f7f7f7; }
 
-.profInfo {
+.headerDeets {
   position: relative;
   float: left; }
 

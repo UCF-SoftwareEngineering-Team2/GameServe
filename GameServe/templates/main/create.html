@@ -1,47 +1,47 @@
 {% extends "main/base.html" %}
 {% load static %}
-	{% block browseLink%}active{% endblock %}
+	{% block createLink %}active{% endblock %}
 	{% block topLeftPaneTitle %}Player Stats{% endblock %}
 	{% block topLeftPaneContent %}
 		<div class="listItem static">
 			<div class="listImg green">
 				<div class="icon-heatRep"></div>
 			</div>
-			<div class="statNum">620</div>
-			<div class="statType">rep points</div>
+			<div class="statNum">1270</div>
+			<div class="statType">game heat</div>
 		</div>
 		<!-- Fill in with recent events from the database -->
 		<div class="listItem static">
 			<div class="listImg green">
 				<div class="icon-committed"></div>
 			</div>
-			<div class="statNum">8</div>
-			<div class="statType">times committed</div>
+			<div class="statNum">9</div>
+			<div class="statType">players committed</div>
 		</div>
 		<div class="listItem static">
 			<div class="listImg green">
 				<div class="icon-comments"></div>
 			</div>
-			<div class="statNum">31</div>
+			<div class="statNum">4</div>
 			<div class="statType">comments</div>
 		</div>
 		<div class="listItem static">
 			<div class="listImg green">
 				<div class="icon-checkedIn"></div>
 			</div>
-			<div class="statNum">7</div>
-			<div class="statType">Check-ins</div>
+			<div class="statNum">0</div>
+			<div class="statType">Checked-in</div>
 		</div>
 	{% endblock %}
 
 	{% block mainPane %}
 		<section class="window">
-			<div class="windowHeader large">
+			<div class="largeWindowHeader">
 				<!-- <div class="profPic"> -->
 					<img class="userPhoto large" src="{% static 'assets/memberPhotos/UserId.jpg' %}"></img>
 					<div class="editPhoto">Edit</div>
 				<!-- </div> -->
-				<div class="headerDeets">
+				<div class="profInfo">
 					<h2>Alex Horan</h2>
 					<h3>Email: a_horan3@hotmail.com</h3>
 					<h3>Phone: 407-601-8032</h3>

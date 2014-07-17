@@ -1,0 +1,106 @@
+{% extends "main/base.html" %}
+{% load static %}
+	{% block browseLink %}active{% endblock %}
+	{% block topLeftPaneTitle %}Game Stats{% endblock %}
+	{% block topLeftPaneContent %}
+		<div class="staticListItem">
+			<div class="listImg green">
+				<div class="icon-heatRep"></div>
+			</div>
+			<div class="statNum">1270</div>
+			<div class="statType">game heat</div>
+		</div>
+		<!-- Fill in with recent events from the database -->
+		<div class="staticListItem">
+			<div class="listImg green">
+				<div class="icon-committed"></div>
+			</div>
+			<div class="statNum">9</div>
+			<div class="statType">players committed</div>
+		</div>
+		<div class="staticListItem">
+			<div class="listImg green">
+				<div class="icon-comments"></div>
+			</div>
+			<div class="statNum">4</div>
+			<div class="statType">comments</div>
+		</div>
+		<div class="staticListItem">
+			<div class="listImg green">
+				<div class="icon-checkedIn"></div>
+			</div>
+			<div class="statNum">0</div>
+			<div class="statType">Checked-in</div>
+		</div>
+	{% endblock %}
+
+	{% block mainPane %}
+		<section class="window">
+			<div class="windowHeader medium">
+				<div class="icon-football largeIcon left"></div>
+				<div class="headerDeets">
+					<h2>Football</h2>
+				</div>
+			</div>
+			<!-- Fill in with filtered games from the database -->
+			<div class="windowBlock">
+				<h3>Baseball</h3>
+				<div class="icon-baseball largeIcon"></div>
+				<h5>most frequently played</h5>
+			</div>
+			<div class="windowBlock">
+				<h3>Tennis</h3>
+				<div class="icon-tennis largeIcon"></div>
+				<h5>most frequently played</h5>
+			</div>
+			<div class="windowBlock">
+				<h3>July 16, 2014</h3>
+				<h5>next game</h5>
+			</div>
+			<div class="bigMap" id="mapCanvas"></aside>
+		</section>
+	{% endblock %}
+
+	{% block secondarySection %}
+		<section class="window">
+			<div class="windowHeader">Comments</div>
+			<!-- Fill in with comments from the database -->
+			<div class="staticListItem">
+				<img class="userPhoto" src="{% static 'assets/gsGeneralPerson.jpg' %}">
+				<div class="commentSection">
+					<div class="comment">committed to play</div>
+					<div class="deltaTime">30 mins ago</div>
+				</div>
+			</div>
+			<div class="staticListItem">
+				<img class="userPhoto" src="{% static 'assets/gsGeneralPerson.jpg' %}">
+				<div class="commentSection">
+					<div class="comment">committed to play</div>
+					<div class="deltaTime">30 mins ago</div>
+				</div>
+			</div>
+			<div class="staticListItem">
+				<img class="userPhoto" src="{% static 'assets/gsGeneralPerson.jpg' %}">
+				<div class="commentSection">
+					<div class="comment">committed to play</div>
+					<div class="deltaTime">30 mins ago</div>
+				</div>
+			</div>
+			<div class="staticListItem">
+				<img class="userPhoto" src="{% static 'assets/gsGeneralPerson.jpg' %}">
+				<div class="commentSection">
+					<div class="comment">committed to play</div>
+					<div class="deltaTime">30 mins ago</div>
+				</div>
+			</div>
+			<div class="staticListItem">
+				<img class="userPhoto" src="{% static 'assets/gsGeneralPerson.jpg' %}">
+				<div class="commentSection create">
+					<textarea id="commentInput" placeholder="comment"></textarea>
+				</div>
+				<div id="submitComment">
+					<div class="icon-arrow-up"></div>
+				</div>
+			</div>
+		</section>
+	{% endblock %}
