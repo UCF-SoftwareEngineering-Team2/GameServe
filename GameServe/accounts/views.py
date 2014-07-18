@@ -92,15 +92,8 @@ def register(request):
             user.set_password(user.password)
             user.save()
 
-
             # Update our variable to tell the template registration was successful.
             registered = True
-            #profile = UserProfile()
-            #profile.user = user
-            #print 'user.userprofile.save()'
-            #user.save()
-            #user.profile = profile
-            #profile.save()
 
 
         # Invalid form or forms - mistakes or something else?

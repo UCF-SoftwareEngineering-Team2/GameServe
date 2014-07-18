@@ -25,8 +25,7 @@ class Sport(models.Model):
 class CourtManager(models.Manager):
     def scheduledNext( self, courtID ):
         try:
-            c = self.get(id=courtID)
-            upcoming = c.events.filter(upcoming = self.filter( dateTime__gte = timezone.datetime.now()))[0]
+            upcoming = self.events.filter( upcoming = self.filter( dateTime__gte = timezone.datetime.now()))[0]
             return upcoming
         except( Court.DoesNotExist ):
             return
@@ -34,12 +33,12 @@ class CourtManager(models.Manager):
 class Court(models.Model):
     objects = CourtManager()
 
-    sport = models.ForeignKey(Sport, related_name='courts')
+    sport = models.ForeignKey(Sport, related_name='sport')
     latitude = models.FloatField()
     longitude = models.FloatField()
 
     def getNextScheduled(self,page=1):
-        return self.events.getUpcoming()[(page-1)*5:(page)*5]
+        return self.events.upcomingEvent()[(page-1)*5:(page)*5]
 
 
     def __unicode__(self):
@@ -53,23 +52,32 @@ class Court(models.Model):
 
 
 
+
+
+
+
 class EventManager(models.Manager):
+    """
+    Used to add special queries, `Event.objects.upcoming()`
+    """
     def upcoming(self):
         return self.filter( dateTime__gte = timezone.datetime.now() )
+
+
 class Event(models.Model):
     objects = EventManager()
 
     dateTime = models.DateTimeField(auto_now=False)
 
-    court = models.ForeignKey(Court, related_name='events')
+    creator = models.ForeignKey(User,related_name='creator')
+    court = models.ForeignKey(Court, related_name='court')
     participants = models.ManyToManyField(User,related_name='participants')
 
-    creator = models.ForeignKey(User,related_name='creator')
 
     def __unicode__(self):
         return u'%s' % (self.dateTime)
 
-
+    # Instance method
     def upcomingEvent(self):
         date = self.dateTime.date()
         time = self.dateTime.time()
@@ -80,7 +88,6 @@ class Event(models.Model):
                                     minute=time.minute)
         now = timezone.datetime.now()
         curTime = now.time()
-
         curDate = now.date()
 
         # If this event is days away
@@ -95,7 +102,7 @@ class Event(models.Model):
         else:
             return False
     upcomingEvent.short_description = "Is this event upcoming?"
-    upcoming = property(upcomingEvent)
+    nextEvent = property(upcomingEvent)
 
     class Meta:
         ordering = ('dateTime',)
