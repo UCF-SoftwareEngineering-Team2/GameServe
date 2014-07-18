@@ -102,7 +102,7 @@ class Event(models.Model):
         else:
             return False
     upcomingEvent.short_description = "Is this event upcoming?"
-    nextEvent = property(upcomingEvent)
+    upcoming = property(upcomingEvent)
 
     class Meta:
         ordering = ('dateTime',)

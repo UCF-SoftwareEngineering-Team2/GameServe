@@ -97,7 +97,7 @@ class EventResource(ModelResource):
     #     """
     #     if 'upcoming' in applicable_filters:
     #         upcoming = applicable_filters.pop('upcoming')
-    #         import ipdb; ipdb.set_trace()
+    #         #import ipdb; ipdb.set_trace()
     #         upcoming = [ up.strip() for up in upcoming.split(',') ]
     #         applicable_filters['event__upcoming'] = upcoming
     #     return super(EventResource, self).apply_filters(request, applicable_filters)
