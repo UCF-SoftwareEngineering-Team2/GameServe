@@ -651,25 +651,51 @@ h3, h2, h5 {
   margin: 5px 0px;
   font-family: 'sinkin_sans300_light'; }
 
-#amPmToggle {
-  position: relative;
-  height: 20px;
-  width: 25px;
-  padding: 5px;
-  background: #2e2d2c;
-  color: #f7f7f7;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 200ms; }
-  #amPmToggle:hover {
-    background: #6cab43; }
+#timePicker {
+  position: absolute;
+  margin: 10px 25px;
+  height: 50px;
+  width: 100%; }
+  #timePicker #amPmToggle {
+    position: relative;
+    height: 20px;
+    width: 25px;
+    padding: 5px;
+    background: #2e2d2c;
+    float: left;
+    color: #f7f7f7;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 200ms; }
+    #timePicker #amPmToggle:hover {
+      background: #6cab43; }
+  #timePicker .timeSelect {
+    position: relative;
+    height: 30px;
+    padding: 5px;
+    font-family: 'sinkin_sans300_light';
+    font-size: 14px;
+    float: left;
+    background: #2e2d2c;
+    border: none;
+    color: #f7f7f7;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 200ms; }
+    #timePicker .timeSelect:hover {
+      background: #6cab43; }
 
-.timeSelect {
+.commCheckPub {
   position: relative;
-  height: 20px;
-  padding: 5px;
-  background: #2e2d2c;
-  border: none;
-  color: #f7f7f7;
+  width: 250px;
+  height: 50px;
   border-radius: 5px;
-  cursor: pointer; }
+  margin: 20px;
+  background: #2e2d2c;
+  padding-top: 20px;
+  text-align: center;
+  color: #f7f7f7;
+  overflow: hidden;
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1); }
+  .commCheckPub:hover {
+    background: #6cab43; }

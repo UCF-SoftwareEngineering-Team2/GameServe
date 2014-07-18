@@ -722,29 +722,59 @@ h3, h2, h5 {
 	margin: 5px 0px;
 	font-family: 'sinkin_sans300_light';
 }
+#timePicker {
+	position: absolute;
+	margin: 10px 25px;
+	height: 50px;
+	width: 100%;
 
-#amPmToggle {
+	#amPmToggle {
+		position: relative;
+		height: 20px;
+		width: 25px;
+		padding: 5px;
+		background: $dark;
+		float: left;
+		color: $light;
+		border-radius: 5px;
+		cursor: pointer;
+		transition: 200ms;
+		&:hover {
+			background: $green;
+		}
+	}
+	.timeSelect {
+		position: relative;
+		height: 30px;
+		padding: 5px;
+		font-family: 'sinkin_sans300_light';
+		font-size: 14px;
+		float: left;
+		background: $dark;
+		border: none;
+		color: $light;
+		border-radius: 5px;
+		cursor: pointer;
+		transition: 200ms;
+		&:hover {
+			background: $green;
+		}
+
+	}
+}
+.commCheckPub {
 	position: relative;
-	height: 20px;
-	width: 25px;
-	padding: 5px;
-	background: $dark;
-	color: $light;
+	width: 250px;
+	height: 50px;
 	border-radius: 5px;
-	cursor: pointer;
-	transition: 200ms;
+	margin: 20px;
+	background: $dark;
+	padding-top: 20px;
+	text-align: center;
+	color: $light;
+	overflow: hidden;
+	box-shadow: 0px 0px 2px 2px rgba(0,0,0,.1);
 	&:hover {
 		background: $green;
 	}
-}
-.timeSelect {
-	position: relative;
-	height: 20px;
-	padding: 5px;
-	background: $dark;
-	border: none;
-	color: $light;
-	border-radius: 5px;
-	cursor: pointer;
-
 }
