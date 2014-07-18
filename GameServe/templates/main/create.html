@@ -1,5 +1,13 @@
 {% extends "main/base.html" %}
 {% load static %}
+	{% block preReqs %}
+		<link rel="stylesheet" type="text/css" href="{% static 'js/pikaday.css' %}">
+		<script type="text/javascript" src="{% static 'js/moment.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/pikaday.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/create.js' %}"></script>
+
+	{% endblock %}
+
 	{% block createLink %}active{% endblock %}
 	{% block topLeftPaneTitle %}Player Stats{% endblock %}
 	{% block topLeftPaneContent %}
@@ -36,59 +44,80 @@
 
 	{% block mainPane %}
 		<section class="window">
-			<div class="largeWindowHeader">
-				<!-- <div class="profPic"> -->
-					<img class="userPhoto large" src="{% static 'assets/memberPhotos/UserId.jpg' %}"></img>
-					<div class="editPhoto">Edit</div>
-				<!-- </div> -->
-				<div class="profInfo">
-					<h2>Alex Horan</h2>
-					<h3>Email: a_horan3@hotmail.com</h3>
-					<h3>Phone: 407-601-8032</h3>
-					<h3>Member since: Summer 2012</h3>
-				</div>
-			</div>
+			<div class="windowHeader">Game Type</div>
 			<!-- Fill in with filtered games from the database -->
 			<div class="windowBlock">
-				<h3>Baseball</h3>
-				<div class="icon-baseball largeIcon"></div>
-				<h5>most frequently played</h5>
+				<div class="icon-football largeIcon"></div>
+				<div id="afterIcon" class="blockDeet">Specify Sport Type</div>
 			</div>
-			<div class="windowBlock">
-				<h3>Tennis</h3>
-				<div class="icon-tennis largeIcon"></div>
-				<h5>most frequently played</h5>
-			</div>
-			<div class="windowBlock">
-				<h3>July 16, 2014</h3>
-				<h5>next game</h5>
+			<div class="filterSection">
+				<!-- 
+				{% for gameType in gameTable %}
+					<div class="gameSelection">{{gameType.name}}</div> 
+				{% endfor %}
+				-->
+				<div id="baseball" class="gameButton gameType" data-id="baseball">Baseball</div>
+				<div id="basketball" class="gameButton gameType">Basketball</div>
+				<div id="biking" class="gameButton gameType">Biking</div>
+				<div id="football" class="gameButton gameType">Football</div>
+				<div id="pingPong" class="gameButton gameType">Ping-Pong</div>
+				<div id="racquetball" class="gameButton gameType">Racquetball</div>
+				<div id="running" class="gameButton gameType">Running</div>
+				<div id="soccer" class="gameButton gameType">Soccer</div>
+				<div id="volleyball" class="gameButton gameType">Volleyball</div>
 			</div>
 		</section>
 	{% endblock %}
 
 	{% block secondarySection %}
 		<section class="window">
-			<div class="windowHeader">
-				<div class="editPhoto">Edit</div>
-				<h2>Alex Horan</h2>
-				<h3>Email: a_horan3@hotmail.com</h3>
-				<h3>Phone: 407-601-8032</h3>
-
-				<h3>Member since: Summer 2012</h3>
-
-			</div>
+			<div class="windowHeader">Game Date & Time</div>
 			<!-- Fill in with filtered games from the database -->
-			<div class="windowBlock">
-				<h3>Baseball</h3>
-				most frequently played
+			<div class="windowBlock scheduler">
+				PIKADAY CALENDAR SELECTOR GOES HERE
 			</div>
 			<div class="windowBlock">
-				<h3>Baseball</h3>
-				most frequently played
+				<div class="blockText">Tuesday</div>
+				<div class="blockText">August 12</div>
+				<div id="timeDisplay" class="blockText">2:00 PM</div>
+				<div class="blockDeet">Specify Date & Time</div>
 			</div>
+			<div class="windowBlock scheduler">
+				<select id="hourSelect" class="timeSelect">
+					<option value=""></option>
+					<option value="12">12</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+				</select>
+				<select id="minSelect" class="timeSelect">
+					<option value="00">00</option>
+					<option value="15">15</option>
+					<option value="30">30</option>
+					<option value="45">45</option>
+				</select>
+				<div id="amPmToggle">PM</div>
+			</div>
+		</section>
+	{% endblock %}
+
+	{% block thirdSection %}
+		<section class="window">
+			<div class="windowHeader">Game Location</div>
+			<div class="sideMap" id="mapCanvas"></div>
 			<div class="windowBlock">
-				<h3>July 16, 2014</h3>
-				next game
+				<div class="blockText"></div>
+				<div class="blockText"></div>
+				<div class="blockText"></div>
+				<div class="blockDeet">Specify Location</div>
 			</div>
 		</section>
 	{% endblock %}

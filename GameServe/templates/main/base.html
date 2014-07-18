@@ -10,6 +10,7 @@
 	<script src="{% static 'js/browse.js' %}"></script>
 	<script src="{% static 'js/header.js' %}"></script>
 	<link rel="shortcut icon" href="{% static 'assets/titleIconGS.gif' %}" type="image/gif"/>
+	{% block preReqs %}{% endblock %}
 </head>
 
 <body>
@@ -52,7 +53,10 @@
 		<section class="verticalPane">
 			
 			{% block mainPane %}{% endblock %}
+
 			{% block secondarySection %}{% endblock %}
+
+			{% block thirdSection %}{% endblock %}
 			
 		</section>
 	</section>

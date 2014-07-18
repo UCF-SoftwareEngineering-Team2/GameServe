@@ -128,13 +128,17 @@ body {
   width: 100%;
   height: 100%;
   z-index: 10;
+  -webkit-transition: 200ms ease;
+  -moz-transition: 200ms ease;
+  -ms-transition: 200ms ease;
+  -o-transition: 200ms ease;
   transition: 200ms ease; }
   #content.blurry {
-    -webkit-filter: blur(3px);
-    -moz-filter: blur(3px);
-    -o-filter: blur(3px);
-    -ms-filter: blur(3px);
-    filter: blur(3px); }
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -ms-filter: blur(2px);
+    -o-filter: blur(2px);
+    filter: blur(2px); }
   #content #fader {
     position: absolute;
     width: 100%;
@@ -157,6 +161,15 @@ header {
     padding: 15px 20px;
     float: right;
     margin-right: 10px;
+    -webkit-transition: 200ms ease-in-out;
+    -moz-transition: 200ms ease-in-out;
+    -ms-transition: 200ms ease-in-out;
+    -o-transition: 200ms ease-in-out;
+    transition: 200ms ease-in-out;
+    -webkit-transition: 200ms ease-in-out;
+    -moz-transition: 200ms ease-in-out;
+    -ms-transition: 200ms ease-in-out;
+    -o-transition: 200ms ease-in-out;
     transition: 200ms ease-in-out;
     text-align: center;
     cursor: pointer; }
@@ -173,6 +186,10 @@ header {
       margin-left: -20px;
       background: #6cab43;
       z-index: -1;
+      -webkit-transition: 200ms ease-in-out;
+      -moz-transition: 200ms ease-in-out;
+      -ms-transition: 200ms ease-in-out;
+      -o-transition: 200ms ease-in-out;
       transition: 200ms ease-in-out; }
       header .headerLink .linkSlider.active {
         opacity: 1;
@@ -234,6 +251,9 @@ header {
     .window .windowBlock:nth-child(2n+1) {
       width: 34%;
       background: #6cab43; }
+    .window .windowBlock.scheduler {
+      background: transparent;
+      color: #aaaaaa; }
     .window .windowBlock h5 {
       position: absolute;
       bottom: 20px;
@@ -252,15 +272,21 @@ header {
         position: absolute;
         bottom: 20px;
         margin: 0px; }
-  .window .bigMap {
-    position: relative;
-    clear: both;
-    height: 400px; }
 
 #mapCanvas {
   height: 400px;
   margin-top: 20px;
   overflow: hidden; }
+  #mapCanvas.bigMap {
+    position: relative;
+    clear: both;
+    height: 400px; }
+  #mapCanvas.sideMap {
+    position: relative;
+    margin-top: 0px;
+    float: left;
+    height: 200px;
+    width: 66%; }
 
 .userPhoto {
   position: relative;
@@ -293,7 +319,8 @@ header {
   cursor: pointer;
   background: #6cab43;
   border-radius: 50%;
-  color: #f7f7f7; }
+  color: #f7f7f7;
+  transition: 200ms; }
   .editPhoto:hover {
     opacity: .6;
     cursor: pointer; }
@@ -395,7 +422,11 @@ header {
   margin-top: -8px;
   margin-left: 10px;
   font-size: 12px;
-  transition: 200ms; }
+  -webkit-transition: 200ms ease;
+  -moz-transition: 200ms ease;
+  -ms-transition: 200ms ease;
+  -o-transition: 200ms ease;
+  transition: 200ms ease; }
 
 .commentSection {
   position: relative;
@@ -437,7 +468,11 @@ header {
   margin-top: -5px;
   width: 100px;
   background: #2e2d2c;
-  transition: 200ms; }
+  -webkit-transition: 200ms ease;
+  -moz-transition: 200ms ease;
+  -ms-transition: 200ms ease;
+  -o-transition: 200ms ease;
+  transition: 200ms ease; }
   #submitComment:hover {
     background: #6cab43; }
   #submitComment .icon-arrow-up {
@@ -475,7 +510,11 @@ header {
   color: #f7f7f7;
   padding-top: 65px;
   cursor: pointer;
-  transition: 200ms; }
+  -webkit-transition: 200ms ease;
+  -moz-transition: 200ms ease;
+  -ms-transition: 200ms ease;
+  -o-transition: 200ms ease;
+  transition: 200ms ease; }
   .filterButton:hover {
     background: #6cab43; }
   .filterButton.bottom {
@@ -496,7 +535,11 @@ header {
   margin: 5px;
   border-radius: 5px;
   text-align: center;
-  transition: 200ms;
+  -webkit-transition: 200ms ease;
+  -moz-transition: 200ms ease;
+  -ms-transition: 200ms ease;
+  -o-transition: 200ms ease;
+  transition: 200ms ease;
   cursor: pointer; }
   .gameButton:hover {
     background: rgba(108, 171, 67, 0.6);
@@ -516,6 +559,10 @@ header {
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2);
+  -webkit-transition: 500ms ease-in-out;
+  -moz-transition: 500ms ease-in-out;
+  -ms-transition: 500ms ease-in-out;
+  -o-transition: 500ms ease-in-out;
   transition: 500ms ease-in-out;
   z-index: 20; }
   #popupWindow.hidden {
@@ -564,7 +611,11 @@ header {
       padding: 10px;
       font-size: 15px;
       color: #cecece;
-      transition: 200ms; }
+      -webkit-transition: 200ms ease;
+      -moz-transition: 200ms ease;
+      -ms-transition: 200ms ease;
+      -o-transition: 200ms ease;
+      transition: 200ms ease; }
       #popupWindow .windowHeader .icon-close:hover {
         color: #6cab43; }
   #popupWindow .authButtonSection {
@@ -583,7 +634,11 @@ header {
       background: #2e2d2c;
       color: #f7f7f7;
       cursor: pointer;
-      transition: 200ms; }
+      -webkit-transition: 200ms ease;
+      -moz-transition: 200ms ease;
+      -ms-transition: 200ms ease;
+      -o-transition: 200ms ease;
+      transition: 200ms ease; }
       #popupWindow .authButtonSection .authButton:hover {
         background: #6cab43;
         color: #f7f7f7; }
@@ -595,3 +650,26 @@ header {
 h3, h2, h5 {
   margin: 5px 0px;
   font-family: 'sinkin_sans300_light'; }
+
+#amPmToggle {
+  position: relative;
+  height: 20px;
+  width: 25px;
+  padding: 5px;
+  background: #2e2d2c;
+  color: #f7f7f7;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 200ms; }
+  #amPmToggle:hover {
+    background: #6cab43; }
+
+.timeSelect {
+  position: relative;
+  height: 20px;
+  padding: 5px;
+  background: #2e2d2c;
+  border: none;
+  color: #f7f7f7;
+  border-radius: 5px;
+  cursor: pointer; }
