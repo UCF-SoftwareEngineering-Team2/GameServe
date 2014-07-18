@@ -41,17 +41,17 @@ $(document).ready(function() {
 		}
 	});	
 
-	$('#hourSelect').change(function() {
+	$('#startHourSelect').change(function() {
 		updateTime();
 	});
-	$('#minSelect').change(function() {
+	$('#startMinSelect').change(function() {
 		updateTime();
 	});
 	$('#amPmToggle').click(function() {
 		updateTime();
 	});
 	function updateTime() {
-		$('#timeDisplay').text($('#hourSelect').val() + ":" + $('#minSelect').val() + " " + $('#amPmToggle').text());
+		$('#timeDisplay').text($('#startHourSelect').val() + ":" + $('#startMinSelect').val() + " " + $('#amPmToggle').text());
 	}
 
 });

@@ -87,8 +87,9 @@
 				<div class="blockDeet">Specify Date & Time</div>
 			</div>
 			<div class="windowBlock scheduler">
-				<div id="timePicker">
-					<select id="hourSelect" class="timeSelect">
+				<div class="blockDeet scheduler">Game Start Time</div>
+				<div class="timePicker">
+					<select id="startHourSelect" class="timeSelect">
 						<option value=""></option>
 						<option value="12">12</option>
 						<option value="1">1</option>
@@ -103,7 +104,7 @@
 						<option value="10">10</option>
 						<option value="11">11</option>
 					</select>
-					<select id="minSelect" class="timeSelect">
+					<select id="startMinSelect" class="timeSelect">
 						<option value=""></option>
 						<option value="00">00</option>
 						<option value="15">15</option>
@@ -111,6 +112,28 @@
 						<option value="45">45</option>
 					</select>
 					<div id="amPmToggle">PM</div>
+				</div>
+				<div class="blockDeet scheduler">Game Duration</div>
+				<div class="timePicker duration">
+					<select id="durationHourSelect" class="timeSelect">
+						<option value=""></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+					</select>
+					<select id="durationMinSelect" class="timeSelect">
+						<option value=""></option>
+						<option value="00">00</option>
+						<option value="15">15</option>
+						<option value="30">30</option>
+						<option value="45">45</option>
+					</select>
+					<label for="durationHourSelected">hour(s)</label> 
+					<label for="durationMinSelected">mins</label> 
 				</div>
 			</div>
 		</section>

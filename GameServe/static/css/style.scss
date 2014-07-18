@@ -234,6 +234,7 @@ header {
 	height: 100%;
 	&.small {
 		width: 300px;
+		margin-left: 15px;
 	}
 }
 #logo {
@@ -316,6 +317,10 @@ header {
 				position: absolute;
 				bottom: 20px;
 				margin: 0px;
+			}
+			&.scheduler {
+				color: $meddark;
+				margin-bottom: 0px;
 			}
 		}
 	}
@@ -722,12 +727,14 @@ h3, h2, h5 {
 	margin: 5px 0px;
 	font-family: 'sinkin_sans300_light';
 }
-#timePicker {
-	position: absolute;
+.timePicker {
+	position: relative;
 	margin: 10px 25px;
 	height: 50px;
 	width: 100%;
-
+	&.duration {
+		margin-left: 45px;
+	}
 	#amPmToggle {
 		position: relative;
 		height: 20px;
@@ -759,6 +766,13 @@ h3, h2, h5 {
 		&:hover {
 			background: $green;
 		}
+	}
+	label {
+		position: relative;
+		top: 32px;
+		font-size: 10px;
+		left: -112px;
+		margin-left: 15px;
 	}
 }
 .commCheckPub {

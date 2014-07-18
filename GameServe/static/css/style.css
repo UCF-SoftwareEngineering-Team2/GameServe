@@ -201,7 +201,8 @@ header {
   width: 600px;
   height: 100%; }
   .verticalPane.small {
-    width: 300px; }
+    width: 300px;
+    margin-left: 15px; }
 
 #logo {
   position: relative;
@@ -272,6 +273,9 @@ header {
         position: absolute;
         bottom: 20px;
         margin: 0px; }
+      .window .windowBlock .blockDeet.scheduler {
+        color: #aaaaaa;
+        margin-bottom: 0px; }
 
 #mapCanvas {
   height: 400px;
@@ -651,12 +655,14 @@ h3, h2, h5 {
   margin: 5px 0px;
   font-family: 'sinkin_sans300_light'; }
 
-#timePicker {
-  position: absolute;
+.timePicker {
+  position: relative;
   margin: 10px 25px;
   height: 50px;
   width: 100%; }
-  #timePicker #amPmToggle {
+  .timePicker.duration {
+    margin-left: 45px; }
+  .timePicker #amPmToggle {
     position: relative;
     height: 20px;
     width: 25px;
@@ -667,9 +673,9 @@ h3, h2, h5 {
     border-radius: 5px;
     cursor: pointer;
     transition: 200ms; }
-    #timePicker #amPmToggle:hover {
+    .timePicker #amPmToggle:hover {
       background: #6cab43; }
-  #timePicker .timeSelect {
+  .timePicker .timeSelect {
     position: relative;
     height: 30px;
     padding: 5px;
@@ -682,8 +688,14 @@ h3, h2, h5 {
     border-radius: 5px;
     cursor: pointer;
     transition: 200ms; }
-    #timePicker .timeSelect:hover {
+    .timePicker .timeSelect:hover {
       background: #6cab43; }
+  .timePicker label {
+    position: relative;
+    top: 32px;
+    font-size: 10px;
+    left: -112px;
+    margin-left: 15px; }
 
 .commCheckPub {
   position: relative;
