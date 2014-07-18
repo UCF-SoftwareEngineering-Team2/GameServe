@@ -18,6 +18,20 @@
     - `runscript` allows python files located in scripts/ to run. Useful for scripts to add to DB etc
 
 
+## DB Query
+-------------------  
+- All courts  
+  `/api/v1/court/` 
+
+- Next scheduled events after 7-18-2014 2:44AM  
+  `/api/v1/event/?dateTime__gte=2014-7-18% 2:44`  
+
+- Next schedules events on court id 1    
+  `/api/v1/event/?dateTime__gte=2014-7-18 2:44&court=1`
+
+
+
+
 ## Notes
 -------------------
 
