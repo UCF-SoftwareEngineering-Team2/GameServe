@@ -14,10 +14,10 @@
                 <ul class="nav pull-right">
                     {% if user.is_authenticated %}
                         <li class="navbar-text">Welcome, {{ user.username }}!</li>
-                        <li><a href="/accounts/logout/">Logout</a></li>
+                        <li><a href="/profile/logout/">Logout</a></li>
                     {% else %}
-                        <li><a href="/accounts/register/">Register</a></li>
-                        <li><a href="/accounts/login/">Login</a></li>
+                        <li><a href="/profile/register/">Register</a></li>
+                        <li><a href="/profile/login/">Login</a></li>
                     {% endif %}
                 </ul>
                 <!-- <ul class="nav">
