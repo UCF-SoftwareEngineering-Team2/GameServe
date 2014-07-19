@@ -3,15 +3,15 @@ from django.template import RequestContext
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
-from accounts.forms import UserForm
-from accounts.models import User
+from profile.forms import UserForm
+from profile.models import User
 
 
 # TODO: Do something else here or get rid of it
 def index(request):
   context = RequestContext(request)
   context_dict = {}
-  return render_to_response('accounts/index.html', context_dict, context)
+  return render_to_response('profile/index.html', context_dict, context)
 
 
 def user_login(request):
@@ -64,7 +64,7 @@ def user_login(request):
     else:
         # No context variables to pass to the template system, hence the
         # blank dictionary object...
-        return render_to_response('accounts/login.html', context )
+        return render_to_response('profile/login.html', context )
 
 
 def register(request):
@@ -119,7 +119,7 @@ def register(request):
     # TODO: Send email verification
     # Render the template depending on the context.
     return render_to_response(
-            'accounts/register.html',
+            'profile/register.html',
             {'user_form': user_form, 'registered': registered},
             context)
 

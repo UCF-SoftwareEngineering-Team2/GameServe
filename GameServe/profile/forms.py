@@ -1,6 +1,6 @@
-from accounts.models import User
+from profile.models import User
 from django import forms
-from accounts.validator import validate_email_unique
+from profile.validator import validate_email_unique
 
 
 

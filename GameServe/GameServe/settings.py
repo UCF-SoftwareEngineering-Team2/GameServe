@@ -46,7 +46,7 @@ INSTALLED_APPS = (
     'django_extensions',            # Allows ./manage runscript addDB
     'django_pdb',                   # Debugging ./manage.py runserver --ipdb
     'tastypie',                     # json REST calls
-    'accounts',                     # User account models
+    'profile',                     # User account models
     'events',
     'main',
 )
@@ -142,5 +142,5 @@ STATICFILES_DIRS = (os.path.join(PROJECT_PATH,'static'),)
 
 #########################################################################################
 # Template Files#########################################################################################
-AUTH_USER_MODEL = 'accounts.User'
+AUTH_USER_MODEL = 'profile.User'
 TEMPLATE_DIRS = (os.path.join(PROJECT_PATH, 'templates'),)
