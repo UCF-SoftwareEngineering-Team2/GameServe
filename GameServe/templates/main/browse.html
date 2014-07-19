@@ -1,0 +1,237 @@
+{% extends "main/base.html" %}
+{% load static %}
+	{% block browseLink%}active{% endblock %}
+	{% block topLeftPaneTitle %}Filter Results{% endblock %}
+	{% block topLeftPaneContent %}
+		<!-- 
+		{% for gameType in gameTable %}
+			<div class="gameSelection">{{gameType.name}}</div> 
+		{% endfor %}
+		-->
+		<div class="filterSection vert">
+			<div class="gameButton gameType">Baseball</div>
+			<div class="gameButton gameType">Basketball</div>
+			<div class="gameButton gameType">Biking</div>
+			<div class="gameButton gameType">Football</div>
+			<div class="gameButton gameType">Ping-Pong</div>
+			<div class="gameButton gameType">Racquetball</div>
+			<div class="gameButton gameType">Running</div>
+			<div class="gameButton gameType">Soccer</div>
+			<div class="gameButton gameType">Volleyball</div>
+		</div>
+		<div class="filterSection vert">
+			<div id="selectAll" class="gameButton">Select All</div>
+			<div id="clearAll" class="gameButton">Clear All</div>
+		</div>		
+		<div class="filterButton bottom">Go</div>
+	{% endblock %}
+
+	{% block bottomLeftPane %}
+		<aside class="window side" id="mapCanvas"></aside>
+	{% endblock %}
+
+	{% block mainPane %}
+		<section class="window">
+			<div class="windowHeader">Games</div>
+		<!-- Fill in with filtered games from the database -->
+			<div class="listItem">
+				<div class="listImg">
+					<div class="icon-volleyball"></div>
+				</div>
+				<div class="browseGameInfo">
+					<div class="infoBlock">
+						<div class="infoText">Today</div>
+						<div class="infoText">1:45 p.m. (45 mins)</div>
+					</div>
+					<div class="infoBlock">
+						<div class="infoText"></div>
+						<div class="infoText">11 people committed</div>
+					</div>
+					<div class="heatImg">
+						<div class="icon-heatRep"></div>
+					</div>
+				</div>
+			</div>
+			<div class="listItem">
+				<div class="listImg">
+					<div class="icon-running"></div>
+				</div>
+				<div class="browseGameInfo">
+					<div class="infoBlock">	
+						<div class="infoText">Today</div>
+						<div class="infoText">2:30 p.m. (1.5 hours)</div>
+					</div>
+					<div class="infoBlock">
+						<div class="infoText"></div>
+						<div class="infoText">14 people committed</div>
+					</div>
+					<div class="heatImg hot">
+						<div class="icon-heatRep"></div>
+					</div>
+				</div>
+			</div>
+			<div class="listItem">
+				<div class="listImg">
+					<div class="icon-tennis"></div>
+				</div>
+				<div class="browseGameInfo">
+					<div class="infoBlock">
+						<div class="infoText">Today</div>
+						<div class="infoText">5:00 p.m. (4 hours)</div>
+					</div>
+					<div class="infoBlock">
+						<div class="infoText"></div>
+						<div class="infoText">8 people committed</div>
+						</div>
+					<div class="heatImg">
+						<div class="icon-heatRep"></div>
+					</div>
+				</div>
+			</div>
+			<div class="listItem">
+				<div class="listImg">
+					<div class="icon-soccer"></div>
+				</div>
+				<div class="browseGameInfo">
+					<div class="infoBlock">
+						<div class="infoText">Tomorrow</div>
+						<div class="infoText">12:30 p.m.</div>
+					</div>
+					<div class="infoBlock">
+						<div class="infoText"></div>
+						<div class="infoText">10 people committed</div>
+					</div>
+					<div class="heatImg hot">
+						<div class="icon-heatRep"></div>
+					</div>
+
+				</div>
+			</div>
+			<div class="listItem">
+				<div class="listImg">
+					<div class="icon-baseball"></div>
+				</div>
+				<div class="browseGameInfo">
+					<div class="infoBlock">
+						<div class="infoText">Tomorrow</div>
+						<div class="infoText">6:30 p.m.</div>
+					</div>
+					<div class="infoBlock">
+						<div class="infoText"></div>
+						<div class="infoText">6 people committed</div>
+					</div>
+					<div class="heatImg">
+						<div class="icon-heatRep"></div>
+					</div>
+				</div>
+			</div>
+			<div class="listItem">
+				<div class="listImg">
+					<div class="icon-biking"></div>
+				</div>
+				<div class="browseGameInfo">
+					<div class="infoBlock">
+						<div class="infoText">June 2 (3 days)</div>
+						<div class="infoText">5:00 p.m.</div>
+					</div>
+					<div class="infoBlock">
+						<div class="infoText"></div>
+						<div class="infoText">5 people committed</div>
+						</div>
+					<div class="heatImg">
+						<div class="icon-heatRep"></div>
+					</div>
+				</div>
+			</div>
+			<div class="listItem">
+				<div class="listImg">
+					<div class="icon-volleyball"></div>
+				</div>
+				<div class="browseGameInfo">
+					<div class="infoBlock">
+						<div class="infoText">June 3 (4 days)</div>
+						<div class="infoText">1:00 p.m.</div>
+					</div>
+					<div class="infoBlock">
+						<div class="infoText"></div>
+						<div class="infoText">6 people committed</div>
+						</div>
+					<div class="heatImg">
+						<div class="icon-heatRep"></div>
+					</div>
+				</div>
+			</div>
+			<div class="listItem">
+				<div class="listImg">
+					<div class="icon-football"></div>
+				</div>
+				<div class="browseGameInfo">
+					<div class="infoBlock">
+						<div class="infoText">June 5 (6 days)</div>
+						<div class="infoText">11:00 a.m.</div>
+					</div>
+					<div class="infoBlock">
+						<div class="infoText"></div>
+						<div class="infoText">3 people committed</div>
+						</div>
+					<div class="heatImg">
+						<div class="icon-heatRep"></div>
+					</div>
+				</div>
+			</div>
+			<div class="listItem">
+				<div class="listImg">
+					<div class="icon-pingPong"></div>
+				</div>
+				<div class="browseGameInfo">
+					<div class="infoBlock">
+						<div class="infoText">June 5 (6 days)</div>
+						<div class="infoText">8:00 p.m.</div>
+					</div>
+					<div class="infoBlock">
+						<div class="infoText"></div>
+						<div class="infoText">2 people committed</div>
+						</div>
+					<div class="heatImg">
+						<div class="icon-heatRep"></div>
+					</div>
+				</div>
+			</div>
+			<div class="listItem">
+				<div class="listImg">
+					<div class="icon-biking"></div>
+				</div>
+				<div class="browseGameInfo">
+					<div class="infoBlock">
+						<div class="infoText">June 6 (7 days)</div>
+						<div class="infoText">5:00 p.m.</div>
+					</div>
+					<div class="infoBlock">
+						<div class="infoText"></div>
+						<div class="infoText">5 people committed</div>
+						</div>
+					<div class="heatImg">
+						<div class="icon-heatRep"></div>
+					</div>
+				</div>
+			</div>
+			<div class="listItem">
+				<div class="listImg">
+					<div class="icon-racquetball"></div>
+				</div>
+				<div class="browseGameInfo">
+					<div class="infoBlock">
+						<div class="infoText">June 8 (9 days)</div>
+						<div class="infoText">7:30 p.m.</div>
+					</div>
+					<div class="infoBlock">
+						<div class="infoText"></div>
+						<div class="infoText">3 people committed</div>
+						</div>
+					<div class="heatImg">
+						<div class="icon-heatRep"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+	{% endblock %}

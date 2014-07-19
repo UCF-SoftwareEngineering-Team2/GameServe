@@ -1,0 +1,714 @@
+@font-face {
+  font-family: 'sinkin_sans300_light_italic';
+  src: url("../assets/fonts/sinkinsans-300lightitalic-webfont.eot");
+  src: url("../assets/fonts/sinkinsans-300lightitalic-webfont.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/sinkinsans-300lightitalic-webfont.woff") format("woff"), url("../assets/fonts/sinkinsans-300lightitalic-webfont.ttf") format("truetype"), url("../assets/fonts/sinkinsans-300lightitalic-webfont.svg#sinkin_sans300_light_italic") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'sinkin_sans300_light';
+  src: url("../assets/fonts/sinkinsans-300light-webfont.eot");
+  src: url("../assets/fonts/sinkinsans-300light-webfont.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/sinkinsans-300light-webfont.woff") format("woff"), url("../assets/fonts/sinkinsans-300light-webfont.ttf") format("truetype"), url("../assets/fonts/sinkinsans-300light-webfont.svg#sinkin_sans300_light") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'kenyan_coffeeregular';
+  src: url("../assets/fonts/kenyan_coffee_rg.eot");
+  src: url("../assets/fonts/kenyan_coffee_rg.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/kenyan_coffee_rg.woff") format("woff"), url("../assets/fonts/kenyan_coffee_rg.ttf") format("truetype"), url("../assets/fonts/kenyan_coffee_rg.svg#kenyan_coffeeregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'kenyan_coffeeitalic';
+  src: url("../assets/fonts/kenyan_coffee_rg_it.eot");
+  src: url("../assets/fonts/kenyan_coffee_rg_it.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/kenyan_coffee_rg_it.woff") format("woff"), url("../assets/fonts/kenyan_coffee_rg_it.ttf") format("truetype"), url("../assets/fonts/kenyan_coffee_rg_it.svg#kenyan_coffeeitalic") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'icomoon';
+  src: url("../assets/sportIcons/icomoon.eot?-y1ycr0");
+  src: url("../assets/sportIcons/icomoon.eot?#iefix-y1ycr0") format("embedded-opentype"), url("../assets/sportIcons/icomoon.woff?-y1ycr0") format("woff"), url("../assets/sportIcons/icomoon.ttf?-y1ycr0") format("truetype"), url("../assets/sportIcons/icomoon.svg?-y1ycr0#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.largeIcon {
+  font-size: 75px;
+  width: 75px;
+  margin: 10px auto; }
+  .largeIcon.left {
+    float: left; }
+
+.icon-heatRep:before {
+  content: "\e60d"; }
+
+.icon-baseball:before {
+  content: "\e600"; }
+
+.icon-basketball:before {
+  content: "\e601"; }
+
+.icon-biking:before {
+  content: "\e602"; }
+
+.icon-checkedIn:before {
+  content: "\e603"; }
+
+.icon-comments:before {
+  content: "\e604"; }
+
+.icon-committed:before {
+  content: "\e605"; }
+
+.icon-football:before {
+  content: "\e606"; }
+
+.icon-pingPong:before {
+  content: "\e607"; }
+
+.icon-racquetball:before {
+  content: "\e608"; }
+
+.icon-running:before {
+  content: "\e609"; }
+
+.icon-soccer:before {
+  content: "\e60a"; }
+
+.icon-tennis:before {
+  content: "\e60b"; }
+
+.icon-volleyball:before {
+  content: "\e60c"; }
+
+.icon-expand:before {
+  content: "\e60e"; }
+
+.icon-contract:before {
+  content: "\e60f"; }
+
+.icon-close:before {
+  content: "\e610"; }
+
+.icon-checkmark:before {
+  content: "\e611"; }
+
+.icon-minus:before {
+  content: "\e612"; }
+
+.icon-plus:before {
+  content: "\e613"; }
+
+.icon-arrow-up:before {
+  content: "\e614"; }
+
+body {
+  background: #cecece;
+  font-family: 'sinkin_sans300_light';
+  margin: 0px;
+  padding: 0px; }
+
+.center {
+  margin: auto;
+  width: 1000px;
+  height: 100%; }
+  .center.head {
+    width: 870px; }
+
+#content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  -webkit-transition: 200ms ease;
+  -moz-transition: 200ms ease;
+  -ms-transition: 200ms ease;
+  -o-transition: 200ms ease;
+  transition: 200ms ease; }
+  #content.blurry {
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -ms-filter: blur(2px);
+    -o-filter: blur(2px);
+    filter: blur(2px); }
+  #content #fader {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none; }
+
+header {
+  position: fixed;
+  height: 57px;
+  width: 100%;
+  background: #f7f7f7;
+  z-index: 100;
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1); }
+  header .headerLink {
+    position: relative;
+    height: 57px;
+    padding: 15px 20px;
+    float: right;
+    margin-right: 10px;
+    -webkit-transition: 200ms ease-in-out;
+    -moz-transition: 200ms ease-in-out;
+    -ms-transition: 200ms ease-in-out;
+    -o-transition: 200ms ease-in-out;
+    transition: 200ms ease-in-out;
+    -webkit-transition: 200ms ease-in-out;
+    -moz-transition: 200ms ease-in-out;
+    -ms-transition: 200ms ease-in-out;
+    -o-transition: 200ms ease-in-out;
+    transition: 200ms ease-in-out;
+    text-align: center;
+    cursor: pointer; }
+    header .headerLink:hover {
+      color: #f7f7f7; }
+    header .headerLink:hover > .linkSlider {
+      opacity: 1;
+      top: 0px; }
+    header .headerLink .linkSlider {
+      position: absolute;
+      width: 100%;
+      height: 57px;
+      top: -90px;
+      margin-left: -20px;
+      background: #6cab43;
+      z-index: -1;
+      -webkit-transition: 200ms ease-in-out;
+      -moz-transition: 200ms ease-in-out;
+      -ms-transition: 200ms ease-in-out;
+      -o-transition: 200ms ease-in-out;
+      transition: 200ms ease-in-out; }
+      header .headerLink .linkSlider.active {
+        opacity: 1;
+        top: 0px; }
+
+.verticalPane {
+  position: relative;
+  float: left;
+  width: 600px;
+  height: 100%; }
+  .verticalPane.small {
+    width: 300px;
+    margin-left: 15px; }
+
+#logo {
+  position: relative;
+  width: 170px; }
+
+.window {
+  background: #f7f7f7;
+  position: relative;
+  float: left;
+  margin: 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+  min-height: 200px;
+  width: 600px;
+  overflow: hidden;
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1); }
+  .window.side {
+    width: 250px; }
+  .window:first-child {
+    margin-top: 85px; }
+  .window .windowHeader {
+    position: relative;
+    top: 0px;
+    padding: 5px 10px;
+    color: #2e2d2c;
+    background: #cecece;
+    width: 100%;
+    height: 30px; }
+    .window .windowHeader.large {
+      color: #2e2d2c;
+      background: #f7f7f7;
+      height: 180px; }
+    .window .windowHeader.medium {
+      color: #2e2d2c;
+      background: #f7f7f7;
+      height: 100px; }
+  .window .windowBlock {
+    position: relative;
+    float: left;
+    width: 33%;
+    height: 180px;
+    text-align: center;
+    background: #2e2d2c;
+    color: #f7f7f7;
+    padding-top: 20px;
+    font-size: 14px; }
+    .window .windowBlock:nth-child(2n+1) {
+      width: 34%;
+      background: #6cab43; }
+    .window .windowBlock.scheduler {
+      background: transparent;
+      color: #aaaaaa; }
+    .window .windowBlock h5 {
+      position: absolute;
+      bottom: 20px;
+      width: 100%; }
+    .window .windowBlock .blockText {
+      position: relative;
+      font-size: 26px;
+      color: #f7f7f7; }
+    .window .windowBlock .blockDeet {
+      position: relative;
+      font-size: 12px;
+      width: 100%;
+      color: #f7f7f7;
+      margin-bottom: 40px; }
+      .window .windowBlock .blockDeet:last-child {
+        position: absolute;
+        bottom: 20px;
+        margin: 0px; }
+      .window .windowBlock .blockDeet.scheduler {
+        color: #aaaaaa;
+        margin-bottom: 0px; }
+
+#mapCanvas {
+  height: 400px;
+  margin-top: 20px;
+  overflow: hidden; }
+  #mapCanvas.bigMap {
+    position: relative;
+    clear: both;
+    height: 400px; }
+  #mapCanvas.sideMap {
+    position: relative;
+    margin-top: 0px;
+    float: left;
+    height: 200px;
+    width: 66%; }
+
+.userPhoto {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin: 0px 10px;
+  border-radius: 50%;
+  pointer-events: none; }
+  .userPhoto.large {
+    margin: 10px;
+    border: 5px solid #f7f7f7;
+    height: 150px;
+    width: 150px;
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1);
+    pointer-events: all; }
+    .userPhoto.large:hover + .editPhoto {
+      opacity: .6;
+      cursor: pointer; }
+
+.editPhoto {
+  opacity: 0;
+  position: absolute;
+  text-align: center;
+  vertical-align: middle;
+  top: 45px;
+  left: 50px;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  background: #6cab43;
+  border-radius: 50%;
+  color: #f7f7f7;
+  transition: 200ms; }
+  .editPhoto:hover {
+    opacity: .6;
+    cursor: pointer; }
+
+.listImg {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  font-size: 50px;
+  float: left;
+  margin: 0px 10px;
+  color: #aaaaaa; }
+  .listImg.green {
+    color: #6cab43; }
+
+.heatImg {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin-right: 20px;
+  font-size: 50px;
+  color: #aaaaaa; }
+  .heatImg.hot {
+    color: #6cab43; }
+
+.browseGameInfo {
+  position: relative;
+  height: 100%;
+  float: left;
+  color: #aaaaaa;
+  font-size: 12px;
+  cursor: pointer; }
+  .browseGameInfo .infoBlock {
+    position: relative;
+    float: left;
+    margin: 0px 20px;
+    width: 180px; }
+  .browseGameInfo .infoText {
+    position: relative;
+    margin-right: 5px;
+    margin-top: 5px;
+    float: left;
+    clear: both; }
+
+.staticListItem {
+  position: relative;
+  width: calc(100% - 20px);
+  padding: 5px 10px;
+  border-top: 1px solid #cecece;
+  overflow: hidden;
+  cursor: pointer; }
+
+.listItem {
+  position: relative;
+  width: calc(100% - 20px);
+  padding: 5px 10px;
+  border-top: 1px solid #cecece;
+  overflow: hidden;
+  cursor: pointer; }
+  .listItem:hover {
+    background: #6cab43;
+    color: #f7f7f7; }
+  .listItem:hover > .recentInfo {
+    color: #f7f7f7; }
+  .listItem:hover > .browseGameInfo {
+    color: #f7f7f7; }
+    .listItem:hover > .browseGameInfo .heatImg {
+      color: rgba(247, 247, 247, 0.7); }
+      .listItem:hover > .browseGameInfo .heatImg.hot {
+        color: #f7f7f7; }
+  .listItem:hover > .listImg {
+    color: #f7f7f7; }
+  .listItem:hover > .statType {
+    color: #f7f7f7; }
+  .listItem:hover > .statNum {
+    color: #f7f7f7; }
+
+.recentInfo {
+  position: relative;
+  width: 150px;
+  height: 100%;
+  float: right;
+  color: #aaaaaa;
+  font-size: 12px; }
+
+.statNum {
+  color: #6cab43;
+  float: left;
+  font-size: 26px;
+  margin-left: 10px; }
+
+.statType {
+  position: relative;
+  width: 150px;
+  height: 100%;
+  float: left;
+  color: #aaaaaa;
+  margin-top: -8px;
+  margin-left: 10px;
+  font-size: 12px;
+  -webkit-transition: 200ms ease;
+  -moz-transition: 200ms ease;
+  -ms-transition: 200ms ease;
+  -o-transition: 200ms ease;
+  transition: 200ms ease; }
+
+.commentSection {
+  position: relative;
+  width: calc(100% - 70px);
+  height: 100%;
+  float: left;
+  color: #aaaaaa;
+  font-size: 12px;
+  min-height: 60px; }
+  .commentSection.create {
+    height: 90px;
+    width: 420px; }
+  .commentSection .comment {
+    position: absolute;
+    width: 400px;
+    font-size: 12px;
+    color: #aaaaaa; }
+  .commentSection .deltaTime {
+    position: absolute;
+    right: 10px;
+    bottom: 0px;
+    height: 20px;
+    font-size: 12px;
+    color: #cecece; }
+  .commentSection #commentInput {
+    position: absolute;
+    height: 80px;
+    width: 400px;
+    border: none;
+    box-shadow: inset 0 0 2px 2px #cecece;
+    font-family: 'sinkin_sans300_light';
+    border-radius: 5px;
+    padding: 3px 5px; }
+
+#submitComment {
+  position: absolute;
+  right: 0px;
+  height: 100%;
+  margin-top: -5px;
+  width: 100px;
+  background: #2e2d2c;
+  -webkit-transition: 200ms ease;
+  -moz-transition: 200ms ease;
+  -ms-transition: 200ms ease;
+  -o-transition: 200ms ease;
+  transition: 200ms ease; }
+  #submitComment:hover {
+    background: #6cab43; }
+  #submitComment .icon-arrow-up {
+    font-size: 30px;
+    color: #f7f7f7;
+    margin-top: 30px;
+    width: 100%;
+    text-align: center; }
+
+.filterSection {
+  position: relative;
+  float: left;
+  width: 360px;
+  height: auto;
+  padding: 10px 0px 0px 5px;
+  display: block;
+  margin: auto;
+  padding-bottom: 0px; }
+  .filterSection.side {
+    width: 140px; }
+  .filterSection.vert {
+    width: 100%;
+    height: auto; }
+    .filterSection.vert:nth-child(2n+1) {
+      padding-top: 0px;
+      margin-bottom: 45px; }
+
+.filterButton {
+  position: absolute;
+  right: 0px;
+  height: 100%;
+  width: 60px;
+  background: #2e2d2c;
+  text-align: center;
+  color: #f7f7f7;
+  padding-top: 65px;
+  cursor: pointer;
+  -webkit-transition: 200ms ease;
+  -moz-transition: 200ms ease;
+  -ms-transition: 200ms ease;
+  -o-transition: 200ms ease;
+  transition: 200ms ease; }
+  .filterButton:hover {
+    background: #6cab43; }
+  .filterButton.bottom {
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 30px;
+    padding-top: 10px; }
+
+.gameButton {
+  position: relative;
+  width: 100px;
+  height: 20px;
+  float: left;
+  font-size: 12px;
+  padding: 3px 5px;
+  color: #aaaaaa;
+  margin: 5px;
+  border-radius: 5px;
+  text-align: center;
+  -webkit-transition: 200ms ease;
+  -moz-transition: 200ms ease;
+  -ms-transition: 200ms ease;
+  -o-transition: 200ms ease;
+  transition: 200ms ease;
+  cursor: pointer; }
+  .gameButton:hover {
+    background: rgba(108, 171, 67, 0.6);
+    color: #f7f7f7; }
+  .gameButton.selected {
+    background: #6cab43;
+    color: #f7f7f7; }
+
+#popupWindow {
+  opacity: 1;
+  position: fixed;
+  top: 100px;
+  right: 200px;
+  width: 400px;
+  height: 300px;
+  background: #f7f7f7;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2);
+  -webkit-transition: 500ms ease-in-out;
+  -moz-transition: 500ms ease-in-out;
+  -ms-transition: 500ms ease-in-out;
+  -o-transition: 500ms ease-in-out;
+  transition: 500ms ease-in-out;
+  z-index: 20; }
+  #popupWindow.hidden {
+    display: none; }
+  #popupWindow.expand {
+    height: 610px; }
+  #popupWindow #existingMember {
+    padding: 10px; }
+    #popupWindow #existingMember.hidden {
+      display: none; }
+    #popupWindow #existingMember h5 {
+      margin: 0px; }
+  #popupWindow #newMember {
+    padding: 10px; }
+    #popupWindow #newMember.hidden {
+      display: none; }
+    #popupWindow #newMember h5 {
+      margin: 0px; }
+  #popupWindow .loginField {
+    position: relative;
+    width: 250px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    padding: 3px 5px;
+    margin-bottom: 20px;
+    font-size: 15px;
+    color: #6cab43;
+    font-family: 'sinkin_sans300_light';
+    clear: both;
+    box-shadow: inset 0 0 2px 2px #cecece; }
+    #popupWindow .loginField:last-child {
+      margin-bottom: 45px; }
+  #popupWindow .windowHeader {
+    position: relative;
+    top: 0px;
+    padding: 5px 10px;
+    background: #f7f7f7;
+    color: #aaaaaa;
+    width: calc(100% - 20px);
+    height: 30px; }
+    #popupWindow .windowHeader .icon-close {
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      padding: 10px;
+      font-size: 15px;
+      color: #cecece;
+      -webkit-transition: 200ms ease;
+      -moz-transition: 200ms ease;
+      -ms-transition: 200ms ease;
+      -o-transition: 200ms ease;
+      transition: 200ms ease; }
+      #popupWindow .windowHeader .icon-close:hover {
+        color: #6cab43; }
+  #popupWindow .authButtonSection {
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    bottom: 0px;
+    margin-top: 20px; }
+    #popupWindow .authButtonSection .authButton {
+      position: relative;
+      width: 50%;
+      height: 100%;
+      padding-top: 6px;
+      float: left;
+      text-align: center;
+      background: #2e2d2c;
+      color: #f7f7f7;
+      cursor: pointer;
+      -webkit-transition: 200ms ease;
+      -moz-transition: 200ms ease;
+      -ms-transition: 200ms ease;
+      -o-transition: 200ms ease;
+      transition: 200ms ease; }
+      #popupWindow .authButtonSection .authButton:hover {
+        background: #6cab43;
+        color: #f7f7f7; }
+
+.headerDeets {
+  position: relative;
+  float: left; }
+
+h3, h2, h5 {
+  margin: 5px 0px;
+  font-family: 'sinkin_sans300_light'; }
+
+.timePicker {
+  position: relative;
+  margin: 10px 25px;
+  height: 50px;
+  width: 100%; }
+  .timePicker.duration {
+    margin-left: 45px; }
+  .timePicker #amPmToggle {
+    position: relative;
+    height: 20px;
+    width: 25px;
+    padding: 5px;
+    background: #2e2d2c;
+    float: left;
+    color: #f7f7f7;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 200ms; }
+    .timePicker #amPmToggle:hover {
+      background: #6cab43; }
+  .timePicker .timeSelect {
+    position: relative;
+    height: 30px;
+    padding: 5px;
+    font-family: 'sinkin_sans300_light';
+    font-size: 14px;
+    float: left;
+    background: #2e2d2c;
+    border: none;
+    color: #f7f7f7;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 200ms; }
+    .timePicker .timeSelect:hover {
+      background: #6cab43; }
+  .timePicker label {
+    position: relative;
+    top: 32px;
+    font-size: 10px;
+    left: -112px;
+    margin-left: 15px; }
+
+.commCheckPub {
+  position: relative;
+  width: 250px;
+  height: 50px;
+  border-radius: 5px;
+  margin: 20px;
+  background: #2e2d2c;
+  padding-top: 20px;
+  text-align: center;
+  color: #f7f7f7;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1); }
+  .commCheckPub:hover {
+    background: #6cab43; }

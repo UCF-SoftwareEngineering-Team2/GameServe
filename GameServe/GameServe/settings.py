@@ -13,9 +13,9 @@ import os
 #########################################################################################
 #                               Project Paths
 #########################################################################################
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SETTINGS_DIR = os.path.abspath(os.path.dirname(__file__))
-PROJECT_PATH = os.path.abspath(os.path.join(SETTINGS_DIR, os.pardir))
-BASE_DIR = PROJECT_PATH
+PROJECT_PATH = os.path.join(SETTINGS_DIR, os.pardir)
 
 
 #########################################################################################
@@ -48,6 +48,7 @@ INSTALLED_APPS = (
     'tastypie',                     # json REST calls
     'accounts',                     # User account models
     'events',
+    'main',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -72,22 +73,25 @@ WSGI_APPLICATION = 'GameServe.wsgi.application'
 #                              Database Configuration
 #               https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 #########################################################################################
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'dbsql',
-        'USER': 'admin',
-        'PASSWORD': 'admin',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+"""
+    Mysql config
+"""
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'dbsql',
+#         'USER': 'admin',
+#         'PASSWORD': 'admin',
+#         'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+#         'PORT': '3306',
+#     }
+# }
 
 
 
@@ -121,6 +125,7 @@ USE_TZ = False
 # Info: For each application, by default django searches static files in myApp/static/
 #########################################################################################
 STATIC_URL = '/static/'
+STATIC_ROOT = 'staticfiles'
 
 # File Storage engine to use for ./manage.py collectstatic
 STATICFILES_STORAGE='django.contrib.staticfiles.storage.StaticFilesStorage'
@@ -136,7 +141,6 @@ STATICFILES_DIRS = (os.path.join(PROJECT_PATH,'static'),)
 
 
 #########################################################################################
-#                               Template Files
-#########################################################################################
+#                               Template Files#########################################################################################
 AUTH_PROFILE_MODULE = 'accounts.User'
 TEMPLATE_DIRS = (os.path.join(PROJECT_PATH, 'templates'),)
