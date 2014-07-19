@@ -142,5 +142,5 @@ STATICFILES_DIRS = (os.path.join(PROJECT_PATH,'static'),)
 
 #########################################################################################
 #                               Template Files#########################################################################################
-AUTH_PROFILE_MODULE = 'accounts.User'
+AUTH_USER_MODEL = 'accounts.User'
 TEMPLATE_DIRS = (os.path.join(PROJECT_PATH, 'templates'),)

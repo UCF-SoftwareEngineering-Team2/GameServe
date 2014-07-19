@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
 from accounts.forms import UserForm
-
+from accounts.models import User
 
 
 # TODO: Do something else here or get rid of it
@@ -30,6 +30,13 @@ def user_login(request):
         username = request.POST['username']
         password = request.POST['password']
 
+        if ( '@' not in username ):
+            try:
+                chk = User.objects.get(username = username )
+                username = authenticate(email=chk.email, password=password)
+            except:
+                pass 
+
         # Use Django's machinery to attempt to see if the username/password
         # combination is valid - a User object is returned if it is.
         user = authenticate(username=username, password=password)
@@ -49,8 +56,8 @@ def user_login(request):
                 return HttpResponse("Your account is disabled.")
         else:
             # Bad login details were provided. So we can't log the user in.
-            print "Invalid login details: {0}, {1}".format(username, password)
-            return HttpResponse("Invalid login details supplied.")
+            return HttpResponse("Invalid login details: {0}, {1}".format(username, password) )
+            
 
     # The request is not a HTTP POST, so display the login form.
     # This scenario would most likely be a HTTP GET.
