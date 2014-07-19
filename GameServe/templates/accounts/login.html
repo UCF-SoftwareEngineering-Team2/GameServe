@@ -11,6 +11,7 @@
     {% include "socialaccount/snippets/login_extra.html" %}
     <div class="inset">
         <div class="header">Or sign in directly</div>
+        
         <form class="login" method="POST" action="{% url 'account_login' %}">
           {% csrf_token %}
             {{ form.non_field_errors }}

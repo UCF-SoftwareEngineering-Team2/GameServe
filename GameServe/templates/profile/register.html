@@ -21,35 +21,21 @@
 
 
 
-        <form role="form" id="user_form" method="post" action="/profile/register/"
-                enctype="multipart/form-data" >
-
-            {% csrf_token %}
-
-            <!-- Display each form. The as_p method wraps each element in a paragraph
-                 (<p>) element. This ensures each element appears on a new line,
-                 making everything look neater. -->
-            <div class="form-group">
-                {{ user_form.username.errors }}    
-                <label for="username" class="col-sm-2 control-label">Username:</label>
-                {{ user_form.username }}    
-            </div>
-            <div class="form-group">
-                {{ user_form.password.errors }} 
-                <label for="password" class="col-sm-2 control-label">Password:</label>   
-                {{ user_form.password}} 
-            </div>
-            <div class="form-group">
-                {{ user_form.email.errors }}    
-                <label for="email" class="col-sm-2 control-label">Email:</label>   
-                {{ user_form.email}}    
-            </div>
-
-            <div class="form-group">
-                <button type="submit" name="submit" value="Register" class="btn btn-primary">Submit</button>
-            </div>
-            <!-- Provide a button to click to submit the form. -->
-
+        <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+          {% csrf_token %}
+            {{ form.non_field_errors }}
+            {{ form.username }} {{ form.username.errors }}
+            <br>
+            {{ form.password1 }} {{ form.password1.errors }}
+            <br>
+            {{ form.password2 }} {{ form.password2.errors }}
+            <br>
+            <input id="id_email" name="email" type="email" placeholder="email@address.com"> {{ form.email.errors }}
+            <br><br>
+          {% if redirect_field_value %}
+          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+          {% endif %}
+          <button class="btn" type="submit">Sign Up &raquo;</button>
         </form>
         {% endif %}
     </body>

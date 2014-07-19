@@ -21,7 +21,6 @@ from django.shortcuts import render
 # from main.models import Main
 
 def index(request):
-    # latest_poll_list = Poll.objects.all().order_by('-pub_date')[:5]
     return render(request, 'main/index.html')
 
 def browse(request):
