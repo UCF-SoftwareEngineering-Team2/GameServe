@@ -16,6 +16,8 @@ urlpatterns = patterns('',
     url(r'^$', include('main.urls'), name='main'),
     url(r'^api/', include(v1_api.urls)),
     
+    url(r'^accounts/', include('allauth.urls')),
+    
     url(r'^profile/', include('profile.urls'), name='profile'),
     url(r'^events/', include('events.urls'), name='events'),
     url(r'^admin/', include(admin.site.urls)),

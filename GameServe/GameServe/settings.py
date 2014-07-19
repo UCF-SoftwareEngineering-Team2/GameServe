@@ -43,9 +43,22 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+
+    # Debug Tools
     'django_extensions',            # Allows ./manage runscript addDB
     'django_pdb',                   # Debugging ./manage.py runserver --ipdb
+
+    # APIs
     'tastypie',                     # json REST calls
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    "sendgrid",     
+
+
+    # Project-specifics
     'profile',                     # User account models
     'events',
     'main',
@@ -61,9 +74,29 @@ MIDDLEWARE_CLASSES = (
     'django_pdb.middleware.PdbMiddleware',                     # https://github.com/tomchristie/django-pdb
 )
 TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.core.context_processors.request',
-    'django.contrib.auth.context_processors.auth',
+    "django.core.context_processors.request",
+    "django.contrib.auth.context_processors.auth",
+    "allauth.account.context_processors.account",
+    "allauth.socialaccount.context_processors.socialaccount",
 )
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    "django.contrib.auth.backends.ModelBackend",
+    # `allauth` specific authentication methods, such as login by e-mail
+    "allauth.account.auth_backends.AuthenticationBackend"
+)
+
+# auth and allauth settings
+LOGIN_REDIRECT_URL = '/'
+SOCIALACCOUNT_QUERY_EMAIL = True
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'SCOPE': ['email', 'publish_stream'],
+        'METHOD': 'js_sdk'  # instead of 'oauth2'
+    }
+}
+SITE_ID=1
+
 ROOT_URLCONF = 'GameServe.urls'
 WSGI_APPLICATION = 'GameServe.wsgi.application'
 
@@ -94,9 +127,13 @@ DATABASES = {
 # }
 
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
-
+SENDGRID_EMAIL_HOST = "smtp.sendgrid.net"
+SENDGRID_EMAIL_PORT = 587
+SENDGRID_EMAIL_USERNAME = "kizzlebot"
+SENDGRID_EMAIL_PASSWORD = "tree4444"
 
 
 
