@@ -61,7 +61,6 @@ INSTALLED_APPS = (
     # Project-specifics
     'profile',                     # User account models
     'events',
-    'main',
 )
 
 MIDDLEWARE_CLASSES = (
