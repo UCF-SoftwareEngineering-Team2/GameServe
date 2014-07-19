@@ -1,11 +1,9 @@
 from django.shortcuts import render_to_response   # <- Does django.http.HttpResponse + django.shortcuts.render in one command
 from django.template import RequestContext
-from django.contrib.auth import authenticate, login
-from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import logout
-from accounts.forms import UserForm, UserProfileForm
-from accounts.models import UserProfile
+from django.http import HttpResponseRedirect, HttpResponse
+from accounts.forms import UserForm
 
 
 
@@ -16,9 +14,9 @@ def index(request):
   return render_to_response('accounts/index.html', context_dict, context)
 
 
-def user_login(request): 
+def user_login(request):
     # TODO: redirect to user account page if logged in
-    # If user is already authenticated redirect to somewhere else 
+    # If user is already authenticated redirect to somewhere else
     if ( request.user.is_authenticated() ):
         return HttpResponseRedirect('/')
 
@@ -64,7 +62,7 @@ def user_login(request):
 
 def register(request):
     # TODO: redirect to user account page if logged in
-    # If user is already authenticated redirect to somewhere else 
+    # If user is already authenticated redirect to somewhere else
     if ( request.user.is_authenticated() ):
         return HttpResponseRedirect('/')
 
@@ -81,6 +79,7 @@ def register(request):
         # Attempt to grab information from the raw form information.
         # Note that we make use of both UserForm and UserProfileForm.
         user_form = UserForm(data=request.POST)
+
         # profile_form = UserProfileForm(data=request.POST)
 
         # If the two forms are valid...
@@ -93,15 +92,8 @@ def register(request):
             user.set_password(user.password)
             user.save()
 
-
             # Update our variable to tell the template registration was successful.
             registered = True
-            profile = UserProfile()
-            profile.user = user 
-            print 'user.userprofile.save()'
-            user.save()
-            user.profile = profile
-            profile.save()
 
 
         # Invalid form or forms - mistakes or something else?

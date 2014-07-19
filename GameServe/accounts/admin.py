@@ -1,40 +1,31 @@
 from django.contrib import admin
-
-from accounts.models import UserProfile
-from django.contrib.auth.models import User
+from accounts.models import User
 from django.contrib.auth.admin import UserAdmin
 
-admin.site.unregister(User)
+# admin.site.unregister(User)
 
 
 
 
 
-class UserProfileInline(admin.StackedInline):
-  model = UserProfile
+class UserInline(admin.StackedInline):
+  model = User
 
-class UserProfileAdmin(UserAdmin):
-
+class UserAdmin(UserAdmin):
   def phone_number(self, obj):
     try:
       return obj.get_profile().phone_number
-    except UserProfile.DoesNotExist:
-      return ''
+    except User.DoesNotExist:
+      return 'N/A'
   def reputation(self, obj):
     try:
       return obj.get_profile().reputation
-    except UserProfile.DoesNotExist:
-      return ''
-      
-  list_display = ('email','username','phone_number','reputation','date_joined')
-  search_fields = UserAdmin.search_fields + ('profile__phone_number','profile__reputation',)
+    except User.DoesNotExist:
+      return 'N/A'
 
-class UserAdmin(UserAdmin):
-  inlines = (UserProfileAdmin,)
+  list_display = ('email','username','phone_number','reputation','date_joined')
+  search_fields = UserAdmin.search_fields + ('user__phone_number','user__reputation',)
 
 
 UserAdmin.list_display = ('email','first_name',)
-admin.site.register(User, UserProfileAdmin)
-
-
-
+admin.site.register(User, UserAdmin)

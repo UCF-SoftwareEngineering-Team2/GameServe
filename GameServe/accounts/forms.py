@@ -1,5 +1,4 @@
-from accounts.models import UserProfile
-from django.contrib.auth.models import User
+from accounts.models import User
 from django import forms
 from accounts.validator import validate_email_unique
 
@@ -13,8 +12,8 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ('username', 'password', 'email')
 
-class UserProfileForm(forms.ModelForm):
-    phone_number = forms.CharField(max_length=10, min_length=0)
-    class Meta:
-        model = UserProfile
-        fields = ('phone_number', )
+# class UserProfileForm(forms.ModelForm):
+#     phone_number = forms.CharField(max_length=10, min_length=0)
+#     class Meta:
+#         model = UserProfile
+#         fields = ('phone_number', )

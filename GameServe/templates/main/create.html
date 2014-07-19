@@ -1,0 +1,153 @@
+{% extends "main/base.html" %}
+{% load static %}
+	{% block preReqs %}
+		<link rel="stylesheet" type="text/css" href="{% static 'js/pikaday.css' %}">
+		<script type="text/javascript" src="{% static 'js/moment.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/pikaday.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/create.js' %}"></script>
+
+	{% endblock %}
+
+	{% block createLink %}active{% endblock %}
+	{% block topLeftPaneTitle %}Similar Games{% endblock %}
+	{% block topLeftPaneContent %}
+		<div class="listItem static">
+			<div class="listImg green">
+				<div class="icon-heatRep"></div>
+			</div>
+			<div class="statNum">1270</div>
+			<div class="statType">game heat</div>
+		</div>
+		<!-- Fill in with recent events from the database -->
+		<div class="listItem static">
+			<div class="listImg green">
+				<div class="icon-committed"></div>
+			</div>
+			<div class="statNum">9</div>
+			<div class="statType">players committed</div>
+		</div>
+		<div class="listItem static">
+			<div class="listImg green">
+				<div class="icon-comments"></div>
+			</div>
+			<div class="statNum">4</div>
+			<div class="statType">comments</div>
+		</div>
+		<div class="listItem static">
+			<div class="listImg green">
+				<div class="icon-checkedIn"></div>
+			</div>
+			<div class="statNum">0</div>
+			<div class="statType">Checked-in</div>
+		</div>
+	{% endblock %}
+
+	{% block bottomLeftPane %}
+		<div id="publish" class="commCheckPub">Publish Game</div>
+	{% endblock %}
+	
+	{% block mainPane %}
+		<section class="window">
+			<div class="windowHeader">Game Type</div>
+			<!-- Fill in with filtered games from the database -->
+			<div class="windowBlock">
+				<div class="icon-football largeIcon"></div>
+				<div id="afterIcon" class="blockDeet">Specify Sport Type</div>
+			</div>
+			<div class="filterSection">
+				<!-- 
+				{% for gameType in gameTable %}
+					<div class="gameSelection">{{gameType.name}}</div> 
+				{% endfor %}
+				-->
+				<div id="baseball" class="gameButton gameType" data-id="baseball">Baseball</div>
+				<div id="basketball" class="gameButton gameType">Basketball</div>
+				<div id="biking" class="gameButton gameType">Biking</div>
+				<div id="football" class="gameButton gameType">Football</div>
+				<div id="pingPong" class="gameButton gameType">Ping-Pong</div>
+				<div id="racquetball" class="gameButton gameType">Racquetball</div>
+				<div id="running" class="gameButton gameType">Running</div>
+				<div id="soccer" class="gameButton gameType">Soccer</div>
+				<div id="volleyball" class="gameButton gameType">Volleyball</div>
+			</div>
+		</section>
+	{% endblock %}
+
+	{% block secondarySection %}
+		<section class="window">
+			<div class="windowHeader">Game Date & Time</div>
+			<!-- Fill in with filtered games from the database -->
+			<div class="windowBlock scheduler">
+				PIKADAY CALENDAR SELECTOR GOES HERE
+			</div>
+			<div class="windowBlock">
+				<div class="blockText">Tuesday</div>
+				<div class="blockText">August 12</div>
+				<div id="timeDisplay" class="blockText">2:00 PM</div>
+				<div class="blockDeet">Specify Date & Time</div>
+			</div>
+			<div class="windowBlock scheduler">
+				<div class="blockDeet scheduler">Game Start Time</div>
+				<div class="timePicker">
+					<select id="startHourSelect" class="timeSelect">
+						<option value=""></option>
+						<option value="12">12</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+					</select>
+					<select id="startMinSelect" class="timeSelect">
+						<option value=""></option>
+						<option value="00">00</option>
+						<option value="15">15</option>
+						<option value="30">30</option>
+						<option value="45">45</option>
+					</select>
+					<div id="amPmToggle">PM</div>
+				</div>
+				<div class="blockDeet scheduler">Game Duration</div>
+				<div class="timePicker duration">
+					<select id="durationHourSelect" class="timeSelect">
+						<option value=""></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+					</select>
+					<select id="durationMinSelect" class="timeSelect">
+						<option value=""></option>
+						<option value="00">00</option>
+						<option value="15">15</option>
+						<option value="30">30</option>
+						<option value="45">45</option>
+					</select>
+					<label for="durationHourSelected">hour(s)</label> 
+					<label for="durationMinSelected">mins</label> 
+				</div>
+			</div>
+		</section>
+	{% endblock %}
+
+	{% block thirdSection %}
+		<section class="window">
+			<div class="windowHeader">Game Location</div>
+			<div class="sideMap" id="mapCanvas"></div>
+			<div class="windowBlock">
+				<div class="blockText"></div>
+				<div class="blockText"></div>
+				<div class="blockText"></div>
+				<div class="blockDeet">Specify Location</div>
+			</div>
+		</section>
+	{% endblock %}

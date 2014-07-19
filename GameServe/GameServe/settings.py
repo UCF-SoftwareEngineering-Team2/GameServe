@@ -13,9 +13,9 @@ import os
 #########################################################################################
 #                               Project Paths
 #########################################################################################
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SETTINGS_DIR = os.path.abspath(os.path.dirname(__file__))
-PROJECT_PATH = os.path.abspath(os.path.join(SETTINGS_DIR, os.pardir))
-BASE_DIR = PROJECT_PATH
+PROJECT_PATH = os.path.join(SETTINGS_DIR, os.pardir)
 
 
 #########################################################################################
@@ -43,18 +43,22 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_extensions',
-    'accounts',
+    'django_extensions',            # Allows ./manage runscript addDB
+    'django_pdb',                   # Debugging ./manage.py runserver --ipdb
+    'tastypie',                     # json REST calls
+    'accounts',                     # User account models
     'events',
+    'main',
 )
 
 MIDDLEWARE_CLASSES = (
-    'django.contrib.sessions.middleware.SessionMiddleware', # Manage sessions b/t req
+    'django.contrib.sessions.middleware.SessionMiddleware',    # Manage sessions b/t req
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware', # assoc users w/ req
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_pdb.middleware.PdbMiddleware',                     # https://github.com/tomchristie/django-pdb
 )
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
@@ -75,6 +79,21 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+"""
+    Mysql config
+"""
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'dbsql',
+#         'USER': 'admin',
+#         'PASSWORD': 'admin',
+#         'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+#         'PORT': '3306',
+#     }
+# }
+
+
 
 
 
@@ -91,7 +110,7 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'America/New_York'
 USE_I18N = True
 USE_L10N = True
-USE_TZ = True
+USE_TZ = False
 
 
 
@@ -106,6 +125,7 @@ USE_TZ = True
 # Info: For each application, by default django searches static files in myApp/static/
 #########################################################################################
 STATIC_URL = '/static/'
+STATIC_ROOT = 'staticfiles'
 
 # File Storage engine to use for ./manage.py collectstatic
 STATICFILES_STORAGE='django.contrib.staticfiles.storage.StaticFilesStorage'
@@ -121,7 +141,6 @@ STATICFILES_DIRS = (os.path.join(PROJECT_PATH,'static'),)
 
 
 #########################################################################################
-#                               Template Files
-#########################################################################################
-AUTH_PROFILE_MODULE = 'accounts.UserProfile'
+#                               Template Files#########################################################################################
+AUTH_PROFILE_MODULE = 'accounts.User'
 TEMPLATE_DIRS = (os.path.join(PROJECT_PATH, 'templates'),)

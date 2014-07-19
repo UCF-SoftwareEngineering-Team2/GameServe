@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+
+<head>
+	<title>{% block title%}gameServe{% endblock%}</title>
+	<link href="{{ STATIC_URL }}css/style.css" rel="stylesheet" type="text/css"/>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="{{ STATIC_URL }}js/index.js"></script>
+	<link rel="shortcut icon" href="{{ STATIC_URL }}assets/titleIconGS.gif" type="image/gif"/>
+</head>
+
+<body>
+	<header>
+		<img src="{{ STATIC_URL }}assets/gsLogo.svg" id="logo">
+		<div class="headerLink">login<div class="linkSlider"></div></div>
+		<div class="headerLink">create a game<div class="linkSlider"></div></div>
+		<div class="headerLink">browse<div class="linkSlider"></div></div>
+		<div class="headerLink">home<div class="linkSlider"></div></div>
+		<!-- <div id="headerFade"></div> -->
+	</header>
+	<aside class="verticalPane small">
+		<section class="window side">
+			<div class="windowHeader">{% block topLeftPaneTitle %}Recent Activity{% endblock %}</div>	
+			{% block topLeftPaneContent %}
+			{% endblock %}
+		</section>
+ 		<aside class="window side" id="mapCanvas"></aside>
+	</aside>
+	<section class="verticalPane">
+		<section class="window">
+			<div class="windowHeader">{% block mainPaneTitle %}Upcoming Games{% endblock %}</div>	
+			{% block mainPaneContent %}
+			{% endblock %}
+			<!-- Fill in with upcoming games from the database -->
+			<div class="recentEvent">
+				<div class="gameTypeImg">
+					<div class="icon-tennis"></div>
+				</div>
+				<div class="browseGameInfo">
+					<div class="infoBlock">	
+						<div class="infoText">Today</div>
+						<div class="infoText">1:45 p.m. (45 mins)</div>
+					</div>
+					<div class="infoBlock">
+						<div class="infoText"></div>
+						<div class="infoText">11 people committed</div>
+					</div>
+					<div class="heatImg hot">
+						<div class="icon-heatRep"></div>
+					</div>
+				</div>
+			</div>
+			<div class="recentEvent">
+				<div class="gameTypeImg">
+					<div class="icon-baseball"></div>
+				</div>
+				<div class="browseGameInfo">
+					<div class="infoBlock">	
+						<div class="infoText">Today</div>
+						<div class="infoText">2:30 p.m. (1.5 hours)</div>
+					</div>
+					<div class="infoBlock">
+						<div class="infoText"></div>
+						<div class="infoText">14 people committed</div>
+					</div>
+				</div>				
+				<div class="heatImg hot">
+					<div class="icon-heatRep"></div>
+				</div>
+			</div>
+			<div class="recentEvent">
+				<div class="gameTypeImg">
+					<div class="icon-baseball"></div>
+				</div>
+				<div class="browseGameInfo">
+					<div class="infoBlock">	
+						<div class="infoText">Today</div>
+						<div class="infoText">2:30 p.m. (1.5 hours)</div>
+					</div>
+					<div class="infoBlock">
+						<div class="infoText"></div>
+						<div class="infoText">14 people committed</div>
+					</div>
+				</div>				
+				<div class="heatImg hot">
+					<div class="icon-heatRep"></div>
+				</div>
+			</div>
+			<div class="recentEvent">
+				<div class="gameTypeImg">
+					<div class="icon-running"></div>
+				</div>
+				<div class="browseGameInfo">
+					<div class="infoBlock">
+						<div class="infoText">Today</div>
+						<div class="infoText">5:00 p.m. (4 hours)</div>
+					</div>
+					<div class="infoBlock">
+						<div class="infoText"></div>
+						<div class="infoText">8 people committed</div>
+						</div>
+					<div class="heatImg">
+						<div class="icon-heatRep"></div>
+					</div>
+				</div>
+			</div>
+			<div class="recentEvent">
+				<div class="gameTypeImg">
+					<div class="icon-biking"></div>
+				</div>
+				<div class="browseGameInfo">
+					<div class="infoBlock">
+						<div class="infoText">Tomorrow</div>
+						<div class="infoText">12:30 p.m.</div>
+					</div>
+					<div class="infoBlock">
+						<div class="infoText"></div>
+						<div class="infoText">10 people committed</div>
+					</div>
+					<div class="heatImg">
+						<div class="icon-heatRep"></div>
+					</div>
+				</div>
+			</div>
+			<div class="recentEvent">
+				<div class="gameTypeImg">
+					<div class="icon-football"></div>
+				</div>
+				<div class="browseGameInfo">
+					<div class="infoBlock">
+						<div class="infoText">Tomorrow</div>
+						<div class="infoText">6:30 p.m.</div>
+					</div>
+					<div class="infoBlock">
+						<div class="infoText"></div>
+						<div class="infoText">6 people committed</div>
+					</div>
+					<div class="heatImg">
+						<div class="icon-heatRep"></div>
+					</div>
+				</div>
+			</div>
+			<div class="recentEvent">
+				<div class="gameTypeImg">
+					<div class="icon-soccer"></div>
+				</div>
+				<div class="browseGameInfo">
+					<div class="infoBlock">
+						<div class="infoText">June 2 (3 days)</div>
+						<div class="infoText">5:00 p.m.</div>
+					</div>
+					<div class="infoBlock">
+						<div class="infoText"></div>
+						<div class="infoText">5 people committed</div>
+						</div>
+					<div class="heatImg">
+						<div class="icon-heatRep"></div>
+					</div>
+				</div>
+			</div>
+			<!-- Fill in with upcoming games from the database -->
+
+		</section>
+		<section class="window">
+			<div class="windowHeader">Search for Events</div>
+			<div class="filterSection">
+				<div class="gameSelection">Baseball</div>
+				<div class="gameSelection">Basketball</div>
+				<div class="gameSelection">Biking</div>
+				<div class="gameSelection">Football</div>
+				<div class="gameSelection">Ping-Pong</div>
+				<div class="gameSelection">Racquetball</div>
+				<div class="gameSelection">Running</div>
+				<div class="gameSelection">Soccer</div>
+				<div class="gameSelection">Volleyball</div>
+			</div>
+			<div class="filterSection side">
+				<div class="gameSelection all">Select All</div>
+				<div class="gameSelection clear">Clear All</div>
+			</div>
+			<div class="filterButton">Go</div>
+		</section>
+	</section>
+	<form id="popupWindow" class="">
+		<input type="text" class="loginField" placeholder="email">
+		<input type="text" class="loginField" placeholder="password">
+		<div id="loginButton" class="button">login</div>
+	</form>
+</body>
+</html>

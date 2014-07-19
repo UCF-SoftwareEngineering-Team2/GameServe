@@ -1,44 +1,101 @@
 from django.db import models
-from django.contrib.auth.models import User
-from accounts.models import UserProfile
-import datetime
+from accounts.models import User
+from django.utils import timezone
 
-# Create your models here.
+
+
+
+class SportManager(models.Manager):
+    pass
+
 class Sport(models.Model):
+    objects = SportManager()
     sportType = models.CharField(unique=True,max_length=10)
 
     def __unicode__(self):
         return u'%s'%self.sportType
 
-# Create your models here.
+
+
+
+
+
+
+
+class CourtManager(models.Manager):
+    def scheduledNext( self, courtID ):
+        try:
+            upcoming = self.events.filter( upcoming = self.filter( dateTime__gte = timezone.datetime.now()))[0]
+            return upcoming
+        except( Court.DoesNotExist ):
+            return
+
 class Court(models.Model):
-    sport = models.ForeignKey(Sport)
+    objects = CourtManager()
+
+    sport = models.ForeignKey(Sport, related_name='sport')
     latitude = models.FloatField()
     longitude = models.FloatField()
 
+    def getNextScheduled(self,page=1):
+        return self.events.upcomingEvent()[(page-1)*5:(page)*5]
+
+
     def __unicode__(self):
         return u'%s (%s, %s)' % (self.sport.sportType, self.latitude, self.longitude)
+    class Meta:
+        ordering = ('sport',)
 
+
+
+
+
+
+
+
+
+
+
+class EventManager(models.Manager):
+    """
+    Used to add special queries, `Event.objects.upcoming()`
+    """
+    def upcoming(self):
+        return self.filter( dateTime__gte = timezone.datetime.now() )
 
 
 class Event(models.Model):
-    date = models.DateField(auto_now=False)
-    time = models.TimeField(auto_now=False)
+    objects = EventManager()
 
-    court = models.ForeignKey(Court)
-    users = models.ManyToManyField(User,related_name='participant')
+    dateTime = models.DateTimeField(auto_now=False)
+
     creator = models.ForeignKey(User,related_name='creator')
+    court = models.ForeignKey(Court, related_name='court')
+    participants = models.ManyToManyField(User,related_name='participants')
+
 
     def __unicode__(self):
-        return u'( Sport: %s, Date: %s, Time: %s, Lat/Long: (%s,%s) )' % (self.court.sport.sportType, self.date, self.time, self.court.latitude, self.court.longitude)
+        return u'%s' % (self.dateTime)
 
-
+    # Instance method
     def upcomingEvent(self):
-        if (self.date > datetime.date.today()):
+        date = self.dateTime.date()
+        time = self.dateTime.time()
+        newDay=date.day+1 if (time.hour+2 > 23) else date.day
+
+        extTime = timezone.datetime(month=date.month, day=newDay,
+                                    year=date.year, hour=(time.hour+2)%24,
+                                    minute=time.minute)
+        now = timezone.datetime.now()
+        curTime = now.time()
+        curDate = now.date()
+
+        # If this event is days away
+        if ( date > curDate ):
             return True
-        elif (self.date == datetime.date.today()):
-            now = datetime.datetime.now()
-            if (self.time >= datetime.datetime.time(datetime.datetime.now()) or datetime.time(hour=self.time.hour+2,minute=self.time.minute) > datetime.datetime.time(datetime.datetime.now()) ):
+        elif ( date == curDate ):
+            # if hours or minutes away from current time
+            if ( time > curTime or  extTime > curTime ):
                 return True
             else:
                 return False
@@ -46,4 +103,7 @@ class Event(models.Model):
             return False
     upcomingEvent.short_description = "Is this event upcoming?"
     upcoming = property(upcomingEvent)
+
+    class Meta:
+        ordering = ('dateTime',)
 

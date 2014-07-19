@@ -1,0 +1,117 @@
+{% extends "main/base.html" %}
+{% load static %}
+	{% block browseLink %}active{% endblock %}
+	{% block topLeftPaneTitle %}Game Stats{% endblock %}
+	{% block topLeftPaneContent %}
+		<div class="staticListItem">
+			<div class="listImg green">
+				<div class="icon-heatRep"></div>
+			</div>
+			<div class="statNum">1270</div>
+			<div class="statType">game heat</div>
+		</div>
+		<!-- Fill in with recent events from the database -->
+		<div class="staticListItem">
+			<div class="listImg green">
+				<div class="icon-committed"></div>
+			</div>
+			<div class="statNum">9</div>
+			<div class="statType">players committed</div>
+		</div>
+		<div class="staticListItem">
+			<div class="listImg green">
+				<div class="icon-comments"></div>
+			</div>
+			<div class="statNum">4</div>
+			<div class="statType">comments</div>
+		</div>
+		<div class="staticListItem">
+			<div class="listImg green">
+				<div class="icon-checkedIn"></div>
+			</div>
+			<div class="statNum">0</div>
+			<div class="statType">Checked-in</div>
+		</div>
+	{% endblock %}
+
+	{% block middleLeftPane %}
+		<div id="commit" class="commCheckPub">Commit to Play</div>
+	{% endblock %}
+
+	{% block bottomLeftPane %}
+		<div id="verify" class="commCheckPub">Verify Game</div>
+	{% endblock %}
+
+	{% block mainPane %}
+		<section class="window">
+			<div class="windowHeader medium">
+				<div class="icon-football largeIcon left"></div>
+				<div class="headerDeets">
+					<h2>Football</h2>
+				</div>
+			</div>
+			<!-- Fill in with filtered games from the database -->
+			<div class="windowBlock">
+				<div class="blockText">Sunday</div>
+				<div class="blockText">July 15</div>
+				<div class="blockText">2014</div>
+				<div class="blockDeet">Date</div>
+			</div>
+			<div class="windowBlock">
+				<div class="blockText">UCF</div>
+				<div class="blockText">Memory Mall</div>
+				<div class="blockDeet">Location</div>
+			</div>
+			<div class="windowBlock">
+				<div class="blockText">6:00 pm</div>
+				<div class="blockDeet">Time</div>
+				<div class="blockText">2 hours</div>
+				<div class="blockDeet">Duration</div>
+			</div>
+			<div class="bigMap" id="mapCanvas"></aside>
+		</section>
+	{% endblock %}
+
+	{% block secondarySection %}
+		<section class="window">
+			<div class="windowHeader">Comments</div>
+			<!-- Fill in with comments from the database -->
+			<div class="staticListItem">
+				<img class="userPhoto" src="{% static 'assets/gsGeneralPerson.jpg' %}">
+				<div class="commentSection">
+					<div class="comment">Do we need our UCF ID cards to get onto this field?</div>
+					<div class="deltaTime">1 day ago</div>
+				</div>
+			</div>
+			<div class="staticListItem">
+				<img class="userPhoto" src="{% static 'assets/gsGeneralPerson.jpg' %}">
+				<div class="commentSection">
+					<div class="comment">Yes. Everytime I have gone, someone has checked. Usually another player will let you in if you forget though.</div>
+					<div class="deltaTime">2 hours ago</div>
+				</div>
+			</div>
+			<div class="staticListItem">
+				<img class="userPhoto" src="{% static 'assets/gsGeneralPerson.jpg' %}">
+				<div class="commentSection">
+					<div class="comment">Who is bringing the ball?</div>
+					<div class="deltaTime">1 hour ago</div>
+				</div>
+			</div>
+			<div class="staticListItem">
+				<img class="userPhoto" src="{% static 'assets/gsGeneralPerson.jpg' %}">
+				<div class="commentSection">
+					<div class="comment">I can bring the ball. Does anyone have cones though?</div>
+					<div class="deltaTime">20 mins ago</div>
+				</div>
+			</div>
+			<div class="staticListItem">
+				<img class="userPhoto" src="{% static 'assets/gsGeneralPerson.jpg' %}">
+				<div class="commentSection create">
+					<textarea id="commentInput" placeholder="comment"></textarea>
+				</div>
+				<div id="submitComment">
+					<div class="icon-arrow-up"></div>
+				</div>
+			</div>
+		</section>
+	{% endblock %}

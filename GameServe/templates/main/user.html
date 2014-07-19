@@ -1,0 +1,94 @@
+{% extends "main/base.html" %}
+{% load static %}
+	{% block browseLink%}active{% endblock %}
+	{% block topLeftPaneTitle %}Player Stats{% endblock %}
+	{% block topLeftPaneContent %}
+		<div class="listItem static">
+			<div class="listImg green">
+				<div class="icon-heatRep"></div>
+			</div>
+			<div class="statNum">620</div>
+			<div class="statType">rep points</div>
+		</div>
+		<!-- Fill in with recent events from the database -->
+		<div class="listItem static">
+			<div class="listImg green">
+				<div class="icon-committed"></div>
+			</div>
+			<div class="statNum">8</div>
+			<div class="statType">times committed</div>
+		</div>
+		<div class="listItem static">
+			<div class="listImg green">
+				<div class="icon-comments"></div>
+			</div>
+			<div class="statNum">31</div>
+			<div class="statType">comments</div>
+		</div>
+		<div class="listItem static">
+			<div class="listImg green">
+				<div class="icon-checkedIn"></div>
+			</div>
+			<div class="statNum">7</div>
+			<div class="statType">Check-ins</div>
+		</div>
+	{% endblock %}
+
+	{% block mainPane %}
+		<section class="window">
+			<div class="windowHeader large">
+				<!-- <div class="profPic"> -->
+					<img class="userPhoto large" src="{% static 'assets/memberPhotos/UserId.jpg' %}"></img>
+					<div class="editPhoto">Edit</div>
+				<!-- </div> -->
+				<div class="headerDeets">
+					<h2>Alex Horan</h2>
+					<h3>Email: a_horan3@hotmail.com</h3>
+					<h3>Phone: 407-601-8032</h3>
+					<h3>Member since: Summer 2012</h3>
+				</div>
+			</div>
+			<!-- Fill in with filtered games from the database -->
+			<div class="windowBlock">
+				<h3>Baseball</h3>
+				<div class="icon-baseball largeIcon"></div>
+				<h5>most frequently played</h5>
+			</div>
+			<div class="windowBlock">
+				<h3>Tennis</h3>
+				<div class="icon-tennis largeIcon"></div>
+				<h5>most frequently played</h5>
+			</div>
+			<div class="windowBlock">
+				<h3>July 16, 2014</h3>
+				<h5>next game</h5>
+			</div>
+		</section>
+	{% endblock %}
+
+	{% block secondarySection %}
+		<section class="window">
+			<div class="windowHeader">
+				<div class="editPhoto">Edit</div>
+				<h2>Alex Horan</h2>
+				<h3>Email: a_horan3@hotmail.com</h3>
+				<h3>Phone: 407-601-8032</h3>
+
+				<h3>Member since: Summer 2012</h3>
+
+			</div>
+			<!-- Fill in with filtered games from the database -->
+			<div class="windowBlock">
+				<h3>Baseball</h3>
+				most frequently played
+			</div>
+			<div class="windowBlock">
+				<h3>Baseball</h3>
+				most frequently played
+			</div>
+			<div class="windowBlock">
+				<h3>July 16, 2014</h3>
+				next game
+			</div>
+		</section>
+	{% endblock %}
