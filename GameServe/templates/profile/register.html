@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+    <head>
+        {% include "head.html" %}
+        <title>Register</title>
+    </head>
+
+    <body>
+        {% include "top_navi.html" %}
+        <h1>Register</h1>
+
+        {% if registered %}
+        <strong>thank you for registering!</strong>
+        <a href="/">Return to the homepage.</a><br />
+        {% else %}
+        <strong>Register here!</strong><br />
+
+
+
+
+        <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+          {% csrf_token %}
+            {{ form.non_field_errors }}
+            {{ form.username }} {{ form.username.errors }}
+            <br>
+            {{ form.password1 }} {{ form.password1.errors }}
+            <br>
+            {{ form.password2 }} {{ form.password2.errors }}
+            <br>
+            <input id="id_email" name="email" type="email" placeholder="email@address.com"> {{ form.email.errors }}
+            <br><br>
+          {% if redirect_field_value %}
+          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+          {% endif %}
+          <button class="btn" type="submit">Sign Up &raquo;</button>
+        </form>
+        {% endif %}
+    </body>
+</html>

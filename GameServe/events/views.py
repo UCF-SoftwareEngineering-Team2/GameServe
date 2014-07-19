@@ -1,12 +1,22 @@
-from django.shortcuts import render_to_response
-from django.template import RequestContext
+from django.shortcuts import render
 
-
-# from events.serializers import CourtSerializer, EventSerializer
-from events.models import Court, Event, Sport
-
-
+# from main.models import Main
 
 def index(request):
-    context_dict = {'courts':Court.objects.all()}
-    return render_to_response('events/index.html',context_dict, RequestContext(request))
+    return render(request, 'events/index.html')
+
+def browse(request):
+    # latest_poll_list = Poll.objects.all().order_by('-pub_date')[:5]
+    return render(request, 'events/browse.html')
+
+def user(request):
+    # latest_poll_list = Poll.objects.all().order_by('-pub_date')[:5]
+    return render(request, 'events/user.html')
+
+def game(request):
+    # latest_poll_list = Poll.objects.all().order_by('-pub_date')[:5]
+    return render(request, 'events/game.html')
+
+def create(request):
+    # latest_poll_list = Poll.objects.all().order_by('-pub_date')[:5]
+    return render(request, 'events/create.html')

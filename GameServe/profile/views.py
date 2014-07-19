@@ -3,15 +3,15 @@ from django.template import RequestContext
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
-from accounts.forms import UserForm
-
+from profile.forms import UserForm
+from profile.models import User
 
 
 # TODO: Do something else here or get rid of it
 def index(request):
   context = RequestContext(request)
   context_dict = {}
-  return render_to_response('accounts/index.html', context_dict, context)
+  return render_to_response('profile/index.html', context_dict, context)
 
 
 def user_login(request):
@@ -29,6 +29,13 @@ def user_login(request):
         # This information is obtained from the login form.
         username = request.POST['username']
         password = request.POST['password']
+
+        if ( '@' not in username ):
+            try:
+                chk = User.objects.get(username = username )
+                username = authenticate(email=chk.email, password=password)
+            except:
+                pass 
 
         # Use Django's machinery to attempt to see if the username/password
         # combination is valid - a User object is returned if it is.
@@ -49,15 +56,15 @@ def user_login(request):
                 return HttpResponse("Your account is disabled.")
         else:
             # Bad login details were provided. So we can't log the user in.
-            print "Invalid login details: {0}, {1}".format(username, password)
-            return HttpResponse("Invalid login details supplied.")
+            return HttpResponse("Invalid login details: {0}, {1}".format(username, password) )
+            
 
     # The request is not a HTTP POST, so display the login form.
     # This scenario would most likely be a HTTP GET.
     else:
         # No context variables to pass to the template system, hence the
         # blank dictionary object...
-        return render_to_response('accounts/login.html', context )
+        return render_to_response('profile/login.html', context )
 
 
 def register(request):
@@ -112,7 +119,7 @@ def register(request):
     # TODO: Send email verification
     # Render the template depending on the context.
     return render_to_response(
-            'accounts/register.html',
+            'profile/register.html',
             {'user_form': user_form, 'registered': registered},
             context)
 

@@ -1,7 +1,7 @@
 import os
 from events.models import Sport, Court, Event
 # from django.contrib.auth.models import User
-from accounts.models import User
+from profile.models import User
 from django.db.utils import IntegrityError, ProgrammingError
 from random import randint
 import datetime
@@ -37,7 +37,7 @@ def addSports():
 
 
 def addEvents():
-    from accounts.models import User
+    from profile.models import User
     print 'Adding Events ...'
     c = len(Court.objects.all())
     u = len(User.objects.all())
@@ -66,7 +66,7 @@ def addEvents():
 
 
 def addUsers():
-    from accounts.models import User
+    from profile.models import User
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
     OKGREEN = '\033[92m'

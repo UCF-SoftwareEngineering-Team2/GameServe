@@ -1,6 +1,6 @@
 from tastypie.resources import ModelResource
 from tastypie import fields
-from accounts.models import User
+from profile.models import User
 from events.models import Court, Event, Sport
 from GameServe.serializers import PrettyJSONSerializer
 from tastypie.constants import ALL, ALL_WITH_RELATIONS
