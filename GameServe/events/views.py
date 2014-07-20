@@ -4,6 +4,10 @@ from django.shortcuts import render
 from events.models import *
 from django.forms.models import *
 from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import render_to_response, render
+from django.template import RequestContext
+from events.models import Event
+from tastypie.utils import timezone
 
 # 
 # This section sets up the ability to log to console for debugging.
@@ -27,22 +31,29 @@ logging.config.dictConfig(LOGGING)
 #
 # ./logging
 #
-
+#
 def index(request):
-    return render(request, 'events/index.html')
-
+	context_dict = {
+		'upcoming':Event.objects.filter(dateTime__gte=timezone.now()),
+	}
+	return render_to_response('events/index.html',context_dict, RequestContext(request) )
+ 
 def browse(request):
     return render(request, 'events/browse.html')
-
+ 
 def user(request):
     return render(request, 'events/user.html')
-
+ 
 def game(request):
-    return render(request, 'events/game.html')
+	context_dict = {
+		'event':Event.objects.get(id=111),
+	}
+	# latest_poll_list = Poll.objects.all().order_by('-pub_date')[:5]
+    	return render_to_response('events/game.html',context_dict, RequestContext(request) )
 
 def create(request):
-    return render(request, 'events/create.html')
-
+    # latest_poll_list = Poll.objects.all().order_by('-pub_date')[:5]
+	return render(request, 'events/create.html')
 @csrf_exempt
 def new_game(request):
 	#print create event with post data

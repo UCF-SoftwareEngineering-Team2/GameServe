@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'south',
 
     # Debug Tools
     'django_extensions',            # Allows ./manage runscript addDB

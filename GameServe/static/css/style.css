@@ -24,8 +24,8 @@
   font-style: normal; }
 @font-face {
   font-family: 'icomoon';
-  src: url("../assets/sportIcons/icomoon.eot?-y1ycr0");
-  src: url("../assets/sportIcons/icomoon.eot?#iefix-y1ycr0") format("embedded-opentype"), url("../assets/sportIcons/icomoon.woff?-y1ycr0") format("woff"), url("../assets/sportIcons/icomoon.ttf?-y1ycr0") format("truetype"), url("../assets/sportIcons/icomoon.svg?-y1ycr0#icomoon") format("svg");
+  src: url("../assets/icons/icomoon.eot?-y1ycr0");
+  src: url("../assets/icons/icomoon.eot?#iefix-y1ycr0") format("embedded-opentype"), url("../assets/icons/icomoon.woff?-y1ycr0") format("woff"), url("../assets/icons/icomoon.ttf?-y1ycr0") format("truetype"), url("../assets/icons/icomoon.svg?-y1ycr0#icomoon") format("svg");
   font-weight: normal;
   font-style: normal; }
 [class^="icon-"], [class*=" icon-"] {
@@ -109,6 +109,15 @@
 
 .icon-arrow-up:before {
   content: "\e614"; }
+
+.icon-mobile:before {
+  content: "\e615"; }
+
+.icon-mail:before {
+  content: "\e616"; }
+
+.icon-camera:before {
+  content: "\e617"; }
 
 body {
   background: #cecece;
@@ -238,7 +247,7 @@ header {
     .window .windowHeader.medium {
       color: #2e2d2c;
       background: #f7f7f7;
-      height: 100px; }
+      height: 90px; }
   .window .windowBlock {
     position: relative;
     float: left;
@@ -254,7 +263,8 @@ header {
       background: #6cab43; }
     .window .windowBlock.scheduler {
       background: transparent;
-      color: #aaaaaa; }
+      color: #aaaaaa;
+      padding: 0px; }
     .window .windowBlock h5 {
       position: absolute;
       bottom: 20px;
@@ -276,6 +286,8 @@ header {
       .window .windowBlock .blockDeet.scheduler {
         color: #aaaaaa;
         margin-bottom: 0px; }
+    .window .windowBlock #pickerInput {
+      display: none; }
 
 #mapCanvas {
   height: 400px;
@@ -328,6 +340,10 @@ header {
   .editPhoto:hover {
     opacity: .6;
     cursor: pointer; }
+  .editPhoto .icon-camera {
+    position: absolute;
+    font-size: 40px;
+    margin: 25px 30px; }
 
 .listImg {
   position: relative;
@@ -649,11 +665,23 @@ header {
 
 .headerDeets {
   position: relative;
-  float: left; }
+  float: left;
+  width: 400px; }
+  .headerDeets .headerGame {
+    margin: 20px; }
 
-h3, h2, h5 {
+h1, h3, h2, h5 {
   margin: 5px 0px;
   font-family: 'sinkin_sans300_light'; }
+
+.headerInfo {
+  position: relative;
+  float: left; }
+
+.userInfo {
+  position: relative;
+  float: left;
+  font-size: 30px; }
 
 .timePicker {
   position: relative;

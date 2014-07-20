@@ -1,7 +1,7 @@
 {% extends "events/base.html" %}
 {% load static %}
 	{% block preReqs %}
-		<link rel="stylesheet" type="text/css" href="{% static 'js/pikaday.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/pikaday.css' %}">
 		<script type="text/javascript" src="{% static 'js/moment.min.js' %}"></script>
 		<script type="text/javascript" src="{% static 'js/pikaday.js' %}"></script>
 		<script type="text/javascript" src="{% static 'js/create.js' %}"></script>
@@ -45,7 +45,7 @@
 	{% block bottomLeftPane %}
 		<div id="publish" class="commCheckPub">Publish Game</div>
 	{% endblock %}
-	
+
 	{% block mainPane %}
 		<section class="window">
 			<div class="windowHeader">Game Type</div>
@@ -69,6 +69,7 @@
 				<div id="running" class="gameButton gameType">Running</div>
 				<div id="soccer" class="gameButton gameType">Soccer</div>
 				<div id="volleyball" class="gameButton gameType">Volleyball</div>
+				<div id="tennis" class="gameButton gameType">Tennis</div>
 			</div>
 		</section>
 	{% endblock %}
@@ -78,11 +79,12 @@
 			<div class="windowHeader">Game Date & Time</div>
 			<!-- Fill in with filtered games from the database -->
 			<div class="windowBlock scheduler">
-				PIKADAY CALENDAR SELECTOR GOES HERE
+				<input type="text" id="pickerInput">
+				<div id="pikadayCalendarHolder"></div>
 			</div>
 			<div class="windowBlock">
-				<div class="blockText">Tuesday</div>
-				<div class="blockText">August 12</div>
+				<div id="dayOfWeek" class="blockText">Tuesday</div>
+				<div id="monthDay" class="blockText">August 12</div>
 				<div id="timeDisplay" class="blockText">2:00 PM</div>
 				<div class="blockDeet">Specify Date & Time</div>
 			</div>
