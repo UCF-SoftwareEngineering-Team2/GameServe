@@ -238,7 +238,7 @@ header {
     .window .windowHeader.medium {
       color: #2e2d2c;
       background: #f7f7f7;
-      height: 100px; }
+      height: 90px; }
   .window .windowBlock {
     position: relative;
     float: left;
@@ -650,8 +650,10 @@ header {
 .headerDeets {
   position: relative;
   float: left; }
+  .headerDeets .headerGame {
+    margin: 20px; }
 
-h3, h2, h5 {
+h1, h3, h2, h5 {
   margin: 5px 0px;
   font-family: 'sinkin_sans300_light'; }
 

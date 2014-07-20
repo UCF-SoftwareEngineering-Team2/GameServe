@@ -57,22 +57,21 @@ class Court(models.Model):
 
 
 class EventManager(models.Manager):
-    """
-    Used to add special queries, `Event.objects.upcoming()`
-    """
+
     def upcoming(self):
         return self.filter( dateTime__gte = timezone.datetime.now() )
 
 
 class Event(models.Model):
     objects = EventManager()
-
     dateTime = models.DateTimeField(auto_now=False)
-
     creator = models.ForeignKey(User,related_name='creator')
     court = models.ForeignKey(Court, related_name='court')
     participants = models.ManyToManyField(User,related_name='participants')
-
+    gameHeat = 0 #models.IntegerField(default=0)
+    numComments = 0 #models.IntegerField()
+    checkIns = 0 #models.IntegerField()
+    # duration = models.DateTimeField(auto_now=False)
 
     def __unicode__(self):
         return u'%s' % (self.dateTime)
