@@ -8,5 +8,7 @@ urlpatterns = patterns('',
     url(r'^create/', views.create, name='create'),
     url(r'^game/', views.game, name='game'),
     url(r'^user/', views.user, name='user'),
-    url(r'^new_game/', views.new_game, name='new_game')
+    url(r'^new_game/', views.new_game, name='new_game'),
+    url(r'^commit/', views.commit, name='commit'),
+    url(r'^uncommit/', views.uncommit, name='uncommit')
 )

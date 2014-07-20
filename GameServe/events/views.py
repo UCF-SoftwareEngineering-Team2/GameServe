@@ -54,6 +54,7 @@ def game(request):
 def create(request):
     # latest_poll_list = Poll.objects.all().order_by('-pub_date')[:5]
 	return render(request, 'events/create.html')
+
 @csrf_exempt
 def new_game(request):
 	#print create event with post data
@@ -61,6 +62,42 @@ def new_game(request):
 	#Create response to POST
 	response = {}
 
+	#If new game is a string, it's an error
+	if(type(newGame) is str):
+		response['result'] = newGame
+	#Otherwise it's an instance of a game, so send a JSON payload back with event information (CURRENTLY FOR DEBUGGING PURPOSES)
+	else:
+		response['result'] = model_to_dict(newGame)
+		response['result']['dateTime'] = str(response['result']['dateTime'])
+		response['result']['endTime'] = str(response['result']['endTime'])
+	return HttpResponse(json.dumps(response), content_type="applciation/json") 
+
+@csrf_exempt
+def commit(request):
+	#
+	# NOTE / TODO: current input (user=1) is PLACEHOLDER
+	#
+	newGame = Event.objects.add_participant(user=1, event=request.POST['event'])
+	#Create response to POST
+	response = {}
+	#If new game is a string, it's an error
+	if(type(newGame) is str):
+		response['result'] = newGame
+	#Otherwise it's an instance of a game, so send a JSON payload back with event information (CURRENTLY FOR DEBUGGING PURPOSES)
+	else:
+		response['result'] = model_to_dict(newGame)
+		response['result']['dateTime'] = str(response['result']['dateTime'])
+		response['result']['endTime'] = str(response['result']['endTime'])
+	return HttpResponse(json.dumps(response), content_type="applciation/json")
+
+@csrf_exempt
+def uncommit(request):
+	#
+	# NOTE / TODO: current input (user=1) is PLACEHOLDER
+	#
+	newGame = Event.objects.remove_participant(user=1, event=request.POST['event'])
+	#Create response to POST
+	response = {}
 	#If new game is a string, it's an error
 	if(type(newGame) is str):
 		response['result'] = newGame
