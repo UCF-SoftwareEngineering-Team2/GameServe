@@ -55,11 +55,11 @@ $light: #F7F7F7;
 
 @font-face {
 	font-family: 'icomoon';
-	src:url('../assets/sportIcons/icomoon.eot?-y1ycr0');
-	src:url('../assets/sportIcons/icomoon.eot?#iefix-y1ycr0') format('embedded-opentype'),
-		url('../assets/sportIcons/icomoon.woff?-y1ycr0') format('woff'),
-		url('../assets/sportIcons/icomoon.ttf?-y1ycr0') format('truetype'),
-		url('../assets/sportIcons/icomoon.svg?-y1ycr0#icomoon') format('svg');
+	src:url('../assets/icons/icomoon.eot?-y1ycr0');
+	src:url('../assets/icons/icomoon.eot?#iefix-y1ycr0') format('embedded-opentype'),
+		url('../assets/icons/icomoon.woff?-y1ycr0') format('woff'),
+		url('../assets/icons/icomoon.ttf?-y1ycr0') format('truetype'),
+		url('../assets/icons/icomoon.svg?-y1ycr0#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -150,7 +150,15 @@ $light: #F7F7F7;
 .icon-arrow-up:before {
 	content: "\e614";
 }
-
+.icon-mobile:before {
+	content: "\e615";
+}
+.icon-mail:before {
+	content: "\e616";
+}
+.icon-camera:before {
+	content: "\e617";
+}
 body {
 	background: $med;
 	font-family: 'sinkin_sans300_light';
@@ -384,6 +392,11 @@ header {
 	&:hover {
 		opacity: .6;
 		cursor: pointer;
+	}
+	.icon-camera {
+		position: absolute;
+		font-size: 40px;
+		margin: 25px 30px;
 	}
 
 }
@@ -726,6 +739,7 @@ header {
 .headerDeets {
 	position: relative;
 	float: left;
+	width: 400px;
 	.headerGame {
 		margin: 20px;
 	}
@@ -733,6 +747,15 @@ header {
 h1, h3, h2, h5 {
 	margin: 5px 0px;
 	font-family: 'sinkin_sans300_light';
+}
+.headerInfo {
+	position: relative;
+	float: left;
+}
+.userInfo {
+	position: relative;
+	float: left;
+	font-size: 30px;
 }
 .timePicker {
 	position: relative;
