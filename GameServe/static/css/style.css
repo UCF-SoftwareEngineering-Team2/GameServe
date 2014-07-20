@@ -254,7 +254,8 @@ header {
       background: #6cab43; }
     .window .windowBlock.scheduler {
       background: transparent;
-      color: #aaaaaa; }
+      color: #aaaaaa;
+      padding: 0px; }
     .window .windowBlock h5 {
       position: absolute;
       bottom: 20px;
@@ -276,6 +277,8 @@ header {
       .window .windowBlock .blockDeet.scheduler {
         color: #aaaaaa;
         margin-bottom: 0px; }
+    .window .windowBlock #pickerInput {
+      display: none; }
 
 #mapCanvas {
   height: 400px;

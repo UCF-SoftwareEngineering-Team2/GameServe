@@ -1,4 +1,5 @@
-console.log("create file working!!");
+var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+
 $(document).ready(function() {
 	console.log("inside");
 
@@ -14,6 +15,52 @@ $(document).ready(function() {
 	}
 	google.maps.event.addDomListener(window, 'load', initialize);
 
+	// function initCalendar() {
+	// 	datepicker = $('.datepicker.start')[0]
+	// 	if datepicker?
+	// 		var holder = document.getElementById("pikadayCalendarHolder");
+	// 		$scope.startPicker = new Pikaday
+	// 			// field: datepicker
+	// 			format: "MMMM DD, YYYY"
+	// 			defaultDate: moment(datepicker.value).toDate()
+	// 			setDefaultDate: false
+	// 			startdate: true
+	// 			start: true
+	// 			container: holder
+	// 			bound: false
+	// 		$scope.startPicker.show()
+
+	// 		$(datepicker).on 'keyup', ->
+	// 			$scope.startPicker.gotoDate(moment(this.value).toDate())
+	// }
+	
+	function initCalendar() {
+		console.log("initingCal");
+		var holder = document.getElementById("pikadayCalendarHolder");
+		var picker = new Pikaday({
+	        field: document.getElementById('pickerInput'),
+	        format: "MMMM DD, YYYY",
+	        container: holder,
+	        bound: false,
+	        onSelect: function() {
+	            console.log(this.getMoment().format('DD MMMM YYYY'));
+	            console.log(this.getMoment().weekday());
+
+	            var dayOWeek = weekdays[this.getMoment().weekday()];
+	            var pickedDate = this.getMoment().format('DD MMMM YYYY');
+	            var monthDay = this.getMoment().format('D MMMM');
+
+	            $('#dayOfWeek').text(dayOWeek);
+	            $('#monthDay').text(monthDay);
+
+
+	        }
+	    });
+	    picker.show()
+	}
+
+	initCalendar()
+	
 	//selecting game types to browse
 	$('#submitComment').click(function() {
 		var comment = $('#commentInput').val();
@@ -50,6 +97,7 @@ $(document).ready(function() {
 	$('#amPmToggle').click(function() {
 		updateTime();
 	});
+	
 	function updateTime() {
 		$('#timeDisplay').text($('#startHourSelect').val() + ":" + $('#startMinSelect').val() + " " + $('#amPmToggle').text());
 	}

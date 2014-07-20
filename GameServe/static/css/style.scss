@@ -296,6 +296,7 @@ header {
 		&.scheduler {
 			background: transparent;
 			color: $meddark;
+			padding: 0px;
 		}
 		h5 {
 			position: absolute;
@@ -322,6 +323,9 @@ header {
 				color: $meddark;
 				margin-bottom: 0px;
 			}
+		}
+		#pickerInput {
+			display: none;
 		}
 	}
 }
