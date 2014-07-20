@@ -49,6 +49,8 @@ def addEvents():
 
 
         e.court = Court.objects.get(id=randint(1,c))
+        e.sport = Sport.objects.get(id=randint(1,c))
+        e.duration = 2000
 
 
         try:

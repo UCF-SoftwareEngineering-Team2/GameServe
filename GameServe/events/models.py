@@ -1,6 +1,8 @@
 from django.db import models
+from django.db.models import Q
 from profile.models import User
 from django.utils import timezone
+import datetime
 
 
 
@@ -64,14 +66,39 @@ class EventManager(models.Manager):
         return self.filter( dateTime__gte = timezone.datetime.now() )
 
 
+    def create_event(self, dateTime, creator, court, duration):
+
+        # Check if event either starts during the time period, ends during the time period, 
+        # or starts before and ends after the time period.
+        def occuring_during(court, start, end):
+            return Event.objects.filter(Q(court=court), 
+                Q(Q(dateTime__range=[start, end]) | Q(endTime__range=[start,end]) |
+                    Q(Q(dateTime__lte=start), Q(endTime__gte=end))))
+
+        # Create dt (start) and dte (end) times
+        dt = datetime.datetime.fromtimestamp(float(dateTime))
+        dte = datetime.datetime.fromtimestamp(float(dateTime) + float(duration))
+
+        #Get instance of court it will be occuring on
+        courtInstance = Court.objects.get(pk=court)
+
+        #Return error, otherwise, return created event instance
+        if(occuring_during(court=courtInstance, start=dt, end=dte)):
+            return 'Error, court taken during this time.'
+        else:
+            event = self.create(dateTime=dt, endTime=dte, creator=User.objects.get(pk=creator), court=courtInstance, duration=duration)
+            return event;
+
 class Event(models.Model):
     objects = EventManager()
 
     dateTime = models.DateTimeField(auto_now=False)
+    endTime = models.DateTimeField(auto_now=False)
 
     creator = models.ForeignKey(User,related_name='creator')
     court = models.ForeignKey(Court, related_name='court')
     participants = models.ManyToManyField(User,related_name='participants')
+    duration = models.FloatField()
 
 
     def __unicode__(self):

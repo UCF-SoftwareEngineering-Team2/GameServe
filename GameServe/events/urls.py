@@ -7,5 +7,6 @@ urlpatterns = patterns('',
     url(r'^browse/', views.browse, name='browse'),
     url(r'^create/', views.create, name='create'),
     url(r'^game/', views.game, name='game'),
-    url(r'^user/', views.user, name='user')
+    url(r'^user/', views.user, name='user'),
+    url(r'^new_game/', views.new_game, name='new_game')
 )
