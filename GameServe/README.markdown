@@ -1,11 +1,10 @@
 # Django GameServe
--------------------
+------------
 
 
 
 ## Python Environment Specification
--------------------
-
+-------------
 1. You should use **virtualenv** to keep your python binary in your home directory (no more sudo). Run following from terminal
 `virtualenv ~/.python`
 `echo VIRTUAL_ENV_DISABLE_PROMPT=1 >> ~/.bash_profile`
@@ -19,7 +18,7 @@
 
 
 ## DB Query
--------------------  
+------------  
 - All courts  
   `/api/v1/court/` 
 
@@ -30,10 +29,20 @@
   `/api/v1/event/?dateTime__gte=2014-7-18 2:44&court=1`
 
 
+## Facebook DB entry  
+-------------
 
+`./manage.py dbshell`  
+
+```
+UPDATE django_site SET DOMAIN = '127.0.0.1:8000', name = 'GameServe' WHERE id=1;
+INSERT INTO socialaccount_socialapp (provider, name, secret, client_id, `key`)
+VALUES ("facebook", "Facebook", "e42ec912bdf8d060d4e6c17ed4d294de", "650041485084650", '');
+INSERT INTO socialaccount_socialapp_sites (socialapp_id, site_id) VALUES (1,1);
+```
 
 ## Notes
--------------------
+------------
 
 1. Default Admin User account
     - Username: admin
