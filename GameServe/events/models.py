@@ -119,6 +119,15 @@ class Event(models.Model):
     ###################################################################################
     #                                Model Methods 
     ###################################################################################
+    def set_creator(self, user):
+        if ( not self.creator ):
+            self.creator = user
+            self.add_participant(user)
+        else:
+            print 'replacing creator'
+            self.remove_participant(self.creator)
+            self.creator = user
+            
     def add_participant(self, user):
         if type(user).__name__ == 'User':
             self.participants.add(user)
