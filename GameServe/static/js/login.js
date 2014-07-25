@@ -1,5 +1,4 @@
 $(document).ready(function() {
-console.log('login working');
 	$('#signIn').click(function () {
 		if ($('.accountSection').hasClass('expand')) {
 			var name = $('#nameInput').val();
@@ -10,6 +9,19 @@ console.log('login working');
 			var phone = $('#pNumInput').val();
 
 	  		alert('data: \nname:\t' + name + ' \nemail:\t' + email + ' \nverEmail:\t' + verEmail + ' \npass:\t' + pass + ' \nverPass:\t' + verPass + ' \nphone:\t' + phone );
+			
+			if ($('#newEmailInput').val() != $('#verEmailInput').val()) {
+				$('#noticeText').text("Email inputs do not match.");
+				$('#noticeHeader').text("Sign Up Error");
+				$('#popupNotice').removeClass('hidden');
+				$('#fader').addClass('fade');
+			}
+			else if ($('#newPasswordInput').val() != $('#verPasswordInput').val()) {
+				$('#noticeText').text("Password inputs do not match.");
+				$('#noticeHeader').text("Sign Up Error");
+				$('#popupNotice').removeClass('hidden');
+				$('#fader').addClass('fade');
+			}
 		}
 		else {
 			var email =	$('#emailInput').val();
@@ -17,6 +29,11 @@ console.log('login working');
 
 	  		alert('data: \email\t' + email + '\npass:\t' + pass);
 	  	}
+	});
+	
+	$('#noticeButton').click(function() {
+		$('#popupNotice').addClass('hidden');
+		$('#fader').removeClass('fade');
 	});
 
 	$('#newVsOldUser').click(function() {

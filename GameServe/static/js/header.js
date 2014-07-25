@@ -1,5 +1,4 @@
 $(document).ready(function() {
-	console.log("inside");
 
 	//login functionality
 	$('#login').click(function () {

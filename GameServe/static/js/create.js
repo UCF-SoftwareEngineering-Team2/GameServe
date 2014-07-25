@@ -1,7 +1,6 @@
 var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
 $(document).ready(function() {
-	console.log("inside");
 
 	//Google Maps
 	function initialize() {

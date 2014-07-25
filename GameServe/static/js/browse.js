@@ -1,6 +1,4 @@
-console.log("javascript file working!!");
 $(document).ready(function() {
-	console.log("inside");
 
 	//Google Maps
 	function initialize() {
