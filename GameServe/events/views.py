@@ -43,10 +43,13 @@ def browse(request):
  
 def user(request):
     return render(request, 'events/user.html')
+
+def create_account(request):
+    return render(request, 'events/create_account.html')
  
 def game(request):
 	context_dict = {
-		'event':Event.objects.get(id=111),
+		'event':Event.objects.get(id=101),
 	}
 	# latest_poll_list = Poll.objects.all().order_by('-pub_date')[:5]
     	return render_to_response('events/game.html',context_dict, RequestContext(request) )
