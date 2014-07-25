@@ -1,5 +1,5 @@
 var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-
+var selectedGameType = '';
 $(document).ready(function() {
 
 	//Google Maps
@@ -60,10 +60,31 @@ $(document).ready(function() {
 
 	initCalendar()
 	
-	//selecting game types to browse
-	$('#submitComment').click(function() {
-		var comment = $('#commentInput').val();
-		alert("comment:\n" + comment );
+	function popupNotice(title, body){
+		$('#noticeText').text(body);
+		$('#noticeHeader').text(title);
+		$('#popupNotice').removeClass('hidden');
+		$('#fader').addClass('fade');
+	}
+
+	$('#noticeButton').click(function() {
+		$('#popupNotice').addClass('hidden');
+		$('#fader').removeClass('fade');
+	});
+
+	$('#publish').click(function() {
+		if (selectedGameType == '') {
+			popupNotice("Game Creation Error", "Choose the sport type of your game");
+		}
+		else if ($('#startHourSelect').val() == '') {
+			popupNotice("Game Creation Error", "Choose a start hour for you game");
+		}
+		else if ($('#startMinSelect').val() == '') {
+			popupNotice("Game Creation Error", "Choose a start minute for your game");
+		}
+		else if ($('#startMinSelect').val() == '') {
+			popupNotice("Game Creation Error", "Choose a start minute for your game");
+		}
 	});
 
 	$('.gameButton').click(function() {
@@ -72,6 +93,7 @@ $(document).ready(function() {
 		$('.windowBlock').find('.largeIcon').remove()
 		console.log ("this item: "+ $(this).prop('id'));
 		var gameIcon = document.createElement('div');
+		selectedGameType = $(this).prop('id');
 		gameIcon.className = "icon-" + $(this).prop('id') + " largeIcon";
 		$(gameIcon).insertBefore('#afterIcon');
 	});

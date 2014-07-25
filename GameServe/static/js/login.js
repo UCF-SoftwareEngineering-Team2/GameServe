@@ -1,4 +1,11 @@
 $(document).ready(function() {
+	function popupNotice(title, body){
+		$('#noticeText').text(body);
+		$('#noticeHeader').text(title);
+		$('#popupNotice').removeClass('hidden');
+		$('#fader').addClass('fade');
+	}
+
 	$('#signIn').click(function () {
 		if ($('.accountSection').hasClass('expand')) {
 			var name = $('#nameInput').val();
@@ -9,18 +16,20 @@ $(document).ready(function() {
 			var phone = $('#pNumInput').val();
 
 	  		alert('data: \nname:\t' + name + ' \nemail:\t' + email + ' \nverEmail:\t' + verEmail + ' \npass:\t' + pass + ' \nverPass:\t' + verPass + ' \nphone:\t' + phone );
-			
-			if ($('#newEmailInput').val() != $('#verEmailInput').val()) {
-				$('#noticeText').text("Email inputs do not match.");
-				$('#noticeHeader').text("Sign Up Error");
-				$('#popupNotice').removeClass('hidden');
-				$('#fader').addClass('fade');
+			if ($('#pNumInput').val() == '') {
+				popupNotice("Sign Up Error", "Must fill out phone number");
+			}
+			else if ($('#nameInput').val() == '') {
+				popupNotice("Sign Up Error", "Must fill out username");
+			}
+			else if ($('#newEmailInput').val() != $('#verEmailInput').val()) {
+				popupNotice("Sign Up Error", "Email inputs do not match");
+			}
+			else if ($('#newEmailInput').val() != $('#verEmailInput').val()) {
+				popupNotice("Sign Up Error", "Email inputs do not match");
 			}
 			else if ($('#newPasswordInput').val() != $('#verPasswordInput').val()) {
-				$('#noticeText').text("Password inputs do not match.");
-				$('#noticeHeader').text("Sign Up Error");
-				$('#popupNotice').removeClass('hidden');
-				$('#fader').addClass('fade');
+				popupNotice("Sign Up Error", "Password inputs do not match");
 			}
 		}
 		else {

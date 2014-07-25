@@ -41,8 +41,8 @@
   -moz-osx-font-smoothing: grayscale; }
 
 .largeIcon {
-  font-size: 75px;
-  width: 75px;
+  font-size: 85px;
+  width: 85px;
   margin: 10px auto; }
   .largeIcon.left {
     float: left; }
@@ -122,6 +122,9 @@
 .icon-facebook:before {
   content: "\e618"; }
 
+.icon-gsIcon:before {
+  content: "\e619"; }
+
 body {
   background: #cecece;
   font-family: 'sinkin_sans300_light';
@@ -155,7 +158,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.6);
     z-index: 100;
     opacity: 0;
     pointer-events: none; }
