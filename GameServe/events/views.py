@@ -4,7 +4,7 @@ from django.shortcuts import render
 from events.models import *
 from django.forms.models import *
 from django.views.decorators.csrf import csrf_exempt
-from django.shortcuts import render_to_response, render
+from django.shortcuts import render_to_response
 from django.template import RequestContext
 from events.models import Event
 from tastypie.utils import timezone
@@ -43,6 +43,9 @@ def browse(request):
  
 def user(request):
     return render(request, 'events/user.html')
+
+def create_account(request):
+    return render(request, 'events/create_account.html')
  
 def game(request):
     context_dict = {
