@@ -142,28 +142,47 @@ class Event(models.Model):
             self.creator = user
             
     def add_participant(self, user):
-        if type(user).__name__ == 'User':
-            self.participants.add(user)
-        elif type(user).__name__ == 'int':
-            self.participants.add(User.objects.get(id=user))
+        ''' Adds given instance of user, or given id of user to participants'''
+        if type(user).__name__ == 'int':
+            uid = user
+        elif type(user).__name__ == 'User':
+            uid = user.id
         else:
             raise ValueError("Incorrect Args")
+
+        if (self.participants.filter(id=uid).count() > 0):
+             self.participants.add(self.participants.filter(id=uid))
+             return self 
+        else: 
+            return 'User with id#: %d does not exist'%uid
+
 
     def remove_participant(self, user):
+        ''' Removes given user or user id from participants or ValueError'''
         if type(user).__name__ == 'int':
-            self.participants.remove(self.participants.get(id=user))
+            uid = user
         elif type(user).__name__ == 'User':
-            self.participants.remove(user)
+            uid = user.id
         else:
             raise ValueError("Incorrect Args")
 
-    @property
-    def isUpcoming(self):
-        td = self.dateTime - timezone.now()
-        if ( td.days >= 0 and td.seconds > 0 ):
-            return True
-        else:
-            return False
+        if (self.participants.filter(id=uid).count() > 0):
+             self.participants.remove(self.participants.filter(id=uid))
+             return self 
+        else: 
+            return 'No such participant'
+
+    def get_time_until(self):
+        ''' Returns the time until this event begins as a dictionary object '''
+        if not self.isUpcoming:
+            return -1
+        else: 
+            rd = relativedelta(self.dateTime, timezone.now())
+            return {'days':rd.days, 'minutes':rd.minutes, 'seconds':rd.seconds}
+
+
+
+
 
     ###################################################################################
     #                                Properties 
@@ -171,6 +190,14 @@ class Event(models.Model):
 
     # Sets the mins until this event begins as a property. You do the math if you gotta.
     # Set as -1 if already event already past
+    @property
+    def isUpcoming(self):
+        td = self.dateTime - timezone.now()
+        if ( td.days >= 0 and td.seconds > 0 ):
+            return True
+        else:
+            return False
+            
     @property
     def timeUntil(self):
         if not self.isUpcoming:
