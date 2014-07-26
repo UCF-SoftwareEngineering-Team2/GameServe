@@ -88,12 +88,18 @@ class EventManager(models.Manager):
             return event;
 
     def add_participant(self, user, event):
+        # Get event by id
         eventInstance = Event.objects.get(pk=event)
+
+        # Add user to participants
         eventInstance.participants.add(User.objects.get(pk=user))
         return eventInstance
 
     def remove_participant(self, user, event):
+        # Get event by id
         eventInstance = Event.objects.get(pk=event)
+
+        # If user exists in participants, remove them
         if(eventInstance.participants.filter(id=user) is not None):
             eventInstance.participants.remove(User.objects.get(pk=user))
             return eventInstance
