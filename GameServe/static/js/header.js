@@ -1,50 +1,58 @@
 $(document).ready(function() {
-	console.log("inside");
 
-	//login functionality
-	$('#login').click(function () {
-	  	$('#popupWindow').toggleClass('hidden');
-	  	$('#content').toggleClass('blurry');
-	});
+
 	$('.icon-close').click(function () {
 	  	$('#popupWindow').toggleClass('hidden');
 	  	$('#content').toggleClass('blurry');
 	});
-	$('#loginButton').click(function () {
-		if ($('#popupWindow').hasClass('expand')) {
-			var name = $('#nameInput').val();
-			var email =	$('#newEmailInput').val();
-			var verEmail = $('#verEmailInput').val();
-			var pass = $('#newPasswordInput').val();
-			var verPass = $('#verPasswordInput').val();
-			var phone = $('#pNumInput').val();
 
-	  		alert("data: \nname:\t" + name + " \nemail:\t" + email + " \nverEmail:\t" + verEmail + " \npass:\t" + pass + " \nverPass:\t" + verPass + " \nphone:\t" + phone );
-		}
-		else {
-			var email =	$('#emailInput').val();
-			var pass = $('#passwordInput').val();
-
-	  		alert("data: \email\t" + email + "\npass:\t" + pass);
-	  	}
+	// I don't think registration button belongs in the popup
+	$('#newUser').click(function() {
+		alert("redirect to creat_account page");
 	});
 
 
-	$('#newUser').click(function() {
-		if ($(this).text() == "New Member") {
-			$(this).text("Existing Member");
-			$('#popupWindow').addClass('expand');
-			$('#loginHeader').text("Sign up for gameServe");
-			$('#existingMember').addClass('hidden');
-			$('#newMember').removeClass('hidden');
+
+	// Login form submission
+	$('#loginButton').click(function () {
+		var email =	$('#emailInput').val();
+		var pass = $('#passwordInput').val();
+		alert("data: \email\t" + email + "\npass:\t" + pass);	
+	});
+	
+	
+	// Navigation bar clicks handlers
+	$('.headerLink').click(function(){
+		// Get current path
+		var pathname = window.location.pathname ; 
+
+		// login navi button was clicked
+		if ( this.id === 'login'){
+			$('#loginDropdown').toggleClass('hidden');
 		}
+		// Logout button clicked
+		else if (this.id === 'logout') {
+			window.location.href='/accounts/logout/';
+		}
+		// Home button clicked
+		else if (this.id === "home"){
+			if (pathname !== '/' && pathname !== '/events/') window.location.href = '/' ;
+		}
+		// Browse button
+		else if (this.id === 'browse'){
+			if (pathname !== '/events/browse/') window.location.href = "/events/browse/";
+		}
+		// Register button 
+		else if ( this.id === 'register'){
+			if (pathname !== '/accounts/register/') window.location.href = '/accounts/signup/';
+		}
+		// create events button (shown only if user is logged in)
+		else if ( this.id === 'create'){
+			if (pathname !== '/events/create/') window.location.href = '/events/create/';	
+		}
+		// Nada
 		else {
-			$(this).text('New Member');
-			$('#popupWindow').removeClass('expand');
-			$('#loginHeader').text("Login to gameServe");
-			
-			$('#existingMember').removeClass('hidden');
-			$('#newMember').addClass('hidden');
-		} 
+			return ;
+		}
 	});
 });

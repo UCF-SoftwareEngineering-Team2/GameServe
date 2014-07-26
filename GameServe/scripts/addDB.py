@@ -1,14 +1,22 @@
-import os
 from events.models import Sport, Court, Event
-# from django.contrib.auth.models import User
 from profile.models import User
+ 
+from allauth.account.models import EmailAddress
+ 
 from django.db.utils import IntegrityError, ProgrammingError
 from random import randint
-import datetime
 import re
 from __builtin__ import KeyboardInterrupt
 from django.utils import timezone
-
+ 
+HEADER = '\033[95m'
+OKBLUE = '\033[94m'
+OKGREEN = '\033[92m'
+WARNING = '\033[93m'
+FAIL = '\033[91m'
+ENDC = '\033[0m'
+ 
+ 
 def addCourts():
     print 'Adding Courts'
     c =[(28.596449, -81.201287),(28.595977, -81.197659),(28.596067, -81.197476),(28.596082, -81.197285),
@@ -24,6 +32,7 @@ def addCourts():
         court.latitude, court.longitude = i
         court.save()
 
+
 def addSports():
     print 'Adding sports'
     s = ['Basketball','Football','Tennis','Golf','Hockey','Swimming','Baseball','Soccer','Biking','Running','Shooting','Putting']
@@ -34,101 +43,89 @@ def addSports():
             sport.save()
         except (IntegrityError):
             pass
-
-
+ 
+ 
 def addEvents():
-    from profile.models import User
     print 'Adding Events ...'
-    c = len(Court.objects.all())
-    u = len(User.objects.all())
-    today = datetime.date.today()
+    c = Court.objects.count()
+    u = User.objects.count()
+    s = Sport.objects.count()
+ 
+ 
     for i in range(5000):
         e = Event()
-        e.dateTime = timezone.datetime(year=2014, month=randint(1,12), day=randint(1,28),
-                                       hour=randint(0,23), minute=randint(0,59))
-
-
+ 
+        year = 2014
+        month = randint(1, 12)
+        day = randint(1,30) if ( month != 2 ) else randint(1, 28)
+ 
+        hour = randint(1, 23) - 2
+        hour = 0 if (hour < 0) else hour
+        minute = randint(0, 59)
+ 
+        e.dateTime = timezone.datetime(year=year, month=month, day=day,
+                                       hour=hour, minute=minute)
+        e.endTime = timezone.datetime(year=year, month=month, day=day,
+                                       hour=hour+2, minute=minute)
+ 
         e.court = Court.objects.get(id=randint(1,c))
-        e.sport = Sport.objects.get(id=randint(1,c))
-        e.duration = 2000
-
-
+        e.sport = Sport.objects.get(id=randint(1,s))
+        e.creator  = User.objects.get(id=randint(2,u))
+        e.duration = 2
+        e.save()
         try:
-            e.creator = User.objects.get(id=randint(1,u))
-            e.save()
-        except(User.DoesNotExist):
-            continue
-        try:
-            for i in range(50):
-                e.participants.add(User.objects.get(id=randint(1,u)))
+            for i in range(randint(1,50)):
+                e.participants.add(User.objects.get(id=randint(2,u)))
         except(User.DoesNotExist):
             pass
-
         e.save()
-
-
+ 
+ 
 def addUsers():
-    from profile.models import User
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
+    # from profile.models import User
+    from profile.utils import create_allauth_user 
+ 
     print 'Adding users...'
     # Open file for read
     infile = open('.fakenames.txt','r')
     lines = infile.readlines()            # get all lines as list
-
+ 
     for line in lines:
-        userr = User()
-
+ 
         line = line.rstrip('\n')                            # remove newline+escapes
         line = filter(None, re.split('\s+',line))            # remove empty elements in list
-
+ 
         try:
-            userr.first_name = line[0]
-            print HEADER+userr.first_name+ENDC
+            
+            phone_number = line[3].replace('-','')
+            phone_number = phone_number.rstrip('\n')
 
-            userr.email = line[1]
-            print FAIL+userr.email+ENDC
-
-            userr.username = line[2]
-            print FAIL+userr.username+ENDC
-
-            tmp = line[2]
-            userr.password = tmp[::-1]
-            print FAIL+userr.password+ENDC
+            
+            u = create_allauth_user(email=line[1],
+                                    username=line[2],
+                                    password=line[2][::-1],
+                                    phonenumber=phone_number)
+            print HEADER+line[0]+ENDC
+            print FAIL+"Email: "+u.email+ENDC
+            print FAIL+"Username: "+u.username+ENDC
+            # print FAIL+"Pass: "+u.password+ENDC
+            print FAIL+"Phone: "+u.phone_number+ENDC
             print
-            # profile = UserProfile( phone_number = line[3].replace('-','') )
-            # profile.user = userr
-            # userr.save()
-            # userr.profile = profile
-            # profile.save()
-            userr.phone_number = line[3].replace('-','')
-            userr.save()
-
+ 
         # If not unique
         except (IntegrityError, ProgrammingError):
             pass
-
-
-
-
-
+ 
+ 
+ 
+ 
 def clearAllDB():
     Court.objects.all().delete()
     Sport.objects.all().delete()
     User.objects.all().delete()
-    Events.objects.all().delete()
-
+    Event.objects.all().delete()
+ 
 def printMenu():
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
     print '---------------'
     print HEADER+'Menu'+ENDC
     print '---------------'
@@ -140,7 +137,7 @@ def printMenu():
     print FAIL+'6. ClearAllDB()'+ENDC
     print WARNING+'*. Exit'+ENDC
     print
-
+ 
 def run():
     try:
         printMenu()
@@ -164,4 +161,3 @@ def run():
             return
     except ( KeyboardInterrupt ):
         run()
-

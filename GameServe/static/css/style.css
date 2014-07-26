@@ -41,8 +41,8 @@
   -moz-osx-font-smoothing: grayscale; }
 
 .largeIcon {
-  font-size: 75px;
-  width: 75px;
+  font-size: 85px;
+  width: 85px;
   margin: 10px auto; }
   .largeIcon.left {
     float: left; }
@@ -119,6 +119,12 @@
 .icon-camera:before {
   content: "\e617"; }
 
+.icon-facebook:before {
+  content: "\e618"; }
+
+.icon-gsIcon:before {
+  content: "\e619"; }
+
 body {
   background: #cecece;
   font-family: 'sinkin_sans300_light';
@@ -152,10 +158,13 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.6);
     z-index: 100;
     opacity: 0;
     pointer-events: none; }
+    #content #fader.fade {
+      opacity: 1;
+      pointer-events: none; }
 
 header {
   position: fixed;
@@ -163,7 +172,8 @@ header {
   width: 100%;
   background: #f7f7f7;
   z-index: 100;
-  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1); }
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1);
+  z-index: 20; }
   header .headerLink {
     position: relative;
     height: 57px;
@@ -568,40 +578,53 @@ header {
     background: #6cab43;
     color: #f7f7f7; }
 
-#popupWindow {
+#loginDropdown {
   opacity: 1;
   position: fixed;
-  top: 100px;
+  top: 55px;
   right: 200px;
   width: 400px;
   height: 300px;
   background: #f7f7f7;
-  border-radius: 5px;
+  border-radius: 0px 0px 5px 5px;
   overflow: hidden;
   box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2);
   -webkit-transition: 500ms ease-in-out;
   -moz-transition: 500ms ease-in-out;
   -ms-transition: 500ms ease-in-out;
   -o-transition: 500ms ease-in-out;
-  transition: 500ms ease-in-out;
-  z-index: 20; }
-  #popupWindow.hidden {
+  transition: 500ms ease-in-out; }
+  #loginDropdown.hidden {
     display: none; }
-  #popupWindow.expand {
-    height: 610px; }
-  #popupWindow #existingMember {
+  #loginDropdown #newMember {
     padding: 10px; }
-    #popupWindow #existingMember.hidden {
+    #loginDropdown #newMember.hidden {
       display: none; }
-    #popupWindow #existingMember h5 {
+    #loginDropdown #newMember h5 {
       margin: 0px; }
-  #popupWindow #newMember {
-    padding: 10px; }
-    #popupWindow #newMember.hidden {
-      display: none; }
-    #popupWindow #newMember h5 {
-      margin: 0px; }
-  #popupWindow .loginField {
+  #loginDropdown .windowHeader {
+    position: relative;
+    top: 0px;
+    padding: 5px 10px;
+    background: #f7f7f7;
+    color: #aaaaaa;
+    width: calc(100% - 20px);
+    height: 30px; }
+    #loginDropdown .windowHeader .icon-close {
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      padding: 10px;
+      font-size: 15px;
+      color: #cecece;
+      -webkit-transition: 200ms ease;
+      -moz-transition: 200ms ease;
+      -ms-transition: 200ms ease;
+      -o-transition: 200ms ease;
+      transition: 200ms ease; }
+      #loginDropdown .windowHeader .icon-close:hover {
+        color: #6cab43; }
+  #loginDropdown .loginField {
     position: relative;
     width: 250px;
     height: 30px;
@@ -614,37 +637,15 @@ header {
     font-family: 'sinkin_sans300_light';
     clear: both;
     box-shadow: inset 0 0 2px 2px #cecece; }
-    #popupWindow .loginField:last-child {
+    #loginDropdown .loginField:last-child {
       margin-bottom: 45px; }
-  #popupWindow .windowHeader {
-    position: relative;
-    top: 0px;
-    padding: 5px 10px;
-    background: #f7f7f7;
-    color: #aaaaaa;
-    width: calc(100% - 20px);
-    height: 30px; }
-    #popupWindow .windowHeader .icon-close {
-      position: absolute;
-      right: 0px;
-      top: 0px;
-      padding: 10px;
-      font-size: 15px;
-      color: #cecece;
-      -webkit-transition: 200ms ease;
-      -moz-transition: 200ms ease;
-      -ms-transition: 200ms ease;
-      -o-transition: 200ms ease;
-      transition: 200ms ease; }
-      #popupWindow .windowHeader .icon-close:hover {
-        color: #6cab43; }
-  #popupWindow .authButtonSection {
+  #loginDropdown .authButtonSection {
     position: absolute;
     width: 100%;
     height: 40px;
     bottom: 0px;
     margin-top: 20px; }
-    #popupWindow .authButtonSection .authButton {
+    #loginDropdown .authButtonSection .authButton {
       position: relative;
       width: 50%;
       height: 100%;
@@ -659,9 +660,100 @@ header {
       -ms-transition: 200ms ease;
       -o-transition: 200ms ease;
       transition: 200ms ease; }
-      #popupWindow .authButtonSection .authButton:hover {
+      #loginDropdown .authButtonSection .authButton:hover {
         background: #6cab43;
         color: #f7f7f7; }
+
+.accountSection {
+  height: 120px;
+  -webkit-transition: 500ms ease-in-out;
+  -moz-transition: 500ms ease-in-out;
+  -ms-transition: 500ms ease-in-out;
+  -o-transition: 500ms ease-in-out;
+  transition: 500ms ease-in-out;
+  transition: 400ms;
+  overflow: hidden; }
+  .accountSection.expand {
+    height: 450px; }
+  .accountSection .loginBlock {
+    position: relative;
+    float: left;
+    margin: 10px; }
+  .accountSection #oldMember {
+    padding: 10px; }
+    .accountSection #oldMember.hidden {
+      display: none; }
+    .accountSection #oldMember h5 {
+      margin: 0px; }
+  .accountSection #newMember {
+    padding: 10px; }
+    .accountSection #newMember.hidden {
+      display: none; }
+    .accountSection #newMember h5 {
+      margin: 0px; }
+  .accountSection .windowHeader {
+    position: relative;
+    top: 0px;
+    padding: 5px 10px;
+    background: #f7f7f7;
+    color: #aaaaaa;
+    width: calc(100% - 20px);
+    height: 30px; }
+    .accountSection .windowHeader .icon-close {
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      padding: 10px;
+      font-size: 15px;
+      color: #cecece;
+      -webkit-transition: 200ms ease;
+      -moz-transition: 200ms ease;
+      -ms-transition: 200ms ease;
+      -o-transition: 200ms ease;
+      transition: 200ms ease; }
+      .accountSection .windowHeader .icon-close:hover {
+        color: #6cab43; }
+  .accountSection .loginField {
+    position: relative;
+    width: 250px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    padding: 3px 5px;
+    font-size: 15px;
+    color: #6cab43;
+    font-family: 'sinkin_sans300_light';
+    clear: both;
+    box-shadow: inset 0 0 2px 2px #cecece; }
+  .accountSection .tempPhotoUpload {
+    position: relative;
+    float: left;
+    height: 180px;
+    width: 100%;
+    border-radius: 5px;
+    background: #aaaaaa; }
+
+#facebookLogin {
+  position: relative;
+  height: 30px;
+  bottom: 10px;
+  margin: auto 10px;
+  background: #3B5998;
+  padding: 10px;
+  border-radius: 5px;
+  transition: 200ms; }
+  #facebookLogin:hover {
+    background: #627AAD; }
+  #facebookLogin .icon-facebook {
+    position: relative;
+    float: left;
+    color: #F2F2F2;
+    margin-right: 10px;
+    font-size: 28px; }
+  #facebookLogin #facebookText {
+    position: relative;
+    color: #F2F2F2;
+    float: left; }
 
 .headerDeets {
   position: relative;
@@ -725,7 +817,7 @@ h1, h3, h2, h5 {
     left: -112px;
     margin-left: 15px; }
 
-.commCheckPub {
+.sideButton {
   position: relative;
   width: 250px;
   height: 50px;
@@ -738,5 +830,51 @@ h1, h3, h2, h5 {
   overflow: hidden;
   cursor: pointer;
   box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1); }
-  .commCheckPub:hover {
+  .sideButton:hover {
     background: #6cab43; }
+
+#popupNotice {
+  background: #f7f7f7;
+  position: fixed;
+  margin: 200px 350px;
+  border-radius: 5px;
+  min-height: 200px;
+  width: 500px;
+  overflow: hidden;
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1);
+  z-index: 110;
+  transition: 200ms; }
+  #popupNotice.hidden {
+    opacity: 0;
+    pointer-events: none; }
+  #popupNotice #gsIcon {
+    position: relative;
+    float: left;
+    width: 100px; }
+  #popupNotice #noticeHeader {
+    position: relative;
+    top: 0px;
+    padding: 5px 10px;
+    color: #2e2d2c;
+    background: #cecece;
+    width: 100%;
+    height: 30px; }
+  #popupNotice .noticeContent {
+    position: relative;
+    width: 100%;
+    padding: 5px 10px; }
+    #popupNotice .noticeContent #noticeText {
+      position: absolute;
+      right: 30px;
+      width: 350px; }
+  #popupNotice #noticeButton {
+    position: absolute;
+    bottom: 0px;
+    text-align: center;
+    color: #f7f7f7;
+    background: #2e2d2c;
+    width: 100%;
+    height: 30px;
+    transition: 200ms; }
+    #popupNotice #noticeButton:hover {
+      background: #6cab43; }

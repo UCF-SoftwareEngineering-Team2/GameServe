@@ -14,89 +14,74 @@
 </head>
 
 <body>
-<div id="content">
-	<div id="fader"></div>
-	<header>
-		<section class="center head">
-			<img src="{% static 'assets/gsLogo.svg' %}" id="logo">
+	<div id="content">
+		<div id="fader"></div>
+		<header>
+			<section class="center head">
+				<img src="{% static 'assets/gsLogo.svg' %}" id="logo">
 
-			<div id="login" class="headerLink">
-				login
-				<div class="linkSlider"></div>
-			</div>
-			<div id="create" class="headerLink">
-				create a game
-				<div class="linkSlider {% block createLink %}{% endblock %}"></div>
-			</div>
-			<div id="browse" class="headerLink">
-				browse
-				<div class="linkSlider {% block browseLink %}{% endblock %}"></div>
-			</div>
-			<div id="home" class="headerLink">
-				home
-				<div class="linkSlider {% block homeLink %}{% endblock %}"></div>
-			</div>
-			<div id="headerFade"></div>
-		</section>
-	</header>
-	<section class="center">
-		<aside class="verticalPane small">
-			<section class="window side">
-				<div class="windowHeader">{% block topLeftPaneTitle %}Recent Activity{% endblock %}</div>	
-				{% block topLeftPaneContent %}
-				{% endblock %}
+				<div id="login" class="headerLink">
+					login
+					<div class="linkSlider {% block loginLink %}{% endblock %}"></div>
+				</div>
+				<div id="create" class="headerLink">
+					create a game
+					<div class="linkSlider {% block createLink %}{% endblock %}"></div>
+				</div>
+				<div id="browse" class="headerLink">
+					browse
+					<div class="linkSlider {% block browseLink %}{% endblock %}"></div>
+				</div>
+				<div id="home" class="headerLink">
+					home
+					<div class="linkSlider {% block homeLink %}{% endblock %}"></div>
+				</div>
+				<div id="headerFade"></div>
+				<form id="loginDropdown" class="hidden">
+					<h5>email:</h5>
+					<input type="text" class="loginField" id="emailInput" placeholder="email">
+					<h5>password:</h5>
+					<input type="text" class="loginField" id="passwordInput" placeholder="password">
+					<div class="authButtonSection">
+						<div id="loginButton" class="authButton">Login</div>
+						<div id="newUser" class="authButton">New Member</div>
+					</div>
+				</form>
 			</section>
+		</header>
+		<section class="center">
+			<aside class="verticalPane small">
+				<section class="window side">
+					<div class="windowHeader">{% block topLeftPaneTitle %}Recent Activity{% endblock %}</div>	
+					{% block topLeftPaneContent %}
+					{% endblock %}
+				</section>
 
-	 		{% block bottomLeftPane %}{% endblock %}
-	 		
-	 		{% block middleLeftPane %}{% endblock %}
+				{% block middleLeftPane %}{% endblock %}
 
-		</aside>
-		<section class="verticalPane">
-			
-			{% block mainPane %}{% endblock %}
+				{% block bottomLeftPane %}{% endblock %}
 
-			{% block secondarySection %}{% endblock %}
+			</aside>
+			<section class="verticalPane">
 
-			{% block thirdSection %}{% endblock %}
-			
+				{% block mainPane %}{% endblock %}
+
+				{% block secondarySection %}{% endblock %}
+
+				{% block thirdSection %}{% endblock %}
+
+			</section>
+			<div id="popupNotice" class="hidden">
+				<div id="noticeHeader"></div>
+				<div class="noticeContent">
+					<img src="{% static 'assets/icons/gsIcon.svg' %}" id="gsIcon">
+					<div id="noticeText"></div>
+				</div>
+				<div id="noticeButton">got it</div>
+			</div>
 		</section>
-	</section>
-</div>
-{% block loginPopup %}
-	<section class="center">
-		<form id="popupWindow" class="hidden">
-			<div class="windowHeader" >
-				<div id="loginHeader">Login to gameServe</div>
-				<div class="icon-close"></div>
-			</div>
-			<div id="existingMember">
-				<h5>email:</h5>
-				<input type="text" class="loginField" id="emailInput" placeholder="email">
-				<h5>password:</h5>
-				<input type="text" class="loginField" id="passwordInput" placeholder="password">
-			</div>
-			<div id="newMember" class="hidden">
-				<h5>username:</h5>
-				<input type="text" class="loginField" id="nameInput" placeholder="name">
-				<h5>email:</h5>
-				<input type="text" class="loginField" id="newEmailInput" placeholder="email">
-				<h5>verify email:</h5>
-				<input type="text" class="loginField" id="verEmailInput" placeholder="email">
-				<h5>password:</h5>
-				<input type="password" class="loginField" id="newPasswordInput" placeholder="password">
-				<h5>verify password:</h5>
-				<input type="password" class="loginField" id="verPasswordInput" placeholder="password">
-				<h5>phone number:</h5>
-				<input type="text" class="loginField" id="pNumInput" placeholder="phone number">
-			</div>
-			<div class="authButtonSection">
-				<div id="loginButton" class="authButton">Login</div>
-				<div id="newUser" class="authButton">New Member</div>
-			</div>
-		</form>
-	</section>
-{% endblock %}
-	
+
+	</div>
+
 </body>
 </html>

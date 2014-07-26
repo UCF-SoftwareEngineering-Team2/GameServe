@@ -5,6 +5,35 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
 from profile.forms import UserForm
 from profile.models import User
+import json
+
+
+
+def ajax(request):
+    # Get the tnl info
+    to_json = []    
+    print 'ajax'
+    if request.method == 'GET':
+        # TODO: use the supplied information
+        # tbl = request.POST['table']
+
+        # Get the information requested 
+        u = User.objects.filter(username__startswith='A')
+
+        # Build a list
+        for user in u:
+            us = {}
+            us['username'] = user.username
+            us['email'] = user.email
+            to_json.append(us)
+        # Return it
+        respone_data = json.dumps(to_json)    
+        return HttpResponse(respone_data, mimetype='application/json')
+    else:
+        return render_to_response('profile/index.html', {}, RequestContext(request))    
+
+
+
 
 
 # TODO: Do something else here or get rid of it
