@@ -11,5 +11,7 @@ urlpatterns = patterns('',
     url(r'^new_game/', views.new_game, name='new_game'),
     url(r'^create_account/', views.create_account, name='create_account'),
     url(r'^commit/', views.commit, name='commit'),
-    url(r'^uncommit/', views.uncommit, name='uncommit')
+    url(r'^uncommit/', views.uncommit, name='uncommit'),
+    url(r'^upcoming_events/', views.upcoming_events, name='upcoming_events'),
+    url(r'^upcoming_events_after/', views.upcoming_events_after, name='upcoming_events_after')
 )

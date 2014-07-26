@@ -131,7 +131,7 @@ class Event(models.Model):
     # duration = models.DateTimeField(auto_now=False)
 
     def __unicode__(self):
-        return u'%s' % (self.dateTime)
+        return self
 
 
 

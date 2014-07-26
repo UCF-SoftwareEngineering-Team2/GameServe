@@ -1,4 +1,5 @@
 import json
+import time
 from django.http import HttpResponse
 from django.shortcuts import render
 from events.models import *
@@ -31,13 +32,59 @@ logging.config.dictConfig(LOGGING)
 #
 # ./logging
 #
+# NOTE: @csrf_exempt decorator is temporary to allow for testing with a REST client
 #
+
+@csrf_exempt
 def index(request):
+    # This returns the first 10 events after the current time
     context_dict = {
-        'upcoming':Event.objects.filter(dateTime__gte=timezone.now()),
+        'upcoming':Event.objects.filter(dateTime__gte=timezone.now())[:10],
     }
     return render_to_response('events/index.html',context_dict, RequestContext(request) )
- 
+
+
+# Returns a set of events as a JSON payload based on a parameter
+# i.e. /events/upcoming_events/?numEvents=3 will return the next 3 events occuring next
+@csrf_exempt
+def upcoming_events(request):
+    # This gets the first x amount of events after now, x being based on the the url parameter 'numEvents'
+    context_dict = {
+        'upcoming':Event.objects.filter(dateTime__gte=timezone.now())[:request.GET.get('numEvents')],
+    }
+
+    # Creates a dictionary based on this, and then returns it as a JSON payload
+    testing = {}
+    for index, event in enumerate(context_dict['upcoming']):
+        testing[index] = model_to_dict(event)
+
+        # Also returns a dateTimeStmp parameter as a timestamp in the form of a UTC timestamp
+        testing[index]['dateTimeStamp'] = int(time.mktime(testing[index]['dateTime'].timetuple()))
+        testing[index]['dateTime'] = unicode(testing[index]['dateTime'])
+        testing[index]['endTime'] = unicode(testing[index]['endTime'])
+    return HttpResponse(json.dumps(testing), content_type="applciation/json")
+
+# Returns a set of events as a JSON payload based on 2 parameters
+# i.e. /events/upcoming_events/?numEvents=3&dateTime=1407573840 will return the next 3 events occuring after the datetime 1407573840
+@csrf_exempt
+def upcoming_events_after(request):
+    # This gets the first x amount of events after now, x being based on the the url parameter 'numEvents'
+    # Also allows for a 'dateTime' parameter in the form of a UTC timestamp so that you can get events only after a certain time
+    context_dict = {
+        'upcoming':Event.objects.filter(dateTime__gt=datetime.fromtimestamp(float(request.GET.get('dateTime'))))[:request.GET.get('numEvents')],
+    }
+
+    # Creates a dictionary based on this, and then returns it as a JSON payload
+    testing = {}
+    for index, event in enumerate(context_dict['upcoming']):
+
+        # Also returns a dateTimeStmp parameter as a timestamp in the form of a UTC timestamp
+        testing[index] = model_to_dict(event)
+        testing[index]['dateTime'] = unicode(testing[index]['dateTime'])
+        testing[index]['endTime'] = unicode(testing[index]['endTime'])
+    return HttpResponse(json.dumps(testing), content_type="applciation/json")
+
+
 def browse(request):
     return render(request, 'events/browse.html')
  
