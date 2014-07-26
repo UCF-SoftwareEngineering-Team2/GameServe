@@ -100,7 +100,7 @@ SITE_ID=1
 # Django allauth. Require username and email for registeration
 # Allow login via username or email
 ACCOUNT_USERNAME_REQUIRED = True
-# ACCOUNT_UNIQUE_EMAIL = True 
+ACCOUNT_UNIQUE_EMAIL = True 
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD='username_email'
  

@@ -1,9 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
-from allauth.account.models import EmailAddress
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-from django.db.utils import  IntegrityError
+# from allauth.account.models import EmailAddress
+# from django.db.models.signals import post_save
+# from django.dispatch import receiver
+# from django.db.utils import  IntegrityError
 
 class UserManager(BaseUserManager):
     def create_user(self, email, username, password=None):
@@ -48,7 +48,9 @@ class User(AbstractBaseUser):
     #                                Fields 
     ###################################################################################
     # User email address (required)
-    email    = models.EmailField(blank=False, unique = True, max_length = 20, 
+    email    = models.EmailField(blank=False, 
+                                 unique = True, 
+                                 max_length = 40, 
                                  verbose_name = 'email')
     # User's username (required)
     username = models.CharField(unique=True, 
@@ -57,12 +59,16 @@ class User(AbstractBaseUser):
                                 verbose_name = 'username')
  
     # Extra profile information 
-    phone_number = models.CharField(default = '',max_length = 10)
+    phone_number = models.CharField(default = '',
+                                    max_length = 10,
+                                    verbose_name='phonenumber')
+
     reputation   = models.IntegerField(default = 0)
  
     # Required definitions for overriding default user model
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
+ 
  
     USERNAME_FIELD = 'email'                # User email as the username
     REQUIRED_FIELDS = ['username']          # Require the username and email fields
@@ -117,15 +123,15 @@ class User(AbstractBaseUser):
 
 
 # Keeps EmailAddress table in sync with User table by listening for save() method signals
-@receiver(post_save, sender=User)
-def syncEmailAddress(**kwargs):
-    e = EmailAddress()
-    u = kwargs['instance']
-    if ( u.is_admin or u.is_staff ):
-        return 
-    e.user_id = u.id
-    e.email = u.email
-    try:
-        e.save()
-    except(IntegrityError):
-        pass
+# @receiver(post_save, sender=User)
+# def syncEmailAddress(**kwargs):
+#     e = EmailAddress()
+#     u = kwargs['instance']
+#     if ( u.is_admin or u.is_staff ):
+#         return 
+#     e.user_id = u.id
+#     e.email = u.email
+#     try:
+#         e.save()
+#     except(IntegrityError):
+#         pass

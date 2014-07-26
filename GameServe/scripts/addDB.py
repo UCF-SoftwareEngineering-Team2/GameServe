@@ -1,4 +1,3 @@
-import os
 from events.models import Sport, Court, Event
 from profile.models import User
  
@@ -6,7 +5,6 @@ from allauth.account.models import EmailAddress
  
 from django.db.utils import IntegrityError, ProgrammingError
 from random import randint
-import datetime
 import re
 from __builtin__ import KeyboardInterrupt
 from django.utils import timezone
@@ -33,7 +31,8 @@ def addCourts():
         court.sport = Sport.objects.get(id=randint(1,s))
         court.latitude, court.longitude = i
         court.save()
- 
+
+
 def addSports():
     print 'Adding sports'
     s = ['Basketball','Football','Tennis','Golf','Hockey','Swimming','Baseball','Soccer','Biking','Running','Shooting','Putting']
@@ -83,7 +82,8 @@ def addEvents():
  
  
 def addUsers():
-    from profile.models import User
+    # from profile.models import User
+    from profile.utils import create_allauth_user 
  
     print 'Adding users...'
     # Open file for read
@@ -91,46 +91,31 @@ def addUsers():
     lines = infile.readlines()            # get all lines as list
  
     for line in lines:
-        userr = User()
  
         line = line.rstrip('\n')                            # remove newline+escapes
         line = filter(None, re.split('\s+',line))            # remove empty elements in list
  
         try:
-            userr.first_name = line[0]
-            print HEADER+userr.first_name+ENDC
- 
-            userr.email = line[1]
-            print FAIL+userr.email+ENDC
- 
-            userr.username = line[2]
-            print FAIL+userr.username+ENDC
- 
-            tmp = line[2]
-            userr.password = tmp[::-1]
-            print FAIL+userr.password+ENDC
-            print
- 
             
- 
-            userr.phone_number = line[3].replace('-','')
-            userr.save()
+            phone_number = line[3].replace('-','')
+            phone_number = phone_number.rstrip('\n')
+
+            
+            u = create_allauth_user(email=line[1],
+                                    username=line[2],
+                                    password=line[2][::-1],
+                                    phonenumber=phone_number)
+            print HEADER+line[0]+ENDC
+            print FAIL+"Email: "+u.email+ENDC
+            print FAIL+"Username: "+u.username+ENDC
+            # print FAIL+"Pass: "+u.password+ENDC
+            print FAIL+"Phone: "+u.phone_number+ENDC
+            print
  
         # If not unique
         except (IntegrityError, ProgrammingError):
             pass
  
-def emailResolve():
-    users = User.objects.all()
- 
-    for u in users :
-        try:
-            e = EmailAddress()
-            e.user = u
-            e.email = u.email
-            e.save()
-        except(IntegrityError):
-            print "Already Exists"
  
  
  
@@ -161,7 +146,6 @@ def run():
             addSports()
         elif choice == 2:
             addUsers()
-        # emailResolve()
         elif choice == 3:
             addCourts()
         elif choice == 4:

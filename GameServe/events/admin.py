@@ -3,7 +3,7 @@ from events.models import Event, Court, Sport
  
 # Register your models here.
 class EventAdmin(admin.ModelAdmin):
-    list_display = ('court','dateTime','creator','isUpcoming','timeUntil','duration')
+    list_display = ('court','dateTime','creator','timeUntil','duration')
 class CourtAdmin(admin.ModelAdmin):
     list_display = ('sport','latitude','longitude')
  

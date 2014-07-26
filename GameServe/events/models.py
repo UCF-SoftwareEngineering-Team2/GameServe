@@ -144,7 +144,13 @@ class Event(models.Model):
         else:
             raise ValueError("Incorrect Args")
 
-
+    @property
+    def isUpcoming(self):
+        td = self.dateTime - timezone.now()
+        if ( td.days >= 0 and td.seconds > 0 ):
+            return True
+        else:
+            return False
 
     ###################################################################################
     #                                Properties 
@@ -161,13 +167,6 @@ class Event(models.Model):
             return {'days':rd.days, 'minutes':rd.minutes, 'seconds':rd.seconds}
 
     # Instance method
-    @property
-    def isUpcoming(self):
-        td = self.dateTime - timezone.now()
-        if ( td.days >= 0 and td.seconds > 0 ):
-            return True
-        else:
-            return False
 
     class Meta:
         ordering = ('dateTime',)
