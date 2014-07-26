@@ -88,7 +88,20 @@ class EventManager(models.Manager):
             event = self.create(dateTime=dt, endTime=dte, creator=User.objects.get(pk=creator), court=courtInstance, duration=duration)
             return event;
 
+    # TODO: Determine in instance-level method bettern than table-wide method for remove/add participants
+    def add_participant(self, user, event):
+        eventInstance = Event.objects.get(pk=event)
+        eventInstance.participants.add(User.objects.get(pk=user))
+        return eventInstance
 
+    def remove_participant(self, user, event):
+        eventInstance = Event.objects.get(pk=event)
+        if(eventInstance.participants.filter(id=user) is not None):
+            eventInstance.participants.remove(User.objects.get(pk=user))
+            return eventInstance
+        else:
+            return 'No such participant'
+            
 
 class Event(models.Model):
     objects = EventManager()
