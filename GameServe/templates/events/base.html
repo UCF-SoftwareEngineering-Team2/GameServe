@@ -19,15 +19,32 @@
 		<header>
 			<section class="center head">
 				<img src="{% static 'assets/gsLogo.svg' %}" id="logo">
-
-				<div id="login" class="headerLink">
-					login
-					<div class="linkSlider {% block loginLink %}{% endblock %}"></div>
+				
+				{# If user is logged in then show buttn to logout/create a game #}
+				{% if request.user.is_authenticated %}
+				<div id="logout" class="headerLink">
+					logout
+					<div class="linkSlider"></div>
 				</div>
 				<div id="create" class="headerLink">
 					create a game
 					<div class="linkSlider {% block createLink %}{% endblock %}"></div>
 				</div>
+
+				{# If user not logged in then show button to login or register #}
+				{% else %}
+				<div id="login" class="headerLink">
+					login
+					<div class="linkSlider {% block loginLink %}{% endblock %}"></div>
+				</div>
+				<div id="register" class="headerLink">
+					register	
+					<div class="linkSlider"></div>
+				</div>
+				{% endif %}
+
+
+
 				<div id="browse" class="headerLink">
 					browse
 					<div class="linkSlider {% block browseLink %}{% endblock %}"></div>
@@ -37,6 +54,7 @@
 					<div class="linkSlider {% block homeLink %}{% endblock %}"></div>
 				</div>
 				<div id="headerFade"></div>
+
 				<form id="loginDropdown" class="hidden">
 					<h5>email:</h5>
 					<input type="text" class="loginField" id="emailInput" placeholder="email">
@@ -47,6 +65,7 @@
 						<div id="newUser" class="authButton">New Member</div>
 					</div>
 				</form>
+				
 			</section>
 		</header>
 		<section class="center">
