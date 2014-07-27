@@ -17,7 +17,8 @@ $(document).ready(function() {
 	$('#loginButton').click(function () {
 		var email =	$('#emailInput').val();
 		var pass = $('#passwordInput').val();
-		alert("data: \email\t" + email + "\npass:\t" + pass);	
+		console.log('email: '+email);
+		console.log('password: '+pass);
 	});
 	
 	
@@ -32,7 +33,7 @@ $(document).ready(function() {
 		}
 		// Logout button clicked
 		else if (this.id === 'logout') {
-			window.location.href='/accounts/logout/';
+			window.location.href='/account/logout/';
 		}
 		// Home button clicked
 		else if (this.id === "home"){
@@ -44,7 +45,7 @@ $(document).ready(function() {
 		}
 		// Register button 
 		else if ( this.id === 'register'){
-			if (pathname !== '/accounts/register/') window.location.href = '/accounts/signup/';
+			if (pathname !== '/account/register/') window.location.href = '/account/signup/';
 		}
 		// create events button (shown only if user is logged in)
 		else if ( this.id === 'create'){
