@@ -66,7 +66,8 @@
 					<input type="text" class="loginField" id="passwordInput" placeholder="password">
 					<div class="authButtonSection">
 						<div id="loginButton" class="authButton">Login</div>
-						<div id="newUser" class="authButton">New Member</div>
+						<a href="/account/facebook/login/"><div class="fb">Login with Facebook</div></a>
+						{% include "socialaccount/snippets/login_extra.html" %}
 					</div>
 				</form>
 				<script>

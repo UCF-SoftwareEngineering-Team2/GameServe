@@ -62,7 +62,6 @@ INSTALLED_APPS = (
     # Project-specifics
     'profile',                     # User account models
     'events',
-    'events.templatetags.events_filters'
 )
  
 MIDDLEWARE_CLASSES = (
