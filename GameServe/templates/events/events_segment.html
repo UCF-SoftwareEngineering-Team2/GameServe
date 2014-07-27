@@ -1,0 +1,31 @@
+{% load events_filters %}
+<div class="container">
+	{% for event in events %}
+	<div class="listItem">
+		<div class="listImg">
+			<!-- Sets proper class for event type -->
+			<div class="icon-{{event.court.sport | lower}}"></div>
+		</div>
+		<div class="browseGameInfo">
+			<div class="infoBlock">
+				<!-- sets the date, time, and the time until -->
+				<div class="infoText">{{event.dateTime.date}}</div>
+				<div class="infoText">{{event.dateTime.time}} ({{event.dateTime | timeuntil}})</div>
+			</div>
+			<div class="infoBlock">
+				<div class="infoText"></div>
+				<!-- Counts numbre of participants -->
+				<div class="infoText">{{event.participants.count}} people committed</div>
+			</div>
+			<div class="heatImg">
+				<div class="icon-heatRep"></div>
+			</div>
+		</div>
+	</div>
+	{% if forloop.last %}
+	<!-- link to get the next segment of upcoming events -->
+	<a class="infinite-more-link" href="/events/upcoming_events_after/?numEvents=5&dateTime={{event.dateTime | getTimeStamp}}&html=True"></a>
+	{% endif %}
+	{% endfor %}
+	<!-- Input link if this is the last event -->
+</div>

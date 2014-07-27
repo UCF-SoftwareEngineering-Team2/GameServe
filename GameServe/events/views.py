@@ -46,47 +46,66 @@ def index(request):
 
 # Returns a set of events as a JSON payload based on a parameter
 # i.e. /events/upcoming_events/?numEvents=3 will return the next 3 events occuring next
+# A third parameter ('html'), allows an HTML segment to be returned for infinite scrolling
 @csrf_exempt
 def upcoming_events(request):
     # This gets the first x amount of events after now, x being based on the the url parameter 'numEvents'
     context_dict = {
-        'upcoming':Event.objects.filter(dateTime__gte=timezone.now())[:request.GET.get('numEvents')],
+        'events':Event.objects.filter(dateTime__gte=timezone.now())[:request.GET.get('numEvents')],
     }
 
-    # Creates a dictionary based on this, and then returns it as a JSON payload
-    testing = {}
-    for index, event in enumerate(context_dict['upcoming']):
-        testing[index] = model_to_dict(event)
+    # Returns either a JSON payload or an HTML segment based on the request
+    if(request.GET.get('html')):
+        return render_to_response('events/events_segment.html', context_dict, RequestContext(request))
+    else:
 
-        # Also returns a dateTimeStmp parameter as a timestamp in the form of a UTC timestamp
-        testing[index]['dateTimeStamp'] = int(time.mktime(testing[index]['dateTime'].timetuple()))
-        testing[index]['dateTime'] = unicode(testing[index]['dateTime'])
-        testing[index]['endTime'] = unicode(testing[index]['endTime'])
-    return HttpResponse(json.dumps(testing), content_type="applciation/json")
+        # Creates a dictionary based on this, and then returns it as a JSON payload
+        jsonPayload = {}
+        for index, event in enumerate(context_dict['events']):
+            jsonPayload[index] = model_to_dict(event)
+
+            # Also returns a dateTimeStmp parameter as a timestamp in the form of a UTC timestamp
+            jsonPayload[index]['dateTimeStamp'] = int(time.mktime(jsonPayload[index]['dateTime'].timetuple()))
+            jsonPayload[index]['dateTime'] = unicode(jsonPayload[index]['dateTime'])
+            jsonPayload[index]['endTime'] = unicode(jsonPayload[index]['endTime'])
+        return HttpResponse(json.dumps(jsonPayload), content_type="applciation/json")
+
+
 
 # Returns a set of events as a JSON payload based on 2 parameters
 # i.e. /events/upcoming_events/?numEvents=3&dateTime=1407573840 will return the next 3 events occuring after the datetime 1407573840
+# A third parameter ('html'), allows an HTML segment to be returned for infinite scrolling
 @csrf_exempt
 def upcoming_events_after(request):
     # This gets the first x amount of events after now, x being based on the the url parameter 'numEvents'
     # Also allows for a 'dateTime' parameter in the form of a UTC timestamp so that you can get events only after a certain time
     context_dict = {
-        'upcoming':Event.objects.filter(dateTime__gt=datetime.fromtimestamp(float(request.GET.get('dateTime'))))[:request.GET.get('numEvents')],
+        'events':Event.objects.filter(dateTime__gt=datetime.fromtimestamp(float(request.GET.get('dateTime'))))[:request.GET.get('numEvents')],
     }
 
-    # Creates a dictionary based on this, and then returns it as a JSON payload
-    testing = {}
-    for index, event in enumerate(context_dict['upcoming']):
+    # Returns either a JSON payload or an HTML segment based on the request
+    if(request.GET.get('html')):
+        return render_to_response('events/events_segment.html', context_dict, RequestContext(request))
+    else:
+        # Creates a dictionary based on this, and then returns it as a JSON payload
+        jsonPayload = {}
+        for index, event in enumerate(context_dict['events']):
 
-        # Also returns a dateTimeStmp parameter as a timestamp in the form of a UTC timestamp
-        testing[index] = model_to_dict(event)
-        testing[index]['dateTime'] = unicode(testing[index]['dateTime'])
-        testing[index]['endTime'] = unicode(testing[index]['endTime'])
-    return HttpResponse(json.dumps(testing), content_type="applciation/json")
+            # Also returns a dateTimeStmp parameter as a timestamp in the form of a UTC timestamp
+            jsonPayload[index] = model_to_dict(event)
+            jsonPayload[index]['dateTime'] = unicode(jsonPayload[index]['dateTime'])
+            jsonPayload[index]['endTime'] = unicode(jsonPayload[index]['endTime'])
+        return HttpResponse(json.dumps(jsonPayload), content_type="applciation/json")
+
 
 
 def browse(request):
-    return render(request, 'events/browse.html')
+    # This returns the first 10 events after the current time
+    context_dict = {
+        'events':Event.objects.filter(dateTime__gte=timezone.now())[:15]
+    } 
+    context_dict['lastTime'] = int(time.mktime(context_dict['events'].reverse()[0].dateTime.timetuple()))
+    return render_to_response('events/browse.html',context_dict, context_instance=RequestContext(request) )
  
 def user(request):
     return render(request, 'events/user.html')
@@ -94,9 +113,9 @@ def user(request):
 def create_account(request):
     return render(request, 'events/create_account.html')
  
-def game(request):
+def game(request, gameId="1"):
     context_dict = {
-        'event':Event.objects.get(id=111),
+        'event':Event.objects.get(id=int(gameId)),
     }
     # latest_poll_list = Poll.objects.all().order_by('-pub_date')[:5]
     return render_to_response('events/game.html',context_dict, RequestContext(request) )

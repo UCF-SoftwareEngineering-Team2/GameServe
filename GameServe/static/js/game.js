@@ -1,4 +1,6 @@
 console.log("game file working!!");
+"use strict";
+
 $(document).ready(function() {
 	console.log("inside");
 

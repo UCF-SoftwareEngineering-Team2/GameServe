@@ -1,5 +1,7 @@
 var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 var selectedGameType = '';
+	"use strict";
+
 $(document).ready(function() {
 
 	//Google Maps
