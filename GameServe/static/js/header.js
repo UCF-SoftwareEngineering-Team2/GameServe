@@ -1,6 +1,5 @@
 $(document).ready(function() {
 
-
 	$('.icon-close').click(function () {
 	  	$('#popupWindow').toggleClass('hidden');
 	  	$('#content').toggleClass('blurry');
