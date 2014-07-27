@@ -15,7 +15,7 @@ $(document).ready(function() {
 
 	//Initalizes infinite scrolling, grabbing list items 
 	$('.window.gamesContainer').waypoint('infinite',{
-		items: '.listItem'
+		items: '.infinite-item'
 
 	});
 
