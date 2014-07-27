@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	"use strict";
 
 	//Google Maps
 	function initialize() {
@@ -12,9 +13,15 @@ $(document).ready(function() {
 	}
 	google.maps.event.addDomListener(window, 'load', initialize);
 
+	//Initalizes infinite scrolling, grabbing list items 
+	$('.window.gamesContainer').waypoint('infinite',{
+		items: '.infinite-item'
+
+	});
+
 	//selecting game types to browse
 	$('#submitComment').click(function() {
-		var comment = $('#commentInput').val();
+		var comment = $('#commentInput').val(); 
 		alert("comment:\n" + comment );
 	});
 
