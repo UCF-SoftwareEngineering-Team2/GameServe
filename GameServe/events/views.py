@@ -101,9 +101,7 @@ def upcoming_events_after(request):
 
 def browse(request):
     # This returns the first 10 events after the current time
-    context_dict = {
-        'events':Event.objects.filter(dateTime__gte=timezone.now())[:15]
-    } 
+    context_dict = {'events':Event.objects.filter(dateTime__gte=timezone.now())[:15]} 
     context_dict['lastTime'] = int(time.mktime(context_dict['events'].reverse()[0].dateTime.timetuple()))
     return render_to_response('events/browse.html',context_dict, context_instance=RequestContext(request) )
  
@@ -114,9 +112,7 @@ def create_account(request):
     return render(request, 'events/create_account.html')
  
 def game(request, gameId="1"):
-    context_dict = {
-        'event':Event.objects.get(id=int(gameId)),
-    }
+    context_dict = {'event':Event.objects.get(id=int(gameId)),}
     # latest_poll_list = Poll.objects.all().order_by('-pub_date')[:5]
     return render_to_response('events/game.html',context_dict, RequestContext(request) )
  

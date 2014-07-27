@@ -6,6 +6,7 @@
 	<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css"/>
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="{% static 'js/jquery.cookie.js' %}"></script>
 	<script src="{% static 'js/waypoints.js' %}"></script>
 	<script src="{% static 'js/infinitescroll.js' %}"></script>
 	<script src="{% static 'js/index.js' %}"></script>
@@ -58,15 +59,20 @@
 				<div id="headerFade"></div>
 
 				<form id="loginDropdown" class="hidden">
+					<input id='csrf' type='hidden' name='csrfmiddlewaretoken' value=''>
 					<h5>email:</h5>
 					<input type="text" class="loginField" id="emailInput" placeholder="email">
 					<h5>password:</h5>
 					<input type="text" class="loginField" id="passwordInput" placeholder="password">
 					<div class="authButtonSection">
 						<div id="loginButton" class="authButton">Login</div>
-						<div id="newUser" class="authButton">New Member</div>
+						<a href="/account/facebook/login/"><div class="fb">Login with Facebook</div></a>
+						{% include "socialaccount/snippets/login_extra.html" %}
 					</div>
 				</form>
+				<script>
+					$('#csrf').attr('value',$.cookie().csrftoken);
+				</script>
 				
 			</section>
 		</header>

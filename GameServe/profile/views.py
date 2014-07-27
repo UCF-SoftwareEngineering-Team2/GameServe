@@ -11,26 +11,32 @@ import json
 
 def ajax(request):
     # Get the tnl info
-    to_json = []    
+
     print 'ajax'
-    if request.method == 'GET':
-        # TODO: use the supplied information
-        # tbl = request.POST['table']
+    if request.method == 'POST':
+        if 'username' in request.POST:
+            username = request.POST['username']
+            password = request.POST['password']
 
-        # Get the information requested 
-        u = User.objects.filter(username__startswith='A')
+            if len(username) == 0:
+                return HttpResponse(json.dumps({'message':'Need to type a username'}), mimetype='application/json')
+            if '@' not in username:
+                try:
+                    chk = User.objects.get(username=username)
+                    username = authenticate(email=chk.email, password=password)
+                except:
+                    pass
+            user = authenticate(email=username, password=password)
 
-        # Build a list
-        for user in u:
-            us = {}
-            us['username'] = user.username
-            us['email'] = user.email
-            to_json.append(us)
-        # Return it
-        respone_data = json.dumps(to_json)    
-        return HttpResponse(respone_data, mimetype='application/json')
+            if user:
+                if user.is_active:
+                    login(request, user)
+                    return HttpResponse(json.dumps({'message':'You are logged in'}), mimetype='application/json', status=200)
+                else:
+                    return HttpResponse(json.dumps({'message':'Disabled acct'}), mimetype='application/json', status=400)
+
     else:
-        return render_to_response('profile/index.html', {}, RequestContext(request))    
+        return HttpResponse(json.dumps({'message':'Need POST request idiot'}), mimetype='application/json', status=400)    
 
 
 

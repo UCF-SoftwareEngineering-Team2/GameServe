@@ -14,12 +14,30 @@ $(document).ready(function() {
 
 
 
-	// Login form submission
 	$('#loginButton').click(function () {
 		var email =	$('#emailInput').val();
 		var pass = $('#passwordInput').val();
-		console.log('email: '+email);
-		console.log('password: '+pass);
+		$('#loginDropdown').remove('p');
+		return $.ajax({
+			url:'/profile/ajax/',
+			type:"POST",
+			data:{'username':email,'password':pass,'csrfmiddlewaretoken':$('#csrf').attr('value')},
+			success:function(data,status){
+				console.log(status);
+				window.location.reload();
+				return data.responseJSON ; 
+			},
+			error:function(data,status){
+				$('#loginDropdown').append($('<p>Invalid username/password</p>'));
+				return data.responseJSON;
+			},
+			complete:function(data,status){
+				console.log(status);
+			},
+			fail:function(data,status){
+				console.log(status);
+			}
+		});
 	});
 	
 	
