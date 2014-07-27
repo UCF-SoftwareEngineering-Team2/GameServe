@@ -31,14 +31,12 @@ def ajax(request):
             if user:
                 if user.is_active:
                     login(request, user)
-                    return HttpResponse(json.dumps({'message':'You are logged in'}), mimetype='application/json')
+                    return HttpResponse(json.dumps({'message':'You are logged in'}), mimetype='application/json', status=200)
                 else:
-                    return HttpResponse(json.dumps({'message':'Disabled acct'}), mimetype='application/json')
+                    return HttpResponse(json.dumps({'message':'Disabled acct'}), mimetype='application/json', status=400)
 
-        
-        return HttpResponse(json.dumps({'message','Need POST data idiot'}), mimetype='application/json')
     else:
-        return render_to_response('profile/index.html', {}, RequestContext(request))    
+        return HttpResponse(json.dumps({'message':'Need POST request idiot'}), mimetype='application/json', status=400)    
 
 
 
