@@ -75,8 +75,8 @@ class EventManager(models.Manager):
                     Q(Q(dateTime__lte=start), Q(endTime__gte=end))))
 
         # Create dt (start) and dte (end) times
-        dt = datetime.datetime.fromtimestamp(float(dateTime))
-        dte = datetime.datetime.fromtimestamp(float(dateTime) + float(duration))
+        dt = datetime.fromtimestamp(float(dateTime))
+        dte = datetime.fromtimestamp(float(dateTime) + float(duration))
 
         #Get instance of court it will be occuring on
         courtInstance = Court.objects.get(pk=court)
@@ -217,3 +217,23 @@ class Event(models.Model):
     class Meta:
         ordering = ('dateTime',)
 
+class RecentActivityManager(models.Manager):
+    def add_activity(self, activity, event):
+
+        #Deletes the oldest entry in the DB if the count of recent activities is greater than 9
+        if(RecentActivity.objects.filter().count() > 9):
+            RecentActivity.objects.all().order_by('-id').reverse()[0].delete()
+
+        #creates new activity
+        RecentActivity.objects.create(activity=activity, event=event, time=timezone.now())
+            
+
+class RecentActivity(models.Model):
+    objects = RecentActivityManager()
+
+    #Each activity gets an associated event, a phrase to describe said activity, and the time that the activity occured
+    event = models.ForeignKey(Event)
+    activity = models.CharField(max_length=100)
+    time = models.DateTimeField(auto_now=True)
+    class Meta:
+        ordering = ('id',)

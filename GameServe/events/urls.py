@@ -16,5 +16,5 @@ urlpatterns = patterns('',
     url(r'^commit/', views.commit, name='commit'),
     url(r'^uncommit/', views.uncommit, name='uncommit'),
     url(r'^upcoming_events/', views.upcoming_events, name='upcoming_events'),
-    url(r'^upcoming_events_after/', views.upcoming_events_after, name='upcoming_events_after')
+    url(r'^upcoming_events_after/', views.upcoming_events_after, name='upcoming_events_after'),
 )

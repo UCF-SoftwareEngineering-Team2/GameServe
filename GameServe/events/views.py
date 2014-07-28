@@ -7,7 +7,7 @@ from django.forms.models import *
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from events.models import Event
+from events.models import Event, RecentActivity
 from tastypie.utils import timezone
  
 # 
@@ -40,6 +40,7 @@ def index(request):
     # This returns the first 10 events after the current time
     context_dict = {
         'upcoming':Event.objects.filter(dateTime__gte=timezone.now())[:10],
+        'recent_activity': RecentActivity.objects.all().order_by('-id'),
     }
     return render_to_response('events/index.html',context_dict, RequestContext(request) )
 
@@ -132,6 +133,7 @@ def new_game(request):
         response['result'] = newGame
     #Otherwise it's an instance of a game, so send a JSON payload back with event information (CURRENTLY FOR DEBUGGING PURPOSES)
     else:
+        RecentActivity.objects.add_activity(activity="Created game", event=newGame)
         response['result'] = model_to_dict(newGame)
         response['result']['dateTime'] = str(response['result']['dateTime'])
         response['result']['endTime'] = str(response['result']['endTime'])
@@ -150,6 +152,7 @@ def commit(request):
         response['result'] = newGame
     #Otherwise it's an instance of a game, so send a JSON payload back with event information (CURRENTLY FOR DEBUGGING PURPOSES)
     else:
+        RecentActivity.objects.add_activity(activity="Committed", event=newGame)
         response['result'] = model_to_dict(newGame)
         response['result']['dateTime'] = str(response['result']['dateTime'])
         response['result']['endTime'] = str(response['result']['endTime'])
@@ -168,7 +171,16 @@ def uncommit(request):
         response['result'] = newGame
     #Otherwise it's an instance of a game, so send a JSON payload back with event information (CURRENTLY FOR DEBUGGING PURPOSES)
     else:
+        RecentActivity.objects.add_activity(activity="Uncommitted", event=newGame)
         response['result'] = model_to_dict(newGame)
         response['result']['dateTime'] = str(response['result']['dateTime'])
         response['result']['endTime'] = str(response['result']['endTime'])
     return HttpResponse(json.dumps(response), content_type="applciation/json")
+
+
+#function for testing the results of querying for recent activity
+@csrf_exempt
+def recent_activity(request):
+    activity = RecentActivity.objects.get(id=request.POST['id'])
+    dict = { 'results' : model_to_dict(activity), }
+    return HttpResponse(json.dumps(dict), content_type="application/json")

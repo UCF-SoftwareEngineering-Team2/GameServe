@@ -21,7 +21,7 @@
 		<div id="fader"></div>
 		<header>
 			<section class="center head">
-				<img src="{% static 'assets/gsLogo.svg' %}" id="logo">
+				<a href="/"><img src="{% static 'assets/gsLogo.svg' %}" id="logo"></a>
 				
 				{# If user is logged in then show buttn to logout/create a game #}
 				{% if request.user.is_authenticated %}
