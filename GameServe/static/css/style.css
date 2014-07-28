@@ -674,7 +674,7 @@ header {
   transition: 400ms;
   overflow: hidden; }
   .accountSection.expand {
-    height: 500px; }
+    height: 450px; }
   .accountSection .loginBlock {
     position: relative;
     float: left;
@@ -735,7 +735,8 @@ header {
     background: #aaaaaa; }
 
 #facebookLogin {
-  position: absolute;
+  clear: both;
+  position: relative;
   height: 30px;
   bottom: 10px;
   width: calc(100% - 40px);
@@ -835,6 +836,8 @@ h1, h3, h2, h5 {
   box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1); }
   .sideButton:hover {
     background: #6cab43; }
+  .sideButton.hidden {
+    display: none; }
 
 #popupNotice {
   background: #f7f7f7;

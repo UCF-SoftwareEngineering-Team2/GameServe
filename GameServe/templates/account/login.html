@@ -14,11 +14,11 @@
     {% block topLeftPaneTitle %}Privacy Policy{% endblock %}
     {% block topLeftPane %}HELLLO{% endblock %}
     {% block middleLeftPane %}
-        <button type="submit" form="oldMember" id="signIn" class="sideButton">Create Account</button>
+         <button type="submit" form="oldMember" id="signIn" class="sideButton">Login</button>
     {% endblock %}
 
     {% block bottomLeftPane %}
-        <div id="newVsOldUser" class="sideButton">Existing Member</div>
+        <div id="newVsOldUser" class="sideButton">Need to create an account?</div>
     {% endblock %}
 
     {% block mainPane %}
@@ -26,23 +26,24 @@
             <div class="windowHeader" >
                 <div id="loginHeader">Create an account at gameServe</div>
             </div>
-            <div class="accountSection expand">
-                <form id="oldMember" class="hidden" method="POST" action="{% url 'account_login' %}">
+            <div class="accountSection">
+                <form id="oldMember" method="POST" action="{% url 'account_login' %}">
                     {% csrf_token %}
                     {{ form.non_field_errors }}
                     <div class="loginBlock">
                         <h5>email:</h5>
                         <input type="text" class="loginField" id="id_login" placeholder="username" name="login">
+                        {{ form.login.errors }}
                     </div>
-                    {{ form.login.errors }}
+                   
                     <div class="loginBlock">
                         <h5>password:</h5>
                         <input type="text" class="loginField" id="id_password" placeholder="password" name="password">
+                        {{ form.password.errors }}
                     </div>
-                    {{ form.password.errors }}
                     <div class="loginBlock">
                         <div class="remember-forgot-section">
-                            <input id="id_remember" name="remember" type="checkbox" />
+                            <input id="id_remember" name="remember" type="checkbox"/>
                             <label for="id_remember">Remember Me</label>
                         </div>
                     </div>
@@ -50,39 +51,10 @@
                         <a class="forgot" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
                     </div>
                 </form>
-                <div id="newMember">
-                    <div class="loginBlock">
-                        <h5>username:</h5>
-                        <input type="text" class="loginField" id="nameInput" placeholder="name" name="nameInput">
-                    </div>
-                    <div class="loginBlock">
-                        <h5>phone number:</h5>
-                        <input type="text" class="loginField" id="pNumInput" placeholder="phone number" name="pNumInput">
-                    </div>
-                    <div class="loginBlock">
-                        <h5>email:</h5>
-                        <input type="text" class="loginField" id="newEmailInput" placeholder="email" name="newEmailInput">
-                    </div>
-                    <div class="loginBlock">
-                        <h5>password:</h5>
-                        <input type="password" class="loginField" id="newPasswordInput" placeholder="password" name="newPasswordInput">
-                    </div>
-                    <div class="loginBlock">
-                        <h5>verify email:</h5>
-                        <input type="text" class="loginField" id="verEmailInput" placeholder="email" name="verEmailInput">
-                    </div>
-                    <div class="loginBlock">
-                        <h5>verify password:</h5>
-                        <input type="password" class="loginField" id="verPasswordInput" placeholder="password" name="verPasswordInput">
-                    </div>
-                    <div class="tempPhotoUpload">
-                        <h5>[optional photo uploader]</h5>
-                    </div>
-                </div>
             </div>
             <div id="facebookLogin">
                 <div class="icon-facebook"></div>
-                <a href="/account/facebook/login/"><div id="facebookText">Create an account through facebook</div></a>
+                <a href="/account/facebook/login/"><div id="facebookText">Login through facebook</div></a>
                 {% include "socialaccount/snippets/login_extra.html" %}
             </div>
         </form>
