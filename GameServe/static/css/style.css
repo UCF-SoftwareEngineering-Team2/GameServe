@@ -665,7 +665,7 @@ header {
         color: #f7f7f7; }
 
 .accountSection {
-  height: 120px;
+  height: 200px;
   -webkit-transition: 500ms ease-in-out;
   -moz-transition: 500ms ease-in-out;
   -ms-transition: 500ms ease-in-out;
@@ -674,11 +674,12 @@ header {
   transition: 400ms;
   overflow: hidden; }
   .accountSection.expand {
-    height: 450px; }
+    height: 500px; }
   .accountSection .loginBlock {
     position: relative;
     float: left;
-    margin: 10px; }
+    margin: 10px;
+    min-width: 270px; }
   .accountSection #oldMember {
     padding: 10px; }
     .accountSection #oldMember.hidden {
@@ -734,9 +735,10 @@ header {
     background: #aaaaaa; }
 
 #facebookLogin {
-  position: relative;
+  position: absolute;
   height: 30px;
   bottom: 10px;
+  width: calc(100% - 40px);
   margin: auto 10px;
   background: #3B5998;
   padding: 10px;
@@ -823,6 +825,7 @@ h1, h3, h2, h5 {
   height: 50px;
   border-radius: 5px;
   margin: 20px;
+  border: none;
   background: #2e2d2c;
   padding-top: 20px;
   text-align: center;
