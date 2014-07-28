@@ -5,11 +5,11 @@
 
 - [ ] Need login page `/accounts/login/`, registration page `/accounts/signup` styled to match other pages. (frontend?)
 
-- [ ] Need all the navigation links looked at. 'Create event' button isn't toggled when create page is the current page.
+- [X] Need all the navigation links looked at. 'Create event' button isn't toggled when create page is the current page.
 
-- [ ] Gotta do something about the pop up for the login. I prefer the registration button as one of the navi buttons alongside login, create event, browse, and home; only display login and register for those who aren't logged in.
+- [X] Gotta do something about the pop up for the login. I prefer the registration button as one of the navi buttons alongside login, create event, browse, and home; only display login and register for those who aren't logged in.
 
-- [ ] Facebook login/registration is working.  Just need a button for it.
+- [X] Facebook login/registration is working.  Just need a button for it.
 
 - [ ] Google Maps Js needs fiddling
 
