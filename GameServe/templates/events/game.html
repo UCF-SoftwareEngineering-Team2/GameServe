@@ -4,7 +4,7 @@
 		<script type="text/javascript" src="{% static 'js/game.js' %}"></script>
 		<script>
 			var eventDay = "{{ event.dateTime.day }}";
-			var eventDateDOW = "{ { vent.dateTime.weekday }}";
+			var eventDateDOW = "{{ event.dateTime.weekday }}";
 			var eventMonth = "{{ event.dateTime.month }}";
 			var eventHour = "{{ event.dateTime.hour }}";
 			var eventMin = "{{ event.dateTime.minute }}";
@@ -65,7 +65,7 @@
 			</div>
 			<!-- Fill in with filtered games from the database -->
 			<div class="windowBlock">
-				<div id="weekday" class="blockText">Week</div>
+				<div id="weekday" class="blockText"></div>
 				<div id="monthDay" class="blockText"></div>
 				<div id="year" class="blockText">{{ event.dateTime.year }}</div>
 				<div class="blockDeet">Date</div>
