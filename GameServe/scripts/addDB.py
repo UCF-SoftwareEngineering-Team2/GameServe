@@ -35,7 +35,19 @@ def addCourts():
 
 def addSports():
     print 'Adding sports'
-    s = ['Basketball','Football','Tennis','Golf','Hockey','Swimming','Baseball','Soccer','Biking','Running','Shooting','Putting']
+    s = [
+        'Basketball',
+        'Football',
+        'Tennis',
+        'Volleyball',
+        'Baseball',
+        'Soccer',
+        'Biking',
+        'Running',
+        'Ping-Pong',
+        'RacquetBall'
+    ]
+
     for i in s:
         try:
             sport = Sport()
