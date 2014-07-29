@@ -29,17 +29,6 @@
   `/api/v1/event/?dateTime__gte=2014-7-18 2:44&court=1`
 
 
-## Facebook DB entry  
--------------
-
-`./manage.py dbshell`  
-
-```
-UPDATE django_site SET DOMAIN = '127.0.0.1:8000', name = 'GameServe' WHERE id=1;
-INSERT INTO socialaccount_socialapp (provider, name, secret, client_id, `key`)
-VALUES ("facebook", "Facebook", "e42ec912bdf8d060d4e6c17ed4d294de", "650041485084650", '');
-INSERT INTO socialaccount_socialapp_sites (socialapp_id, site_id) VALUES (1,1);
-```
 
 ## Notes
 ------------
@@ -52,4 +41,12 @@ INSERT INTO socialaccount_socialapp_sites (socialapp_id, site_id) VALUES (1,1);
 
 
 
-## Querying the DB
+>  Facebook DB entry  
+-------------   
+`./manage.py dbshell`  
+```sql
+UPDATE django_site SET DOMAIN = '127.0.0.1:8000', name = 'GameServe' WHERE id=1;
+INSERT INTO socialaccount_socialapp (provider, name, secret, client_id, `key`)
+VALUES ("facebook", "Facebook", "e42ec912bdf8d060d4e6c17ed4d294de", "650041485084650", '');
+INSERT INTO socialaccount_socialapp_sites (socialapp_id, site_id) VALUES (1,1);
+```
