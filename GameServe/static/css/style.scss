@@ -603,6 +603,43 @@ header {
 		}
 	}
 }
+.verticalPane{
+	.filterResults:not(.browse){
+		margin-right:30px;
+	}
+}
+.filterResults{
+	input{
+		display:none;
+	}
+	label{
+		position: relative;
+		width: 100px;
+		height: 20px;
+		float: left;
+		font-size: 12px;
+		padding: 3px 5px;
+		color: $meddark;
+		margin: 5px;
+		border-radius: 5px;
+		text-align: center;
+		@include vendor-prefix('transition', '200ms ease');
+		cursor: pointer;
+		&:hover {
+			background: rgba(108,171,67,.6);
+			color: $light;
+		}
+		&.selected {
+			background: $green;
+			color: $light;
+		}
+
+	}
+	input:checked + label{
+			background: $green;
+			color: $light;
+	}
+}
 .filterButton {
 	position: absolute;
 	right: 0px;

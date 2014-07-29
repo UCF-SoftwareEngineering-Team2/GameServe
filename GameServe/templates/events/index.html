@@ -27,70 +27,56 @@
 	{% block mainPane %}
 		<section class="window">
 			<div class="windowHeader">Upcoming Events</div>
-			{% for upcomingResult in "dbResults" %}
-			<!-- 
-			<div class="listItem">
-				<div class="listImg">
-					<div class="icon-{{upcomingResult.gameType}}"></div>
-				</div>
-				<div class="browseGameInfo">
-					<div class="infoBlock">	
-						<div class="infoText">{{upcomingResult.date}}</div>
-						<div class="infoText">{{upcomingResult.time}} ({{upcomingResult.deltaTime}})</div>
+		<!-- Fill in with filtered games from the database -->
+		{% for event in events %}
+			<a href="/events/game/{{event.id}}/">
+				<div class="listItem infinite-item">
+					<div class="listImg">
+						<!-- Sets proper class for event type -->
+						<div class="icon-{{event.court.sport | lower}}"></div>
 					</div>
-					<div class="infoBlock">
-						<div class="infoText"></div>
-						<div class="infoText">{{upcommingResult.numCommitted}} people committed</div>
-					</div>
-					<div class="heatImg {% if upcommingResult.hot %} hot {% endif %}">
-						<div class="icon-heatRep"></div>
-					</div>
-				</div>
-			</div>
-			 -->
-			<div class="listItem">
-				<div class="listImg">
-					<div class="icon-tennis"></div>
-				</div>
-				<div class="browseGameInfo">
-					<div class="infoBlock">	
-						<div class="infoText">Today</div>
-						<div class="infoText">1:45 p.m. (45 mins)</div>
-					</div>
-					<div class="infoBlock">
-						<div class="infoText"></div>
-						<div class="infoText">11 people committed</div>
-					</div>
-					<div class="heatImg hot">
-						<div class="icon-heatRep"></div>
+					<div class="browseGameInfo">
+						<div class="infoBlock">
+							<!-- sets the date, time, and the time until -->
+							<div class="infoText">{{event.dateTime.date}}</div>
+							<div class="infoText">{{event.dateTime.time}} ({{event.dateTime | timeuntil}})</div>
+						</div>
+						<div class="infoBlock">
+							<div class="infoText"></div>
+							<!-- Counts number of participants -->
+							<div class="infoText">{{event.participants.count}} people committed</div>
+						</div>
+						<div class="heatImg">
+							<div class="icon-heatRep"></div>
+						</div>
 					</div>
 				</div>
-			</div>
-			{% endfor %}
+			</a>
+		{% endfor %}
 		</section>
 	{% endblock %}
 
 	{% block secondarySection %}
 		<section class="window">
 			<div class="windowHeader">Search for Events</div>
-			<div class="filterSection">
+			<div class="filterResults">
 				<!-- 
 				{% for gameType in gameTable %}
 					<div class="gameSelection">{{gameType.name}}</div> 
 				{% endfor %}
 				-->
-				<div class="gameButton gameType">Baseball</div>
-				<div class="gameButton gameType">Basketball</div>
-				<div class="gameButton gameType">Biking</div>
-				<div class="gameButton gameType">Football</div>
-				<div class="gameButton gameType">Ping-Pong</div>
-				<div class="gameButton gameType">Racquetball</div>
-				<div class="gameButton gameType">Running</div>
-				<div class="gameButton gameType">Soccer</div>
-				<div class="gameButton gameType">Volleyball</div>
-				<div class="gameButton gameType">Tennis</div>
+				<input id="baseball" type="checkbox" value="baseball" /><label for="baseball">Baseball</label>
+				<input id="basketball" type="checkbox" value="basketball" /><label for="basketball">Basketball</label>
+				<input id="biking" type="checkbox" value="biking" /><label for="biking">Biking</label>
+				<input id="football" type="checkbox" value="football" /><label for="football">Football</label>
+				<input id="pingpong" type="checkbox" value="pingpong" /><label for="pingpong">Ping-Pong</label>
+				<input id="racquetball" type="checkbox" value="racquetball" /><label for="racquetball">Racquetball</label>
+				<input id="running" type="checkbox" value="running" /><label for="running">Running</label>
+				<input id="soccer" type="checkbox" value="soccer" /><label for="soccer">Soccer</label>
+				<input id="volleyball" type="checkbox" value="volleyball" /><label for="volleyball">Volleyball</label>
+				<input id="tennis" type="checkbox" value="tennis" /><label for="tennis">Tennis</label>
 			</div>
-			<div class="filterSection side">
+			<div class="filterSection">
 				<div id="selectAll" class="gameButton">Select All</div>
 				<div id="clearAll" class="gameButton">Clear All</div>
 			</div>

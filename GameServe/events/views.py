@@ -3,11 +3,12 @@ import time
 from django.http import HttpResponse
 from django.shortcuts import render
 from events.models import *
+from django.core import serializers
 from django.forms.models import *
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from events.models import Event, RecentActivity
+from events.models import Event, RecentActivity, Sport, Court
 from tastypie.utils import timezone
  
 # 
@@ -39,7 +40,7 @@ logging.config.dictConfig(LOGGING)
 def index(request):
     # This returns the first 10 events after the current time
     context_dict = {
-        'upcoming':Event.objects.filter(dateTime__gte=timezone.now())[:10],
+        'events':Event.objects.filter(dateTime__gte=timezone.now())[:10],
         'recent_activity': RecentActivity.objects.all().order_by('-id'),
     }
     return render_to_response('events/index.html',context_dict, RequestContext(request) )
@@ -54,6 +55,14 @@ def upcoming_events(request):
     context_dict = {
         'events':Event.objects.filter(dateTime__gte=timezone.now())[:request.GET.get('numEvents')],
     }
+
+    # If the request contains sports, then return an HTML segment because it is looking for filtered data
+    if(request.GET.getlist('sports')):
+        sports = Sport.objects.filter(sportType__in=request.GET.getlist('sports'))
+        courts = Court.objects.filter(sport__in=sports)
+        events = Event.objects.filter(court__in=courts, dateTime__gte=timezone.now())[:request.GET.get('numEvents')]
+        return render_to_response('events/events_segment.html', {'events':events}, RequestContext(request))
+
 
     # Returns either a JSON payload or an HTML segment based on the request
     if(request.GET.get('html')):
@@ -83,6 +92,13 @@ def upcoming_events_after(request):
     context_dict = {
         'events':Event.objects.filter(dateTime__gt=datetime.fromtimestamp(float(request.GET.get('dateTime'))))[:request.GET.get('numEvents')],
     }
+    
+    # If the request contains sports, then return an HTML segment because it is looking for filtered data
+    if(request.GET.getlist('sports')):
+        sports = Sport.objects.filter(sportType__in=request.GET.getlist('sports'))
+        courts = Court.objects.filter(sport__in=sports)
+        events = Event.objects.filter(court__in=courts, dateTime__gt=datetime.fromtimestamp(float(request.GET.get('dateTime'))))[:request.GET.get('numEvents')]
+        return render_to_response('events/events_segment.html', {'events':events}, RequestContext(request))
 
     # Returns either a JSON payload or an HTML segment based on the request
     if(request.GET.get('html')):
