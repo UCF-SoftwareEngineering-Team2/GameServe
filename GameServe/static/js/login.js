@@ -55,32 +55,6 @@ $(document).ready(function() {
 		$('#fader').removeClass('fade');
 	});
 
-	// $('#newVsOldUser').click(function() {
-	// 	if ($(this).text() == 'New Member') {
-	// 		$(this).text('Existing Member');
-	// 		$('#signIn').addClass('hidden');
-	// 		$('#signUp').removeClass('hidden');
-	// 		$('.accountSection').addClass('expand');
-	// 		$('#loginHeader').text('Sign up for gameServe');
-	// 		$('#oldMember').addClass('hidden');
-	// 		$('#newMember').removeClass('hidden');
-	// 		$('#facebookLogin').removeClass('signIn');
-	// 		$('#facebookText').text('Create an account through facebook');
-	// 	}
-	// 	else {
-	// 		$(this).text('New Member');
-	// 		$('.accountSection').removeClass('expand');
-	// 		$('#signIn').removeClass('hidden');
-	// 		$('#signUp').addClass('hidden');
-	// 		$('#loginHeader').text('Login to gameServe');
-	// 		$('#signIn').text('Login');
-	// 		$('#oldMember').removeClass('hidden');
-	// 		$('#newMember').addClass('hidden');
-	// 		$('#facebookLogin').addClass('signIn');
-	// 		$('#facebookText').text('Login through facebook');
-	// 	} 
-	// });
-
 	$('#facebookLogin').click(function() {
 		if ($(this).hasClass('signIn')) {
 			alert('initiate Facebook Login');
