@@ -18,13 +18,13 @@ $(document).ready(function() {
 	  	$(this).toggleClass('selected');
 	});
 	$('#selectAll').click(function() {
-		$('.gameType').each(function() {
-			$(this).addClass('selected');
+		$('input').each(function() {
+			$(this).prop('checked', true);
 		});
 	});
 	$('#clearAll').click(function() {
-		$('.gameType').each(function() {
-			$(this).removeClass('selected');
+		$('input').each(function() {
+			$(this).prop('checked', false);
 		});
 	});
 

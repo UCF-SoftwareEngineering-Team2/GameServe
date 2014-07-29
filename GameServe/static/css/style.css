@@ -530,6 +530,38 @@ header {
       padding-top: 0px;
       margin-bottom: 45px; }
 
+.verticalPane .filterResults:not(.browse) {
+  margin-right: 30px; }
+
+.filterResults input {
+  display: none; }
+.filterResults label {
+  position: relative;
+  width: 100px;
+  height: 20px;
+  float: left;
+  font-size: 12px;
+  padding: 3px 5px;
+  color: #aaaaaa;
+  margin: 5px;
+  border-radius: 5px;
+  text-align: center;
+  -webkit-transition: 200ms ease;
+  -moz-transition: 200ms ease;
+  -ms-transition: 200ms ease;
+  -o-transition: 200ms ease;
+  transition: 200ms ease;
+  cursor: pointer; }
+  .filterResults label:hover {
+    background: rgba(108, 171, 67, 0.6);
+    color: #f7f7f7; }
+  .filterResults label.selected {
+    background: #6cab43;
+    color: #f7f7f7; }
+.filterResults input:checked + label {
+  background: #6cab43;
+  color: #f7f7f7; }
+
 .filterButton {
   position: absolute;
   right: 0px;
