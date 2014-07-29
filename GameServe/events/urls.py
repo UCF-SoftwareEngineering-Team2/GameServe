@@ -6,8 +6,6 @@ urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
     url(r'^browse/', views.browse, name='browse'),
     url(r'^create/', views.create, name='create'),
-    url(r'^game/', views.game, name='game'),
-
     # Gets game by a specific gameId
     url(r'^game/(?P<gameId>\w+)/', views.game, name='game'),
     url(r'^user/', views.user, name='user'),

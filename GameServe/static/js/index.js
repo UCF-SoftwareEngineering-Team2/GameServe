@@ -1,6 +1,19 @@
 "use strict";
 $(document).ready(function() {
 
+	//This sets up the CSRF token for all ajax calls made in the javascript
+	var csrftoken = $.cookie('csrftoken');function csrfSafeMethod(method) {
+	    // these HTTP methods do not require CSRF protection
+	    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+	}
+	$.ajaxSetup({
+	    beforeSend: function(xhr, settings) {
+	        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+	            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+	        }
+	    }
+	});
+
 	//Google Maps
 	function initialize() {
 		var myLatlng = new google.maps.LatLng(28.601648, -81.200306);  

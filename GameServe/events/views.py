@@ -92,7 +92,7 @@ def upcoming_events_after(request):
     context_dict = {
         'events':Event.objects.filter(dateTime__gt=datetime.fromtimestamp(float(request.GET.get('dateTime'))))[:request.GET.get('numEvents')],
     }
-    
+
     # If the request contains sports, then return an HTML segment because it is looking for filtered data
     if(request.GET.getlist('sports')):
         sports = Sport.objects.filter(sportType__in=request.GET.getlist('sports'))
