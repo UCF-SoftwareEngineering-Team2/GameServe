@@ -5,6 +5,8 @@ from profile.validator import validate_email_unique
 
 
 class RegisterForm(forms.Form):
+    
+    password1 = forms.PasswordInput()
     phone_number = forms.CharField(max_length=13,
                                    required = False,
                                    widget=forms.TextInput(attrs={'class':'loginField'}))

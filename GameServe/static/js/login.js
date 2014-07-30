@@ -31,7 +31,7 @@ $(document).ready(function() {
 			else if ($('#newEmailInput').val() != $('#verEmailInput').val()) {
 				popupNotice("Sign Up Error", "Email inputs do not match");
 			}
-			else if ($('#newPasswordInput').val() != $('#verPasswordInput').val()) {
+			else if ($('#id_password2').val() != $('#id_password1').val()) {
 				popupNotice("Sign Up Error", "Password inputs do not match");
 			}
 			else{
