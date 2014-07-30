@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 	{% block browseLink%}active{% endblock %}
-	{% block topLeftPaneTitle %}Player Stats{% endblock %}
-	{% block topLeftPaneContent %}
+
+	{% block topLeftPane %}
+	<section class="window side">
+		<div class="windowHeader">Recent Activity</div>	
 		<div class="listItem static">
 			<div class="listImg green">
 				<div class="icon-heatRep"></div>
@@ -32,6 +34,7 @@
 			<div class="statNum">7</div>
 			<div class="statType">Check-ins</div>
 		</div>
+	</section>
 	{% endblock %}
 
 	{% block mainPane %}

@@ -1,4 +1,4 @@
-{% extends "events/base.html" %}
+{% extends "base.html" %}
 	{% load static %}
 
 	{% block preReqs %}
@@ -6,12 +6,9 @@
 	{% endblock %}
 
 	{% block loginLink%}active{% endblock %}
-	
-	{% block topLeftPaneTitle %}Privacy Policy{% endblock %}
-	{% block topLeftPane %}
-	{% endblock %}
+
 	{% block middleLeftPane %}
-		<div id="signIn" class="sideButton">Create Account</div>
+		<button type="submit" form="" id="signIn" class="sideButton">Create Account</div>
 	{% endblock %}
 
 	{% block bottomLeftPane %}
@@ -27,37 +24,37 @@
 				<div id="oldMember" class="hidden">
 					<div class="loginBlock">
 						<h5>email:</h5>
-						<input type="text" class="loginField" id="emailInput" placeholder="email">
+						<input type="text" class="loginField" id="emailInput" placeholder="email" name="emailInput">
 					</div>
 					<div class="loginBlock">
 						<h5>password:</h5>
-						<input type="text" class="loginField" id="passwordInput" placeholder="password">
+						<input type="text" class="loginField" id="passwordInput" placeholder="password" name="passwordInput">
 					</div>
 				</div>
 				<div id="newMember">
 					<div class="loginBlock">
 						<h5>username:</h5>
-						<input type="text" class="loginField" id="nameInput" placeholder="name">
+						<input type="text" class="loginField" id="nameInput" placeholder="name" name="nameInput">
 					</div>
 					<div class="loginBlock">
 						<h5>phone number:</h5>
-						<input type="text" class="loginField" id="pNumInput" placeholder="phone number">
+						<input type="text" class="loginField" id="pNumInput" placeholder="phone number" name="pNumInput">
 					</div>
 					<div class="loginBlock">
 						<h5>email:</h5>
-						<input type="text" class="loginField" id="newEmailInput" placeholder="email">
+						<input type="text" class="loginField" id="newEmailInput" placeholder="email" name="newEmailInput">
 					</div>
 					<div class="loginBlock">
 						<h5>password:</h5>
-						<input type="password" class="loginField" id="newPasswordInput" placeholder="password">
+						<input type="password" class="loginField" id="newPasswordInput" placeholder="password" name="newPasswordInput">
 					</div>
 					<div class="loginBlock">
 						<h5>verify email:</h5>
-						<input type="text" class="loginField" id="verEmailInput" placeholder="email">
+						<input type="text" class="loginField" id="verEmailInput" placeholder="email" name="verEmailInput">
 					</div>
 					<div class="loginBlock">
 						<h5>verify password:</h5>
-						<input type="password" class="loginField" id="verPasswordInput" placeholder="password">
+						<input type="password" class="loginField" id="verPasswordInput" placeholder="password" name="verPasswordInput">
 					</div>
 					<div class="tempPhotoUpload">
 						<h5>Photo Upload</h5>
