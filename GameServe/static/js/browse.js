@@ -13,7 +13,7 @@ $(document).ready(function() {
 	}
 	google.maps.event.addDomListener(window, 'load', initialize);
 
-	
+
 	var currentMoreUrl,
 		initialGet;
 	if($('.infinite-more-link')[0]){
@@ -47,7 +47,7 @@ $(document).ready(function() {
 		$('.gamesList').empty();
 
 		//Creates the get request based on the form
-		var htmlList = $.get('/events/upcoming_events/?numEvents=15&' + $('.filterResults form').serialize());
+		var htmlList = $.get('/events/upcoming_events/?numEvents=15&html=True&' + $('.filterResults form').serialize());
 
 		//When it is done, import the data, and append each element to gamesList
 		htmlList.done(function(data, success, error){

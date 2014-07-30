@@ -111,7 +111,7 @@ $light: #F7F7F7;
 .icon-football:before {
 	content: "\e606";
 }
-.icon-pingPong:before {
+.icon-pingpong:before {
 	content: "\e607";
 }
 .icon-racquetball:before {
@@ -608,7 +608,7 @@ header {
 		margin-right:30px;
 	}
 }
-.filterResults{
+.filterResults, .filterSection{
 	input{
 		display:none;
 	}

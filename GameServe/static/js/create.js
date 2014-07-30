@@ -34,7 +34,9 @@ $(document).ready(function() {
 	// 		$(datepicker).on 'keyup', ->
 	// 			$scope.startPicker.gotoDate(moment(this.value).toDate())
 	// }
-	
+	var dayOWeek,
+		pickedDate,
+		monthDay;
 	function initCalendar() {
 		console.log("initingCal");
 		var holder = document.getElementById("pikadayCalendarHolder");
@@ -47,9 +49,9 @@ $(document).ready(function() {
 	            console.log(this.getMoment().format('DD MMMM YYYY'));
 	            console.log(this.getMoment().weekday());
 
-	            var dayOWeek = weekdays[this.getMoment().weekday()];
-	            var pickedDate = this.getMoment().format('DD MMMM YYYY');
-	            var monthDay = this.getMoment().format('D MMMM');
+	            dayOWeek = weekdays[this.getMoment().weekday()];
+	            pickedDate = this.getMoment().format('DD MMMM YYYY');
+	            monthDay = this.getMoment().format('D MMMM');
 
 	            $('#dayOfWeek').text(dayOWeek);
 	            $('#monthDay').text(monthDay);
@@ -87,9 +89,26 @@ $(document).ready(function() {
 		else if ($('#startMinSelect').val() == '') {
 			popupNotice("Game Creation Error", "Choose a start minute for your game");
 		}
+		else{
+			var startTime = moment(pickedDate).hours(parseInt($('#startHourSelect').val()) + ($('#amPmToggle').hasClass('am') ? 0 : 12)).minutes($('#startMinSelect').val());
+			debugger;
+			$.ajax({
+				type: "POST",
+				url: '/events/new_game/',
+				data: {
+					dateTime: startTime.unix(),
+					duration: parseInt($('#durationHourSelect').val()) + parseInt($('#durationMinSelect').val()),
+					creator: 1,
+					court:1
+				},
+				success: function(eventData, success){
+					window.location.href= window.location.origin + '/events/game/' + eventData.result.id + '/';
+				}
+			})
+		}
 	});
 
-	$('.gameButton').click(function() {
+	$('.filterSection input').change(function() {
 		$('.gameButton').removeClass('selected');
 		$(this).addClass('selected');
 		$('.windowBlock').find('.largeIcon').remove()

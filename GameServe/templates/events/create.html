@@ -60,16 +60,18 @@
 					<div class="gameSelection">{{gameType.name}}</div> 
 				{% endfor %}
 				-->
-				<div id="baseball" class="gameButton gameType" data-id="baseball">Baseball</div>
-				<div id="basketball" class="gameButton gameType">Basketball</div>
-				<div id="biking" class="gameButton gameType">Biking</div>
-				<div id="football" class="gameButton gameType">Football</div>
-				<div id="pingPong" class="gameButton gameType">Ping-Pong</div>
-				<div id="racquetball" class="gameButton gameType">Racquetball</div>
-				<div id="running" class="gameButton gameType">Running</div>
-				<div id="soccer" class="gameButton gameType">Soccer</div>
-				<div id="volleyball" class="gameButton gameType">Volleyball</div>
-				<div id="tennis" class="gameButton gameType">Tennis</div>
+			<form>
+				<input name="sports" id="baseball" type="radio" value="5" /><label for="baseball">Baseball</label>
+				<input name="sports" id="basketball" type="radio" value="1" /><label for="basketball">Basketball</label>
+				<input name="sports" id="biking" type="radio" value="7" /><label for="biking">Biking</label>
+				<input name="sports" id="football" type="radio" value="2" /><label for="football">Football</label>
+				<input name="sports" id="pingpong" type="radio" value="9" /><label for="pingpong">Ping-Pong</label>
+				<input name="sports" id="racquetball" type="radio" value="10" /><label for="racquetball">Racquetball</label>
+				<input name="sports" id="running" type="radio" value="8" /><label for="running">Running</label>
+				<input name="sports" id="soccer" type="radio" value="6" /><label for="soccer">Soccer</label>
+				<input name="sports" id="volleyball" type="radio" value="4" /><label for="volleyball">Volleyball</label>
+				<input name="sports" id="tennis" type="radio" value="3" /><label for="tennis">Tennis</label>
+			</form>
 			</div>
 		</section>
 	{% endblock %}
