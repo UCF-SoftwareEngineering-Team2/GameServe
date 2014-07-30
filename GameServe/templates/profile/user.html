@@ -38,7 +38,7 @@
 		<section class="window">
 			<div class="windowHeader large">
 				<!-- <div class="profPic"> -->
-					<img class="userPhoto large" src="{% static 'assets/memberPhotos/UserId.jpg' %}"></img>
+					<img class="userPhoto large" src="{{ request.user.profile_image_url }}"></img>
 					<div class="editPhoto">
 					<div class="icon-camera"></div>
 					</div>

@@ -1,12 +1,10 @@
 from django.shortcuts import render_to_response   # <- Does django.http.HttpResponse + django.shortcuts.render in one command
 from django.template import RequestContext
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect, HttpResponse
-from profile.forms import UserForm
+from django.contrib.auth import authenticate, login
+from django.http import HttpResponse
 from profile.models import User
 import json
-
+from django.contrib.auth.decorators import login_required
 
 
 def ajax(request):
@@ -38,13 +36,13 @@ def ajax(request):
     else:
         return HttpResponse(json.dumps({'message':'Need POST request idiot'}), mimetype='application/json', status=400)    
 
-
+@login_required
 def user(request):
     return render_to_response('profile/user.html',{}, RequestContext(request))
 
 # TODO: Do something else here or get rid of it
 def index(request):
   context = RequestContext(request)
-  context_dict = {}
+  context_dict = {'user':request.user}
   return render_to_response('profile/index.html', context_dict, context)
 

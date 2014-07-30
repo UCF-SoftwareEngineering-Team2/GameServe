@@ -1,9 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
-# from allauth.account.models import EmailAddress
-# from django.db.models.signals import post_save
-# from django.dispatch import receiver
-# from django.db.utils import  IntegrityError
+from allauth.socialaccount.models import SocialAccount
+import hashlib
+
 
 class UserManager(BaseUserManager):
     def create_user(self, email, username, password=None):
@@ -109,6 +108,13 @@ class User(AbstractBaseUser):
         # Simplest possible answer: Yes, always
         return True
  
+    def profile_image_url(self):
+        ''' Returns link to facebook profile image for those who are logged in via facebook '''
+        fb_uid = SocialAccount.objects.filter(user_id=self.id, provider='facebook')
+        if len(fb_uid):
+            return "http://graph.facebook.com/{}/picture?width=120&height=120".format(fb_uid[0].uid)
+ 
+        return "http://www.gravatar.com/avatar/{}?s=40".format(hashlib.md5(self.email).hexdigest())
  
     ###################################################################################
     #                                Properties 
@@ -122,17 +128,3 @@ class User(AbstractBaseUser):
 
 
 
-
-# Keeps EmailAddress table in sync with User table by listening for save() method signals
-# @receiver(post_save, sender=User)
-# def syncEmailAddress(**kwargs):
-#     e = EmailAddress()
-#     u = kwargs['instance']
-#     if ( u.is_admin or u.is_staff ):
-#         return 
-#     e.user_id = u.id
-#     e.email = u.email
-#     try:
-#         e.save()
-#     except(IntegrityError):
-#         pass
