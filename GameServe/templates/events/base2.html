@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title%}gameServe{% endblock%}</title>
+	<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css"/>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="{% static 'js/index.js' %}"></script>
+	<script src="{% static 'js/browse.js' %}"></script>
+	<script src="{% static 'js/header.js' %}"></script>
+	<link rel="shortcut icon" href="{% static 'assets/titleIconGS.gif' %}" type="image/gif"/>
+	{% block preReqs %}{% endblock %}
+</head>
+
+<body>
+	<div id="content">
+		<div id="fader"></div>
+		<header>
+			<section class="center head">
+				<img src="{% static 'assets/gsLogo.svg' %}" id="logo">
+				
+				{# If user is logged in then show buttn to logout/create a game #}
+				{% if request.user.is_authenticated %}
+				<div id="logout" class="headerLink">
+					logout
+					<div class="linkSlider"></div>
+				</div>
+				<div id="create" class="headerLink">
+					create a game
+					<div class="linkSlider {% block createLink %}{% endblock %}"></div>
+				</div>
+
+				{# If user not logged in then show button to login or register #}
+				{% else %}
+				<div id="login" class="headerLink">
+					login
+					<div class="linkSlider {% block loginLink %}{% endblock %}"></div>
+				</div>
+				<div id="register" class="headerLink">
+					register	
+					<div class="linkSlider"></div>
+				</div>
+				{% endif %}
+
+
+
+				<div id="browse" class="headerLink">
+					browse
+					<div class="linkSlider {% block browseLink %}{% endblock %}"></div>
+				</div>
+				<div id="home" class="headerLink">
+					home
+					<div class="linkSlider {% block homeLink %}{% endblock %}"></div>
+				</div>
+				<div id="headerFade"></div>
+
+				<form id="loginDropdown" class="hidden">
+					<h5>email:</h5>
+					<input type="text" class="loginField" id="emailInput" placeholder="email">
+					<h5>password:</h5>
+					<input type="text" class="loginField" id="passwordInput" placeholder="password">
+					<div class="authButtonSection">
+						<div id="loginButton" class="authButton">Login</div>
+						<div id="newUser" class="authButton">New Member</div>
+					</div>
+				</form>
+				
+			</section>
+		</header>
+		<section class="center">
+			<aside class="verticalPane small">
+				<section class="window side">
+					<div class="windowHeader">{% block topLeftPaneTitle %}Recent Activity{% endblock %}</div>	
+					{% block topLeftPaneContent %}
+					{% endblock %}
+				</section>
+
+				{% block middleLeftPane %}{% endblock %}
+
+				{% block bottomLeftPane %}{% endblock %}
+
+			</aside>
+			<section class="verticalPane">
+
+				{% block mainPane %}{% endblock %}
+
+				{% block secondarySection %}{% endblock %}
+
+				{% block thirdSection %}{% endblock %}
+
+			</section>
+			<div id="popupNotice" class="hidden">
+				<div id="noticeHeader"></div>
+				<div class="noticeContent">
+					<img src="{% static 'assets/icons/gsIcon.svg' %}" id="gsIcon">
+					<div id="noticeText"></div>
+				</div>
+				<div id="noticeButton">got it</div>
+			</div>
+		</section>
+
+	</div>
+
+</body>
+</html>

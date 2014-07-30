@@ -771,7 +771,7 @@ header {
 	}
 }
 .accountSection {
-	height: 120px;
+	height: 200px;
 	@include vendor-prefix('transition', '500ms ease-in-out');
 	transition: 400ms;
 	overflow: hidden;
@@ -782,6 +782,7 @@ header {
 		position: relative;
 		float: left;
 		margin: 10px;
+		min-width: 270px;
 	}
 	#oldMember {
 		padding: 10px;
@@ -823,7 +824,7 @@ header {
 
 		}
 	}
-	.loginField {
+	#id_phone_number, #id_username, #id_email, #id_password1, #id_password2{
 		position: relative;
 		width: 250px;
 		height: 30px;
@@ -847,9 +848,11 @@ header {
 }
 
 #facebookLogin {
+	clear: both;
 	position: relative;
 	height: 30px;
 	bottom: 10px;
+	width: calc(100% - 40px);
 	margin: auto 10px;
 	background: #3B5998;	
 	padding: 10px;
@@ -948,6 +951,7 @@ h1, h3, h2, h5 {
 	height: 50px;
 	border-radius: 5px;
 	margin: 20px;
+	border: none;
 	background: $dark;
 	padding-top: 20px;
 	text-align: center;
@@ -957,6 +961,9 @@ h1, h3, h2, h5 {
 	box-shadow: 0px 0px 2px 2px rgba(0,0,0,.1);
 	&:hover {
 		background: $green;
+	}
+	&.hidden {
+		display: none;
 	}
 }
 

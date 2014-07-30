@@ -103,8 +103,8 @@ ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True 
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD='username_email'
- 
- 
+EMAIL_VERIFICATION = "optional" # Change
+ACCOUNT_SIGNUP_FORM_CLASS='profile.forms.RegisterForm'
 ROOT_URLCONF = 'GameServe.urls'
 WSGI_APPLICATION = 'GameServe.wsgi.application'
  
@@ -146,7 +146,7 @@ SENDGRID_EMAIL_PASSWORD = "tree4444"
  
 # Specify custom user model
 AUTH_USER_MODEL = 'profile.User'
- 
+ACCOUNT_EMAIL_VERIFICATION = "optional" 
  
  
  

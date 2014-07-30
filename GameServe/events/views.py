@@ -45,7 +45,6 @@ def index(request):
     }
     return render_to_response('events/index.html',context_dict, RequestContext(request) )
 
-
 # Returns a set of events as a JSON payload based on a parameter
 # i.e. /events/upcoming_events/?numEvents=3 will return the next 3 events occuring next
 # A third parameter ('html'), allows an HTML segment to be returned for infinite scrolling
