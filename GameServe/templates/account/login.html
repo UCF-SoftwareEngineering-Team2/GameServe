@@ -12,15 +12,17 @@
     {% block loginLink%}active{% endblock %}
         
     {% block topLeftPane %}
-          <div href="/account/facebook/login/" class="sideButton fb">
+        <div id="newUser" class="sideButton">Need to create an account?</div>
+
+    {% endblock %}
+
+    {% block middleLeftPane %}
+        <div href="/account/facebook/login/" class="sideButton fb">
             <div class="icon-facebook"></div>
             <div id="facebookText">Login through facebook</div>
         </div>
         {% include "socialaccount/snippets/login_extra.html" %}
-    {% endblock %}
 
-    {% block middleLeftPane %}
-        <div id="newVsOldUser" class="sideButton">Need to create an account?</div>
     {% endblock %}
 <!-- 
 <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">

@@ -13,7 +13,7 @@
     {% block registerLink %}active{% endblock %}
         
     {% block topLeftPane %}
-        <div id="newVsOldUser" class="sideButton">Already have an acount?</div>
+        <div id="existingUser" class="sideButton">Already have an acount?</div>
     {% endblock %}
 
     {% block middleLeftPane %}
@@ -39,9 +39,9 @@
 
                     {% for field in form.visible_fields %}
                         <div class="loginBlock">
-                            {{field.errors}}
                             <h5>{{ field.label_tag }}</h5>
                             {{ field }}
+                            {{field.errors}}
                         </div>
                     {% endfor %}
                    <!--  <button id='submitbtn'style=" display:none" type="submit"></button> -->
