@@ -1,45 +1,61 @@
-{% extends "account/base.html" %}
+{% extends "base.html" %}
 
 {% load i18n %}
 {% load account %}
 {% load url from future %}
+{% load static %}
 
-{% block head_title %}{% trans "Sign In" %}{% endblock %}
-
-{% block content %}
-    <!-- Facebook Login Button -->
-    <a href="/account/facebook/login/"><div class="fb">Login with Facebook</div></a>
-    {% include "socialaccount/snippets/login_extra.html" %}
-
-    <div class="inset">
-        <div class="header">Or sign in directly</div>
-        
-        <!-- Login Form -->
-        <form class="login" method="POST" action="{% url 'account_login' %}">
-          {% csrf_token %}
-            {{ form.non_field_errors }}
-            <input id="id_login" class="login-input" 
-            maxlength="30" name="login" placeholder="Username" type="text" />
-            {{ form.login.errors }}<br>
-
-            <input id="id_password" class="login-input" name="password" 
-            placeholder="Password" type="password" />
-            {{ form.password.errors }}<br>
-            
-            <div class="remember-forgot-section">
-                <input id="id_remember" name="remember" type="checkbox" />
-                <label for="id_remember">Remember Me</label>
-                <a class="forgot" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-            </div>
-
-          <button class="btn" type="submit">{% trans "Sign In" %}</button>
-          {% if redirect_field_value %}
-          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-          {% endif %}
-        </form>
-
-        <div class="footnote">
-            Don't have an account? Login with Facebook above or <a href="{% url 'account_signup' %}">Sign Up</a>
-        </div>
-    </div>
+ {% block preReqs %}
+    <script type="text/javascript" src="{% static 'js/login.js' %}"></script>
 {% endblock %}
+
+    {% block loginLink%}active{% endblock %}
+        
+    {% block topLeftPaneTitle %}Privacy Policy{% endblock %}
+    {% block topLeftPane %}HELLLO{% endblock %}
+    {% block middleLeftPane %}
+         <button type="submit" form="oldMember" id="signIn" class="sideButton">Login</button>
+    {% endblock %}
+
+    {% block bottomLeftPane %}
+        <div id="newVsOldUser" class="sideButton">Need to create an account?</div>
+    {% endblock %}
+
+    {% block mainPane %}
+        <div class="window">
+            <div class="windowHeader" >
+                <div id="loginHeader">Create an account at gameServe</div>
+            </div>
+            <div class="accountSection">
+                <form id="oldMember" method="POST" action="{% url 'account_login' %}">
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                    <div class="loginBlock">
+                        <h5>email:</h5>
+                        <input type="text" class="loginField" id="id_login" placeholder="username" name="login">
+                        {{ form.login.errors }}
+                    </div>
+                   
+                    <div class="loginBlock">
+                        <h5>password:</h5>
+                        <input type="text" class="loginField" id="id_password" placeholder="password" name="password">
+                        {{ form.password.errors }}
+                    </div>
+                    <div class="loginBlock">
+                        <div class="remember-forgot-section">
+                            <input id="id_remember" name="remember" type="checkbox"/>
+                            <label for="id_remember">Remember Me</label>
+                        </div>
+                    </div>
+                    <div class="loginBlock">   
+                        <a class="forgot" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                    </div>
+                </form>
+            </div>
+            <div id="facebookLogin">
+                <div class="icon-facebook"></div>
+                <a href="/account/facebook/login/"><div id="facebookText">Login through facebook</div></a>
+                {% include "socialaccount/snippets/login_extra.html" %}
+            </div>
+        </form>
+    {% endblock %}
