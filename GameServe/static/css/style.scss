@@ -771,7 +771,7 @@ header {
 	}
 }
 .accountSection {
-	height: 200px;
+	height: 190px;
 	@include vendor-prefix('transition', '500ms ease-in-out');
 	transition: 400ms;
 	display: inline-table;
@@ -855,11 +855,20 @@ header {
 		color: $light;
 		background: $dark;	
 		text-align: center;
+		font-size: 16px;
+		cursor: pointer;
 		padding: 10px;
 		border-radius: 5px;
+		border: none;
+		font-family: 'sinkin_sans300_light';
 		transition: 200ms;
 		&:hover {
 			background: $green;
+		}
+		&.btn{
+			height: 50px;
+			width: calc(100% - 20px);
+
 		}
 	}
 }

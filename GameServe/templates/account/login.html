@@ -12,7 +12,11 @@
     {% block loginLink%}active{% endblock %}
         
     {% block topLeftPane %}
-         <button type="submit" form="oldMember" id="signIn" class="sideButton">Login</button>
+          <div href="/account/facebook/login/" class="sideButton fb">
+            <div class="icon-facebook"></div>
+            <div id="facebookText">Login through facebook</div>
+        </div>
+        {% include "socialaccount/snippets/login_extra.html" %}
     {% endblock %}
 
     {% block middleLeftPane %}
@@ -68,12 +72,8 @@
                     <div class="loginBlock">   
                         <a class="forgot" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
                     </div>
+                    <button type="submit" form="oldMember" id="signIn" class="wideButton btn">Login</button>
                 </form>
             </div>
-            <div id="facebookLogin">
-                <div class="icon-facebook"></div>
-                <a href="/account/facebook/login/"><div id="facebookText">Login through facebook</div></a>
-                {% include "socialaccount/snippets/login_extra.html" %}
-            </div>
-        </form>
+        </div>
     {% endblock %}

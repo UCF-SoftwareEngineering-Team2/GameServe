@@ -698,7 +698,7 @@ header {
         color: #f7f7f7; }
 
 .accountSection {
-  height: 200px;
+  height: 190px;
   -webkit-transition: 500ms ease-in-out;
   -moz-transition: 500ms ease-in-out;
   -ms-transition: 500ms ease-in-out;
@@ -776,11 +776,18 @@ header {
     color: #f7f7f7;
     background: #2e2d2c;
     text-align: center;
+    font-size: 16px;
+    cursor: pointer;
     padding: 10px;
     border-radius: 5px;
+    border: none;
+    font-family: 'sinkin_sans300_light';
     transition: 200ms; }
     .accountSection .wideButton:hover {
       background: #6cab43; }
+    .accountSection .wideButton.btn {
+      height: 50px;
+      width: calc(100% - 20px); }
 
 .headerDeets {
   position: relative;
