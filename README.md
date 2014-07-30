@@ -23,7 +23,7 @@
 
 - [ ] User shouldn't be able to commit to two events with overlapping date and time.
 
-From Requirements:
+## From Requirements:
 
 - [ ] No: 1
 Statement: The system shall allow for the log in /account creation of multiple users simultaneously
