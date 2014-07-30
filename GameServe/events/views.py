@@ -138,8 +138,12 @@ def create(request):
  
 @csrf_exempt
 def new_game(request):
+    if request.user.is_authenticated():
+        creator = request.user.id
+    else:
+        request.POST['creator']
     #print create event with post data
-    newGame = Event.objects.create_event(dateTime = request.POST['dateTime'],creator = request.POST['creator'],court = request.POST['court'],duration = request.POST['duration'])
+    newGame = Event.objects.create_event(dateTime = request.POST['dateTime'],creator = creator,court = request.POST['court'],duration = request.POST['duration'])
     #Create response to POST
     response = {}
  

@@ -91,14 +91,12 @@ $(document).ready(function() {
 		}
 		else{
 			var startTime = moment(pickedDate).hours(parseInt($('#startHourSelect').val()) + ($('#amPmToggle').hasClass('am') ? 0 : 12)).minutes($('#startMinSelect').val());
-			debugger;
 			$.ajax({
 				type: "POST",
 				url: '/events/new_game/',
 				data: {
 					dateTime: startTime.unix(),
 					duration: parseInt($('#durationHourSelect').val()) + parseInt($('#durationMinSelect').val()),
-					creator: 1,
 					court:1
 				},
 				success: function(eventData, success){
