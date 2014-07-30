@@ -714,7 +714,7 @@ header {
       transition: 200ms ease; }
       .accountSection .windowHeader .icon-close:hover {
         color: #6cab43; }
-  .accountSection .loginField {
+  .accountSection #id_phone_number, .accountSection #id_username, .accountSection #id_email, .accountSection #id_password1, .accountSection #id_password2 {
     position: relative;
     width: 250px;
     height: 30px;

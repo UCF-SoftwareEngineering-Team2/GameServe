@@ -15,7 +15,6 @@ $(document).ready(function() {
 			var verPass = $('#verPasswordInput').val();
 			var phone = $('#pNumInput').val();
 
-	  		alert('data: \nname:\t' + name + ' \nemail:\t' + email + ' \nverEmail:\t' + verEmail + ' \npass:\t' + pass + ' \nverPass:\t' + verPass + ' \nphone:\t' + phone );
 			if ($('#pNumInput').val() == '') {
 				popupNotice("Sign Up Error", "Must add an phone number");
 			}
@@ -33,6 +32,9 @@ $(document).ready(function() {
 			}
 			else if ($('#newPasswordInput').val() != $('#verPasswordInput').val()) {
 				popupNotice("Sign Up Error", "Password inputs do not match");
+			}
+			else{
+				$('#newMember').submit();
 			}
 		}
 	});

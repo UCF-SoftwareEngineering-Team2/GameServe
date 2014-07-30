@@ -27,43 +27,30 @@
             <div class="windowHeader" >
                 <div id="loginHeader">Create an account at gameServe</div>
             </div>
+
+
+
             <div class="accountSection expand" >
-            <script>
-            	$('#csrf').attr('value'), $.cookie().csrf_token);
-            </script>
-                <form id="newMember" method="post" action="/events/create_account">
-                <input id='csrf' type="hidden" name="csrfmiddlewaretoken" value=''>
-				  {% csrf_token %}
-				  {{ form.non_field_errors }}
-                    <div class="loginBlock">
-                        <h5>username:</h5>
-                        <input type="text" class="loginField" id="nameInput" placeholder="username" name="username">
-                    </div>
-                    <div class="loginBlock">
-                        <h5>phone number:</h5>
-                        <input type="text" class="loginField" id="pNumInput" placeholder="phone number" name="phone_number">
-                    </div>
-                    <div class="loginBlock">
-                        <h5>email:</h5>
-                        <input type="text" class="loginField" id="newEmailInput" placeholder="email" name="newEmailInput">
-                    </div>
-                    <div class="loginBlock">
-                        <h5>password:</h5>
-                        <input type="password" class="loginField" id="newPasswordInput" placeholder="password" name="password1">
-                    </div>
-                    <div class="loginBlock">
-                        <h5>verify email:</h5>
-                        <input type="text" class="loginField" id="verEmailInput" placeholder="email" name="password2">
-                    </div>
-                    <div class="loginBlock">
-                        <h5>verify password:</h5>
-                        <input type="password" class="loginField" id="verPasswordInput" placeholder="password" name="verPasswordInput">
-                    </div>
-                    <div class="tempPhotoUpload">
-                        <h5>[optional photo uploader]</h5>
-                    </div>
+                <form id="newMember" method="post" action=".">
+                    {% csrf_token %}
+
+                    {% for hidden in form.hidden_fields %}
+                        {{ hidden }}
+                    {% endfor %}
+
+                    {% for field in form.visible_fields %}
+                        <div class="loginBlock">
+                            {{field.errors}}
+                            <h5>{{ field.label_tag }}</h5>
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                    <button id='submitbtn' style="display:none" type="submit"></button>
                 </form>
             </div>
+
+
+
             <div id="facebookLogin">
                 <div class="icon-facebook"></div>
                 <a href="/account/facebook/login/"><div id="facebookText">Create an account through facebook</div></a>
