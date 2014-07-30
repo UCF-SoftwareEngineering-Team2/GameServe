@@ -11,7 +11,7 @@
 
 - [ ] Have to remove unused js files and consolidate short ones into a single js file. Makes cross referencing a pain
 
-- [ ] Need login page `/accounts/login/`, registration page `/accounts/signup` styled to match other pages. (frontend?)
+- [X] Need login page `/accounts/login/`, registration page `/accounts/signup` styled to match other pages. (frontend?)
 
  
 - [ ] Comments on code (even a single sentence) for EVERYTHING from now on until submission!
