@@ -167,7 +167,7 @@ def commit(request):
     if request.method == 'GET':
         return HttpResponseRedirect('/events/create/')
 
-    newGame = Event.objects.add_participant(user=request.User.id, event=request.POST['event'])
+    newGame = Event.objects.add_participant(user=request.user.id, event=request.POST['event'])
     #Create response to POST
     response = {}
     #If new game is a string, it's an error
@@ -183,7 +183,7 @@ def commit(request):
  
 @csrf_exempt
 def uncommit(request):
-    newGame = Event.objects.remove_participant(user=request.User.id, event=request.POST['event'])
+    newGame = Event.objects.remove_participant(user=request.user.id, event=request.POST['event'])
     #Create response to POST
     response = {}
     #If new game is a string, it's an error
