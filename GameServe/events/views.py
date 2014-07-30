@@ -1,6 +1,7 @@
 import json
 import time
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+
 from django.shortcuts import render
 from events.models import *
 from django.core import serializers
@@ -143,7 +144,10 @@ def new_game(request):
     else:
         request.POST['creator']
     #print create event with post data
-    newGame = Event.objects.create_event(dateTime = request.POST['dateTime'],creator = creator,court = request.POST['court'],duration = request.POST['duration'])
+    newGame = Event.objects.create_event(dateTime = request.POST['dateTime'],
+                                         creator = request.POST['creator'], 
+                                         court = request.POST['court'],
+                                         duration = request.POST['duration'])
     #Create response to POST
     response = {}
  
@@ -163,7 +167,10 @@ def commit(request):
     #
     # NOTE / TODO: current input (user=1) is PLACEHOLDER
     #
-    newGame = Event.objects.add_participant(user=1, event=request.POST['event'])
+    if request.method == 'GET':
+        return HttpResponseRedirect('/events/create/')
+
+    newGame = Event.objects.add_participant(user=request.POST['user'], event=request.POST['event'])
     #Create response to POST
     response = {}
     #If new game is a string, it's an error
@@ -175,14 +182,14 @@ def commit(request):
         response['result'] = model_to_dict(newGame)
         response['result']['dateTime'] = str(response['result']['dateTime'])
         response['result']['endTime'] = str(response['result']['endTime'])
-    return HttpResponse(json.dumps(response), content_type="applciation/json")
+    return HttpResponse(json.dumps(response), content_type="application/json")
  
 @csrf_exempt
 def uncommit(request):
     #
     # NOTE / TODO: current input (user=1) is PLACEHOLDER
     #
-    newGame = Event.objects.remove_participant(user=1, event=request.POST['event'])
+    newGame = Event.objects.remove_participant(user=request.POST['user'], event=request.POST['event'])
     #Create response to POST
     response = {}
     #If new game is a string, it's an error

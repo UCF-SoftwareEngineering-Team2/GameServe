@@ -5,19 +5,17 @@ from django.http import HttpResponse
 from profile.models import User
 import json
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 
-
+@csrf_exempt
 def ajax(request):
     # Get the tnl info
 
-    print 'ajax'
     if request.method == 'POST':
         if 'username' in request.POST:
             username = request.POST['username']
             password = request.POST['password']
 
-            if len(username) == 0:
-                return HttpResponse(json.dumps({'message':'Need to type a username'}), mimetype='application/json')
             if '@' not in username:
                 try:
                     chk = User.objects.get(username=username)
@@ -30,11 +28,11 @@ def ajax(request):
                 if user.is_active:
                     login(request, user)
                     return HttpResponse(json.dumps({'message':'You are logged in'}), mimetype='application/json', status=200)
-                else:
-                    return HttpResponse(json.dumps({'message':'Disabled acct'}), mimetype='application/json', status=400)
+                return HttpResponse(json.dumps({'message':'Disabled acct'}), mimetype='application/json', status=400)
 
+        return HttpResponse(json.dumps({'message':'username not in post'}), mimetype='application/json', status=400)
     else:
-        return HttpResponse(json.dumps({'message':'Need POST request idiot'}), mimetype='application/json', status=400)    
+        return HttpResponse(json.dumps({'message':'Need POST request'}), mimetype='application/json', status=400)    
 
 @login_required
 def user(request):
