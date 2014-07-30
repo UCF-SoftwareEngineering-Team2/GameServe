@@ -42,7 +42,7 @@
 				</div>
 				<div id="register" class="headerLink">
 					register	
-					<div class="linkSlider"></div>
+					<div class="linkSlider {% block registerLink %}{% endblock %}"></div>
 				</div>
 
 				<form id="loginDropdown" class="hidden">
@@ -69,8 +69,6 @@
 					$('#csrf').attr('value',$.cookie().csrftoken);
 				</script>
 				{% endif %}
-
-
 
 				<div id="browse" class="headerLink">
 					browse

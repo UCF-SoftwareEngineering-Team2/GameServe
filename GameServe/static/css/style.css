@@ -696,36 +696,19 @@ header {
       #loginDropdown .authButtonSection .authButton:hover {
         background: #6cab43;
         color: #f7f7f7; }
-      #loginDropdown .authButtonSection .authButton.fb {
-        background: #3B5998;
-        transition: 200ms; }
-        #loginDropdown .authButtonSection .authButton.fb:hover {
-          background: #627AAD; }
-        #loginDropdown .authButtonSection .authButton.fb .icon-facebook {
-          position: relative;
-          float: left;
-          color: #F2F2F2;
-          margin-right: 10px;
-          font-size: 28px; }
-        #loginDropdown .authButtonSection .authButton.fb #facebookText {
-          position: relative;
-          color: #F2F2F2;
-          float: left;
-          font-size: 13px;
-          margin-top: 4px;
-          margin-left: -5px; }
 
 .accountSection {
-  height: 200px;
+  height: 190px;
   -webkit-transition: 500ms ease-in-out;
   -moz-transition: 500ms ease-in-out;
   -ms-transition: 500ms ease-in-out;
   -o-transition: 500ms ease-in-out;
   transition: 500ms ease-in-out;
   transition: 400ms;
+  display: inline-table;
   overflow: hidden; }
   .accountSection.expand {
-    height: 450px; }
+    min-height: 300px; }
   .accountSection .loginBlock {
     position: relative;
     float: left;
@@ -784,30 +767,27 @@ header {
     width: 100%;
     border-radius: 5px;
     background: #aaaaaa; }
-
-#facebookLogin {
-  clear: both;
-  position: relative;
-  height: 30px;
-  bottom: 10px;
-  width: calc(100% - 40px);
-  margin: auto 10px;
-  background: #3B5998;
-  padding: 10px;
-  border-radius: 5px;
-  transition: 200ms; }
-  #facebookLogin:hover {
-    background: #627AAD; }
-  #facebookLogin .icon-facebook {
+  .accountSection .wideButton {
+    clear: both;
     position: relative;
-    float: left;
-    color: #F2F2F2;
-    margin-right: 10px;
-    font-size: 28px; }
-  #facebookLogin #facebookText {
-    position: relative;
-    color: #F2F2F2;
-    float: left; }
+    height: 30px;
+    width: calc(100% - 40px);
+    margin: auto 10px;
+    color: #f7f7f7;
+    background: #2e2d2c;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-family: 'sinkin_sans300_light';
+    transition: 200ms; }
+    .accountSection .wideButton:hover {
+      background: #6cab43; }
+    .accountSection .wideButton.btn {
+      height: 50px;
+      width: calc(100% - 20px); }
 
 .headerDeets {
   position: relative;
@@ -889,6 +869,24 @@ h1, h3, h2, h5 {
     background: #6cab43; }
   .sideButton.hidden {
     display: none; }
+  .sideButton.fb {
+    background: #3B5998;
+    color: #F2F2F2;
+    transition: 200ms; }
+    .sideButton.fb:hover {
+      background: #627AAD; }
+    .sideButton.fb .icon-facebook {
+      position: relative;
+      float: left;
+      margin: 0px 10px;
+      font-size: 28px; }
+    .sideButton.fb #facebookText {
+      position: relative;
+      float: left;
+      width: 200px;
+      font-size: 16px;
+      margin-top: -8px;
+      margin-left: -5px; }
 
 #popupNotice {
   background: #f7f7f7;

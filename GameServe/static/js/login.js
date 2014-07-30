@@ -58,4 +58,12 @@ $(document).ready(function() {
         $('#fader').removeClass('fade');
     });
 
+    $('#existingUser').click(function(){
+    	return window.location = "/account/login/";
+    });
+
+    $('#newUser').click(function(){
+    	return window.location = "/account/signup/";
+    });
+
 });
