@@ -10,14 +10,18 @@
     <script type="text/javascript" src="{% static 'js/login.js' %}"></script>
 {% endblock %}
 
-    {% block loginLink%}active{% endblock %}
+    {% block registerLink %}active{% endblock %}
         
     {% block topLeftPane %}
-        <button type="submit" form="newMember" id="signUp" class="sideButton">Create Account</button>
+        <div id="newVsOldUser" class="sideButton">Already have an acount?</div>
     {% endblock %}
 
     {% block middleLeftPane %}
-        <div id="newVsOldUser" class="sideButton">Already have an acount?</div>
+	     <div href="/account/facebook/login/" class="sideButton fb">
+	        <div class="icon-facebook"></div>
+	        <div id="facebookText">Create an account through facebook</div>
+	    </div>
+	    {% include "socialaccount/snippets/login_extra.html" %}
     {% endblock %}
 
     {% block mainPane %}
@@ -40,16 +44,8 @@
                             {{ field }}
                         </div>
                     {% endfor %}
-                    <button id='submitbtn' style="display:none" type="submit"></button>
+                   <!--  <button id='submitbtn'style=" display:none" type="submit"></button> -->
+                       <div type="submit" form="newMember" id="signUp" class="wideButton">Create Account</div>
                 </form>
             </div>
-
-
-
-            <div id="facebookLogin">
-                <div class="icon-facebook"></div>
-                <a href="/account/facebook/login/"><div id="facebookText">Create an account through facebook</div></a>
-                {% include "socialaccount/snippets/login_extra.html" %}
-            </div>
-        </form>
     {% endblock %}
