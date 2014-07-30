@@ -217,6 +217,7 @@ header {
 .verticalPane {
   position: relative;
   float: left;
+  padding-top: 75px;
   width: 600px;
   height: 100%; }
   .verticalPane.small {
@@ -240,8 +241,6 @@ header {
   box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1); }
   .window.side {
     width: 250px; }
-  .window:first-child {
-    margin-top: 85px; }
   .window .windowHeader {
     position: relative;
     top: 0px;
@@ -615,7 +614,7 @@ header {
   position: fixed;
   top: 55px;
   right: 200px;
-  width: 400px;
+  width: 300px;
   height: 300px;
   background: #f7f7f7;
   border-radius: 0px 0px 5px 5px;
@@ -656,6 +655,11 @@ header {
       transition: 200ms ease; }
       #loginDropdown .windowHeader .icon-close:hover {
         color: #6cab43; }
+  #loginDropdown .loginBlock {
+    position: relative;
+    float: left;
+    margin: 10px;
+    min-width: 270px; }
   #loginDropdown .loginField {
     position: relative;
     width: 250px;
@@ -663,14 +667,11 @@ header {
     border: none;
     border-radius: 5px;
     padding: 3px 5px;
-    margin-bottom: 20px;
     font-size: 15px;
     color: #6cab43;
     font-family: 'sinkin_sans300_light';
     clear: both;
     box-shadow: inset 0 0 2px 2px #cecece; }
-    #loginDropdown .loginField:last-child {
-      margin-bottom: 45px; }
   #loginDropdown .authButtonSection {
     position: absolute;
     width: 100%;
@@ -695,6 +696,24 @@ header {
       #loginDropdown .authButtonSection .authButton:hover {
         background: #6cab43;
         color: #f7f7f7; }
+      #loginDropdown .authButtonSection .authButton.fb {
+        background: #3B5998;
+        transition: 200ms; }
+        #loginDropdown .authButtonSection .authButton.fb:hover {
+          background: #627AAD; }
+        #loginDropdown .authButtonSection .authButton.fb .icon-facebook {
+          position: relative;
+          float: left;
+          color: #F2F2F2;
+          margin-right: 10px;
+          font-size: 28px; }
+        #loginDropdown .authButtonSection .authButton.fb #facebookText {
+          position: relative;
+          color: #F2F2F2;
+          float: left;
+          font-size: 13px;
+          margin-top: 4px;
+          margin-left: -5px; }
 
 .accountSection {
   height: 200px;

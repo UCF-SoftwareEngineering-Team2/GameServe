@@ -14,37 +14,40 @@
 	{% endblock %}
 
 	{% block browseLink %}active{% endblock %}
-	{% block topLeftPaneTitle %}Game Stats{% endblock %}
-	{% block topLeftPaneContent %}
-		<div class="staticListItem">
-			<div class="listImg green">
-				<div class="icon-heatRep"></div>
+
+	{% block topLeftPane %}
+		<section class="window side">
+			<div class="windowHeader">Game Stats</div>	
+			<div class="staticListItem">
+				<div class="listImg green">
+					<div class="icon-heatRep"></div>
+				</div>
+				<div class="statNum">{{ event.gameHeat }}</div>
+				<div class="statType">game heat</div>
 			</div>
-			<div class="statNum">{{ event.gameHeat }}</div>
-			<div class="statType">game heat</div>
-		</div>
-		<!-- Fill in with recent events from the database -->
-		<div class="staticListItem">
-			<div class="listImg green">
-				<div class="icon-committed"></div>
+			<!-- Fill in with recent events from the database -->
+			<div class="staticListItem">
+				<div class="listImg green">
+					<div class="icon-committed"></div>
+				</div>
+				<div class="statNum">{{ event.participants.count }}</div>
+				<div class="statType">players committed</div>
 			</div>
-			<div class="statNum">{{ event.participants.count }}</div>
-			<div class="statType">players committed</div>
-		</div>
-		<div class="staticListItem">
-			<div class="listImg green">
-				<div class="icon-comments"></div>
+			<div class="staticListItem">
+				<div class="listImg green">
+					<div class="icon-comments"></div>
+				</div>
+				<div class="statNum">{{ event.numComments }}</div>
+				<div class="statType">comments</div>
 			</div>
-			<div class="statNum">{{ event.numComments }}</div>
-			<div class="statType">comments</div>
-		</div>
-		<div class="staticListItem">
-			<div class="listImg green">
-				<div class="icon-checkedIn"></div>
+			<div class="staticListItem">
+				<div class="listImg green">
+					<div class="icon-checkedIn"></div>
+				</div>
+				<div class="statNum">{{ event.checkIns }}</div>
+				<div class="statType">Checked-in</div>
 			</div>
-			<div class="statNum">{{ event.checkIns }}</div>
-			<div class="statType">Checked-in</div>
-		</div>
+		</section>
 	{% endblock %}
 
 	{% block middleLeftPane %}

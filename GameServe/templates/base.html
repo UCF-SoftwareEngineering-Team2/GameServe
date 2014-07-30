@@ -60,13 +60,20 @@
 
 				<form id="loginDropdown" class="hidden">
 					<input id='csrf' type='hidden' name='csrfmiddlewaretoken' value=''>
-					<h5>email:</h5>
-					<input type="text" class="loginField" id="emailInput" placeholder="email">
-					<h5>password:</h5>
-					<input type="text" class="loginField" id="passwordInput" placeholder="password">
+					<div class="loginBlock">
+						<h5>email:</h5>
+						<input type="text" class="loginField" id="emailInput" placeholder="email">
+					</div>
+					<div class="loginBlock">
+						<h5>password:</h5>
+						<input type="text" class="loginField" id="passwordInput" placeholder="password">
+					</div>
 					<div class="authButtonSection">
 						<div id="loginButton" class="authButton">Login</div>
-						<a href="/account/facebook/login/"><div class="fb">Login with Facebook</div></a>
+						<a href="/account/facebook/login/" class="authButton fb">
+							<div class="icon-facebook"></div>
+							<div id="facebookText">facebook login</div>
+						</a>
 						{% include "socialaccount/snippets/login_extra.html" %}
 					</div>
 				</form>
@@ -78,11 +85,8 @@
 		</header>
 		<section class="center">
 			<aside class="verticalPane small">
-				<section class="window side">
-					<div class="windowHeader">{% block topLeftPaneTitle %}Recent Activity{% endblock %}</div>	
-					{% block topLeftPaneContent %}
-					{% endblock %}
-				</section>
+				
+				{% block topLeftPane %}{% endblock %}
 
 				{% block middleLeftPane %}{% endblock %}
 

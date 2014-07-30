@@ -12,13 +12,11 @@
 
     {% block loginLink%}active{% endblock %}
         
-    {% block topLeftPaneTitle %}Privacy Policy{% endblock %}
-    {% block topLeftPane %}HELLLO{% endblock %}
-    {% block middleLeftPane %}
+    {% block topLeftPane %}
         <button type="submit" form="newMember" id="signUp" class="sideButton">Create Account</button>
     {% endblock %}
 
-    {% block bottomLeftPane %}
+    {% block middleLeftPane %}
         <div id="newVsOldUser" class="sideButton">Already have an acount?</div>
     {% endblock %}
 
@@ -27,9 +25,6 @@
             <div class="windowHeader" >
                 <div id="loginHeader">Create an account at gameServe</div>
             </div>
-
-
-
             <div class="accountSection expand" >
                 <form id="newMember" method="post" action=".">
                     {% csrf_token %}

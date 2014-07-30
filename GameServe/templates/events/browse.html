@@ -2,9 +2,11 @@
 {% load static %}
 <!-- Loads event filters -->
 {% load events_filters %}
-	{% block browseLink%}active{% endblock %}s
-	{% block topLeftPaneTitle %}Filter Results{% endblock %}
-	{% block topLeftPaneContent %}
+	{% block browseLink%}active{% endblock %}
+	
+	{% block topLeftPane %}
+	<section class="window side">
+		<div class="windowHeader">Filter Results</div>	
 		<!-- 
 		{% for gameType in gameTable %}
 			<div class="gameSelection">{{gameType.name}}</div> 

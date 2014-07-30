@@ -9,37 +9,39 @@
 	{% endblock %}
 
 	{% block createLink %}active{% endblock %}
-	{% block topLeftPaneTitle %}Similar Games{% endblock %}
-	{% block topLeftPaneContent %}
-		<div class="listItem static">
-			<div class="listImg green">
-				<div class="icon-heatRep"></div>
+	{% block topLeftPane %}
+		<section class="window side">
+			<div class="windowHeader">Similar Games</div>	
+			<div class="listItem static">
+				<div class="listImg green">
+					<div class="icon-heatRep"></div>
+				</div>
+				<div class="statNum">1270</div>
+				<div class="statType">game heat</div>
 			</div>
-			<div class="statNum">1270</div>
-			<div class="statType">game heat</div>
-		</div>
-		<!-- Fill in with recent events from the database -->
-		<div class="listItem static">
-			<div class="listImg green">
-				<div class="icon-committed"></div>
+			<!-- Fill in with recent events from the database -->
+			<div class="listItem static">
+				<div class="listImg green">
+					<div class="icon-committed"></div>
+				</div>
+				<div class="statNum">9</div>
+				<div class="statType">players committed</div>
 			</div>
-			<div class="statNum">9</div>
-			<div class="statType">players committed</div>
-		</div>
-		<div class="listItem static">
-			<div class="listImg green">
-				<div class="icon-comments"></div>
+			<div class="listItem static">
+				<div class="listImg green">
+					<div class="icon-comments"></div>
+				</div>
+				<div class="statNum">4</div>
+				<div class="statType">comments</div>
 			</div>
-			<div class="statNum">4</div>
-			<div class="statType">comments</div>
-		</div>
-		<div class="listItem static">
-			<div class="listImg green">
-				<div class="icon-checkedIn"></div>
+			<div class="listItem static">
+				<div class="listImg green">
+					<div class="icon-checkedIn"></div>
+				</div>
+				<div class="statNum">0</div>
+				<div class="statType">Checked-in</div>
 			</div>
-			<div class="statNum">0</div>
-			<div class="statType">Checked-in</div>
-		</div>
+		</section>
 	{% endblock %}
 
 	{% block bottomLeftPane %}
