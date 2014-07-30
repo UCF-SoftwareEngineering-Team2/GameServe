@@ -47,7 +47,6 @@ def addSports():
         'Ping-Pong',
         'RacquetBall'
     ]
-
     for i in s:
         try:
             sport = Sport()
