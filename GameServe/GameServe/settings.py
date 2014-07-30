@@ -88,6 +88,7 @@ AUTHENTICATION_BACKENDS = (
  
 # auth and allauth settings
 LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/'
 SOCIALACCOUNT_QUERY_EMAIL = True
 SOCIALACCOUNT_PROVIDERS = {
     'facebook': {

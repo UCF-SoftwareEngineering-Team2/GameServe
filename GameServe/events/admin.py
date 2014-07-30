@@ -1,5 +1,5 @@
 from django.contrib import admin
-from events.models import Event, Court, Sport
+from events.models import Event, Court, Sport, RecentActivity
  
 # Register your models here.
 class EventAdmin(admin.ModelAdmin):
@@ -10,3 +10,4 @@ class CourtAdmin(admin.ModelAdmin):
 admin.site.register(Sport)
 admin.site.register(Event,EventAdmin)
 admin.site.register(Court,CourtAdmin)
+admin.site.register(RecentActivity)

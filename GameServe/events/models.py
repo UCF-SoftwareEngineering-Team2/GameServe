@@ -25,7 +25,6 @@ class Sport(models.Model):
 
 
 
-
 class CourtManager(models.Manager):
     def scheduledNext( self, courtID ):
         try:
@@ -33,6 +32,10 @@ class CourtManager(models.Manager):
             return upcoming
         except( Court.DoesNotExist ):
             return
+
+
+
+
 
 class Court(models.Model):
     objects = CourtManager()
@@ -47,11 +50,9 @@ class Court(models.Model):
 
     def __unicode__(self):
         return u'%s (%s, %s)' % (self.sport.sportType, self.latitude, self.longitude)
+    
     class Meta:
         ordering = ('sport',)
-
-
-
 
 
 
@@ -70,7 +71,7 @@ class EventManager(models.Manager):
         # Check if event either starts during the time period, ends during the time period, 
         # or starts before and ends after the time period.
         def occuring_during(court, start, end):
-            return Event.objects.filter(Q(court=court), 
+            return self.filter(Q(court=court), 
                 Q(Q(dateTime__range=[start, end]) | Q(endTime__range=[start,end]) |
                     Q(Q(dateTime__lte=start), Q(endTime__gte=end))))
 
@@ -91,7 +92,7 @@ class EventManager(models.Manager):
     # TODO: Determine in instance-level method bettern than table-wide method for remove/add participants
     def add_participant(self, user, event):
         # Get event by id
-        eventInstance = Event.objects.get(pk=event)
+        eventInstance = self.get(pk=event)
 
         # Add user to participants
         eventInstance.participants.add(User.objects.get(pk=user))
@@ -99,7 +100,7 @@ class EventManager(models.Manager):
 
     def remove_participant(self, user, event):
         # Get event by id
-        eventInstance = Event.objects.get(pk=event)
+        eventInstance = self.get(pk=event)
 
         # If user exists in participants, remove them
         if(eventInstance.participants.filter(id=user) is not None):
@@ -113,7 +114,6 @@ class Event(models.Model):
     objects = EventManager()
 
 
-
     ###################################################################################
     #                                Fields 
     ###################################################################################
@@ -125,13 +125,19 @@ class Event(models.Model):
     court = models.ForeignKey(Court, related_name='court')
     participants = models.ManyToManyField(User,related_name='participants')
 
-    gameHeat = 0 #models.IntegerField(default=0)
-    numComments = 0 #models.IntegerField()
-    checkIns = 0 #models.IntegerField()
-    # duration = models.DateTimeField(auto_now=False)
+    gameHeat = 0    # models.IntegerField(default=0)
+    numComments = 0 # models.IntegerField()
+    checkIns = 0    # models.IntegerField()
 
     def __unicode__(self):
-        return self
+        return u'%s %s (%s/%s)\n' %( self.dateTime, self.court.sport.sportType, 
+                                    self.court.latitude, self.court.longitude )
+    def __str__(self):
+        return '%s %s (%s/%s)' %( self.dateTime, self.court.sport.sportType, 
+                                    self.court.latitude, self.court.longitude )
+
+
+
 
 
 
@@ -190,6 +196,10 @@ class Event(models.Model):
 
 
 
+
+
+
+
     ###################################################################################
     #                                Properties 
     ###################################################################################
@@ -216,6 +226,9 @@ class Event(models.Model):
 
     class Meta:
         ordering = ('dateTime',)
+
+
+
 
 class RecentActivityManager(models.Manager):
     def add_activity(self, activity, event):

@@ -44,6 +44,30 @@
 					register	
 					<div class="linkSlider"></div>
 				</div>
+
+				<form id="loginDropdown" class="hidden">
+					<input id='csrf' type='hidden' name='csrfmiddlewaretoken' value=''>
+					<div class="loginBlock">
+						<h5>email or username:</h5>
+						<input type="text" class="loginField" id="emailInput" placeholder="email">
+					</div>
+					<div class="loginBlock">
+						<h5>password:</h5>
+						<input type="password" class="loginField" id="passwordInput" placeholder="password">
+					</div>
+					<div class="authButtonSection">
+						<div id="loginButton" class="authButton">Login</div>
+						
+						<a href="/account/facebook/login/" class="authButton fb">
+							<div class="icon-facebook"></div>
+							<div id="facebookText">facebook login</div>
+						</a>
+						{% include "socialaccount/snippets/login_extra.html" %}
+					</div>
+				</form>
+				<script>
+					$('#csrf').attr('value',$.cookie().csrftoken);
+				</script>
 				{% endif %}
 
 
@@ -58,28 +82,6 @@
 				</div>
 				<div id="headerFade"></div>
 
-				<form id="loginDropdown" class="hidden">
-					<input id='csrf' type='hidden' name='csrfmiddlewaretoken' value=''>
-					<div class="loginBlock">
-						<h5>email:</h5>
-						<input type="text" class="loginField" id="emailInput" placeholder="email">
-					</div>
-					<div class="loginBlock">
-						<h5>password:</h5>
-						<input type="text" class="loginField" id="passwordInput" placeholder="password">
-					</div>
-					<div class="authButtonSection">
-						<div id="loginButton" class="authButton">Login</div>
-						<a href="/account/facebook/login/" class="authButton fb">
-							<div class="icon-facebook"></div>
-							<div id="facebookText">facebook login</div>
-						</a>
-						{% include "socialaccount/snippets/login_extra.html" %}
-					</div>
-				</form>
-				<script>
-					$('#csrf').attr('value',$.cookie().csrftoken);
-				</script>
 				
 			</section>
 		</header>
