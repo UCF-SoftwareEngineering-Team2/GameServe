@@ -78,7 +78,7 @@ def upcoming_events(request):
             jsonPayload[index]['dateTimeStamp'] = int(time.mktime(jsonPayload[index]['dateTime'].timetuple()))
             jsonPayload[index]['dateTime'] = unicode(jsonPayload[index]['dateTime'])
             jsonPayload[index]['endTime'] = unicode(jsonPayload[index]['endTime'])
-        return HttpResponse(json.dumps(jsonPayload), content_type="applciation/json")
+        return HttpResponse(json.dumps(jsonPayload), content_type="application/json")
 
 
 
@@ -164,13 +164,10 @@ def new_game(request):
  
 @csrf_exempt
 def commit(request):
-    #
-    # NOTE / TODO: current input (user=1) is PLACEHOLDER
-    #
     if request.method == 'GET':
         return HttpResponseRedirect('/events/create/')
 
-    newGame = Event.objects.add_participant(user=request.POST['user'], event=request.POST['event'])
+    newGame = Event.objects.add_participant(user=request.user.id, event=request.POST['event'])
     #Create response to POST
     response = {}
     #If new game is a string, it's an error
@@ -186,10 +183,7 @@ def commit(request):
  
 @csrf_exempt
 def uncommit(request):
-    #
-    # NOTE / TODO: current input (user=1) is PLACEHOLDER
-    #
-    newGame = Event.objects.remove_participant(user=request.POST['user'], event=request.POST['event'])
+    newGame = Event.objects.remove_participant(user=request.user.id, event=request.POST['event'])
     #Create response to POST
     response = {}
     #If new game is a string, it's an error
