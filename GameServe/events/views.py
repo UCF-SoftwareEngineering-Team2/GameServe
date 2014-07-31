@@ -46,6 +46,10 @@ def index(request):
     }
     return render_to_response('events/index.html',context_dict, RequestContext(request) )
 
+
+
+
+
 # Returns a set of events as a JSON payload based on a parameter
 # i.e. /events/upcoming_events/?numEvents=3 will return the next 3 events occuring next
 # A third parameter ('html'), allows an HTML segment to be returned for infinite scrolling
@@ -119,12 +123,29 @@ def browse(request):
     context_dict = {'events':Event.objects.filter(dateTime__gte=timezone.now())[:15]} 
     context_dict['lastTime'] = int(time.mktime(context_dict['events'].reverse()[0].dateTime.timetuple()))
     return render_to_response('events/browse.html',context_dict, context_instance=RequestContext(request) )
+
+
+
+
+
+
  
 def user(request):
     return render(request, 'events/user.html')
 
+
+
+
+
+
+
 def create_account(request):
     return render(request, 'events/create_account.html')
+
+
+
+
+
  
 def game(request, gameId="1"):
     user = False
@@ -145,9 +166,21 @@ def game(request, gameId="1"):
     # latest_poll_list = Poll.objects.all().order_by('-pub_date')[:5]
     return render_to_response('events/game.html',context_dict, RequestContext(request) )
  
+
+
+
+
 def create(request):
-    # latest_poll_list = Poll.objects.all().order_by('-pub_date')[:5]
-    return render(request, 'events/create.html')
+    context_dict = {}
+    context_dict.update({'court':Court.objects.all()})
+
+    context_dict.update({'sports':Sport.objects.all()})
+
+    return render_to_response('events/create.html', context_dict, RequestContext(request))
+
+
+
+
  
 @csrf_exempt
 def new_game(request):
@@ -160,9 +193,10 @@ def new_game(request):
                                          creator = creator, 
                                          court = request.POST['court'],
                                          duration = request.POST['duration'])
+
     #Create response to POST
     response = {}
- 
+
     #If new game is a string, it's an error
     if(type(newGame) is str):
         response['result'] = newGame
@@ -175,7 +209,11 @@ def new_game(request):
         response['result']['dateTime'] = str(response['result']['dateTime'])
         response['result']['endTime'] = str(response['result']['endTime'])
     return HttpResponse(json.dumps(response), content_type="applciation/json") 
- 
+
+
+
+
+
 @csrf_exempt
 def commit(request):
     if request.method == 'GET':
@@ -194,7 +232,9 @@ def commit(request):
         response['result']['dateTime'] = str(response['result']['dateTime'])
         response['result']['endTime'] = str(response['result']['endTime'])
     return HttpResponse(json.dumps(response), content_type="application/json")
- 
+
+
+
 @csrf_exempt
 def uncommit(request):
     newGame = Event.objects.remove_participant(user=request.user.id, event=request.POST['event'])
