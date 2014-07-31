@@ -48,6 +48,9 @@ def index(request):
     context = RequestContext(request)
     context_dict = {
         'user':request.user,
+        # 'nextGame':Event.objects.filter(participants__id=request.user.id),
+        # 'mostFreqSport':Event.objects.filter(participants__id=request.user.id).gameType,
+        # 'lastPlayed':Event.objects.filter(checkedInParticipants__id=request.user.id).gameType,
         'numCheckIns':Event.objects.filter(CheckedInParticipants__id=request.user.id).count,
         'numCommits':Event.objects.filter(participants__id=request.user.id).count,
         'gameLog': Event.objects.filter(checkedInParticipants__id=request.user.id)

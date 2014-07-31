@@ -50,17 +50,17 @@
 			</div>
 			<!-- Fill in with filtered games from the database -->
 			<div class="windowBlock">
-				<h3>Baseball</h3>
-				<div class="icon-baseball largeIcon"></div>
+				<h3>{{ lastPlayed }}</h3>
+				<div class="icon-{{ lastPlayed | lower }} largeIcon"></div>
+				<h5>last played</h5>
+			</div>
+			<div class="windowBlock">
+				<h3>{{ mostFreqSpot }}</h3>
+				<div class="icon-{{ mostFreqSport | lower }} largeIcon"></div>
 				<h5>most frequently played</h5>
 			</div>
 			<div class="windowBlock">
-				<h3>Tennis</h3>
-				<div class="icon-tennis largeIcon"></div>
-				<h5>most frequently played</h5>
-			</div>
-			<div class="windowBlock">
-				<h3>July 16, 2014</h3>
+				<h3>July 16, 2014 {{ nextGame.dateTime.year }}</h3>
 				<h5>next game</h5>
 			</div>
 		</section>
