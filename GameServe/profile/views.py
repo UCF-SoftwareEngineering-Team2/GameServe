@@ -6,6 +6,8 @@ from profile.models import User
 import json
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
+from events.models import *
+from events.models import Event, RecentActivity, Sport, Court
 
 @csrf_exempt
 def ajax(request):
@@ -46,7 +48,9 @@ def index(request):
     context = RequestContext(request)
     context_dict = {
         'user':request.user,
-        'gameLog': self.filter(checkedInParticipants__id=user.id)
+        'numCheckIns':Event.objects.filter(CheckedInParticipants__id=request.user.id).count,
+        'numCommits':Event.objects.filter(participants__id=request.user.id).count,
+        'gameLog': Event.objects.filter(checkedInParticipants__id=request.user.id)
     }
     return render_to_response('profile/index.html', context_dict, context)
 

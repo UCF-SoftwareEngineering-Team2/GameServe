@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 	{% block preReqs %}
+		<script type="text/javascript" src="{% static 'js/moment.min.js' %}"></script>
 		<script type="text/javascript" src="{% static 'js/game.js' %}"></script>
 		<script>
 			var eventDay = "{{ event.dateTime.day }}";
@@ -9,6 +10,7 @@
 			var eventHour = "{{ event.dateTime.hour }}";
 			var eventMin = "{{ event.dateTime.minute }}";
 			var eventId = {{event.id}};
+			var eventDuration  = {{event.duration}};
 		</script>
 
 	{% endblock %}
@@ -18,13 +20,13 @@
 	{% block topLeftPane %}
 		<section class="window side">
 			<div class="windowHeader">Game Stats</div>	
-			<div class="staticListItem">
+			<!-- <div class="staticListItem">
 				<div class="listImg green">
 					<div class="icon-heatRep"></div>
 				</div>
 				<div class="statNum">{{ event.gameHeat }}</div>
 				<div class="statType">game heat</div>
-			</div>
+			</div> -->
 			<!-- Fill in with recent events from the database -->
 			<div class="staticListItem">
 				<div class="listImg green">
@@ -51,17 +53,21 @@
 	{% endblock %}
 
 	{% block middleLeftPane %}
+	{% if user %}
 		{% if not user in participants %}<div id="commit" class="sideButton">Commit to Play</div>{% endif %}
 		{% if user in participants %}<div id="commit" class="invis sideButton">Commit to Play</div>{% endif %}
 		{% if user in participants and not user in checkedInParticipants %}<div id="uncommit" class="sideButton">Uncommit</div>{% endif %}
-		{% if not user in participants and not user in checkedInParticipants %}<div id="uncommit" class="invis sideButton">Uncommit</div>{% endif %}
+		{% if not user in participants or user in checkedInParticipants %}<div id="uncommit" class="invis sideButton">Uncommit</div>{% endif %}
+	{% endif %}
 	{% endblock %}
 
 	{% block bottomLeftPane %}
+	{% if user and checkInTime %}
 		{% if user in participants and not user in checkedInParticipants %}<div id="verify" class="sideButton">Check in</div>{% endif %}
 		{% if user in participants and user in checkedInParticipants or not user in participants %}<div id="verify" class="invis sideButton">Check in</div>{% endif %}
 		{% if user in participants and user in checkedInParticipants %}<div id="unverify" class="sideButton">Cancel check in</div>{% endif %}
 		{% if user in participants and not user in checkedInParticipants %}<div id="unverify" class="invis sideButton">Cancel check in</div>{% endif %}
+	{% endif %}
 	{% endblock %}
 
 	{% block mainPane %}
@@ -85,55 +91,11 @@
 				<div class="blockDeet">Location</div>
 			</div>
 			<div class="windowBlock">
-				<div id="time"class="blockText"></div>
+				<div class="blockText">{{event.dateTime.time}}</div>
 				<div class="blockDeet">Time</div>
-				<div class="blockText">2 hours</div>
+				<div id="duration" class="blockText"></div>
 				<div class="blockDeet">Duration</div>
 			</div>
 			<div class="bigMap" id="mapCanvas"></aside>
-		</section>
-	{% endblock %}
-
-	{% block secondarySection %}
-		<section class="window">
-			<div class="windowHeader">Comments</div>
-			<!-- Fill in with comments from the database -->
-			<div class="staticListItem">
-				<img class="userPhoto" src="{% static 'assets/gsGeneralPerson.jpg' %}">
-				<div class="commentSection">
-					<div class="comment">Do we need our UCF ID cards to get onto this field?</div>
-					<div class="deltaTime">1 day ago</div>
-				</div>
-			</div>
-			<div class="staticListItem">
-				<img class="userPhoto" src="{% static 'assets/gsGeneralPerson.jpg' %}">
-				<div class="commentSection">
-					<div class="comment">Yes. Everytime I have gone, someone has checked. Usually another player will let you in if you forget though.</div>
-					<div class="deltaTime">2 hours ago</div>
-				</div>
-			</div>
-			<div class="staticListItem">
-				<img class="userPhoto" src="{% static 'assets/gsGeneralPerson.jpg' %}">
-				<div class="commentSection">
-					<div class="comment">Who is bringing the ball?</div>
-					<div class="deltaTime">1 hour ago</div>
-				</div>
-			</div>
-			<div class="staticListItem">
-				<img class="userPhoto" src="{% static 'assets/gsGeneralPerson.jpg' %}">
-				<div class="commentSection">
-					<div class="comment">I can bring the ball. Does anyone have cones though?</div>
-					<div class="deltaTime">20 mins ago</div>
-				</div>
-			</div>
-			<div class="staticListItem">
-				<img class="userPhoto" src="{% static 'assets/gsGeneralPerson.jpg' %}">
-				<div class="commentSection create">
-					<textarea id="commentInput" placeholder="comment"></textarea>
-				</div>
-				<div id="submitComment">
-					<div class="icon-arrow-up"></div>
-				</div>
-			</div>
 		</section>
 	{% endblock %}

@@ -1,7 +1,7 @@
 import json
 import time
 from django.http import HttpResponse, HttpResponseRedirect
-
+from datetime import timedelta
 from django.shortcuts import render
 from events.models import *
 from django.core import serializers
@@ -132,12 +132,16 @@ def game(request, gameId="1"):
         user = request.user
 
     event = Event.objects.get(id=int(gameId))
+    timeuntil = event.dateTime - datetime.now()
     context_dict = {
         'event':event,
         'user': user,
         'participants': event.participants.all(),
-        'user_in__checked_in_participants': event.checkedInParticipants.all(),        
+        'checkedInParticipants': event.checkedInParticipants.all(),
+        'checkInTime': event.endTime > datetime.now() and timeuntil.total_seconds() < 3600,
+        # 'checkInTime': timeuntil.total_seconds(),
     }
+
     # latest_poll_list = Poll.objects.all().order_by('-pub_date')[:5]
     return render_to_response('events/game.html',context_dict, RequestContext(request) )
  

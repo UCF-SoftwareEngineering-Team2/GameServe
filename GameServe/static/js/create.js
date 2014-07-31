@@ -90,17 +90,22 @@ $(document).ready(function() {
 			popupNotice("Game Creation Error", "Choose a start minute for your game");
 		}
 		else{
-			var startTime = moment(pickedDate).hours(parseInt($('#startHourSelect').val()) + ($('#amPmToggle').hasClass('am') ? 0 : 12)).minutes($('#startMinSelect').val());
+			var startTime = moment(pickedDate).hours(parseInt($('#startHourSelect').val()) + ($('#amPmToggle')[0].innerHTML === 'AM' ? 0 : 12)).minutes($('#startMinSelect').val());
 			$.ajax({
 				type: "POST",
 				url: '/events/new_game/',
 				data: {
 					dateTime: startTime.unix(),
-					duration: parseInt($('#durationHourSelect').val()) + parseInt($('#durationMinSelect').val()),
+					duration: parseInt($('#durationHourSelect').val())*60 + parseInt($('#durationMinSelect').val()),
 					court:1
 				},
 				success: function(eventData, success){
-					window.location.href= window.location.origin + '/events/game/' + eventData.result.id + '/';
+					if(typeof eventData.result === 'string'){
+						alert(eventData.result);
+					}
+					else{
+						window.location.href= window.location.origin + '/events/game/' + eventData.result.id + '/';
+					}
 				}
 			})
 		}
