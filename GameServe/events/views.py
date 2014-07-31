@@ -251,6 +251,7 @@ def uncommit(request):
         response['result']['endTime'] = str(response['result']['endTime'])
     return HttpResponse(json.dumps(response), content_type="applciation/json")
 
+@csrf_exempt
 def check_in(request):
     if request.method == 'GET':
         return HttpResponseRedirect('/events/create/')
@@ -271,6 +272,7 @@ def check_in(request):
         response['result']['endTime'] = str(response['result']['endTime'])
     return HttpResponse(json.dumps(response), content_type="application/json")
 
+@csrf_exempt
 def cancel_check_in(request):
     if request.method == 'GET':
         return HttpResponseRedirect('/events/create/')

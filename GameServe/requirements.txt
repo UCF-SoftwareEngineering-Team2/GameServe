@@ -23,6 +23,7 @@ oauthlib==0.6.3
 psycopg2==2.5.3
 pylint==1.2.1
 python-dateutil==2.2
+South==1.0
 python-mimeparse==0.1.4
 python-openid==2.2.5
 pyzmq==14.3.1
@@ -33,3 +34,4 @@ six==1.7.3
 static3==0.5.1
 tornado==4.0
 wsgiref==0.1.2
+gunicorn==19.1.0
