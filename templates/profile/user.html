@@ -41,28 +41,18 @@
 				<!-- </div> -->
 				<div class="headerDeets">
 
-					<h2>{{ user.username }}</h2>
+					{% if request.user.facebook_profile %}
+					<h2 style='font-size:18px'>{{ request.user.email }}</h2>
+					{% else %}
+					<h2>{{ request.user.username }}</h2>
+					{% endif %}
+
 					{% if phone_number in user %}
 					<h3 class="headerInfo"><div class="icon-mobile userInfo"></div>: {{user.phone_number}}</h3>
 					{% endif %}
 					<!-- <h3 class="headerInfo">Member since: Summer 2012</h3> -->
 				</div>
 			</div>
-			<!-- Fill in with filtered games from the database -->
-			<!-- <div class="windowBlock">
-				<h3>{{ lastPlayed }}</h3>
-				<div class="icon-{{ lastPlayed | lower }} largeIcon"></div>
-				<h5>last played</h5>
-			</div>
-			<div class="windowBlock">
-				<h3>{{ mostFreqSpot }}</h3>
-				<div class="icon-{{ mostFreqSport | lower }} largeIcon"></div>
-				<h5>most frequently played</h5>
-			</div>
-			<div class="windowBlock">
-				<h3>July 16, 2014 {{ nextGame.dateTime.year }}</h3>
-				<h5>next game</h5>
-			</div> -->
 		</section>
 	{% endblock %}
 
