@@ -158,20 +158,16 @@
 		</section>
 	{% endblock %}
 
-
 {% block lastScript %}
-<script type='text/javascript'>
-	/*
-	* Global scope variables
-	*/
-
+<script>
+	
 	var map;
-
+	var court_id = null ;
 	// Keep a single instance of infowindow so there is only one popup balloon in map instance
 	var infowindow = new google.maps.InfoWindow();
 	var markers = [];
 	var lastValidCenter;
-	var list = {};
+	
 	var crts = {};
 	// Use django_template_syntax to create json object in script
 	
@@ -183,14 +179,13 @@
 
 
 		{% for c in court %}
-		addToCourts('{{c.sport.sportType}}', {{c.latitude}}, {{c.longitude}});
+		addToCourts('{{c.sport.sportType}}', {{c.latitude}}, {{c.longitude}}, {{c.id}});
 		{% endfor %}
-
 	})();
 
 
-	function addToCourts(sport, latitude, longitude ){
-		crts[sport].push({'latitude':latitude, 'longitude': longitude });
+	function addToCourts(sport, latitude, longitude, id){
+		crts[sport].push({'latitude':latitude, 'longitude': longitude , 'idee': id});
 	}
 
 
@@ -205,19 +200,38 @@
 					position: new google.maps.LatLng(jsonObj[key][el].latitude, jsonObj[key][el].longitude),
 					map: map,
 					animation:google.maps.Animation.DROP,
-					title: key
+					title: key,
+					idee:jsonObj[key][el].idee
 				}));
 			}
 		}
 		return markers;
 	}
 
+	function loadSport(json, sport){
+		for ( var key in json){
+			if ( key !== sport )
+				continue;
+			for ( var el in json[key] ){
+				console.log('key')	;
+				markers.push(new google.maps.Marker({
+					position: new google.maps.LatLng(json[key][el].latitude, json[key][el].longitude),
+					map: map,
+					animation:google.maps.Animation.DROP,
+					title: key,
+					idee:json[key][el].idee
+				}));
+			}		
+		}
+		return markers;
+	}
 
 
 	/*
 	* Given an array of gmap markers, add it to global map instance
 	*/
 	function loadMarkers(markerArray){
+		console.log('loaderMarkers called');
 		if (markerArray.length > 0){
 			for (var i = 0; i < markers.length; i++) {
 				addMarkerEvent(markerArray[i]);
@@ -228,18 +242,22 @@
 
 
 
-
+	// Given marker attach a click listener
 	function addMarkerEvent(marker){
 		google.maps.event.addListener(marker, 'click', function(){
 			infowindow.setContent("<div>"+marker.title+"</div>");
+			// console.log(marker.idee);
+			court_id = marker.idee;
 			infowindow.open(map,this);
 		});
 	}
 
-
+	// The Range of bounds allowed
 	var allowedBounds = new google.maps.LatLngBounds(new google.maps.LatLng(28.592276, -81.208642),
 	                                                 new google.maps.LatLng(28.611530, -81.187656));
 
+
+	// Listen for user trying to pan away from UCF area
 	function checkBoundsEvent(){
 		if ( allowedBounds.contains(map.getCenter())) {
 			lastValidCenter = map.getCenter();
@@ -280,16 +298,17 @@
 	  }
 	}
 
-
-
 	// Deletes all markers in the array by removing references to them.
 	function deleteMarkers() {
   		clearMarkers();
   		markers = [];
 	}
 
-
-
+	// Removes the markers from the map, but keeps them in the array.
+	function clearMarkers() {
+		setAllMap(null);
+	}
+	// Initially initialize the map with all the points
 	function initialize() {
 		initMap();
 		loadMarkers(loadJSON(crts));
@@ -300,6 +319,7 @@
 		initialize();
 	});
 
-	window.onload = setAllMap(map);
+	// 
 </script>
 {% endblock %}
+

@@ -160,7 +160,6 @@ def game(request, gameId="1"):
 
 def create(request):
     context_dict = {}
-    sports = Sport.objects.all()
     context_dict.update({'court':Court.objects.all()})
 
     context_dict.update({'sports':Sport.objects.all()})
@@ -179,7 +178,7 @@ def new_game(request):
         request.POST['creator']
     #print create event with post data
     newGame = Event.objects.create_event(dateTime = request.POST['dateTime'],
-                                         creator = request.POST['creator'], 
+                                         creator = creator, 
                                          court = request.POST['court'],
                                          duration = request.POST['duration'])
 
