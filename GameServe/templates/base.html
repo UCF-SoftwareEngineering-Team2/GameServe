@@ -9,8 +9,6 @@
 	<script src="{% static 'js/jquery.cookie.js' %}"></script>
 	<script src="{% static 'js/waypoints.js' %}"></script>
 	<script src="{% static 'js/infinitescroll.js' %}"></script>
-	<script src="{% static 'js/index.js' %}"></script>
-	<script src="{% static 'js/browse.js' %}"></script>
 	<script src="{% static 'js/header.js' %}"></script>
 	<link rel="shortcut icon" href="{% static 'assets/titleIconGS.gif' %}" type="image/gif"/>
 	{% block preReqs %}{% endblock %}
@@ -111,6 +109,12 @@
 		</section>
 
 	</div>
+{% block lastScript %}
+	<script>
+
+
+	</script>
+{% endblock %}
 
 </body>
 </html>

@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 <!-- Loads event filters -->
+	{% block preReqs %}
+	<script src="{% static 'js/browse.js' %}"></script>
+    {% endblock %}
 {% load events_filters %}
 	{% block browseLink%}active{% endblock %}
 	
