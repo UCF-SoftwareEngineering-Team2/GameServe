@@ -5,6 +5,7 @@
 {% load account %}
 {% load url from future %}
 {% load static %}
+{% load socialaccount %}
 
  {% block preReqs %}
     <script type="text/javascript" src="{% static 'js/login.js' %}"></script>
@@ -17,7 +18,7 @@
     {% endblock %}
 
     {% block middleLeftPane %}
-    <a  href="/account/facebook/login/">
+    <a  href="{% provider_login_url "facebook" method="oauth2" %}">
 	     <div class="sideButton fb">
 	        <div class="icon-facebook"></div>
 	        <div id="facebookText">Create an account through facebook</div>
