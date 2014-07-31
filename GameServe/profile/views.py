@@ -40,7 +40,10 @@ def user(request):
 
 # TODO: Do something else here or get rid of it
 def index(request):
-  context = RequestContext(request)
-  context_dict = {'user':request.user, 'gameLog':Event.objects.filter(dateTime__gte=timezone.now())[:15]} 
-  return render_to_response('profile/index.html', context_dict, context)
+    context = RequestContext(request)
+    context_dict = {
+        'user':request.user,
+        'gameLog': self.filter(checkedInParticipants__id=user.id)
+    }
+    return render_to_response('profile/index.html', context_dict, context)
 

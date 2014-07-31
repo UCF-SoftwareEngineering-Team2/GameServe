@@ -57,30 +57,3 @@
 		</section>
 	{% endblock %}
 
-	{% block secondarySection %}
-		<section class="window">
-			<div class="windowHeader">Search for Events</div>
-			<div class="filterResults">
-				<!-- 
-				{% for gameType in gameTable %}
-					<div class="gameSelection">{{gameType.name}}</div> 
-				{% endfor %}
-				-->
-				<input id="baseball" type="checkbox" value="baseball" /><label for="baseball">Baseball</label>
-				<input id="basketball" type="checkbox" value="basketball" /><label for="basketball">Basketball</label>
-				<input id="biking" type="checkbox" value="biking" /><label for="biking">Biking</label>
-				<input id="football" type="checkbox" value="football" /><label for="football">Football</label>
-				<input id="pingpong" type="checkbox" value="pingpong" /><label for="pingpong">Ping-Pong</label>
-				<input id="racquetball" type="checkbox" value="racquetball" /><label for="racquetball">Racquetball</label>
-				<input id="running" type="checkbox" value="running" /><label for="running">Running</label>
-				<input id="soccer" type="checkbox" value="soccer" /><label for="soccer">Soccer</label>
-				<input id="volleyball" type="checkbox" value="volleyball" /><label for="volleyball">Volleyball</label>
-				<input id="tennis" type="checkbox" value="tennis" /><label for="tennis">Tennis</label>
-			</div>
-			<div class="filterSection">
-				<div id="selectAll" class="gameButton">Select All</div>
-				<div id="clearAll" class="gameButton">Clear All</div>
-			</div>
-			<div class="filterButton">Go</div>
-		</section>	
-	{% endblock %}
