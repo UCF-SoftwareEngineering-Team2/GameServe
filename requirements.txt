@@ -34,3 +34,4 @@ six==1.7.3
 static3==0.5.1
 tornado==4.0
 wsgiref==0.1.2
+gunicorn==19.1.0

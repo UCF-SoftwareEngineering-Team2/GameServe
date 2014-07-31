@@ -16,7 +16,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SETTINGS_DIR = os.path.abspath(os.path.dirname(__file__))
 PROJECT_PATH = os.path.join(SETTINGS_DIR, os.pardir)
-
+PROJECT_ROOT = PROJECT_PATH
 
 #########################################################################################
 #              Quick-start development settings - unsuitable for production
@@ -28,7 +28,7 @@ TEMPLATE_DEBUG = True
 SECRET_KEY = 't$-eqj2!z(dn8mhimh9j+%f$9x1(y#8jzli)65g_$mh&5w-9=7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -206,3 +206,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+
+# try to load local_settings.py if it exists
+try:
+  from local_settings import *
+except Exception as e:
+  pass
