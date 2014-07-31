@@ -29,11 +29,14 @@
 					logout
 					<div class="linkSlider"></div>
 				</div>
+				<div id="user" class="headerLink">
+					{{ request.user.username }}
+					<div class="linkSlider {% block userLink %}{% endblock %}"></div>
+				</div>
 				<div id="create" class="headerLink">
 					create a game
 					<div class="linkSlider {% block createLink %}{% endblock %}"></div>
 				</div>
-
 				{# If user not logged in then show button to login or register #}
 				{% else %}
 				<div id="login" class="headerLink">
