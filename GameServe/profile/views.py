@@ -38,10 +38,23 @@ def ajax(request):
 
 @login_required
 def user(request):
+    if not Event.objects.filter(participants__id=request.user.id).all():
+        numCommits = 0
+    else:
+        numCommits = Event.objects.filter(participants__id=request.user.id).all().count
+
+    if not Event.objects.filter(checkedInParticipants__id=request.user.id).all():
+        numCheckIns = 0
+    else:
+        numCheckIns = Event.objects.filter(checkedInParticipants__id=request.user.id).all().count
+
     context_dict = {
-        user: request.user
+        user: request.user,
+        'numCheckIns':numCheckIns,
+        'numCommits':numCommits,
+        'gameLog': Event.objects.filter(checkedInParticipants__id=request.user.id),
     }
-    return render_to_response('profile/user.html',{}, RequestContext(request))
+    return render_to_response('profile/user.html',context_dict, RequestContext(request))
 
 # TODO: Do something else here or get rid of it
 def index(request):
