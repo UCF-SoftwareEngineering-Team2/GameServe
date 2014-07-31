@@ -1,129 +1,161 @@
 {% extends "base.html" %}
 {% load static %}
-    {% block preReqs %}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/pikaday.css' %}">
-        <script type="text/javascript" src="{% static 'js/moment.min.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/pikaday.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/create.js' %}"></script>
+	{% block preReqs %}
+		<link rel="stylesheet" type="text/css" href="{% static 'css/pikaday.css' %}">
+		<script type="text/javascript" src="{% static 'js/moment.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/pikaday.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/create.js' %}"></script>
 
-    {% endblock %}
+	{% endblock %}
 
-    {% block createLink %}active{% endblock %}
-    {% block topLeftPane %}{% endblock %}
+	{% block createLink %}active{% endblock %}
+	{% block topLeftPane %}
+		<!-- <section class="window side">
+			<div class="windowHeader">Similar Games</div>	
+			<div class="listItem static">
+				<div class="listImg green">
+					<div class="icon-heatRep"></div>
+				</div>
+				<div class="statNum">1270</div>
+				<div class="statType">game heat</div>
+			</div>
+			<div class="listItem static">
+				<div class="listImg green">
+					<div class="icon-committed"></div>
+				</div>
+				<div class="statNum">9</div>
+				<div class="statType">players committed</div>
+			</div>
+			<div class="listItem static">
+				<div class="listImg green">
+					<div class="icon-comments"></div>
+				</div>
+				<div class="statNum">4</div>
+				<div class="statType">comments</div>
+			</div>
+			<div class="listItem static">
+				<div class="listImg green">
+					<div class="icon-checkedIn"></div>
+				</div>
+				<div class="statNum">0</div>
+				<div class="statType">Checked-in</div>
+			</div>
+		</section> -->
+	{% endblock %}
 
-    {% block bottomLeftPane %}
-        <div id="publish" class="sideButton">Publish Game</div>
-    {% endblock %}
+	{% block bottomLeftPane %}
+		<div id="publish" class="sideButton">Publish Game</div>
+	{% endblock %}
 
-    {% block mainPane %}
-        <section class="window">
-            <div class="windowHeader">Game Type</div>
-            <!-- Fill in with filtered games from the database -->
-            <div class="windowBlock">
-                <div class="icon-gsIcon largeIcon"></div>
-                <div id="afterIcon" class="blockDeet">Specify Sport Type</div>
-            </div>
-            <div class="filterSection">
-                <!-- 
-                {% for gameType in gameTable %}
-                    <div class="gameSelection">{{gameType.name}}</div> 
-                {% endfor %}
-                -->
-            <form>
-                <input name="sports" id="baseball" type="radio" value="5" /><label for="baseball">Baseball</label>
-                <input name="sports" id="basketball" type="radio" value="1" /><label for="basketball">Basketball</label>
-                <input name="sports" id="biking" type="radio" value="7" /><label for="biking">Biking</label>
-                <input name="sports" id="football" type="radio" value="2" /><label for="football">Football</label>
-                <input name="sports" id="pingpong" type="radio" value="9" /><label for="pingpong">Ping-Pong</label>
-                <input name="sports" id="racquetball" type="radio" value="10" /><label for="racquetball">Racquetball</label>
-                <input name="sports" id="running" type="radio" value="8" /><label for="running">Running</label>
-                <input name="sports" id="soccer" type="radio" value="6" /><label for="soccer">Soccer</label>
-                <input name="sports" id="volleyball" type="radio" value="4" /><label for="volleyball">Volleyball</label>
-                <input name="sports" id="tennis" type="radio" value="3" /><label for="tennis">Tennis</label>
-            </form>
-            </div>
-        </section>
-    {% endblock %}
+	{% block mainPane %}
+		<section class="window">
+			<div class="windowHeader">Game Type</div>
+			<!-- Fill in with filtered games from the database -->
+			<div class="windowBlock">
+				<div class="icon-gsIcon largeIcon"></div>
+				<div id="afterIcon" class="blockDeet">Specify Sport Type</div>
+			</div>
+			<div class="filterSection">
+				<!-- 
+				{% for gameType in gameTable %}
+					<div class="gameSelection">{{gameType.name}}</div> 
+				{% endfor %}
+				-->
+			<form>
+				<input name="sports" id="baseball" type="radio" value="5" /><label for="baseball">Baseball</label>
+				<input name="sports" id="basketball" type="radio" value="1" /><label for="basketball">Basketball</label>
+				<input name="sports" id="biking" type="radio" value="7" /><label for="biking">Biking</label>
+				<input name="sports" id="football" type="radio" value="2" /><label for="football">Football</label>
+				<input name="sports" id="pingpong" type="radio" value="9" /><label for="pingpong">Ping-Pong</label>
+				<input name="sports" id="racquetball" type="radio" value="10" /><label for="racquetball">Racquetball</label>
+				<input name="sports" id="running" type="radio" value="8" /><label for="running">Running</label>
+				<input name="sports" id="soccer" type="radio" value="6" /><label for="soccer">Soccer</label>
+				<input name="sports" id="volleyball" type="radio" value="4" /><label for="volleyball">Volleyball</label>
+				<input name="sports" id="tennis" type="radio" value="3" /><label for="tennis">Tennis</label>
+			</form>
+			</div>
+		</section>
+	{% endblock %}
 
-    {% block secondarySection %}
-        <section class="window">
-            <div class="windowHeader">Game Date & Time</div>
-            <!-- Fill in with filtered games from the database -->
-            <div class="windowBlock scheduler">
-                <input type="text" id="pickerInput">
-                <div id="pikadayCalendarHolder"></div>
-            </div>
-            <div class="windowBlock">
-                <div id="dayOfWeek" class="blockText">Tuesday</div>
-                <div id="monthDay" class="blockText">August 12</div>
-                <div id="timeDisplay" class="blockText">2:00 PM</div>
-                <div class="blockDeet">Specify Date & Time</div>
-            </div>
-            <div class="windowBlock scheduler">
-                <div class="blockDeet scheduler">Game Start Time</div>
-                <div class="timePicker">
-                    <select id="startHourSelect" class="timeSelect">
-                        <option value=""></option>
-                        <option value="12">12</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                    </select>
-                    <select id="startMinSelect" class="timeSelect">
-                        <option value=""></option>
-                        <option value="00">00</option>
-                        <option value="15">15</option>
-                        <option value="30">30</option>
-                        <option value="45">45</option>
-                    </select>
-                    <div id="amPmToggle">PM</div>
-                </div>
-                <div class="blockDeet scheduler">Game Duration</div>
-                <div class="timePicker duration">
-                    <select id="durationHourSelect" class="timeSelect">
-                        <option value=""></option>
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                    </select>
-                    <select id="durationMinSelect" class="timeSelect">
-                        <option value=""></option>
-                        <option value="00">00</option>
-                        <option value="15">15</option>
-                        <option value="30">30</option>
-                        <option value="45">45</option>
-                    </select>
-                    <label for="durationHourSelected">hour(s)</label> 
-                    <label for="durationMinSelected">mins</label> 
-                </div>
-            </div>
-        </section>
-    {% endblock %}
+	{% block secondarySection %}
+		<section class="window">
+			<div class="windowHeader">Game Date & Time</div>
+			<!-- Fill in with filtered games from the database -->
+			<div class="windowBlock scheduler">
+				<input type="text" id="pickerInput">
+				<div id="pikadayCalendarHolder"></div>
+			</div>
+			<div class="windowBlock">
+				<div id="dayOfWeek" class="blockText">Tuesday</div>
+				<div id="monthDay" class="blockText">August 12</div>
+				<div id="timeDisplay" class="blockText">2:00 PM</div>
+				<div class="blockDeet">Specify Date & Time</div>
+			</div>
+			<div class="windowBlock scheduler">
+				<div class="blockDeet scheduler">Game Start Time</div>
+				<div class="timePicker">
+					<select id="startHourSelect" class="timeSelect">
+						<option value=""></option>
+						<option value="12">12</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+					</select>
+					<select id="startMinSelect" class="timeSelect">
+						<option value=""></option>
+						<option value="00">00</option>
+						<option value="15">15</option>
+						<option value="30">30</option>
+						<option value="45">45</option>
+					</select>
+					<div id="amPmToggle">PM</div>
+				</div>
+				<div class="blockDeet scheduler">Game Duration</div>
+				<div class="timePicker duration">
+					<select id="durationHourSelect" class="timeSelect">
+						<option value=""></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+					</select>
+					<select id="durationMinSelect" class="timeSelect">
+						<option value=""></option>
+						<option value="00">00</option>
+						<option value="15">15</option>
+						<option value="30">30</option>
+						<option value="45">45</option>
+					</select>
+					<label for="durationHourSelected">hour(s)</label> 
+					<label for="durationMinSelected">mins</label> 
+				</div>
+			</div>
+		</section>
+	{% endblock %}
 
-    {% block thirdSection %}
-        <section class="window">
-            <div class="windowHeader">Game Location</div>
-            <div class="sideMap" id="mapCanvas"></div>
-            <div class="windowBlock">
-                <div class="blockText"></div>
-                <div class="blockText"></div>
-                <div class="blockText"></div>
-                <div class="blockDeet">Specify Location</div>
-            </div>
-        </section>
-    {% endblock %}
+	{% block thirdSection %}
+		<section class="window gameLocation">
+			<div class="windowHeader">Game Location</div>
+			<div class="sideMap" id="mapCanvas"></div>
+			<div class="windowBlock">
+				<div class="blockText"></div>
+				<div class="blockText"></div>
+				<div class="blockText"></div>
+				<div class="blockDeet">Specify Location</div>
+			</div>
+		</section>
+	{% endblock %}
 
 {% block lastScript %}
 <script>
