@@ -90,7 +90,12 @@ $(document).ready(function() {
                     court:court_id
                 },
                 success: function(eventData, success){
-                    window.location.href= window.location.origin + '/events/game/' + eventData.result.id + '/';
+                   if(typeof eventData.result === 'string'){
+                       alert(eventData.result);
+                   }
+                   else{
+                       window.location.href= window.location.origin + '/events/game/' + eventData.result.id + '/';
+                   }
                 }
             })
         }
