@@ -17,10 +17,12 @@
     {% endblock %}
 
     {% block middleLeftPane %}
-	     <div href="/account/facebook/login/" class="sideButton fb">
+    <a  href="/account/facebook/login/">
+	     <div class="sideButton fb">
 	        <div class="icon-facebook"></div>
 	        <div id="facebookText">Create an account through facebook</div>
-	    </div>
+            </div>
+	    </a>
 	    {% include "socialaccount/snippets/login_extra.html" %}
     {% endblock %}
 
