@@ -16,7 +16,10 @@ $(document).ready(function() {
 	if (eventMin.length < 2 ) {
 		eventMin = "0"+eventMin;
 	}
+
+	var time = moment().minutes(eventDuration);
 	//show date & time
+	$('#duration').text((eventDuration/60).toFixed(0) + ":" + eventDuration%60 + " hours");
 	$('#time').text(eventHour + ":" + eventMin + " " + amPm);
 	$('#weekday').text(dayOWeek[eventDateDOW]);
 	$('#monthDay').text(months[eventMonth] + " " + eventDay);
