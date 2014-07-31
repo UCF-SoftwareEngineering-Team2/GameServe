@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-	{% block browseLink%}active{% endblock %}
+	{% block userLink%}active{% endblock %}
 
 	{% block topLeftPane %}
 	<section class="window side">
@@ -47,10 +47,10 @@
 					</div>
 				<!-- </div> -->
 				<div class="headerDeets">
-					<h2>Alex Horan</h2>
-					<h3 class="headerInfo"><div class="icon-mail userInfo"></div>: a_horan3@hotmail.com</h3>
-					<h3 class="headerInfo"><div class="icon-mobile userInfo"></div>: 407-601-8032</h3>
-					<h3 class="headerInfo">Member since: Summer 2012</h3>
+					<h2>{{ user.username }}</h2>
+					<h3 class="headerInfo"><div class="icon-mail userInfo"></div>: {{ user.email }}</h3>
+					<h3 class="headerInfo"><div class="icon-mobile userInfo"></div>: {{ user.phone_number }}</h3>
+					<!-- <h3 class="headerInfo">Member since: Summer 2012</h3> -->
 				</div>
 			</div>
 			<!-- Fill in with filtered games from the database -->

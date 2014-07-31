@@ -63,6 +63,10 @@ $(document).ready(function() {
         else if ( this.id === 'create'){
             if (pathname !== '/events/create/') window.location.href = '/events/create/';
         }
+        // create events button (shown only if user is logged in)
+        else if ( this.id === 'user'){
+            if (pathname !== '/profile/user/') window.location.href = '/profile/user/';
+        }
         // Nada
         else {
             return ;
