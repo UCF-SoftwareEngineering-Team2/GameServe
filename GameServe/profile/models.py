@@ -63,7 +63,12 @@ class User(AbstractBaseUser):
                                     verbose_name='phonenumber')
 
     reputation   = models.IntegerField(default = 0)
- 
+
+
+    numCommits = 0 #models.IntegerField(blank=False)
+    numComments = 0 #models.IntegerField(default = 0)
+    numCheckIns = 0 #models.IntegerField(default = 0)
+
     # Required definitions for overriding default user model
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)

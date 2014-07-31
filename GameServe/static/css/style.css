@@ -155,7 +155,7 @@ body {
     -o-filter: blur(2px);
     filter: blur(2px); }
   #content #fader {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.6);

@@ -15,9 +15,6 @@ class RegisterForm(forms.Form):
             user.phone_number = self.data['phone_number']
             user.save()
 
-                             
-        
-        
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
     email = forms.EmailField(required = True, validators = [validate_email_unique])

@@ -9,7 +9,7 @@
 			<div class="listImg green">
 				<div class="icon-heatRep"></div>
 			</div>
-			<div class="statNum">620</div>
+			<div class="statNum">{{ user.reputation }}</div>
 			<div class="statType">rep points</div>
 		</div>
 		<!-- Fill in with recent events from the database -->
@@ -17,21 +17,21 @@
 			<div class="listImg green">
 				<div class="icon-committed"></div>
 			</div>
-			<div class="statNum">8</div>
+			<div class="statNum">{{ user.numCommits }}</div>
 			<div class="statType">times committed</div>
 		</div>
 		<div class="listItem static">
 			<div class="listImg green">
 				<div class="icon-comments"></div>
 			</div>
-			<div class="statNum">31</div>
+			<div class="statNum">{{ user.numComments }}</div>
 			<div class="statType">comments</div>
 		</div>
 		<div class="listItem static">
 			<div class="listImg green">
 				<div class="icon-checkedIn"></div>
 			</div>
-			<div class="statNum">7</div>
+			<div class="statNum">{{ user.numCheckIns }}</div>
 			<div class="statType">Check-ins</div>
 		</div>
 	</section>
@@ -75,7 +75,7 @@
 		<section class="window">
 			<div class="windowHeader">Past Games</div>
 			<!-- Fill in with filtered games from the database -->
-			<div class="recentEvent">
+			<div class="gameList">
 				<div class="listImg">
 					<div class="icon-tennis"></div>
 				</div>
