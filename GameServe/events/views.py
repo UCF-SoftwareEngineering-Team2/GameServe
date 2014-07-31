@@ -80,8 +80,6 @@ def upcoming_events(request):
             jsonPayload[index]['endTime'] = unicode(jsonPayload[index]['endTime'])
         return HttpResponse(json.dumps(jsonPayload), content_type="application/json")
 
-
-
 # Returns a set of events as a JSON payload based on 2 parameters
 # i.e. /events/upcoming_events/?numEvents=3&dateTime=1407573840 will return the next 3 events occuring after the datetime 1407573840
 # A third parameter ('html'), allows an HTML segment to be returned for infinite scrolling

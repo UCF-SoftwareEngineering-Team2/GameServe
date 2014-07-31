@@ -76,22 +76,31 @@
 			<div class="windowHeader">Past Games</div>
 			<!-- Fill in with filtered games from the database -->
 			<div class="gameList">
-				<div class="listImg">
-					<div class="icon-tennis"></div>
-				</div>
-				<div class="browseGameInfo">
-					<div class="infoBlock">	
-						<div class="infoText">Today</div>
-						<div class="infoText">1:45 p.m. (45 mins)</div>
+			{% for event in gameLog %}
+				<!-- <a href="/events/game/{{event.id}}/"> -->
+					<div class="listItem infinite-item">
+						<div class="listImg">
+							<!-- Sets proper class for event type -->
+							<div class="icon-{{event.court.sport | lower}}"></div>
+						</div>
+						<div class="browseGameInfo">
+							<div class="infoBlock">
+								<!-- sets the date, time, and the time until -->
+								<div class="infoText">{{event.dateTime.date}}</div>
+								<div class="infoText">{{event.dateTime.time}} ({{event.dateTime | timeuntil}})</div>
+							</div>
+							<div class="infoBlock">
+								<div class="infoText"></div>
+								<!-- Counts number of participants -->
+								<div class="infoText">{{event.participants.count}} people committed</div>
+							</div>
+							<div class="heatImg">
+								<div class="icon-heatRep"></div>
+							</div>
+						</div>
 					</div>
-					<div class="infoBlock">
-						<div class="infoText"></div>
-						<div class="infoText">11 people committed</div>
-					</div>
-					<div class="heatImg hot">
-						<div class="icon-heatRep"></div>
-					</div>
-				</div>
+				<!-- </a> -->
+			{% endfor %}
 			</div>
 		</section>
 	{% endblock %}
