@@ -108,7 +108,37 @@ class EventManager(models.Manager):
             return eventInstance
         else:
             return 'No such participant'
-            
+ 
+    # TODO: Determine in instance-level method bettern than table-wide method for remove/add participants
+    def add_checked_in_participant(self, user, event):
+
+        def occuring_during(user, start, end):
+            return self.filter(Q(checkedInParticipants__id=user), 
+                Q(Q(dateTime__range=[start, end]) | Q(endTime__range=[start,end]) |
+                    Q(Q(dateTime__lte=start), Q(endTime__gte=end))))
+
+        # Get event by id
+        eventInstance = self.get(pk=event)
+        dt = eventInstance.dateTime
+        dte = eventInstance.endTime
+
+        if(occuring_during(user, dt, dte)):
+            return 'Sorry, you\'re already checked in to an event at this time.'
+
+        # Add user to participants
+        eventInstance.checkedInParticipants.add(User.objects.get(pk=user))
+        return eventInstance     
+
+    def remove_checked_in_participant(self, user, event):
+        # Get event by id
+        eventInstance = self.get(pk=event)
+
+        # If user exists in participants, remove them
+        if(eventInstance.checkedInParticipants.filter(id=user) is not None):
+            eventInstance.checkedInParticipants.remove(User.objects.get(pk=user))
+            return eventInstance
+        else:
+            return 'No such participant'      
 
 class Event(models.Model):
     objects = EventManager()
@@ -124,6 +154,7 @@ class Event(models.Model):
     creator = models.ForeignKey(User,related_name='creator')
     court = models.ForeignKey(Court, related_name='court')
     participants = models.ManyToManyField(User,related_name='participants')
+    checkedInParticipants = models.ManyToManyField(User,related_name='checkedInParticipants')
 
     gameHeat = 0    # models.IntegerField(default=0)
     numComments = 0 # models.IntegerField()
@@ -234,7 +265,7 @@ class RecentActivityManager(models.Manager):
     def add_activity(self, activity, event):
 
         #Deletes the oldest entry in the DB if the count of recent activities is greater than 9
-        if(RecentActivity.objects.filter().count() > 9):
+        if(RecentActivity.objects.filter().count() > 4):
             RecentActivity.objects.all().order_by('-id').reverse()[0].delete()
 
         #creates new activity

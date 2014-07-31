@@ -30,7 +30,7 @@
 				<div class="listImg green">
 					<div class="icon-committed"></div>
 				</div>
-				<div class="statNum">{{ event.participants.count }}</div>
+				<div id="participantsCount" class="statNum">{{ event.participants.count }}</div>
 				<div class="statType">players committed</div>
 			</div>
 			<div class="staticListItem">
@@ -44,18 +44,24 @@
 				<div class="listImg green">
 					<div class="icon-checkedIn"></div>
 				</div>
-				<div class="statNum">{{ event.checkIns }}</div>
+				<div id="checkedInCount" class="statNum">{{ event.checkedInParticipants.count }}</div>
 				<div class="statType">Checked-in</div>
 			</div>
 		</section>
 	{% endblock %}
 
 	{% block middleLeftPane %}
-		<div id="commit" class="sideButton">Commit to Play</div>
+		{% if not user in participants %}<div id="commit" class="sideButton">Commit to Play</div>{% endif %}
+		{% if user in participants %}<div id="commit" class="invis sideButton">Commit to Play</div>{% endif %}
+		{% if user in participants and not user in checkedInParticipants %}<div id="uncommit" class="sideButton">Uncommit</div>{% endif %}
+		{% if not user in participants and not user in checkedInParticipants %}<div id="uncommit" class="invis sideButton">Uncommit</div>{% endif %}
 	{% endblock %}
 
 	{% block bottomLeftPane %}
-		<div id="verify" class="sideButton">Verify Game</div>
+		{% if user in participants and not user in checkedInParticipants %}<div id="verify" class="sideButton">Check in</div>{% endif %}
+		{% if user in participants and user in checkedInParticipants or not user in participants %}<div id="verify" class="invis sideButton">Check in</div>{% endif %}
+		{% if user in participants and user in checkedInParticipants %}<div id="unverify" class="sideButton">Cancel check in</div>{% endif %}
+		{% if user in participants and not user in checkedInParticipants %}<div id="unverify" class="invis sideButton">Cancel check in</div>{% endif %}
 	{% endblock %}
 
 	{% block mainPane %}

@@ -170,7 +170,7 @@ body {
 	font-family: 'sinkin_sans300_light';
 	margin: 0px;
 	padding: 0px;
-
+	color: $dark;
 }
 .center {
 	margin: auto;
@@ -179,6 +179,9 @@ body {
 	&.head {
 		width: 870px;
 	}
+}
+.invis{
+	display:none;
 }
 #content {
 	position: absolute;
@@ -416,7 +419,7 @@ header {
 	font-size: 50px;
 	float: left;
 	margin: 0px 10px;
-	color: $meddark;
+	color: $dark;
 	// @include vendor-prefix('transition', '200ms ease');
 	&.green {
 		color: $green;
@@ -438,7 +441,7 @@ header {
 	position: relative;
 	height: 100%;
 	float: left;
-	color: $meddark;
+	color: $dark;
 	font-size: 12px;
 	// transition: 100ms;
 	cursor: pointer;
@@ -503,7 +506,7 @@ header {
 	width: 150px;
 	height: 100%;
 	float: right;
-	color: $meddark;
+	color: $dark;
 	font-size: 12px;
 	// @include vendor-prefix('transition', '200ms ease');
 }
@@ -617,7 +620,7 @@ header {
 		float: left;
 		font-size: 12px;
 		padding: 3px 5px;
-		color: $meddark;
+		color: $dark;
 		margin: 5px;
 		border-radius: 5px;
 		text-align: center;
@@ -667,7 +670,7 @@ header {
 	float: left;
 	font-size: 12px;
 	padding: 3px 5px;
-	color: $meddark;
+	color: $dark;
 	margin: 5px;
 	border-radius: 5px;
 	text-align: center;
@@ -711,7 +714,7 @@ header {
 		top: 0px;
 		padding: 5px 10px;
 		background: $light;
-		color: $meddark;
+		color: $dark;
 		width: calc(100% - 20px);
 		height: 30px;
 		.icon-close {
@@ -808,7 +811,7 @@ header {
 		top: 0px;
 		padding: 5px 10px;
 		background: $light;
-		color: $meddark;
+		color: $dark;
 		width: calc(100% - 20px);
 		height: 30px;
 		.icon-close {

@@ -47,9 +47,11 @@
 					</div>
 				<!-- </div> -->
 				<div class="headerDeets">
+
 					<h2>{{ user.username }}</h2>
-					<h3 class="headerInfo"><div class="icon-mail userInfo"></div>: {{ user.email }}</h3>
-					<h3 class="headerInfo"><div class="icon-mobile userInfo"></div>: {{ user.phone_number }}</h3>
+					{% if phone_number in user %}
+					<h3 class="headerInfo"><div class="icon-mobile userInfo"></div>: {{user.phone_number}}</h3>
+					{% endif %}
 					<!-- <h3 class="headerInfo">Member since: Summer 2012</h3> -->
 				</div>
 			</div>
