@@ -129,7 +129,17 @@ def create_account(request):
     return render(request, 'events/create_account.html')
  
 def game(request, gameId="1"):
-    context_dict = {'event':Event.objects.get(id=int(gameId)),}
+    user = False
+    if request.user.is_authenticated():
+        user = request.user
+
+    event = Event.objects.get(id=int(gameId))
+    context_dict = {
+        'event':event,
+        'user': user,
+        'participants': event.participants.all(),
+        'user_in__checked_in_participants': event.checkedInParticipants.all(),        
+    }
     # latest_poll_list = Poll.objects.all().order_by('-pub_date')[:5]
     return render_to_response('events/game.html',context_dict, RequestContext(request) )
  
@@ -142,10 +152,10 @@ def new_game(request):
     if request.user.is_authenticated():
         creator = request.user.id
     else:
-        request.POST['creator']
+        creator = request.POST['creator']
     #print create event with post data
     newGame = Event.objects.create_event(dateTime = request.POST['dateTime'],
-                                         creator = request.POST['creator'], 
+                                         creator = creator, 
                                          court = request.POST['court'],
                                          duration = request.POST['duration'])
     #Create response to POST
@@ -157,6 +167,8 @@ def new_game(request):
     #Otherwise it's an instance of a game, so send a JSON payload back with event information (CURRENTLY FOR DEBUGGING PURPOSES)
     else:
         RecentActivity.objects.add_activity(activity="Created game", event=newGame)
+        request.user.reputation += 1
+        request.user.save()
         response['result'] = model_to_dict(newGame)
         response['result']['dateTime'] = str(response['result']['dateTime'])
         response['result']['endTime'] = str(response['result']['endTime'])
@@ -197,6 +209,41 @@ def uncommit(request):
         response['result']['endTime'] = str(response['result']['endTime'])
     return HttpResponse(json.dumps(response), content_type="applciation/json")
 
+def check_in(request):
+    if request.method == 'GET':
+        return HttpResponseRedirect('/events/create/')
+
+    newGame = Event.objects.add_checked_in_participant(user=request.user.id, event=request.POST['event'])
+    #Create response to POST
+    response = {}
+    #If new game is a string, it's an error
+    if(type(newGame) is str):
+        response['result'] = newGame
+    #Otherwise it's an instance of a game, so send a JSON payload back with event information (CURRENTLY FOR DEBUGGING PURPOSES)
+    else:
+        RecentActivity.objects.add_activity(activity="Committed", event=newGame)
+        response['result'] = model_to_dict(newGame)
+        response['result']['dateTime'] = str(response['result']['dateTime'])
+        response['result']['endTime'] = str(response['result']['endTime'])
+    return HttpResponse(json.dumps(response), content_type="application/json")
+
+def cancel_check_in(request):
+    if request.method == 'GET':
+        return HttpResponseRedirect('/events/create/')
+
+    newGame = Event.objects.remove_checked_in_participant(user=request.user.id, event=request.POST['event'])
+    #Create response to POST
+    response = {}
+    #If new game is a string, it's an error
+    if(type(newGame) is str):
+        response['result'] = newGame
+    #Otherwise it's an instance of a game, so send a JSON payload back with event information (CURRENTLY FOR DEBUGGING PURPOSES)
+    else:
+        RecentActivity.objects.add_activity(activity="Committed", event=newGame)
+        response['result'] = model_to_dict(newGame)
+        response['result']['dateTime'] = str(response['result']['dateTime'])
+        response['result']['endTime'] = str(response['result']['endTime'])
+    return HttpResponse(json.dumps(response), content_type="application/json")
 
 #function for testing the results of querying for recent activity
 @csrf_exempt

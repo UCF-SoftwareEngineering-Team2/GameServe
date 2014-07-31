@@ -9,7 +9,7 @@
 			<div class="listImg green">
 				<div class="icon-heatRep"></div>
 			</div>
-			<div class="statNum">620</div>
+			<div class="statNum">{{user.reputation}}</div>
 			<div class="statType">rep points</div>
 		</div>
 		<!-- Fill in with recent events from the database -->
@@ -17,21 +17,21 @@
 			<div class="listImg green">
 				<div class="icon-committed"></div>
 			</div>
-			<div class="statNum">8</div>
+			<div class="statNum"></div>
 			<div class="statType">times committed</div>
 		</div>
 		<div class="listItem static">
 			<div class="listImg green">
 				<div class="icon-comments"></div>
 			</div>
-			<div class="statNum">31</div>
+			<div class="statNum"></div>
 			<div class="statType">comments</div>
 		</div>
 		<div class="listItem static">
 			<div class="listImg green">
 				<div class="icon-checkedIn"></div>
 			</div>
-			<div class="statNum">7</div>
+			<div class="statNum"></div>
 			<div class="statType">Check-ins</div>
 		</div>
 	</section>
@@ -47,9 +47,9 @@
 					</div>
 				<!-- </div> -->
 				<div class="headerDeets">
-					<h2>Alex Horan</h2>
-					<h3 class="headerInfo"><div class="icon-mail userInfo"></div>: a_horan3@hotmail.com</h3>
-					<h3 class="headerInfo"><div class="icon-mobile userInfo"></div>: 407-601-8032</h3>
+					<h2>{{user.name}}</h2>
+					<h3 class="headerInfo"><div class="icon-mail userInfo"></div>: {{user.email}}</h3>
+					{% if phone_number in user %}<h3 class="headerInfo"><div class="icon-mobile userInfo"></div>: {{user.phone_number}}</h3>{% endif %}
 					<h3 class="headerInfo">Member since: Summer 2012</h3>
 				</div>
 			</div>

@@ -36,6 +36,9 @@ def ajax(request):
 
 @login_required
 def user(request):
+    context_dict = {
+        user: request.user
+    }
     return render_to_response('profile/user.html',{}, RequestContext(request))
 
 # TODO: Do something else here or get rid of it

@@ -21,11 +21,6 @@ $(document).ready(function() {
 	$('#weekday').text(dayOWeek[eventDateDOW]);
 	$('#monthDay').text(months[eventMonth] + " " + eventDay);
 
-	//user click verify
-	$('#verify').click(function() {
-		alert("user clicked verify");
-	});	
-
 	//user click commit, thus a post is sent to the server committing the user with the current eventId
 	$('#commit').click(function() {
 		$.ajax({
@@ -33,8 +28,64 @@ $(document).ready(function() {
 			url: '/events/commit/',
 			data: {event: eventId},
 			success: function(){
+				$('#commit').addClass('invis');
+				$('#uncommit').removeClass('invis');
+				$('#verify').removeClass('invis');
+				var currentCount = parseInt($('#participantsCount')[0].innerHTML);
+				currentCount++;
+				$('#participantsCount')[0].innerHTML = currentCount;
 			}
-		})
+		});
 	});	
+
+	$('#uncommit').click(function() {
+		$.ajax({
+			type: "POST",
+			url: '/events/uncommit/',
+			data: {event: eventId},
+			success: function(){
+				$('#uncommit').addClass('invis');
+				$('#verify').addClass('invis');
+				$('#unverify').addClass('invis');
+				$('#commit').removeClass('invis');
+				var currentCount = parseInt($('#participantsCount')[0].innerHTML);
+				currentCount--;
+				$('#participantsCount')[0].innerHTML = currentCount;
+			}
+		});
+	});
+
+	$('#verify').click(function() {
+		$.ajax({
+			type: "POST",
+			url: '/events/check_in/',
+			data: {event: eventId},
+			success: function(){
+				$('#uncommit').addClass('invis');
+				$('#verify').addClass('invis');
+				$('#unverify').removeClass('invis');
+				var currentCount = parseInt($('#checkedInCount')[0].innerHTML);
+				currentCount++;
+				$('#checkedInCount')[0].innerHTML = currentCount;
+			}
+		});
+	});
+
+
+	$('#unverify').click(function() {
+		$.ajax({
+			type: "POST",
+			url: '/events/cancel_check_in/',
+			data: {event: eventId},
+			success: function(){
+				$('#uncommit').removeClass('invis');
+				$('#unverify').addClass('invis');
+				$('#verify').removeClass('invis');
+				var currentCount = parseInt($('#checkedInCount')[0].innerHTML);
+				currentCount--;
+				$('#checkedInCount')[0].innerHTML = currentCount;
+			}
+		});
+	});
 
 });
