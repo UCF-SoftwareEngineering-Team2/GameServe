@@ -169,6 +169,7 @@ USE_TZ = False
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 
+STATICFILES_STORAGE='django.contrib.staticfiles.storage.StaticFilesStorage'
 # File Storage engine to use for ./manage.py collectstatic
 STATICFILES_DIRS = (
     os.path.join(PROJECT_PATH, 'static'),
