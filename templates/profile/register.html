@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+
+{% load i18n %}
+{% load account %}
+{% load url from future %}
+{% load static %}
+
+ {% block preReqs %}
+    <script type="text/javascript" src="{% static 'js/login.js' %}"></script>
+{% endblock %}
+
+    {% block loginLink%}active{% endblock %}
+        
+    {% block topLeftPaneTitle %}Privacy Policy{% endblock %}
+    {% block topLeftPane %}HELLLO{% endblock %}
+    {% block middleLeftPane %}
+        <button type="submit" form="newMember" id="signUp" class="sideButton">Create Account</button>
+    {% endblock %}
+
+    {% block bottomLeftPane %}
+        <div id="newVsOldUser" class="sideButton">Already have an acount?</div>
+    {% endblock %}
+
+    {% block mainPane %}
+        <div class="window">
+            <div class="windowHeader" >
+                <div id="loginHeader">Create an account at gameServe</div>
+            </div>
+            <div class="accountSection expand" >
+            
+                <form id="newMember" method="post" action=".">
+				    {% csrf_token %}
+                    {% for hidden in form.hidden_fields %}
+                        {{ hidden }}
+                    {% endfor %}
+                    {% for field in form.visible_fields %}
+                    <div class="loginBlock">
+                        {{field.errors}}
+                        <h5>{{ field.label_tag }}</h5>
+                        {{ field }}
+                    </div>
+                    
+                    {% endfor %}
+
+
+                    <button type="submit">Sign Up</button>
+
+                </form>
+            </div>
+            <div id="facebookLogin">
+                <div class="icon-facebook"></div>
+                <a href="/account/facebook/login/"><div id="facebookText">Create an account through facebook</div></a>
+                {% include "socialaccount/snippets/login_extra.html" %}
+            </div>
+        </form>
+    {% endblock %}

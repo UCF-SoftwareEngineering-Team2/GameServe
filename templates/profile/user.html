@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% load static %}
+	{% block userLink%}active{% endblock %}
+
+	{% block topLeftPane %}
+	<section class="window side">
+		<div class="windowHeader">Recent Activity</div>	
+		<div class="listItem static">
+			<div class="listImg green">
+				<div class="icon-heatRep"></div>
+			</div>
+			<div class="statNum">{{ user.reputation }}</div>
+			<div class="statType">rep points</div>
+		</div>
+		<!-- Fill in with recent events from the database -->
+		<div class="listItem static">
+			<div class="listImg green">
+				<div class="icon-committed"></div>
+			</div>
+			<div class="statNum">{{ numCommits }}</div>
+			<div class="statType">times committed</div>
+		</div>
+		<div class="listItem static">
+			<div class="listImg green">
+				<div class="icon-checkedIn"></div>
+			</div>
+			<div class="statNum">{{ numCheckIns }}</div>
+			<div class="statType">Check-ins</div>
+		</div>
+	</section>
+	{% endblock %}
+
+	{% block mainPane %}
+		<section class="window">
+			<div class="windowHeader large">
+				<!-- <div class="profPic"> -->
+					<img class="userPhoto large" src="{{ request.user.profile_image_url }}"></img>
+					<div class="editPhoto">
+					<div class="icon-camera"></div>
+					</div>
+				<!-- </div> -->
+				<div class="headerDeets">
+
+					<h2>{{ user.username }}</h2>
+					{% if phone_number in user %}
+					<h3 class="headerInfo"><div class="icon-mobile userInfo"></div>: {{user.phone_number}}</h3>
+					{% endif %}
+					<!-- <h3 class="headerInfo">Member since: Summer 2012</h3> -->
+				</div>
+			</div>
+			<!-- Fill in with filtered games from the database -->
+			<!-- <div class="windowBlock">
+				<h3>{{ lastPlayed }}</h3>
+				<div class="icon-{{ lastPlayed | lower }} largeIcon"></div>
+				<h5>last played</h5>
+			</div>
+			<div class="windowBlock">
+				<h3>{{ mostFreqSpot }}</h3>
+				<div class="icon-{{ mostFreqSport | lower }} largeIcon"></div>
+				<h5>most frequently played</h5>
+			</div>
+			<div class="windowBlock">
+				<h3>July 16, 2014 {{ nextGame.dateTime.year }}</h3>
+				<h5>next game</h5>
+			</div> -->
+		</section>
+	{% endblock %}
+
+	{% block secondarySection %}
+		<section class="window">
+			<div class="windowHeader">Game Log</div>
+			<!-- Fill in with filtered games from the database -->
+			<div class="gameList">
+			{% for event in gameLog %}
+				<!-- <a href="/events/game/{{event.id}}/"> -->
+					<div class="listItem infinite-item">
+						<div class="listImg">
+							<!-- Sets proper class for event type -->
+							<div class="icon-{{event.court.sport | lower}}"></div>
+						</div>
+						<div class="browseGameInfo">
+							<div class="infoBlock">
+								<!-- sets the date, time, and the time until -->
+								<div class="infoText">{{event.dateTime.date}}</div>
+								<div class="infoText">{{event.dateTime.time}} ({{event.dateTime | timeuntil}})</div>
+							</div>
+							<div class="infoBlock">
+								<div class="infoText"></div>
+								<!-- Counts number of participants -->
+								<div class="infoText">{{event.participants.count}} people committed</div>
+							</div>
+							<div class="heatImg">
+								<div class="icon-heatRep"></div>
+							</div>
+						</div>
+					</div>
+				<!-- </a> -->
+			{% endfor %}
+			</div>
+		</section>
+	{% endblock %}

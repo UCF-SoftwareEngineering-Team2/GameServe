@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+  <head>
+      {% include "head.html" %}
+      <title>Login Main</title>
+  </head>
+
+
+  <body>
+  {% include "top_navi.html" %}
+    <a href="/profile/register/">Register Here</a>
+    <a href="/profile/login/">Login</a>
+    <img src="{{ user.profile_image_url }}"/>
+  </body>
+</html>

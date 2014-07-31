@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+<!-- Loads event filters -->
+	{% block preReqs %}
+	<script src="{% static 'js/browse.js' %}"></script>
+    {% endblock %}
+{% load events_filters %}
+	{% block browseLink%}active{% endblock %}
+	
+	{% block topLeftPane %}
+	<section class="window side">
+		<div class="windowHeader">Filter Results</div>	
+		<!-- 
+		{% for gameType in gameTable %}
+			<div class="gameSelection">{{gameType.name}}</div> 
+		{% endfor %}
+		-->
+		<div class="filterResults browse">
+		<!-- Each checkbox is invisible, and is linked up with a label which is shown to be highlighted -->
+			<form>
+				<input name="sports" id="baseball" type="checkbox" value="Baseball" /><label for="baseball">Baseball</label>
+				<input name="sports" id="basketball" type="checkbox" value="Basketball" /><label for="basketball">Basketball</label>
+				<input name="sports" id="biking" type="checkbox" value="Biking" /><label for="biking">Biking</label>
+				<input name="sports" id="football" type="checkbox" value="Football" /><label for="football">Football</label>
+				<input name="sports" id="pingpong" type="checkbox" value="Ping-Pong" /><label for="pingpong">Ping-Pong</label>
+				<input name="sports" id="racquetball" type="checkbox" value="Racquetball" /><label for="racquetball">Racquetball</label>
+				<input name="sports" id="running" type="checkbox" value="Running" /><label for="running">Running</label>
+				<input name="sports" id="soccer" type="checkbox" value="Soccer" /><label for="soccer">Soccer</label>
+				<input name="sports" id="volleyball" type="checkbox" value="Volleyball" /><label for="volleyball">Volleyball</label>
+				<input name="sports" id="tennis" type="checkbox" value="Tennis" /><label for="tennis">Tennis</label>
+			</form>
+		</div>
+		<div class="filterSection vert">
+			<div id="selectAll" class="gameButton">Select All</div>
+			<div id="clearAll" class="gameButton">Clear All</div>
+		</div>		
+		<div class="filterButton bottom">Go</div>
+	</section>
+	{% endblock %}
+
+	{% block bottomLeftPane %}
+		<aside class="window side" id="mapCanvas"></aside>
+	{% endblock %}
+
+	{% block mainPane %}
+		<section class="window gamesContainer">
+
+			<div class="windowHeader">Games</div>
+		<!-- Fill in with filtered games from the database -->
+		<div class="gamesList">
+		{% for event in events %}
+			<a href="/events/game/{{event.id}}/">
+				<div class="listItem infinite-item">
+					<div class="listImg">
+						<!-- Sets proper class for event type -->
+						<div class="icon-{{event.court.sport | lower}}"></div>
+					</div>
+					<div class="browseGameInfo">
+						<div class="infoBlock">
+							<!-- sets the date, time, and the time until -->
+							<div class="infoText">{{event.dateTime.date}}</div>
+							<div class="infoText">{{event.dateTime.time}} ({{event.dateTime | timeuntil}})</div>
+						</div>
+						<div class="infoBlock">
+							<div class="infoText"></div>
+							<!-- Counts number of participants -->
+							<div class="infoText">{{event.participants.count}} people committed</div>
+						</div>
+						<div class="heatImg">
+							<div class="icon-heatRep"></div>
+						</div>
+					</div>
+				</div>
+			</a>
+			<!-- link to get the next segment of upcoming events -->
+			{% if forloop.last %}<a class="infinite-more-link" href="/events/upcoming_events_after/?numEvents=5&dateTime={{event.dateTime | getTimeStamp}}&html=True"></a>{% endif %}
+		{% endfor %}
+		</div>
+		</section>
+	{% endblock %}

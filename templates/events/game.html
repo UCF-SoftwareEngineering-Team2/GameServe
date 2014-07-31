@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% load static %}
+	{% block preReqs %}
+		<script type="text/javascript" src="{% static 'js/moment.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/game.js' %}"></script>
+		<script>
+			var eventDay = "{{ event.dateTime.day }}";
+			var eventDateDOW = "{{ event.dateTime.weekday }}";
+			var eventMonth = "{{ event.dateTime.month }}";
+			var eventHour = "{{ event.dateTime.hour }}";
+			var eventMin = "{{ event.dateTime.minute }}";
+			var eventId = {{event.id}};
+			var eventDuration  = {{event.duration}};
+		</script>
+
+	{% endblock %}
+
+	{% block browseLink %}active{% endblock %}
+
+	{% block topLeftPane %}
+		<section class="window side">
+			<div class="windowHeader">Game Stats</div>	
+			<!-- <div class="staticListItem">
+				<div class="listImg green">
+					<div class="icon-heatRep"></div>
+				</div>
+				<div class="statNum">{{ event.gameHeat }}</div>
+				<div class="statType">game heat</div>
+			</div> -->
+			<!-- Fill in with recent events from the database -->
+			<div class="staticListItem">
+				<div class="listImg green">
+					<div class="icon-committed"></div>
+				</div>
+				<div id="participantsCount" class="statNum">{{ event.participants.count }}</div>
+				<div class="statType">players committed</div>
+			</div>
+			<div class="staticListItem">
+				<div class="listImg green">
+					<div class="icon-comments"></div>
+				</div>
+				<div class="statNum">{{ event.numComments }}</div>
+				<div class="statType">comments</div>
+			</div>
+			<div class="staticListItem">
+				<div class="listImg green">
+					<div class="icon-checkedIn"></div>
+				</div>
+				<div id="checkedInCount" class="statNum">{{ event.checkedInParticipants.count }}</div>
+				<div class="statType">Checked-in</div>
+			</div>
+		</section>
+	{% endblock %}
+
+	{% block middleLeftPane %}
+	{% if user %}
+		{% if not user in participants %}<div id="commit" class="sideButton">Commit to Play</div>{% endif %}
+		{% if user in participants %}<div id="commit" class="invis sideButton">Commit to Play</div>{% endif %}
+		{% if user in participants and not user in checkedInParticipants %}<div id="uncommit" class="sideButton">Uncommit</div>{% endif %}
+		{% if not user in participants or user in checkedInParticipants %}<div id="uncommit" class="invis sideButton">Uncommit</div>{% endif %}
+	{% endif %}
+	{% endblock %}
+
+	{% block bottomLeftPane %}
+	{% if user and checkInTime %}
+		{% if user in participants and not user in checkedInParticipants %}<div id="verify" class="sideButton">Check in</div>{% endif %}
+		{% if user in participants and user in checkedInParticipants or not user in participants %}<div id="verify" class="invis sideButton">Check in</div>{% endif %}
+		{% if user in participants and user in checkedInParticipants %}<div id="unverify" class="sideButton">Cancel check in</div>{% endif %}
+		{% if user in participants and not user in checkedInParticipants %}<div id="unverify" class="invis sideButton">Cancel check in</div>{% endif %}
+	{% endif %}
+	{% endblock %}
+
+	{% block mainPane %}
+		<section class="window">
+			<div class="windowHeader medium">
+				<div class="icon-{{ event.court.sport.sportType | lower }} largeIcon left"></div>
+				<div class="headerDeets">
+					<h2 class="headerGame">{{ event.court.sport.sportType }}</h2>
+				</div>
+			</div>
+			<!-- Fill in with filtered games from the database -->
+			<div class="windowBlock">
+				<div id="weekday" class="blockText"></div>
+				<div id="monthDay" class="blockText"></div>
+				<div id="year" class="blockText">{{ event.dateTime.year }}</div>
+				<div class="blockDeet">Date</div>
+			</div>
+			<div class="windowBlock">
+				<div class="blockText">UCF</div>
+				<div class="blockText">Memory Mall</div>
+				<div class="blockDeet">Location</div>
+			</div>
+			<div class="windowBlock">
+				<div class="blockText">{{event.dateTime.time}}</div>
+				<div class="blockDeet">Time</div>
+				<div id="duration" class="blockText"></div>
+				<div class="blockDeet">Duration</div>
+			</div>
+			<div class="bigMap" id="mapCanvas"></aside>
+		</section>
+	{% endblock %}
