@@ -225,7 +225,9 @@ def check_in(request):
         response['result'] = newGame
     #Otherwise it's an instance of a game, so send a JSON payload back with event information (CURRENTLY FOR DEBUGGING PURPOSES)
     else:
-        RecentActivity.objects.add_activity(activity="Committed", event=newGame)
+        request.user.reputation += 1
+        request.user.save()
+        RecentActivity.objects.add_activity(activity="Checked into", event=newGame)
         response['result'] = model_to_dict(newGame)
         response['result']['dateTime'] = str(response['result']['dateTime'])
         response['result']['endTime'] = str(response['result']['endTime'])
@@ -243,6 +245,8 @@ def cancel_check_in(request):
         response['result'] = newGame
     #Otherwise it's an instance of a game, so send a JSON payload back with event information (CURRENTLY FOR DEBUGGING PURPOSES)
     else:
+        request.user.reputation -= 1
+        request.user.save()
         RecentActivity.objects.add_activity(activity="Committed", event=newGame)
         response['result'] = model_to_dict(newGame)
         response['result']['dateTime'] = str(response['result']['dateTime'])

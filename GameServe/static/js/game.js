@@ -63,13 +63,18 @@ $(document).ready(function() {
 			type: "POST",
 			url: '/events/check_in/',
 			data: {event: eventId},
-			success: function(){
-				$('#uncommit').addClass('invis');
-				$('#verify').addClass('invis');
-				$('#unverify').removeClass('invis');
-				var currentCount = parseInt($('#checkedInCount')[0].innerHTML);
-				currentCount++;
-				$('#checkedInCount')[0].innerHTML = currentCount;
+			success: function(eventData, success){
+				if(!eventData || typeof eventData.result === 'string'){
+					alert(eventData.result);
+				}
+				else{
+					$('#uncommit').addClass('invis');
+					$('#verify').addClass('invis');
+					$('#unverify').removeClass('invis');
+					var currentCount = parseInt($('#checkedInCount')[0].innerHTML);
+					currentCount++;
+					$('#checkedInCount')[0].innerHTML = currentCount;
+				}
 			}
 		});
 	});

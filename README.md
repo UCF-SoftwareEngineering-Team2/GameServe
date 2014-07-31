@@ -47,19 +47,19 @@ Evaluation Method: Upon entering the website, a user should be able to see all o
 
 ###### All we need is court locations and their sports
 
-- [ ] No: 7 -- Similar to 3
+- [X] No: 7 -- Similar to 3
 Statement: The system should allow for a user to check into an event
 Evaluation Method:Once a user is at the event, they should be able to check in, confirming their attendence
 
 ###### For this, when someone commits, a check in button replaces it and is disabled until the event is only an hour away
 
-- [ ] No: 8
+- [X] No: 8
 Statement: The system should have a point system rewarding members
 Evaluation Method:A user should be given points for select actions like making an account, checking into games, etc.
 
 ###### Whenever a user checks in, or creates a game, a point is added to their reputation field
 
-- [ ] No: 9
+- [X] No: 9
 Statement: The system will not allow a user to attend two events at once
 Evaluation Method:The system will replace the old event with the new one or cancel the request to attend the new event 
 
