@@ -7,13 +7,6 @@ $(document).ready(function() {
         $('#content').toggleClass('blurry');
     });
 
-    // I don't think registration button belongs in the popup
-    $('#newUser').click(function() {
-        alert("redirect to creat_account page");
-    });
-
-
-
     $('#loginButton').click(function () {
         var email = $('#emailInput').val();
         var pass = $('#passwordInput').val();

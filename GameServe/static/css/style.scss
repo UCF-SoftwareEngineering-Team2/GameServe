@@ -111,7 +111,7 @@ $light: #F7F7F7;
 .icon-football:before {
 	content: "\e606";
 }
-.icon-pingpong:before {
+.icon-ping-pong:before {
 	content: "\e607";
 }
 .icon-racquetball:before {
@@ -770,38 +770,17 @@ header {
 				background: $green;
 				color: $light;
 			}	
-			&.fb {
-				background: #3B5998;
-				transition: 200ms;
-				&:hover {
-					background:  #627AAD;
-				}
-				.icon-facebook {
-					position: relative;
-					float: left;
-					color: #F2F2F2;
-					margin-right: 10px;
-					font-size: 28px;
-				}
-				#facebookText {
-					position: relative;
-					color: #F2F2F2;
-					float: left;
-					font-size: 13px;
-					margin-top: 4px;
-					margin-left: -5px;
-				}
-			}
 		}
 	}
 }
 .accountSection {
-	height: 200px;
+	height: 190px;
 	@include vendor-prefix('transition', '500ms ease-in-out');
 	transition: 400ms;
+	display: inline-table;
 	overflow: hidden;
 	&.expand {
-		height: 450px;
+		min-height: 300px;
 	}
 	.loginBlock {
 		position: relative;
@@ -870,35 +849,31 @@ header {
 		border-radius: 5px;
 		background: $meddark;
 	}
-}
-
-#facebookLogin {
-	clear: both;
-	position: relative;
-	height: 30px;
-	bottom: 10px;
-	width: calc(100% - 40px);
-	margin: auto 10px;
-	background: #3B5998;	
-	padding: 10px;
-	border-radius: 5px;
-	transition: 200ms;
-	&:hover {
-		background:  #627AAD;
-	}
-	.icon-facebook {
+	.wideButton {
+		clear: both;
 		position: relative;
-		float: left;
-		color: #F2F2F2;
-		margin-right: 10px;
-		font-size: 28px;
-	}
-	#facebookText {
-		position: relative;
-		color: #F2F2F2;
-		float: left;
-	}
+		height: 30px;
+		width: calc(100% - 40px);
+		margin: auto 10px;
+		color: $light;
+		background: $dark;	
+		text-align: center;
+		font-size: 16px;
+		cursor: pointer;
+		padding: 10px;
+		border-radius: 5px;
+		border: none;
+		font-family: 'sinkin_sans300_light';
+		transition: 200ms;
+		&:hover {
+			background: $green;
+		}
+		&.btn{
+			height: 50px;
+			width: calc(100% - 20px);
 
+		}
+	}
 }
 
 .headerDeets {
@@ -989,6 +964,28 @@ h1, h3, h2, h5 {
 	}
 	&.hidden {
 		display: none;
+	}
+	&.fb {
+		background: #3B5998;
+		color: #F2F2F2;
+		transition: 200ms;
+		&:hover {
+			background:  #627AAD;
+		}
+		.icon-facebook {
+			position: relative;
+			float: left;
+			margin: 0px 10px;
+			font-size: 28px;
+		}
+		#facebookText {
+			position: relative;
+			float: left;
+			width: 200px;
+			font-size: 16px;
+			margin-top: -8px;
+			margin-left: -5px;
+		}
 	}
 }
 
