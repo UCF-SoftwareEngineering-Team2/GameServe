@@ -15,7 +15,7 @@ import os
 #########################################################################################
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SETTINGS_DIR = os.path.abspath(os.path.dirname(__file__))
-PROJECT_PATH = os.path.join(SETTINGS_DIR, os.pardir)
+PROJECT_PATH = os.path.abspath(os.path.join(SETTINGS_DIR, os.pardir))
 PROJECT_ROOT = PROJECT_PATH
 
 #########################################################################################
@@ -166,14 +166,14 @@ USE_TZ = False
 #
 # Info: For each application, by default django searches static files in myApp/static/
 #########################################################################################
-STATIC_URL = '/static/'
 STATIC_ROOT = 'staticfiles'
+STATIC_URL = '/static/'
 
 # File Storage engine to use for ./manage.py collectstatic
-STATICFILES_STORAGE='django.contrib.staticfiles.storage.StaticFilesStorage'
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_PATH, 'static'),
+)
 
-# Add'l Paths to search for static files when invoking ./manage.py collectstatic
-STATICFILES_DIRS = (os.path.join(PROJECT_PATH,'static'),)
 
 
 
@@ -198,13 +198,11 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ALLOWED_HOSTS = ['*']
 
 # Static asset configuration
-import os
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
+    os.path.abspath(os.path.join(PROJECT_PATH, 'static')),
 )
 
 
