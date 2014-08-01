@@ -7,21 +7,21 @@
 
 - [X] Facebook login/registration is working.  Just need a button for it.
 
-- [ ] Google Maps Js needs fiddling
+- [X] Google Maps Js needs fiddling
 
-- [ ] Have to remove unused js files and consolidate short ones into a single js file. Makes cross referencing a pain
+- [X] Have to remove unused js files and consolidate short ones into a single js file. Makes cross referencing a pain
 
 - [X] Need login page `/accounts/login/`, registration page `/accounts/signup` styled to match other pages. (frontend?)
 
  
-- [ ] Comments on code (even a single sentence) for EVERYTHING from now on until submission!
+- [X] Comments on code (even a single sentence) for EVERYTHING from now on until submission!
 
 
-- [ ] Filter Events on browse
+- [X] Filter Events on browse
 
-- [ ] Commit/Uncommit to event
+- [X] Commit/Uncommit to event
 
-- [ ] User shouldn't be able to commit to two events with overlapping date and time.
+- [X] User shouldn't be able to commit to two events with overlapping date and time.
 
 ## From Requirements:
 
@@ -41,7 +41,7 @@ Evaluation Method:A user should be able to access an event page and put their na
 Statement: The system should be able to support unique users
 Evaluation Method: When a user creates an account they shouldn’t be able to create an account with the same email address or username
 
-- [ ] No: 4
+- [X] No: 4
 Statement: The system should have the ability to provide a map overlay of the UCF campus and pinpoint event locations
 Evaluation Method: Upon entering the website, a user should be able to see all of the locations that matches can be held and where specific events are being held
 
@@ -78,9 +78,9 @@ Evaluation Method:A user should be able to click on a user’s name from an even
 
 ## Optional
 
-- Comments on events.
+- [ ] Comments on events.
 
-- Upload User image
+- [X] Upload User image
 
  
 
