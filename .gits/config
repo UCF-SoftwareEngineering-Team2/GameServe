@@ -1,0 +1,22 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	precomposeunicode = true
+[remote "origin"]
+	url = https://git.heroku.com/gameserved.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+[remote "heroku"]
+	url = https://git.heroku.com/gameserved.git
+	fetch = +refs/heads/*:refs/remotes/heroku/*
+[remote "heroku-cedar-14"]
+	url = https://git.heroku.com/gameserves.git
+	fetch = +refs/heads/*:refs/remotes/heroku-cedar-14/*
+[remote "heroku_staging"]
+	url = https://git.heroku.com/gameserves.git
+	fetch = +refs/heads/*:refs/remotes/heroku_staging/*

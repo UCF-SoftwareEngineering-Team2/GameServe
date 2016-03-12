@@ -120,7 +120,12 @@ class User(AbstractBaseUser):
             return "http://graph.facebook.com/{}/picture?width=120&height=120".format(fb_uid[0].uid)
  
         return "http://www.gravatar.com/avatar/{}?s=40".format(hashlib.md5(self.email).hexdigest())
- 
+        
+    def facebook_profile(self):
+        fb_uid = SocialAccount.objects.filter(user_id=self.id, provider='facebook')
+        if len(fb_uid):
+            return True
+        return False
     ###################################################################################
     #                                Properties 
     ###################################################################################

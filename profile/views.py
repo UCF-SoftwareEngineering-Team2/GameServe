@@ -3,10 +3,10 @@ from django.template import RequestContext
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 from profile.models import User
+
 import json
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
-from events.models import *
 from events.models import Event, RecentActivity, Sport, Court
 
 @csrf_exempt
@@ -34,7 +34,7 @@ def ajax(request):
 
         return HttpResponse(json.dumps({'message':'username not in post'}), mimetype='application/json', status=400)
     else:
-        return HttpResponse(json.dumps({'message':'Need POST request'}), mimetype='application/json', status=400)    
+        return HttpResponse(json.dumps({'message':'Need POST request'}), mimetype='application/json', status=400)
 
 @login_required
 def user(request):

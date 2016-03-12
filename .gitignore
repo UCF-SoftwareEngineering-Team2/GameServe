@@ -1,5 +1,3 @@
+venv
 *.pyc
-*.DS_Store
-*.sass-cache
-*.pyc
-*__init__*
+local_settings.py

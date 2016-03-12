@@ -1,0 +1,2 @@
+0000000000000000000000000000000000000000 df8331f74407391f3250c99d3dc9fe478e394440 James Choi <jchoi2012@knights.ucf.edu> 1457742505 -0500	clone: from https://git.heroku.com/gameserved.git
+df8331f74407391f3250c99d3dc9fe478e394440 4fd43c9f9d333d077ed1e82c41738b28d383c266 James Choi <jchoi2012@knights.ucf.edu> 1457742556 -0500	commit: Removed from Facebook login scope "publish_stream" which isn't valid

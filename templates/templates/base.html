@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title%}gameServe{% endblock%}</title>
+	<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css"/>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="{% static 'js/jquery.cookie.js' %}"></script>
+	<script src="{% static 'js/waypoints.js' %}"></script>
+	<script src="{% static 'js/infinitescroll.js' %}"></script>
+	<script src="{% static 'js/header.js' %}"></script>
+	<link rel="shortcut icon" href="{% static 'assets/titleIconGS.gif' %}" type="image/gif"/>
+	{% block preReqs %}{% endblock %}
+</head>
+
+<body>
+	<div id="content">
+		<div id="fader"></div>
+		<header>
+			<section class="center head">
+				<a href="/"><img src="{% static 'assets/gsLogo.svg' %}" id="logo"></a>
+				
+				{# If user is logged in then show buttn to logout/create a game #}
+				{% if request.user.is_authenticated %}
+				<div id="logout" class="headerLink">
+					logout
+					<div class="linkSlider"></div>
+				</div>
+				<div id="user" class="headerLink">
+					{{ request.user.username }}
+					<div class="linkSlider {% block userLink %}{% endblock %}"></div>
+				</div>
+				<div id="create" class="headerLink">
+					create a game
+					<div class="linkSlider {% block createLink %}{% endblock %}"></div>
+				</div>
+				{# If user not logged in then show button to login or register #}
+				{% else %}
+				<div id="login" class="headerLink">
+					login
+					<div class="linkSlider {% block loginLink %}{% endblock %}"></div>
+				</div>
+				<div id="register" class="headerLink">
+					register	
+					<div class="linkSlider {% block registerLink %}{% endblock %}"></div>
+				</div>
+
+				<form id="loginDropdown" class="hidden">
+					<input id='csrf' type='hidden' name='csrfmiddlewaretoken' value=''>
+					<div class="loginBlock">
+						<h5>email or username:</h5>
+						<input type="text" class="loginField" id="emailInput" placeholder="email">
+					</div>
+					<div class="loginBlock">
+						<h5>password:</h5>
+						<input type="password" class="loginField" id="passwordInput" placeholder="password">
+					</div>
+					<div class="authButtonSection">
+						<div id="loginButton" class="authButton">Login</div>
+						
+						<a href="/account/facebook/login/" class="authButton fb">
+							<div class="icon-facebook"></div>
+							<div id="facebookText">facebook login</div>
+						</a>
+						{% include "socialaccount/snippets/login_extra.html" %}
+					</div>
+				</form>
+				<script>
+					$('#csrf').attr('value',$.cookie().csrftoken);
+				</script>
+				{% endif %}
+
+				<div id="browse" class="headerLink">
+					browse
+					<div class="linkSlider {% block browseLink %}{% endblock %}"></div>
+				</div>
+				<div id="home" class="headerLink">
+					home
+					<div class="linkSlider {% block homeLink %}{% endblock %}"></div>
+				</div>
+				<div id="headerFade"></div>
+
+				
+			</section>
+		</header>
+		<section class="center">
+			<aside class="verticalPane small">
+				
+				{% block topLeftPane %}{% endblock %}
+
+				{% block middleLeftPane %}{% endblock %}
+
+				{% block bottomLeftPane %}{% endblock %}
+
+			</aside>
+			<section class="verticalPane">
+				{% block mainPane %}{% endblock %}
+				{% block secondarySection %}{% endblock %}
+				{% block thirdSection %}{% endblock %}
+			</section>
+			<div id="popupNotice" class="hidden">
+				<div id="noticeHeader"></div>
+				<div class="noticeContent">
+					<img src="{% static 'assets/icons/gsIcon.svg' %}" id="gsIcon">
+					<div id="noticeText"></div>
+				</div>
+				<div id="noticeButton">got it</div>
+			</div>
+		</section>
+
+	</div>
+	
+{% block lastScript %}
+{% endblock %}
+
+</body>
+</html>
