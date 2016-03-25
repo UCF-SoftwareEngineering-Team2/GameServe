@@ -1,0 +1,1298 @@
+@font-face {
+  font-family: 'sinkin_sans300_light_italic';
+  src: url("../assets/fonts/sinkinsans-300lightitalic-webfont.eot");
+  src: url("../assets/fonts/sinkinsans-300lightitalic-webfont.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/sinkinsans-300lightitalic-webfont.woff") format("woff"), url("../assets/fonts/sinkinsans-300lightitalic-webfont.ttf") format("truetype"), url("../assets/fonts/sinkinsans-300lightitalic-webfont.svg#sinkin_sans300_light_italic") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'sinkin_sans300_light';
+  src: url("../assets/fonts/sinkinsans-300light-webfont.eot");
+  src: url("../assets/fonts/sinkinsans-300light-webfont.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/sinkinsans-300light-webfont.woff") format("woff"), url("../assets/fonts/sinkinsans-300light-webfont.ttf") format("truetype"), url("../assets/fonts/sinkinsans-300light-webfont.svg#sinkin_sans300_light") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'kenyan_coffeeregular';
+  src: url("../assets/fonts/kenyan_coffee_rg.eot");
+  src: url("../assets/fonts/kenyan_coffee_rg.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/kenyan_coffee_rg.woff") format("woff"), url("../assets/fonts/kenyan_coffee_rg.ttf") format("truetype"), url("../assets/fonts/kenyan_coffee_rg.svg#kenyan_coffeeregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'kenyan_coffeeitalic';
+  src: url("../assets/fonts/kenyan_coffee_rg_it.eot");
+  src: url("../assets/fonts/kenyan_coffee_rg_it.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/kenyan_coffee_rg_it.woff") format("woff"), url("../assets/fonts/kenyan_coffee_rg_it.ttf") format("truetype"), url("../assets/fonts/kenyan_coffee_rg_it.svg#kenyan_coffeeitalic") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'icomoon';
+  src: url("../assets/icons/icomoon.eot?-y1ycr0");
+  src: url("../assets/icons/icomoon.eot?#iefix-y1ycr0") format("embedded-opentype"), url("../assets/icons/icomoon.woff?-y1ycr0") format("woff"), url("../assets/icons/icomoon.ttf?-y1ycr0") format("truetype"), url("../assets/icons/icomoon.svg?-y1ycr0#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* line 67, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* line 81, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.largeIcon {
+  font-size: 85px;
+  width: 85px;
+  margin: 5px auto;
+}
+/* line 85, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.largeIcon.left {
+  float: left;
+}
+
+/* line 89, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.gameLocation {
+  height: 500px;
+}
+/* line 91, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.gameLocation .windowBlock {
+  height: 500px !important;
+}
+
+/* line 95, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.icon-heatRep:before {
+  content: "\e60d";
+}
+
+/* line 98, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.icon-baseball:before {
+  content: "\e600";
+}
+
+/* line 101, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.icon-basketball:before {
+  content: "\e601";
+}
+
+/* line 104, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.icon-biking:before {
+  content: "\e602";
+}
+
+/* line 107, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.icon-checkedIn:before {
+  content: "\e603";
+}
+
+/* line 110, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.icon-comments:before {
+  content: "\e604";
+}
+
+/* line 113, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.icon-committed:before {
+  content: "\e605";
+}
+
+/* line 116, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.icon-football:before {
+  content: "\e606";
+}
+
+/* line 119, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.icon-ping-pong:before {
+  content: "\e607";
+}
+
+/* line 122, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.icon-racquetball:before {
+  content: "\e608";
+}
+
+/* line 125, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.icon-running:before {
+  content: "\e609";
+}
+
+/* line 128, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.icon-soccer:before {
+  content: "\e60a";
+}
+
+/* line 131, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.icon-tennis:before {
+  content: "\e60b";
+}
+
+/* line 134, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.icon-volleyball:before {
+  content: "\e60c";
+}
+
+/* line 137, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.icon-expand:before {
+  content: "\e60e";
+}
+
+/* line 140, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.icon-contract:before {
+  content: "\e60f";
+}
+
+/* line 143, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.icon-close:before {
+  content: "\e610";
+}
+
+/* line 146, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.icon-checkmark:before {
+  content: "\e611";
+}
+
+/* line 149, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.icon-minus:before {
+  content: "\e612";
+}
+
+/* line 152, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.icon-plus:before {
+  content: "\e613";
+}
+
+/* line 155, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.icon-arrow-up:before {
+  content: "\e614";
+}
+
+/* line 158, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.icon-mobile:before {
+  content: "\e615";
+}
+
+/* line 161, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.icon-mail:before {
+  content: "\e616";
+}
+
+/* line 164, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.icon-camera:before {
+  content: "\e617";
+}
+
+/* line 167, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.icon-facebook:before {
+  content: "\e618";
+}
+
+/* line 170, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.icon-gsIcon:before {
+  content: "\e619";
+}
+
+/* line 173, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+body {
+  background: #cecece;
+  font-family: 'sinkin_sans300_light';
+  margin: 0px;
+  padding: 0px;
+  color: #2e2d2c;
+}
+
+/* line 180, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.center {
+  margin: auto;
+  width: 1000px;
+  height: 100%;
+}
+/* line 184, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.center.head {
+  width: 870px;
+}
+
+/* line 188, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.invis {
+  display: none;
+}
+
+/* line 191, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  -webkit-transition: 200ms ease;
+  -moz-transition: 200ms ease;
+  -ms-transition: 200ms ease;
+  -o-transition: 200ms ease;
+  transition: 200ms ease;
+}
+/* line 198, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#content.blurry {
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -ms-filter: blur(2px);
+  -o-filter: blur(2px);
+  filter: blur(2px);
+}
+/* line 202, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#content #fader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+}
+/* line 210, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#content #fader.fade {
+  opacity: 1;
+  pointer-events: none;
+}
+
+/* line 216, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+header {
+  position: fixed;
+  height: 57px;
+  width: 100%;
+  background: #f7f7f7;
+  z-index: 100;
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1);
+  z-index: 20;
+}
+/* line 224, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+header .headerLink {
+  position: relative;
+  height: 57px;
+  padding: 15px 20px;
+  float: right;
+  margin-right: 10px;
+  -webkit-transition: 200ms ease-in-out;
+  -moz-transition: 200ms ease-in-out;
+  -ms-transition: 200ms ease-in-out;
+  -o-transition: 200ms ease-in-out;
+  transition: 200ms ease-in-out;
+  -webkit-transition: 200ms ease-in-out;
+  -moz-transition: 200ms ease-in-out;
+  -ms-transition: 200ms ease-in-out;
+  -o-transition: 200ms ease-in-out;
+  transition: 200ms ease-in-out;
+  text-align: center;
+  cursor: pointer;
+}
+/* line 234, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+header .headerLink:hover {
+  color: #f7f7f7;
+}
+/* line 237, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+header .headerLink:hover > .linkSlider {
+  opacity: 1;
+  top: 0px;
+}
+/* line 241, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+header .headerLink .linkSlider {
+  position: absolute;
+  width: 100%;
+  height: 57px;
+  top: -90px;
+  margin-left: -20px;
+  background: #6cab43;
+  z-index: -1;
+  -webkit-transition: 200ms ease-in-out;
+  -moz-transition: 200ms ease-in-out;
+  -ms-transition: 200ms ease-in-out;
+  -o-transition: 200ms ease-in-out;
+  transition: 200ms ease-in-out;
+}
+/* line 250, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+header .headerLink .linkSlider.active {
+  opacity: 1;
+  top: 0px;
+}
+
+/* line 257, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.verticalPane {
+  position: relative;
+  float: left;
+  padding-top: 75px;
+  width: 600px;
+  height: 100%;
+}
+/* line 263, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.verticalPane.small {
+  width: 300px;
+  margin-left: 15px;
+}
+
+/* line 268, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#logo {
+  position: relative;
+  width: 170px;
+}
+
+/* line 273, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.window {
+  background: #f7f7f7;
+  position: relative;
+  float: left;
+  margin: 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+  min-height: 200px;
+  width: 600px;
+  overflow: hidden;
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+/* line 284, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.window.side {
+  width: 250px;
+}
+/* line 287, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.window .windowHeader {
+  position: relative;
+  top: 0px;
+  padding: 5px 10px;
+  color: #2e2d2c;
+  background: #cecece;
+  width: 100%;
+  height: 30px;
+}
+/* line 296, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.window .windowHeader.large {
+  color: #2e2d2c;
+  background: #f7f7f7;
+  height: 180px;
+}
+/* line 301, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.window .windowHeader.medium {
+  color: #2e2d2c;
+  background: #f7f7f7;
+  height: 90px;
+}
+/* line 307, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.window .windowBlock {
+  position: relative;
+  float: left;
+  width: 33%;
+  height: 180px;
+  text-align: center;
+  background: #2e2d2c;
+  color: #f7f7f7;
+  padding-top: 20px;
+  font-size: 14px;
+}
+/* line 317, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.window .windowBlock:nth-child(2n+1) {
+  width: 34%;
+  background: #6cab43;
+}
+/* line 321, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.window .windowBlock.scheduler {
+  background: transparent;
+  color: #aaaaaa;
+  padding: 0px;
+}
+/* line 326, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.window .windowBlock h5 {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+}
+/* line 331, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.window .windowBlock .blockText {
+  position: relative;
+  font-size: 26px;
+  color: #f7f7f7;
+}
+/* line 336, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.window .windowBlock .blockDeet {
+  position: relative;
+  font-size: 12px;
+  width: 100%;
+  color: #f7f7f7;
+  margin-bottom: 40px;
+}
+/* line 342, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.window .windowBlock .blockDeet:last-child {
+  position: absolute;
+  bottom: 20px;
+  margin: 0px;
+}
+/* line 347, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.window .windowBlock .blockDeet.scheduler {
+  color: #aaaaaa;
+  margin-bottom: 0px;
+}
+/* line 352, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.window .windowBlock #pickerInput {
+  display: none;
+}
+
+/* line 357, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#mapCanvas {
+  height: 400px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+/* line 361, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#mapCanvas.bigMap {
+  position: relative;
+  clear: both;
+  height: 400px;
+}
+/* line 366, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#mapCanvas.sideMap {
+  position: relative;
+  margin-top: 0px;
+  float: left;
+  height: 500px;
+  width: 66%;
+}
+
+/* line 374, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.userPhoto {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin: 0px 10px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+/* line 382, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.userPhoto.large {
+  margin: 10px;
+  border: 5px solid #f7f7f7;
+  height: 150px;
+  width: 150px;
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1);
+  pointer-events: all;
+}
+/* line 389, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.userPhoto.large:hover + .editPhoto {
+  opacity: .6;
+  cursor: pointer;
+}
+
+/* line 395, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.editPhoto {
+  opacity: 0;
+  position: absolute;
+  text-align: center;
+  vertical-align: middle;
+  top: 45px;
+  left: 50px;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  background: #6cab43;
+  border-radius: 50%;
+  color: #f7f7f7;
+  transition: 200ms;
+}
+/* line 409, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.editPhoto:hover {
+  opacity: .6;
+  cursor: pointer;
+}
+/* line 413, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.editPhoto .icon-camera {
+  position: absolute;
+  font-size: 40px;
+  margin: 25px 30px;
+}
+
+/* line 420, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.listImg {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  font-size: 50px;
+  float: left;
+  margin: 0px 10px;
+  color: #2e2d2c;
+}
+/* line 429, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.listImg.green {
+  color: #6cab43;
+}
+
+/* line 433, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.heatImg {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin-right: 20px;
+  font-size: 50px;
+  color: #aaaaaa;
+}
+/* line 441, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.heatImg.hot {
+  color: #6cab43;
+}
+
+/* line 445, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.browseGameInfo {
+  position: relative;
+  height: 100%;
+  float: left;
+  color: #2e2d2c;
+  font-size: 12px;
+  cursor: pointer;
+}
+/* line 453, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.browseGameInfo .infoBlock {
+  position: relative;
+  float: left;
+  margin: 0px 20px;
+  width: 180px;
+}
+/* line 459, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.browseGameInfo .infoText {
+  position: relative;
+  margin-right: 5px;
+  margin-top: 5px;
+  float: left;
+  clear: both;
+}
+
+/* line 467, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.staticListItem {
+  position: relative;
+  width: calc(100% - 20px);
+  padding: 5px 10px;
+  border-top: 1px solid #cecece;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* line 475, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.listItem {
+  position: relative;
+  width: calc(100% - 20px);
+  padding: 5px 10px;
+  border-top: 1px solid #cecece;
+  overflow: hidden;
+  cursor: pointer;
+}
+/* line 483, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.listItem:hover {
+  background: #6cab43;
+  color: #f7f7f7;
+}
+/* line 487, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.listItem:hover > .recentInfo {
+  color: #f7f7f7;
+}
+/* line 490, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.listItem:hover > .browseGameInfo {
+  color: #f7f7f7;
+}
+/* line 492, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.listItem:hover > .browseGameInfo .heatImg {
+  color: rgba(247, 247, 247, 0.7);
+}
+/* line 494, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.listItem:hover > .browseGameInfo .heatImg.hot {
+  color: #f7f7f7;
+}
+/* line 499, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.listItem:hover > .listImg {
+  color: #f7f7f7;
+}
+/* line 502, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.listItem:hover > .statType {
+  color: #f7f7f7;
+}
+/* line 505, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.listItem:hover > .statNum {
+  color: #f7f7f7;
+}
+
+/* line 509, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.recentInfo {
+  position: relative;
+  width: 150px;
+  height: 100%;
+  float: right;
+  color: #2e2d2c;
+  font-size: 12px;
+}
+
+/* line 518, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.statNum {
+  color: #6cab43;
+  float: left;
+  font-size: 26px;
+  margin-left: 10px;
+}
+
+/* line 524, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.statType {
+  position: relative;
+  width: 150px;
+  height: 100%;
+  float: left;
+  color: #aaaaaa;
+  margin-top: -8px;
+  margin-left: 10px;
+  font-size: 12px;
+  -webkit-transition: 200ms ease;
+  -moz-transition: 200ms ease;
+  -ms-transition: 200ms ease;
+  -o-transition: 200ms ease;
+  transition: 200ms ease;
+}
+
+/* line 535, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.commentSection {
+  position: relative;
+  width: calc(100% - 70px);
+  height: 100%;
+  float: left;
+  color: #aaaaaa;
+  font-size: 12px;
+  min-height: 60px;
+}
+/* line 543, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.commentSection.create {
+  height: 90px;
+  width: 420px;
+}
+/* line 547, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.commentSection .comment {
+  position: absolute;
+  width: 400px;
+  font-size: 12px;
+  color: #aaaaaa;
+}
+/* line 553, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.commentSection .deltaTime {
+  position: absolute;
+  right: 10px;
+  bottom: 0px;
+  height: 20px;
+  font-size: 12px;
+  color: #cecece;
+}
+/* line 561, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.commentSection #commentInput {
+  position: absolute;
+  height: 80px;
+  width: 400px;
+  border: none;
+  box-shadow: inset 0 0 2px 2px #cecece;
+  font-family: 'sinkin_sans300_light';
+  border-radius: 5px;
+  padding: 3px 5px;
+}
+
+/* line 572, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#submitComment {
+  position: absolute;
+  right: 0px;
+  height: 100%;
+  margin-top: -5px;
+  width: 100px;
+  background: #2e2d2c;
+  -webkit-transition: 200ms ease;
+  -moz-transition: 200ms ease;
+  -ms-transition: 200ms ease;
+  -o-transition: 200ms ease;
+  transition: 200ms ease;
+}
+/* line 580, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#submitComment:hover {
+  background: #6cab43;
+}
+/* line 583, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#submitComment .icon-arrow-up {
+  font-size: 30px;
+  color: #f7f7f7;
+  margin-top: 30px;
+  width: 100%;
+  text-align: center;
+}
+
+/* line 591, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.filterSection {
+  position: relative;
+  float: left;
+  width: 360px;
+  height: auto;
+  padding: 10px 0px 0px 5px;
+  display: block;
+  margin: auto;
+  padding-bottom: 0px;
+}
+/* line 600, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.filterSection.side {
+  width: 140px;
+}
+/* line 603, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.filterSection.vert {
+  width: 100%;
+  height: auto;
+}
+/* line 606, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.filterSection.vert:nth-child(2n+1) {
+  padding-top: 0px;
+  margin-bottom: 45px;
+}
+
+/* line 613, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.verticalPane .filterResults:not(.browse) {
+  margin-right: 30px;
+}
+
+/* line 618, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.filterResults input, .filterSection input {
+  display: none;
+}
+/* line 621, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.filterResults label, .filterSection label {
+  position: relative;
+  width: 100px;
+  height: 20px;
+  float: left;
+  font-size: 12px;
+  padding: 3px 5px;
+  color: #2e2d2c;
+  margin: 5px;
+  border-radius: 5px;
+  text-align: center;
+  -webkit-transition: 200ms ease;
+  -moz-transition: 200ms ease;
+  -ms-transition: 200ms ease;
+  -o-transition: 200ms ease;
+  transition: 200ms ease;
+  cursor: pointer;
+}
+/* line 634, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.filterResults label:hover, .filterSection label:hover {
+  background: rgba(108, 171, 67, 0.6);
+  color: #f7f7f7;
+}
+/* line 638, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.filterResults label.selected, .filterSection label.selected {
+  background: #6cab43;
+  color: #f7f7f7;
+}
+/* line 644, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.filterResults input:checked + label, .filterSection input:checked + label {
+  background: #6cab43;
+  color: #f7f7f7;
+}
+
+/* line 649, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.filterButton {
+  position: absolute;
+  right: 0px;
+  height: 100%;
+  width: 60px;
+  background: #2e2d2c;
+  text-align: center;
+  color: #f7f7f7;
+  padding-top: 65px;
+  cursor: pointer;
+  -webkit-transition: 200ms ease;
+  -moz-transition: 200ms ease;
+  -ms-transition: 200ms ease;
+  -o-transition: 200ms ease;
+  transition: 200ms ease;
+}
+/* line 660, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.filterButton:hover {
+  background: #6cab43;
+}
+/* line 663, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.filterButton.bottom {
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 30px;
+  padding-top: 10px;
+}
+
+/* line 671, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.gameButton {
+  position: relative;
+  width: 100px;
+  height: 20px;
+  float: left;
+  font-size: 12px;
+  padding: 3px 5px;
+  color: #2e2d2c;
+  margin: 5px;
+  border-radius: 5px;
+  text-align: center;
+  -webkit-transition: 200ms ease;
+  -moz-transition: 200ms ease;
+  -ms-transition: 200ms ease;
+  -o-transition: 200ms ease;
+  transition: 200ms ease;
+  cursor: pointer;
+}
+/* line 684, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.gameButton:hover {
+  background: rgba(108, 171, 67, 0.6);
+  color: #f7f7f7;
+}
+/* line 688, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.gameButton.selected {
+  background: #6cab43;
+  color: #f7f7f7;
+}
+
+/* line 693, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#loginDropdown {
+  opacity: 1;
+  position: fixed;
+  top: 55px;
+  right: 200px;
+  width: 300px;
+  height: 300px;
+  background: #f7f7f7;
+  border-radius: 0px 0px 5px 5px;
+  overflow: hidden;
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2);
+  -webkit-transition: 500ms ease-in-out;
+  -moz-transition: 500ms ease-in-out;
+  -ms-transition: 500ms ease-in-out;
+  -o-transition: 500ms ease-in-out;
+  transition: 500ms ease-in-out;
+}
+/* line 705, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#loginDropdown.hidden {
+  display: none;
+}
+/* line 708, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#loginDropdown #newMember {
+  padding: 10px;
+}
+/* line 710, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#loginDropdown #newMember.hidden {
+  display: none;
+}
+/* line 713, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#loginDropdown #newMember h5 {
+  margin: 0px;
+}
+/* line 717, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#loginDropdown .windowHeader {
+  position: relative;
+  top: 0px;
+  padding: 5px 10px;
+  background: #f7f7f7;
+  color: #2e2d2c;
+  width: calc(100% - 20px);
+  height: 30px;
+}
+/* line 725, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#loginDropdown .windowHeader .icon-close {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  padding: 10px;
+  font-size: 15px;
+  color: #cecece;
+  -webkit-transition: 200ms ease;
+  -moz-transition: 200ms ease;
+  -ms-transition: 200ms ease;
+  -o-transition: 200ms ease;
+  transition: 200ms ease;
+}
+/* line 733, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#loginDropdown .windowHeader .icon-close:hover {
+  color: #6cab43;
+}
+/* line 738, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#loginDropdown .loginBlock {
+  position: relative;
+  float: left;
+  margin: 10px;
+  min-width: 270px;
+}
+/* line 744, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#loginDropdown .loginField {
+  position: relative;
+  width: 250px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  padding: 3px 5px;
+  font-size: 15px;
+  color: #6cab43;
+  font-family: 'sinkin_sans300_light';
+  clear: both;
+  box-shadow: inset 0 0 2px 2px #cecece;
+}
+/* line 757, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#loginDropdown .authButtonSection {
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  bottom: 0px;
+  margin-top: 20px;
+}
+/* line 763, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#loginDropdown .authButtonSection .authButton {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  padding-top: 6px;
+  float: left;
+  text-align: center;
+  background: #2e2d2c;
+  color: #f7f7f7;
+  cursor: pointer;
+  -webkit-transition: 200ms ease;
+  -moz-transition: 200ms ease;
+  -ms-transition: 200ms ease;
+  -o-transition: 200ms ease;
+  transition: 200ms ease;
+}
+/* line 774, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#loginDropdown .authButtonSection .authButton:hover {
+  background: #6cab43;
+  color: #f7f7f7;
+}
+
+/* line 781, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.accountSection {
+  height: 190px;
+  -webkit-transition: 500ms ease-in-out;
+  -moz-transition: 500ms ease-in-out;
+  -ms-transition: 500ms ease-in-out;
+  -o-transition: 500ms ease-in-out;
+  transition: 500ms ease-in-out;
+  transition: 400ms;
+  display: inline-table;
+  overflow: hidden;
+}
+/* line 787, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.accountSection.expand {
+  min-height: 300px;
+}
+/* line 790, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.accountSection .loginBlock {
+  position: relative;
+  float: left;
+  margin: 10px;
+  min-width: 270px;
+}
+/* line 796, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.accountSection #oldMember {
+  padding: 10px;
+}
+/* line 798, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.accountSection #oldMember.hidden {
+  display: none;
+}
+/* line 801, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.accountSection #oldMember h5 {
+  margin: 0px;
+}
+/* line 805, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.accountSection #newMember {
+  padding: 10px;
+}
+/* line 807, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.accountSection #newMember.hidden {
+  display: none;
+}
+/* line 810, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.accountSection #newMember h5 {
+  margin: 0px;
+}
+/* line 814, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.accountSection .windowHeader {
+  position: relative;
+  top: 0px;
+  padding: 5px 10px;
+  background: #f7f7f7;
+  color: #2e2d2c;
+  width: calc(100% - 20px);
+  height: 30px;
+}
+/* line 822, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.accountSection .windowHeader .icon-close {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  padding: 10px;
+  font-size: 15px;
+  color: #cecece;
+  -webkit-transition: 200ms ease;
+  -moz-transition: 200ms ease;
+  -ms-transition: 200ms ease;
+  -o-transition: 200ms ease;
+  transition: 200ms ease;
+}
+/* line 830, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.accountSection .windowHeader .icon-close:hover {
+  color: #6cab43;
+}
+/* line 836, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.accountSection #id_phone_number, .accountSection #id_username, .accountSection #id_email, .accountSection #id_email1, .accountSection #id_password1, .accountSection #id_password2 {
+  position: relative;
+  width: 250px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  padding: 3px 5px;
+  font-size: 15px;
+  color: #6cab43;
+  font-family: 'sinkin_sans300_light';
+  clear: both;
+  box-shadow: inset 0 0 2px 2px #cecece;
+}
+/* line 849, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.accountSection .tempPhotoUpload {
+  position: relative;
+  float: left;
+  height: 180px;
+  width: 100%;
+  border-radius: 5px;
+  background: #aaaaaa;
+}
+/* line 857, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.accountSection .wideButton {
+  clear: both;
+  position: relative;
+  height: 30px;
+  width: calc(100% - 40px);
+  margin: auto 10px;
+  color: #f7f7f7;
+  background: #2e2d2c;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  font-family: 'sinkin_sans300_light';
+  transition: 200ms;
+}
+/* line 873, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.accountSection .wideButton:hover {
+  background: #6cab43;
+}
+/* line 876, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.accountSection .wideButton.btn {
+  height: 50px;
+  width: calc(100% - 20px);
+}
+
+/* line 884, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.headerDeets {
+  position: relative;
+  float: left;
+  width: 400px;
+}
+/* line 888, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.headerDeets .headerGame {
+  margin: 20px;
+}
+
+/* line 892, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+h1, h3, h2, h5 {
+  margin: 5px 0px;
+  font-family: 'sinkin_sans300_light';
+}
+
+/* line 896, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.headerInfo {
+  position: relative;
+  float: left;
+}
+
+/* line 900, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.userInfo {
+  position: relative;
+  float: left;
+  font-size: 30px;
+}
+
+/* line 905, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.timePicker {
+  position: relative;
+  margin: 10px 25px;
+  height: 50px;
+  width: 100%;
+}
+/* line 910, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.timePicker.duration {
+  margin-left: 45px;
+}
+/* line 913, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.timePicker #amPmToggle {
+  position: relative;
+  height: 20px;
+  width: 25px;
+  padding: 5px;
+  background: #2e2d2c;
+  float: left;
+  color: #f7f7f7;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 200ms;
+}
+/* line 924, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.timePicker #amPmToggle:hover {
+  background: #6cab43;
+}
+/* line 928, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.timePicker .timeSelect {
+  position: relative;
+  height: 30px;
+  padding: 5px;
+  font-family: 'sinkin_sans300_light';
+  font-size: 14px;
+  float: left;
+  background: #2e2d2c;
+  border: none;
+  color: #f7f7f7;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 200ms;
+}
+/* line 941, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.timePicker .timeSelect:hover {
+  background: #6cab43;
+}
+/* line 945, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.timePicker label {
+  position: relative;
+  top: 32px;
+  font-size: 10px;
+  left: -112px;
+  margin-left: 15px;
+}
+
+/* line 953, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.sideButton {
+  position: relative;
+  width: 250px;
+  height: 50px;
+  border-radius: 5px;
+  margin: 20px;
+  border: none;
+  background: #2e2d2c;
+  padding-top: 20px;
+  text-align: center;
+  color: #f7f7f7;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+/* line 967, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.sideButton:hover {
+  background: #6cab43;
+}
+/* line 970, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.sideButton.hidden {
+  display: none;
+}
+/* line 973, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.sideButton.fb {
+  background: #3B5998;
+  color: #F2F2F2;
+  transition: 200ms;
+}
+/* line 977, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.sideButton.fb:hover {
+  background: #627AAD;
+}
+/* line 980, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.sideButton.fb .icon-facebook {
+  position: relative;
+  float: left;
+  margin: 0px 10px;
+  font-size: 28px;
+}
+/* line 986, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+.sideButton.fb #facebookText {
+  position: relative;
+  float: left;
+  width: 200px;
+  font-size: 16px;
+  margin-top: -8px;
+  margin-left: -5px;
+}
+
+/* line 997, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#popupNotice {
+  background: #f7f7f7;
+  position: fixed;
+  margin: 200px 350px;
+  border-radius: 5px;
+  min-height: 200px;
+  width: 500px;
+  overflow: hidden;
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1);
+  z-index: 110;
+  transition: 200ms;
+}
+/* line 1008, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#popupNotice.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+/* line 1012, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#popupNotice #gsIcon {
+  position: relative;
+  float: left;
+  width: 100px;
+}
+/* line 1017, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#popupNotice #noticeHeader {
+  position: relative;
+  top: 0px;
+  padding: 5px 10px;
+  color: #2e2d2c;
+  background: #cecece;
+  width: 100%;
+  height: 30px;
+}
+/* line 1026, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#popupNotice .noticeContent {
+  position: relative;
+  width: 100%;
+  padding: 5px 10px;
+}
+/* line 1030, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#popupNotice .noticeContent #noticeText {
+  position: absolute;
+  right: 30px;
+  width: 350px;
+}
+/* line 1036, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#popupNotice #noticeButton {
+  position: absolute;
+  bottom: 0px;
+  text-align: center;
+  color: #f7f7f7;
+  background: #2e2d2c;
+  width: 100%;
+  height: 30px;
+  transition: 200ms;
+}
+/* line 1045, C:/Users/T/Desktop/Projects/GameServe/GameServe/static/css/style.scss */
+#popupNotice #noticeButton:hover {
+  background: #6cab43;
+}
