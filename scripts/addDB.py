@@ -72,7 +72,7 @@ def addEvents():
     for i in range(5000):
         e = Event()
 
-        year = 2014
+        year = 2016 + randint(0, 50)
         month = randint(1, 12)
         day = randint(1,30) if ( month != 2 ) else randint(1, 28)
 
@@ -85,9 +85,9 @@ def addEvents():
         e.endTime = timezone.datetime(year=year, month=month, day=day,
                                        hour=hour+2, minute=minute)
 
-        e.court = Court.objects.get(id=randint(1,c))
-        e.sport = Sport.objects.get(id=randint(1,s))
-        e.creator  = User.objects.get(id=randint(2,u))
+        e.court = Court.objects.all()[randint(0,c-1)]
+        e.sport = Sport.objects.all()[randint(0,s-1)]
+        e.creator  = User.objects.all()[randint(0,u-1)]
         e.duration = 2
         e.save()
         try:
@@ -137,9 +137,9 @@ def addUsers():
 def addActivity():
     # Get upcoming events
     upcoming = Event.objects.upcoming()
-    ct = User.objects.count()   
+    ct = User.objects.count()
 
-    # Fill 9 
+    # Fill 9
     while RecentActivity.objects.count() < 9:
         # Get a user instance
         r = randint(1, ct)
@@ -154,12 +154,12 @@ def addActivity():
             createEventActivity(user)
 
 
-        
+
 def createEventActivity(user):
-    dateTime = timezone.datetime(year=2014, month=randint(timezone.now().month,timezone.now().month+2)%12+1, 
+    dateTime = timezone.datetime(year=2014, month=randint(timezone.now().month,timezone.now().month+2)%12+1,
                                           day=randint(timezone.now().day,timezone.now().day+30)%28+1, hour=randint(1,23), minute=randint(0,59))
-    
-    timestamp = calendar.timegm(dateTime.timetuple())     
+
+    timestamp = calendar.timegm(dateTime.timetuple())
 
     creator = user
     duration = 2000
@@ -180,7 +180,7 @@ def commitActivity(user, rEvent):
     client = Client(enforce_csrf_checks=False)
 
     # build the data to send in POST
-    data = {'username':user.id, 
+    data = {'username':user.id,
         'password':user.password}
 
     # Log the user in
@@ -194,9 +194,9 @@ def commitActivity(user, rEvent):
 
 
 
-    
-    
-    
+
+
+
 
 
 

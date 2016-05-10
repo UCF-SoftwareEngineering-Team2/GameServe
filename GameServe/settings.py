@@ -28,7 +28,7 @@ TEMPLATE_DEBUG = True
 SECRET_KEY = 't$-eqj2!z(dn8mhimh9j+%f$9x1(y#8jzli)65g_$mh&5w-9=7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -125,8 +125,13 @@ WSGI_APPLICATION = 'GameServe.wsgi.application'
 
 # we only need the engine name, as heroku takes care of the rest
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'gameserve',
+        'USER': 'kizzlebot',
+        'PASSWORD': 'tree444',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -188,23 +193,33 @@ STATICFILES_DIRS = (
 #########################################################################################
 TEMPLATE_DIRS = (os.path.join(PROJECT_PATH, 'templates'),)
 
-# Parse database configuration from $DATABASE_URL
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
 
-# Honor the 'X-Forwarded-Proto' header for request.is_secure()
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-# Allow all host headers
-ALLOWED_HOSTS = ['*']
 
-# Static asset configuration
-STATIC_ROOT = 'staticfiles'
-STATIC_URL = '/static/'
+if os.environ.get('ENVIRON') == None:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql_psycopg2",
+        }
+    }
 
-STATICFILES_DIRS = (
-    os.path.abspath(os.path.join(PROJECT_PATH, 'static')),
-)
+    # Parse database configuration from $DATABASE_URL environment variable on heroku
+    import dj_database_url
+    DATABASES['default'] =  dj_database_url.config()
+
+    # Honor the 'X-Forwarded-Proto' header for request.is_secure()
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+    # Allow all host headers
+    ALLOWED_HOSTS = ['*']
+
+    # Static asset configuration
+    STATIC_ROOT = 'staticfiles'
+    STATIC_URL = '/static/'
+
+    STATICFILES_DIRS = (
+       os.path.abspath(os.path.join(PROJECT_PATH, 'static')),
+    )
 
 
 # try to load local_settings.py if it exists
