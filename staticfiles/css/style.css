@@ -47,6 +47,11 @@
   .largeIcon.left {
     float: left; }
 
+.gameLocation {
+  height: 500px; }
+  .gameLocation .windowBlock {
+    height: 500px !important; }
+
 .icon-heatRep:before {
   content: "\e60d"; }
 
@@ -314,7 +319,7 @@ header {
     position: relative;
     margin-top: 0px;
     float: left;
-    height: 200px;
+    height: 500px;
     width: 66%; }
 
 .userPhoto {
@@ -937,3 +942,6 @@ h1, h3, h2, h5 {
     transition: 200ms; }
     #popupNotice #noticeButton:hover {
       background: #6cab43; }
+#forkme{
+  z-index:10000;
+}

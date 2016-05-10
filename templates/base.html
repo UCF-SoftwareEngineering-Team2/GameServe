@@ -17,10 +17,12 @@
 <body>
 	<div id="content">
 		<div id="fader"></div>
+
+
 		<header>
+		<div id='forkme'><a href="https://github.com/UCF-SoftwareEngineering-Team2/GameServe"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a></div>
 			<section class="center head">
 				<a href="/"><img src="{% static 'assets/gsLogo.svg' %}" id="logo"></a>
-				
 				{# If user is logged in then show buttn to logout/create a game #}
 				{% if request.user.is_authenticated %}
 				<div id="logout" class="headerLink">
@@ -28,12 +30,7 @@
 					<div class="linkSlider"></div>
 				</div>
 				<div id="user" class="headerLink">
-					{% if request.user.facebook_profile %}
-						<span style='font-size:10px'>{{ request.user.email }}</span>
-					{% else %}
-						{{ request.user.username }}
-					{% endif %}
-
+					{{ request.user.username }}
 					<div class="linkSlider {% block userLink %}{% endblock %}"></div>
 				</div>
 				<div id="create" class="headerLink">
@@ -47,7 +44,7 @@
 					<div class="linkSlider {% block loginLink %}{% endblock %}"></div>
 				</div>
 				<div id="register" class="headerLink">
-					register	
+					register
 					<div class="linkSlider {% block registerLink %}{% endblock %}"></div>
 				</div>
 
@@ -63,7 +60,7 @@
 					</div>
 					<div class="authButtonSection">
 						<div id="loginButton" class="authButton">Login</div>
-						
+
 						<a href="/account/facebook/login/" class="authButton fb">
 							<div class="icon-facebook"></div>
 							<div id="facebookText">facebook login</div>
@@ -86,12 +83,14 @@
 				</div>
 				<div id="headerFade"></div>
 
-				
+
 			</section>
 		</header>
+
+
 		<section class="center">
 			<aside class="verticalPane small">
-				
+
 				{% block topLeftPane %}{% endblock %}
 
 				{% block middleLeftPane %}{% endblock %}
@@ -114,8 +113,12 @@
 			</div>
 		</section>
 
+
+
+
+
 	</div>
-	
+
 {% block lastScript %}
 {% endblock %}
 

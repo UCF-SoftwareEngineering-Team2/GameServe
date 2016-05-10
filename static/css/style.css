@@ -942,3 +942,6 @@ h1, h3, h2, h5 {
     transition: 200ms; }
     #popupNotice #noticeButton:hover {
       background: #6cab43; }
+#forkme{
+  z-index:10000;
+}
